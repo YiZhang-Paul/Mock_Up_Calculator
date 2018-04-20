@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ParseTreeClassLibrary;
+using ConverterClassLibrary;
 
-namespace ParseTreeTest {
+namespace ConverterTest {
     [TestClass]
     public class OperatorConverterTest {
 

@@ -40,12 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INode.cs" />
-    <Compile Include="IOperatorConverter.cs" />
     <Compile Include="IParseTree.cs" />
     <Compile Include="Node.cs" />
-    <Compile Include="OperatorConverter.cs" />
     <Compile Include="ParseTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">
+      <Project>{0956361e-6fb8-4b37-a86d-c648e3822ec4}</Project>
+      <Name>ConverterClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

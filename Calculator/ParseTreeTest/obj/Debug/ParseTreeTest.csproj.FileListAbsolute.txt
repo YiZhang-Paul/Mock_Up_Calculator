@@ -5,3 +5,14 @@ D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeClassLibrary.d
 D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeClassLibrary.pdb
 D:\mock_up_calculator\Calculator\ParseTreeTest\obj\Debug\ParseTreeTest.dll
 D:\mock_up_calculator\Calculator\ParseTreeTest\obj\Debug\ParseTreeTest.pdb
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\Castle.Core.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\Moq.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.ValueTuple.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\Castle.Core.xml
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\Moq.pdb
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\Moq.xml
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.ValueTuple.xml
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ConverterClassLibrary.pdb

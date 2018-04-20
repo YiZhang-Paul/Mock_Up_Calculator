@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTreeClassLibrary", "Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTreeTest", "ParseTreeTest\ParseTreeTest.csproj", "{29DC0D39-F08B-4672-8F0B-553508C5B267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterClassLibrary", "ConverterClassLibrary\ConverterClassLibrary.csproj", "{0956361E-6FB8-4B37-A86D-C648E3822EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterTest", "ConverterTest\ConverterTest.csproj", "{7B364784-D3EE-44F8-A5F3-F401A81AEF1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{29DC0D39-F08B-4672-8F0B-553508C5B267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DC0D39-F08B-4672-8F0B-553508C5B267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DC0D39-F08B-4672-8F0B-553508C5B267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0956361E-6FB8-4B37-A86D-C648E3822EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0956361E-6FB8-4B37-A86D-C648E3822EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0956361E-6FB8-4B37-A86D-C648E3822EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0956361E-6FB8-4B37-A86D-C648E3822EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B364784-D3EE-44F8-A5F3-F401A81AEF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B364784-D3EE-44F8-A5F3-F401A81AEF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B364784-D3EE-44F8-A5F3-F401A81AEF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B364784-D3EE-44F8-A5F3-F401A81AEF1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
