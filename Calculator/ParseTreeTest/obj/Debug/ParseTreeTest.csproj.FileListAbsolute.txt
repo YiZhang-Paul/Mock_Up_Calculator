@@ -1,0 +1,7 @@
+D:\mock_up_calculator\Calculator\ParseTreeTest\obj\Debug\ParseTreeTest.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeTest.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeTest.pdb
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeClassLibrary.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ParseTreeClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ParseTreeTest\obj\Debug\ParseTreeTest.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\obj\Debug\ParseTreeTest.pdb

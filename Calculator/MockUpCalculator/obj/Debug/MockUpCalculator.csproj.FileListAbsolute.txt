@@ -1,1 +1,8 @@
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\MockUpCalculator.exe.config
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\MockUpCalculator.exe
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\MockUpCalculator.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.Properties.Resources.resources
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.csproj.GenerateResource.Cache
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.exe
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.pdb
