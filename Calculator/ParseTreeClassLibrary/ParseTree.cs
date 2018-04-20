@@ -8,10 +8,12 @@ namespace ParseTreeClassLibrary {
     public class ParseTree : IParseTree {
 
         private INode Root { get; set; }
+        private IOperatorConverter Converter { get; set; }
 
-        public ParseTree() {
+        public ParseTree(IOperatorConverter converter) {
 
             Clear();
+            Converter = converter;
         }
 
         private void Clear() {
@@ -45,7 +47,7 @@ namespace ParseTreeClassLibrary {
 
         private INode ParseOperator(INode node, string token) {
 
-            SetOperator(node, 1);
+            SetOperator(node, Converter.toValue(token));
             node.AddRight(new Node(node));
 
             return node.Right;

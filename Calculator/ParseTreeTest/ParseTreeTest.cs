@@ -1,17 +1,20 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ParseTreeClassLibrary;
+using Moq;
 
 namespace ParseTreeTest {
     [TestClass]
     public class ParseTreeTest {
 
+        Mock<IOperatorConverter> converter;
         ParseTree tree;
 
         [TestInitialize]
         public void Setup() {
 
-            tree = new ParseTree();
+            converter = new Mock<IOperatorConverter>();
+            tree = new ParseTree(converter.Object);
         }
 
         [TestMethod]
