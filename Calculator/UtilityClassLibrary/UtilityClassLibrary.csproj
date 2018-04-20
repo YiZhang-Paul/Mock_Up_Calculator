@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Formatter.cs" />
     <Compile Include="IFormatter.cs" />
+    <Compile Include="IInputBuffer.cs" />
+    <Compile Include="InputBuffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
