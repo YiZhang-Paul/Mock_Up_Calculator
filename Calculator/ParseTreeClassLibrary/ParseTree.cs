@@ -24,6 +24,45 @@ namespace ParseTreeClassLibrary {
             return expression.Split(' ').Where(token => token != " ").ToArray();
         }
 
+        private void SetOperator(INode node, decimal value) {
+
+            node.Value = value;
+            node.IsOperand = false;
+        }
+
+        private void SetOperand(INode node, decimal value) {
+
+            node.Value = value;
+            node.IsOperand = true;
+        }
+
+        private INode ParseNumber(INode node, decimal value) {
+
+            SetOperand(node, value);
+
+            return node.Parent;
+        }
+
+        private INode ParseOperator(INode node, string token) {
+
+            SetOperator(node, 1);
+            node.AddRight(new Node(node));
+
+            return node.Right;
+        }
+
+        private INode ParseParentheses(INode node, string token) {
+
+            if(token == "(") {
+
+                node.AddLeft(new Node(node));
+
+                return node.Left;
+            }
+
+            return node.Parent;
+        }
+
         public void Parse(string expression) {
 
             Clear();
@@ -38,25 +77,17 @@ namespace ParseTreeClassLibrary {
 
                 decimal value = 0;
 
-                if(token == "(") {
+                if(decimal.TryParse(token, out value)) {
 
-                    node.AddLeft(new Node(node));
-                    node = node.Left;
-                }
-                else if(token == ")") {
-
-                    node = node.Parent;
+                    node = ParseNumber(node, value);
                 }
                 else if(token == "+") {
 
-                    node.Value = 1;
-                    node.AddRight(new Node(node));
-                    node = node.Right;
+                    node = ParseOperator(node, token);
                 }
-                else if(decimal.TryParse(token, out value)) {
+                else if(token == "(" || token == ")") {
 
-                    node.Value = value;
-                    node = node.Parent;
+                    node = ParseParentheses(node, token);
                 }
                 else {
 
