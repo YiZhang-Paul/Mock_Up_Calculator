@@ -5,3 +5,5 @@ D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\obj\Debug\ParseTreeClassL
 D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\obj\Debug\ParseTreeClassLibrary.pdb
 D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\bin\Debug\ConverterClassLibrary.dll
 D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\bin\Debug\CalculatorClassLibrary.dll
+D:\mock_up_calculator\Calculator\ParseTreeClassLibrary\bin\Debug\CalculatorClassLibrary.pdb

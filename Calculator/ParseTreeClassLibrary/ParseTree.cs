@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConverterClassLibrary;
+using CalculatorClassLibrary;
 
 namespace ParseTreeClassLibrary {
     public class ParseTree : IParseTree {
 
         private INode Root { get; set; }
+        private ICalculator Calculator { get; set; }
         private IOperatorConverter Converter { get; set; }
 
-        public ParseTree(IOperatorConverter converter) {
+        public ParseTree(ICalculator calculator, IOperatorConverter converter) {
 
             Clear();
+            Calculator = calculator;
             Converter = converter;
         }
 
@@ -103,7 +106,7 @@ namespace ParseTreeClassLibrary {
 
             if(node == null) {
 
-                return 1;
+                return 0;
             }
 
             if(node.IsOperand) {
@@ -111,9 +114,12 @@ namespace ParseTreeClassLibrary {
                 return node.Value;
             }
 
-            string token = Converter.toOperator((int)node.Value);
+            return Calculator.Evaluate(
 
-            return EvaluateNode(node.Left) + EvaluateNode(node.Right);
+                Converter.toOperator((int)node.Value),
+                EvaluateNode(node.Left),
+                EvaluateNode(node.Right)
+            );
         }
 
         public decimal Evaluate() {

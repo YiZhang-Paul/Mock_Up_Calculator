@@ -16,3 +16,5 @@ D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.Threading.Tasks.
 D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\System.ValueTuple.xml
 D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ConverterClassLibrary.dll
 D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\CalculatorClassLibrary.dll
+D:\mock_up_calculator\Calculator\ParseTreeTest\bin\Debug\CalculatorClassLibrary.pdb

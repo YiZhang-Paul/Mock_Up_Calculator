@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalculatorClassLibrary\CalculatorClassLibrary.csproj">
+      <Project>{329e8ac4-21f4-4161-8d6a-bffdf7200f74}</Project>
+      <Name>CalculatorClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">
       <Project>{0956361e-6fb8-4b37-a86d-c648e3822ec4}</Project>
       <Name>ConverterClassLibrary</Name>
