@@ -20,7 +20,7 @@ namespace ParseTreeTest {
         [ExpectedException(typeof(ArgumentNullException), "Child Node Cannot Have Null Parent.")]
         public void ChildNodeWithNullParent() {
 
-            nodeWithNoChild = new Node(null, true);
+            nodeWithNoChild = new Node(null);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace ParseTreeTest {
         [TestMethod]
         public void AddLeftChild() {
 
-            nodeWithNoChild.AddLeft(new Node(nodeWithNoChild, true));
+            nodeWithNoChild.AddLeft(new Node(nodeWithNoChild));
 
             Assert.AreEqual(nodeWithNoChild, nodeWithNoChild.Left.Parent);
             Assert.IsNull(nodeWithNoChild.Right);
@@ -49,7 +49,7 @@ namespace ParseTreeTest {
         [TestMethod]
         public void AddRightChild() {
 
-            nodeWithNoChild.AddRight(new Node(nodeWithNoChild, true));
+            nodeWithNoChild.AddRight(new Node(nodeWithNoChild));
 
             Assert.AreEqual(nodeWithNoChild, nodeWithNoChild.Right.Parent);
             Assert.IsNull(nodeWithNoChild.Left);

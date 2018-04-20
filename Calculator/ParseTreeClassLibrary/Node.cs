@@ -10,7 +10,7 @@ namespace ParseTreeClassLibrary {
         public INode Parent { get; private set; }
         public INode Left { get; private set; }
         public INode Right { get; private set; }
-        public bool IsOperand { get; private set; }
+        public bool IsOperand { get; set; }
         public decimal Value { get; set; }
 
         public bool IsLeaf {
@@ -23,7 +23,7 @@ namespace ParseTreeClassLibrary {
 
         public Node() { }
 
-        public Node(INode parent, bool isOperand) {
+        public Node(INode parent) {
 
             if(parent == null) {
 
@@ -31,7 +31,6 @@ namespace ParseTreeClassLibrary {
             }
 
             Parent = parent;
-            IsOperand = isOperand;
         }
 
         public Node(INode left, INode right) {

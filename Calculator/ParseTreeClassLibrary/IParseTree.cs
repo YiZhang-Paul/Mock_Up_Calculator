@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace ParseTreeClassLibrary {
     public interface IParseTree {
 
-        void Clear();
         void Parse(string expression);
         decimal Evaluate();
     }

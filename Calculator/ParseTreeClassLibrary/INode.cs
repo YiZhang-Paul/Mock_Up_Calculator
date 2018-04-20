@@ -10,7 +10,7 @@ namespace ParseTreeClassLibrary {
         INode Parent { get; }
         INode Left { get; }
         INode Right { get; }
-        bool IsOperand { get; }
+        bool IsOperand { get; set; }
         bool IsLeaf { get; }
         decimal Value { get; set; }
 

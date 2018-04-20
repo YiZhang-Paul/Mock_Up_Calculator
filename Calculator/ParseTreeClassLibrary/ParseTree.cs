@@ -11,10 +11,10 @@ namespace ParseTreeClassLibrary {
 
         public ParseTree() {
 
-            Root = new Node();
+            Clear();
         }
 
-        public void Clear() {
+        private void Clear() {
 
             Root = new Node();
         }
@@ -26,6 +26,43 @@ namespace ParseTreeClassLibrary {
 
         public void Parse(string expression) {
 
+            Clear();
+            var node = Root;
+
+            foreach(string token in GetTokens(expression)) {
+
+                if(node == null) {
+
+                    throw new ArgumentException("Invalid Expression.");
+                }
+
+                decimal value = 0;
+
+                if(token == "(") {
+
+                    node.AddLeft(new Node(node));
+                    node = node.Left;
+                }
+                else if(token == ")") {
+
+                    node = node.Parent;
+                }
+                else if(token == "+") {
+
+                    node.Value = 1;
+                    node.AddRight(new Node(node));
+                    node = node.Right;
+                }
+                else if(decimal.TryParse(token, out value)) {
+
+                    node.Value = value;
+                    node = node.Parent;
+                }
+                else {
+
+                    throw new ArgumentException("Invalid Expression.");
+                }
+            }
         }
 
         public decimal Evaluate() {
