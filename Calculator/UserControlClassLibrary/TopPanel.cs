@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public partial class mainPanel : UserControl {
+    public partial class topPanel : UserControl {
 
         public event MouseEventHandler OnMouseHold;
         public event MouseEventHandler OnMouseDrag;
@@ -17,7 +17,7 @@ namespace UserControlClassLibrary {
         public event EventHandler OnSizeToggle;
         public event EventHandler OnExit;
 
-        public mainPanel() {
+        public topPanel() {
 
             InitializeComponent();
         }

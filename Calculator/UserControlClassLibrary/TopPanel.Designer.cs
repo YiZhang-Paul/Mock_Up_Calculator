@@ -1,5 +1,5 @@
 ﻿namespace UserControlClassLibrary {
-    partial class mainPanel {
+    partial class topPanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -62,12 +62,12 @@
             this.btnLayout.Controls.Add(this.btnSizeToggle, 1, 0);
             this.btnLayout.Controls.Add(this.btnMinimize, 0, 0);
             this.btnLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLayout.Location = new System.Drawing.Point(210, 0);
+            this.btnLayout.Location = new System.Drawing.Point(213, 0);
             this.btnLayout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLayout.Name = "btnLayout";
             this.btnLayout.RowCount = 1;
             this.btnLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.btnLayout.Size = new System.Drawing.Size(143, 32);
+            this.btnLayout.Size = new System.Drawing.Size(140, 32);
             this.btnLayout.TabIndex = 0;
             // 
             // btnExit
@@ -79,10 +79,10 @@
             this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnExit.Location = new System.Drawing.Point(94, 0);
+            this.btnExit.Location = new System.Drawing.Point(92, 0);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(49, 32);
+            this.btnExit.Size = new System.Drawing.Size(48, 32);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "✕";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -97,10 +97,10 @@
             this.btnSizeToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnSizeToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSizeToggle.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnSizeToggle.Location = new System.Drawing.Point(47, 0);
+            this.btnSizeToggle.Location = new System.Drawing.Point(46, 0);
             this.btnSizeToggle.Margin = new System.Windows.Forms.Padding(0);
             this.btnSizeToggle.Name = "btnSizeToggle";
-            this.btnSizeToggle.Size = new System.Drawing.Size(47, 32);
+            this.btnSizeToggle.Size = new System.Drawing.Size(46, 32);
             this.btnSizeToggle.TabIndex = 1;
             this.btnSizeToggle.Text = "⬜";
             this.btnSizeToggle.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.btnMinimize.Location = new System.Drawing.Point(0, 0);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(47, 32);
+            this.btnMinimize.Size = new System.Drawing.Size(46, 32);
             this.btnMinimize.TabIndex = 0;
             this.btnMinimize.Text = "➖";
             this.btnMinimize.UseVisualStyleBackColor = true;
@@ -135,11 +135,12 @@
             this.nameLabel.Size = new System.Drawing.Size(83, 32);
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Calculator";
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.nameLabel.DoubleClick += new System.EventHandler(this.btnSizeToggle_Click);
             this.nameLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GetPointerLocation);
             this.nameLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
             // 
-            // mainPanel
+            // topPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +149,7 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "mainPanel";
+            this.Name = "topPanel";
             this.Size = new System.Drawing.Size(353, 32);
             this.mainLayout.ResumeLayout(false);
             this.mainLayout.PerformLayout();

@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDisplay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StandardDisplay.Designer.cs">
+      <DependentUpon>StandardDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="TopPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -50,6 +57,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="StandardDisplay.resx">
+      <DependentUpon>StandardDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </EmbeddedResource>

@@ -90,6 +90,19 @@ namespace MockUpCalculator {
             }
         }
 
+        private void ButtonMouseEnter(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            button.FlatAppearance.BorderSize = 2;
+            button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
+        }
+
+        private void ButtonMouseLeave(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            button.FlatAppearance.BorderSize = 0;
+        }
+
         private void Minimize(object sender, EventArgs e) {
 
             WindowState = FormWindowState.Minimized;
@@ -102,7 +115,7 @@ namespace MockUpCalculator {
 
             if(Width >= screen.Width && Height >= screen.Height) {
 
-                mainPanel.Visible = true;
+                bottomPanel.Visible = true;
                 WindowState = FormWindowState.Maximized;
                 zoomTimer.Tick -= ZoomToMax;
                 zoomTimer.Stop();
@@ -123,7 +136,7 @@ namespace MockUpCalculator {
             GetClientCenter();
             var screen = Screen.FromControl(this).WorkingArea;
             ScaleTo((int)(screen.Width * 0.95), (int)(screen.Height * 0.95));
-            mainPanel.Visible = false;
+            bottomPanel.Visible = false;
             zoomTimer.Tick += ZoomToMax;
             zoomTimer.Start();
         }
