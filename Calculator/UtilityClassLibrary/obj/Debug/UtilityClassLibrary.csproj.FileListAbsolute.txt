@@ -1,0 +1,5 @@
+D:\mock_up_calculator\Calculator\UtilityClassLibrary\bin\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\UtilityClassLibrary\bin\Debug\UtilityClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UtilityClassLibrary\obj\Debug\UtilityClassLibrary.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\UtilityClassLibrary\obj\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\UtilityClassLibrary\obj\Debug\UtilityClassLibrary.pdb

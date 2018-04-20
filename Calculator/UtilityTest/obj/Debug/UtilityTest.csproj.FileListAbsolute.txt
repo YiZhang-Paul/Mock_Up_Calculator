@@ -1,0 +1,7 @@
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\UtilityTest.dll
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\UtilityTest.pdb
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\UtilityClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UtilityTest\obj\Debug\UtilityTest.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\UtilityTest\obj\Debug\UtilityTest.dll
+D:\mock_up_calculator\Calculator\UtilityTest\obj\Debug\UtilityTest.pdb

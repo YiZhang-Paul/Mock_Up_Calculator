@@ -64,9 +64,9 @@ namespace ParseTreeTest {
 
             Assert.AreEqual(25, tree.Evaluate());
 
-            tree.Parse("( ( 6 + 7 ) + ( log 100 ) )");
+            tree.Parse("( ( 6 + 7 ) + ( log 100000 ) )");
 
-            Assert.AreEqual(15, tree.Evaluate());
+            Assert.AreEqual(18, tree.Evaluate());
         }
     }
 }
