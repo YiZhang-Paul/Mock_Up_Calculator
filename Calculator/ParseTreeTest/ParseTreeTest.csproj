@@ -53,6 +53,7 @@
     <Compile Include="NodeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ParseTreeTest.cs" />
+    <Compile Include="OperatorConverterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ParseTreeClassLibrary\ParseTreeClassLibrary.csproj">
