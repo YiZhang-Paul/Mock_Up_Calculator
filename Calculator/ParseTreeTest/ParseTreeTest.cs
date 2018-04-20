@@ -36,7 +36,19 @@ namespace ParseTreeTest {
         [ExpectedException(typeof(ArgumentException), "Invalid Expression.")]
         public void ParseExpressionWithInvalidCharacter() {
 
-            tree.Parse("( 6 + 7a )");
+            tree.Parse("( 6 + 7 ) a");
+        }
+
+        [TestMethod]
+        public void Evaluate() {
+
+            converter.Setup(x => x.IsOperator(It.Is<string>(i => i == "+"))).Returns(true);
+            converter.Setup(x => x.toValue(It.IsAny<string>())).Returns(0);
+            converter.Setup(x => x.toOperator(It.IsAny<int>())).Returns("+");
+
+            tree.Parse("( ( 6 + 7 ) + ( 3 + 9 ) )");
+
+            Assert.AreEqual(25, tree.Evaluate());
         }
     }
 }

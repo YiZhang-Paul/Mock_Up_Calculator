@@ -84,7 +84,7 @@ namespace ParseTreeClassLibrary {
 
                     node = ParseNumber(node, value);
                 }
-                else if(token == "+") {
+                else if(Converter.IsOperator(token)) {
 
                     node = ParseOperator(node, token);
                 }
@@ -99,9 +99,26 @@ namespace ParseTreeClassLibrary {
             }
         }
 
+        private decimal EvaluateNode(INode node) {
+
+            if(node == null) {
+
+                return 1;
+            }
+
+            if(node.IsOperand) {
+
+                return node.Value;
+            }
+
+            string token = Converter.toOperator((int)node.Value);
+
+            return EvaluateNode(node.Left) + EvaluateNode(node.Right);
+        }
+
         public decimal Evaluate() {
 
-            return -1;
+            return EvaluateNode(Root);
         }
     }
 }
