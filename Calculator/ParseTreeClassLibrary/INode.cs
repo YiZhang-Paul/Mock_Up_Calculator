@@ -10,11 +10,11 @@ namespace ParseTreeClassLibrary {
         INode Parent { get; }
         INode Left { get; }
         INode Right { get; }
-        string Operator { get; }
-        decimal Operand { get; }
+        bool IsOperand { get; }
+        bool IsLeaf { get; }
+        decimal Value { get; set; }
 
         void AddLeft(INode child);
         void AddRight(INode child);
-        bool IsLeaf();
     }
 }

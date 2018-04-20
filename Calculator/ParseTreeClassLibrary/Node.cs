@@ -10,12 +10,20 @@ namespace ParseTreeClassLibrary {
         public INode Parent { get; private set; }
         public INode Left { get; private set; }
         public INode Right { get; private set; }
-        public string Operator { get; private set; }
-        public decimal Operand { get; private set; }
+        public bool IsOperand { get; private set; }
+        public decimal Value { get; set; }
 
-        public Node() {}
+        public bool IsLeaf {
 
-        public Node(INode parent) {
+            get {
+
+                return Left == null && Right == null;
+            }
+        }
+
+        public Node() { }
+
+        public Node(INode parent, bool isOperand) {
 
             if(parent == null) {
 
@@ -23,27 +31,13 @@ namespace ParseTreeClassLibrary {
             }
 
             Parent = parent;
+            IsOperand = isOperand;
         }
 
         public Node(INode left, INode right) {
 
             Left = left;
             Right = right;
-        }
-
-        public Node(INode parent, string token) : this(parent) {
-            //TODO: is valid operator
-            if(token == string.Empty) {
-
-                throw new ArgumentException("Must Provide the Operator.");
-            }
-
-            Operator = token;
-        }
-
-        public Node(INode parent, decimal operand) : this(parent) {
-
-            Operand = operand;
         }
 
         public void AddLeft(INode child) {
@@ -64,11 +58,6 @@ namespace ParseTreeClassLibrary {
             }
 
             Right = child;
-        }
-
-        public bool IsLeaf() {
-
-            return Left == null && Right == null;
         }
     }
 }

@@ -6,7 +6,6 @@ namespace ParseTreeTest {
     [TestClass]
     public class NodeTest {
 
-        string token = "+";
         Node nodeWithNoChild;
         Node nodeWithBothChild;
 
@@ -21,14 +20,7 @@ namespace ParseTreeTest {
         [ExpectedException(typeof(ArgumentNullException), "Child Node Cannot Have Null Parent.")]
         public void ChildNodeWithNullParent() {
 
-            nodeWithNoChild = new Node(null, token);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Invalid Operator Passed.")]
-        public void ChildNodeWithInvalidOperator() {
-
-            nodeWithNoChild = new Node(nodeWithBothChild, string.Empty);
+            nodeWithNoChild = new Node(null, true);
         }
 
         [TestMethod]
@@ -48,9 +40,8 @@ namespace ParseTreeTest {
         [TestMethod]
         public void AddLeftChild() {
 
-            nodeWithNoChild.AddLeft(new Node(nodeWithNoChild, token));
+            nodeWithNoChild.AddLeft(new Node(nodeWithNoChild, true));
 
-            Assert.AreEqual(token, nodeWithNoChild.Left.Operator);
             Assert.AreEqual(nodeWithNoChild, nodeWithNoChild.Left.Parent);
             Assert.IsNull(nodeWithNoChild.Right);
         }
@@ -58,9 +49,8 @@ namespace ParseTreeTest {
         [TestMethod]
         public void AddRightChild() {
 
-            nodeWithNoChild.AddRight(new Node(nodeWithNoChild, token));
+            nodeWithNoChild.AddRight(new Node(nodeWithNoChild, true));
 
-            Assert.AreEqual(token, nodeWithNoChild.Right.Operator);
             Assert.AreEqual(nodeWithNoChild, nodeWithNoChild.Right.Parent);
             Assert.IsNull(nodeWithNoChild.Left);
         }
@@ -68,9 +58,9 @@ namespace ParseTreeTest {
         [TestMethod]
         public void IsLeafNode() {
 
-            Assert.IsFalse(nodeWithBothChild.IsLeaf());
-            Assert.IsTrue(nodeWithBothChild.Left.IsLeaf());
-            Assert.IsTrue(nodeWithBothChild.Right.IsLeaf());
+            Assert.IsFalse(nodeWithBothChild.IsLeaf);
+            Assert.IsTrue(nodeWithBothChild.Left.IsLeaf);
+            Assert.IsTrue(nodeWithBothChild.Right.IsLeaf);
         }
     }
 }

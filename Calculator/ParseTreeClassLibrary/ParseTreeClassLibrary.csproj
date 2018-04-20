@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INode.cs" />
+    <Compile Include="IParseTree.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="ParseTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
