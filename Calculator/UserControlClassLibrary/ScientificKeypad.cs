@@ -16,8 +16,10 @@ namespace UserControlClassLibrary {
         private IButtonTracker Tracker { get; set; }
         private Button[] AllKeys { get; set; }
         private Button[] MemoryKeys { get; set; }
+        private Button[] HypotenuseKeys { get; set; }
         private Button[] BasicKeys { get; set; }
         private bool ExtensionToggled { get; set; }
+        private bool HypotenuseToggled { get; set; }
 
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
@@ -42,6 +44,11 @@ namespace UserControlClassLibrary {
             return Regex.IsMatch(button.Text, "^(MC|MR|M▾)$");
         }
 
+        private bool IsHypotenuseKey(Button button) {
+
+            return Regex.IsMatch(button.Text, "sin|cos|tan");
+        }
+
         private bool IsBasicKey(Button button) {
 
             return Regex.IsMatch(button.Text, "^([0-9=]|CE|C|⌫)$");
@@ -51,6 +58,7 @@ namespace UserControlClassLibrary {
 
             AllKeys = GetAllKeys();
             MemoryKeys = AllKeys.Where(IsMemoryKey).ToArray();
+            HypotenuseKeys = AllKeys.Where(IsHypotenuseKey).ToArray();
             BasicKeys = AllKeys.Where(IsBasicKey).ToArray();
         }
 
@@ -96,6 +104,38 @@ namespace UserControlClassLibrary {
 
                 button.Paint -= uiHelper.DrawUnderline;
                 extensionOnePanel.BringToFront();
+            }
+        }
+
+        private void UpdateHypotenuseKeys() {
+
+            foreach(var key in HypotenuseKeys) {
+
+                string pattern = HypotenuseToggled ? "sin|cos|tan" : "h";
+                string replace = HypotenuseToggled ? "h" : string.Empty;
+                uiHelper.UpdateKeyText(key, pattern, replace, HypotenuseToggled);
+            }
+        }
+
+        private void btnHypotenuse_Click(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+
+            if(Tracker.IsDisabled(button)) {
+
+                return;
+            }
+
+            HypotenuseToggled = !HypotenuseToggled;
+            UpdateHypotenuseKeys();
+
+            if(HypotenuseToggled) {
+
+                button.Paint += uiHelper.DrawUnderline;
+            }
+            else {
+
+                button.Paint -= uiHelper.DrawUnderline;
             }
         }
     }

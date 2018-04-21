@@ -892,7 +892,7 @@
             this.btnHypotenuse.TabIndex = 3;
             this.btnHypotenuse.Text = "HYP";
             this.btnHypotenuse.UseVisualStyleBackColor = false;
-            this.btnHypotenuse.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnHypotenuse.Click += new System.EventHandler(this.btnHypotenuse_Click);
             this.btnHypotenuse.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnHypotenuse.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 

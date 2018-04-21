@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
@@ -21,6 +22,14 @@ namespace UserControlClassLibrary {
                     ControlsOfType<T>(child, found);
                 }
             }
+        }
+
+        public static void UpdateKeyText(Button button, string pattern, string replace, bool append) {
+
+            button.Text = Regex.Replace(button.Text, pattern, match => {
+
+                return (append ? match.Value : string.Empty) + replace;
+            });
         }
 
         public static void DisableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {
