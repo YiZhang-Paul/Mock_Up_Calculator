@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.uiLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -31,10 +30,11 @@
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.zoomTimer = new System.Windows.Forms.Timer(this.components);
-            this.closeTimer = new System.Windows.Forms.Timer(this.components);
+            this.zoomTimer = new System.Windows.Forms.Timer();
+            this.closeTimer = new System.Windows.Forms.Timer();
             this.topPanel = new UserControlClassLibrary.topPanel();
             this.standardDisplay = new UserControlClassLibrary.standardDisplay();
+            this.scientificKeypad = new UserControlClassLibrary.scientificKeypad();
             this.mainLayout.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.uiLayout.SuspendLayout();
@@ -78,6 +78,7 @@
             this.uiLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uiLayout.Controls.Add(this.menuBarLayout, 0, 0);
             this.uiLayout.Controls.Add(this.standardDisplay, 0, 1);
+            this.uiLayout.Controls.Add(this.scientificKeypad, 0, 2);
             this.uiLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLayout.Location = new System.Drawing.Point(0, 0);
             this.uiLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -153,11 +154,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 17.25F);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label1.Location = new System.Drawing.Point(50, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 50);
+            this.label1.Size = new System.Drawing.Size(111, 50);
             this.label1.TabIndex = 3;
             this.label1.Text = "Scientific";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -195,6 +196,18 @@
             this.standardDisplay.Name = "standardDisplay";
             this.standardDisplay.Size = new System.Drawing.Size(337, 101);
             this.standardDisplay.TabIndex = 1;
+            // 
+            // scientificKeypad
+            // 
+            this.scientificKeypad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.scientificKeypad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scientificKeypad.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.scientificKeypad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.scientificKeypad.Location = new System.Drawing.Point(0, 151);
+            this.scientificKeypad.Margin = new System.Windows.Forms.Padding(0);
+            this.scientificKeypad.Name = "scientificKeypad";
+            this.scientificKeypad.Size = new System.Drawing.Size(337, 406);
+            this.scientificKeypad.TabIndex = 2;
             // 
             // MainCalculator
             // 
@@ -236,6 +249,7 @@
         private System.Windows.Forms.Button btnHistory;
         private System.Windows.Forms.Label label1;
         private UserControlClassLibrary.standardDisplay standardDisplay;
+        private UserControlClassLibrary.scientificKeypad scientificKeypad;
     }
 }
 

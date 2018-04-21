@@ -31,6 +31,12 @@ namespace MockUpCalculator {
             topPanel.OnExit += Exit;
         }
 
+        private void SetupKeypad() {
+
+            scientificKeypad.OnButtonMouseEnter += ButtonMouseEnter;
+            scientificKeypad.OnButtonMouseLeave += ButtonMouseLeave;
+        }
+
         private void GetDefaultDimension() {
 
             DefaultWidth = Width;
@@ -46,6 +52,7 @@ namespace MockUpCalculator {
 
             GetDefaultDimension();
             SetupTopPanel();
+            SetupKeypad();
         }
 
         private void ScaleTo(int width, int height, bool center = true) {

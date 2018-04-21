@@ -6,3 +6,4 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.topPanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.standardDisplay.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.scientificKeypad.resources
