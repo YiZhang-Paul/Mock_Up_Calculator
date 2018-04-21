@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDisplay.cs" />
+    <Compile Include="IButtonTracker.cs" />
+    <Compile Include="ButtonTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScientificKeypad.cs">
       <SubType>UserControl</SubType>
