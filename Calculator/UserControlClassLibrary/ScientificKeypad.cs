@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace UserControlClassLibrary {
     public partial class scientificKeypad : UserControl {
 
         private IButtonTracker Tracker { get; set; }
+        private Button[] AllKeys { get; set; }
         private Button[] MemoryKeys { get; set; }
-        private bool ExtensionTwoOn { get; set; }
+        private Button[] BasicKeys { get; set; }
+        private bool ExtensionToggled { get; set; }
 
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
@@ -25,45 +28,87 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
+        private void GetKeys(Control control, List<Button> keys) {
+
+            foreach(Control subControl in control.Controls) {
+
+                if(subControl.GetType() == typeof(Button)) {
+
+                    keys.Add((Button)subControl);
+
+                    continue;
+                }
+
+                GetKeys(subControl, keys);
+            }
+        }
+
+        private Button[] GetAllKeys() {
+
+            var keys = new List<Button>();
+            GetKeys(this, keys);
+
+            return keys.ToArray();
+        }
+
+        private bool IsMemoryKey(Button button) {
+
+            return Regex.IsMatch(button.Text, "^(MC|MR|M▾)$");
+        }
+
+        private bool IsBasicKey(Button button) {
+
+            return Regex.IsMatch(button.Text, "^([0-9=]|CE|C|⌫)$");
+        }
+
+        private void RecordKeys() {
+
+            AllKeys = GetAllKeys();
+            MemoryKeys = AllKeys.Where(IsMemoryKey).ToArray();
+            BasicKeys = AllKeys.Where(IsBasicKey).ToArray();
+        }
+
         private void Initialize() {
 
             Tracker = new ButtonTracker();
-
-            MemoryKeys = new Button[] {
-
-                btnMemory,
-                btnMemoryClear,
-                btnMemoryRecall
-            };
-
-            DisableMemoryKeys();
+            RecordKeys();
+            DisableKeys(MemoryKeys);
         }
 
-        private void DisableMemoryKeys() {
+        private void DisableKeys(IEnumerable<Button> keys) {
 
-            Tracker.Disable(MemoryKeys);
+            foreach(var key in keys) {
 
-            foreach(var button in MemoryKeys) {
+                Tracker.Disable(key);
+                key.FlatAppearance.MouseDownBackColor = key.BackColor;
+                key.FlatAppearance.MouseOverBackColor = key.BackColor;
+                key.ForeColor = Color.FromArgb(75, 75, 75);
+            }
+        }
 
-                var backColor = Color.FromArgb(32, 32, 32);
-                button.FlatAppearance.MouseDownBackColor = backColor;
-                button.FlatAppearance.MouseOverBackColor = backColor;
-                button.ForeColor = Color.FromArgb(75, 75, 75);
+        private void EnableKeys(IEnumerable<Button> keys) {
+
+            foreach(var key in keys) {
+
+                Tracker.Enable(key);
+                key.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 77, 77);
+                key.FlatAppearance.MouseOverBackColor = Color.FromArgb(69, 69, 69);
+                key.ForeColor = SystemColors.ControlLightLight;
             }
         }
 
         private void DrawUnderline(object sender, PaintEventArgs e) {
 
             var button = (Button)sender;
-            int height = (int)(button.Height * 0.1);
+            int lineHeight = (int)(button.Height * 0.1);
 
             e.Graphics.FillRectangle(
 
                 new SolidBrush(Color.FromArgb(65, 65, 65)),
                 0,
-                button.Height - height,
+                button.Height - lineHeight,
                 button.Width,
-                height
+                lineHeight
             );
         }
 
@@ -95,9 +140,15 @@ namespace UserControlClassLibrary {
         private void btnExtend_Click(object sender, EventArgs e) {
 
             var button = (Button)sender;
-            ExtensionTwoOn = !ExtensionTwoOn;
 
-            if(ExtensionTwoOn) {
+            if(Tracker.IsDisabled(button)) {
+
+                return;
+            }
+
+            ExtensionToggled = !ExtensionToggled;
+
+            if(ExtensionToggled) {
 
                 button.Paint += DrawUnderline;
                 extensionTwoPanel.BringToFront();
