@@ -29,25 +29,10 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
-        private void GetKeys(Control control, List<Button> keys) {
-
-            foreach(Control subControl in control.Controls) {
-
-                if(subControl.GetType() == typeof(Button)) {
-
-                    keys.Add((Button)subControl);
-
-                    continue;
-                }
-
-                GetKeys(subControl, keys);
-            }
-        }
-
         private Button[] GetAllKeys() {
 
             var keys = new List<Button>();
-            GetKeys(this, keys);
+            uiHelper.ControlsOfType<Button>(this, keys);
 
             return keys.ToArray();
         }
@@ -71,71 +56,24 @@ namespace UserControlClassLibrary {
 
         private void Initialize() {
 
-            Tracker = new ButtonTracker();
             RecordKeys();
-            DisableKeys(MemoryKeys);
-        }
-
-        private void DisableKeys(IEnumerable<Button> keys) {
-
-            foreach(var key in keys) {
-
-                Tracker.Disable(key);
-                key.FlatAppearance.MouseDownBackColor = key.BackColor;
-                key.FlatAppearance.MouseOverBackColor = key.BackColor;
-                key.ForeColor = Color.FromArgb(75, 75, 75);
-            }
-        }
-
-        private void EnableKeys(IEnumerable<Button> keys) {
-
-            foreach(var key in keys) {
-
-                Tracker.Enable(key);
-                key.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 77, 77);
-                key.FlatAppearance.MouseOverBackColor = Color.FromArgb(69, 69, 69);
-                key.ForeColor = SystemColors.ControlLightLight;
-            }
-        }
-
-        private void DrawUnderline(object sender, PaintEventArgs e) {
-
-            var button = (Button)sender;
-            int lineHeight = (int)(button.Height * 0.1);
-
-            e.Graphics.FillRectangle(
-
-                new SolidBrush(Color.FromArgb(65, 65, 65)),
-                0,
-                button.Height - lineHeight,
-                button.Width,
-                lineHeight
-            );
-        }
-
-        private void RaiseCustomEvent(object sender, EventArgs e, EventHandler handler) {
-
-            if(Tracker.IsDisabled((Button)sender)) {
-
-                return;
-            }
-
-            handler(sender, e);
+            Tracker = new ButtonTracker();
+            uiHelper.DisableKeys(MemoryKeys, Tracker);
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {
 
-            RaiseCustomEvent(sender, e, OnButtonMouseEnter);
+            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
         }
 
         private void ButtonMouseLeave(object sender, EventArgs e) {
 
-            RaiseCustomEvent(sender, e, OnButtonMouseLeave);
+            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseLeave, Tracker);
         }
 
         private void ButtonMouseClick(object sender, EventArgs e) {
 
-            RaiseCustomEvent(sender, e, OnButtonMouseClick);
+            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
         }
 
         private void btnExtend_Click(object sender, EventArgs e) {
@@ -151,12 +89,12 @@ namespace UserControlClassLibrary {
 
             if(ExtensionToggled) {
 
-                button.Paint += DrawUnderline;
+                button.Paint += uiHelper.DrawUnderline;
                 extensionTwoPanel.BringToFront();
             }
             else {
 
-                button.Paint -= DrawUnderline;
+                button.Paint -= uiHelper.DrawUnderline;
                 extensionOnePanel.BringToFront();
             }
         }

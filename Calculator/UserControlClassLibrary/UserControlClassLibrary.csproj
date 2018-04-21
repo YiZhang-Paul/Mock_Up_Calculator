@@ -61,6 +61,7 @@
     <Compile Include="TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="uiHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ScientificKeypad.resx">

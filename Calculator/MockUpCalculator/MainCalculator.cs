@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserControlClassLibrary;
 
 namespace MockUpCalculator {
     public partial class MainCalculator : Form {
@@ -56,51 +57,23 @@ namespace MockUpCalculator {
             SetupKeypad();
         }
 
-        private void ScaleTo(int width, int height, bool center = true) {
-
-            var screen = Screen.FromControl(this).WorkingArea;
-            Width = Math.Min(width, screen.Width);
-            Height = Math.Min(height, screen.Height);
-
-            if(center) {
-
-                CenterToScreen();
-            }
-        }
-
-        private void CenterToPoint(Point point) {
-
-            Top = ClientCenter.Y - Height / 2;
-            Left = ClientCenter.X - Width / 2;
-        }
-
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
-            var button = (Button)sender;
-            string text = button.Text;
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 2;
-            button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
+            uiHelper.KeypadButtonMouseEnter(sender, e);
         }
 
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 0;
+            uiHelper.KeypadButtonMouseLeave(sender, e);
         }
 
         private void GetPointerLocation(object sender, MouseEventArgs e) {
 
-            if(WindowState == FormWindowState.Maximized) {
-
-                return;
-            }
-
-            Pointer = e.Location;
+            Pointer = uiHelper.GetPointerLocation(sender, e);
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -110,11 +83,7 @@ namespace MockUpCalculator {
                 return;
             }
 
-            if(e.Button == MouseButtons.Left) {
-
-                Left += e.X - Pointer.X;
-                Top += e.Y - Pointer.Y;
-            }
+            uiHelper.DragWindow(sender, e, this, Pointer);
         }
 
         private void Minimize(object sender, EventArgs e) {
@@ -125,7 +94,7 @@ namespace MockUpCalculator {
         private void ZoomToMax(object sender, EventArgs e) {
 
             var screen = Screen.FromControl(this).WorkingArea;
-            ScaleTo(Width + 20, Height + 20);
+            uiHelper.ScaleTo(this, Width + 20, Height + 20);
 
             if(Width >= screen.Width && Height >= screen.Height) {
 
@@ -141,15 +110,17 @@ namespace MockUpCalculator {
             if(WindowState == FormWindowState.Maximized) {
 
                 WindowState = FormWindowState.Normal;
-                ScaleTo(DefaultWidth, DefaultHeight, false);
-                CenterToPoint(ClientCenter);
+                Visible = false;
+                uiHelper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
+                uiHelper.CenterToPoint(this, ClientCenter);
+                Visible = true;
 
                 return;
             }
 
             GetClientCenter();
             var screen = Screen.FromControl(this).WorkingArea;
-            ScaleTo((int)(screen.Width * 0.95), (int)(screen.Height * 0.95));
+            uiHelper.ScaleTo(this, (int)(screen.Width * 0.95), (int)(screen.Height * 0.95));
             bottomPanel.Visible = false;
             zoomTimer.Tick += ZoomToMax;
             zoomTimer.Start();
