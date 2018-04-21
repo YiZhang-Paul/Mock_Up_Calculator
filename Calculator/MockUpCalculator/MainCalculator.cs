@@ -33,8 +33,9 @@ namespace MockUpCalculator {
 
         private void SetupKeypad() {
 
-            scientificKeypad.OnButtonMouseEnter += ButtonMouseEnter;
-            scientificKeypad.OnButtonMouseLeave += ButtonMouseLeave;
+            scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
+            scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
+            scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
         }
 
         private void GetDefaultDimension() {
@@ -73,6 +74,25 @@ namespace MockUpCalculator {
             Left = ClientCenter.X - Width / 2;
         }
 
+        private void KeypadButtonMouseClick(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            string text = button.Text;
+        }
+
+        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            button.FlatAppearance.BorderSize = 2;
+            button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
+        }
+
+        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            button.FlatAppearance.BorderSize = 0;
+        }
+
         private void GetPointerLocation(object sender, MouseEventArgs e) {
 
             if(WindowState == FormWindowState.Maximized) {
@@ -95,19 +115,6 @@ namespace MockUpCalculator {
                 Left += e.X - Pointer.X;
                 Top += e.Y - Pointer.Y;
             }
-        }
-
-        private void ButtonMouseEnter(object sender, EventArgs e) {
-
-            var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 2;
-            button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
-        }
-
-        private void ButtonMouseLeave(object sender, EventArgs e) {
-
-            var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 0;
         }
 
         private void Minimize(object sender, EventArgs e) {

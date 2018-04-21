@@ -45,7 +45,9 @@
     <Compile Include="IButtonTracker.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="IInputBuffer.cs" />
+    <Compile Include="IKeyChecker.cs" />
     <Compile Include="InputBuffer.cs" />
+    <Compile Include="KeyChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
