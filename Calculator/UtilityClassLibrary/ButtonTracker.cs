@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserControlClassLibrary {
+namespace UtilityClassLibrary {
     public class ButtonTracker : IButtonTracker {
 
         private Dictionary<Button, bool> Buttons { get; set; }
@@ -30,25 +30,9 @@ namespace UserControlClassLibrary {
             Buttons[button] = false;
         }
 
-        public void Disable(IEnumerable<Button> buttons) {
-
-            foreach(var button in buttons) {
-
-                Disable(button);
-            }
-        }
-
         public void Enable(Button button) {
 
             Buttons[button] = true;
-        }
-
-        public void Enable(IEnumerable<Button> buttons) {
-
-            foreach(var button in buttons) {
-
-                Enable(button);
-            }
         }
     }
 }

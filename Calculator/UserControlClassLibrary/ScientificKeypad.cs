@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
     public partial class scientificKeypad : UserControl {

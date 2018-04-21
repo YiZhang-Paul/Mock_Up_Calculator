@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserControlClassLibrary {
+namespace UtilityClassLibrary {
     public interface IButtonTracker {
 
         bool IsDisabled(Button button);
         void Disable(Button button);
-        void Disable(IEnumerable<Button> buttons);
         void Enable(Button button);
-        void Enable(IEnumerable<Button> buttons);
     }
 }

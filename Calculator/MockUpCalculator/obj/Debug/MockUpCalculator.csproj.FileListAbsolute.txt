@@ -9,3 +9,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.pdb
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.MainCalculator.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UserControlClassLibrary.dll
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UserControlClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UtilityClassLibrary.pdb
