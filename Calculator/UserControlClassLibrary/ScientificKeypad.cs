@@ -34,7 +34,7 @@ namespace UserControlClassLibrary {
         private Button[] GetAllKeys() {
 
             var keys = new List<Button>();
-            uiHelper.ControlsOfType<Button>(this, keys);
+            UIHelper.ControlsOfType<Button>(this, keys);
 
             return keys.ToArray();
         }
@@ -66,22 +66,22 @@ namespace UserControlClassLibrary {
 
             RecordKeys();
             Tracker = new ButtonTracker();
-            uiHelper.DisableKeys(MemoryKeys, Tracker);
+            UIHelper.DisableKeys(MemoryKeys, Tracker);
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {
 
-            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
+            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
         }
 
         private void ButtonMouseLeave(object sender, EventArgs e) {
 
-            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseLeave, Tracker);
+            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseLeave, Tracker);
         }
 
         private void ButtonMouseClick(object sender, EventArgs e) {
 
-            uiHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
+            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
         }
 
         private void btnExtend_Click(object sender, EventArgs e) {
@@ -97,12 +97,12 @@ namespace UserControlClassLibrary {
 
             if(ExtensionToggled) {
 
-                button.Paint += uiHelper.DrawUnderline;
+                button.Paint += UIHelper.DrawUnderline;
                 extensionTwoPanel.BringToFront();
             }
             else {
 
-                button.Paint -= uiHelper.DrawUnderline;
+                button.Paint -= UIHelper.DrawUnderline;
                 extensionOnePanel.BringToFront();
             }
         }
@@ -113,7 +113,7 @@ namespace UserControlClassLibrary {
 
                 string pattern = HypotenuseToggled ? "sin|cos|tan" : "h";
                 string replace = HypotenuseToggled ? "h" : string.Empty;
-                uiHelper.UpdateKeyText(key, pattern, replace, HypotenuseToggled);
+                UIHelper.UpdateKeyText(key, pattern, replace, HypotenuseToggled);
             }
         }
 
@@ -131,11 +131,11 @@ namespace UserControlClassLibrary {
 
             if(HypotenuseToggled) {
 
-                button.Paint += uiHelper.DrawUnderline;
+                button.Paint += UIHelper.DrawUnderline;
             }
             else {
 
-                button.Paint -= uiHelper.DrawUnderline;
+                button.Paint -= UIHelper.DrawUnderline;
             }
         }
     }

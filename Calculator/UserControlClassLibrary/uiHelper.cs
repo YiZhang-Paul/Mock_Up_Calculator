@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public class uiHelper {
+    public class UIHelper {
 
         public static void ControlsOfType<T>(Control parent, List<T> found) {
 

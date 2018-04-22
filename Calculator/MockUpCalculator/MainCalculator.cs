@@ -16,6 +16,7 @@ namespace MockUpCalculator {
         private int DefaultHeight { get; set; }
         private Point ClientCenter { get; set; }
         private Point Pointer { get; set; }
+        private Resizer Resizer { get; set; }
 
         public MainCalculator() {
 
@@ -52,6 +53,7 @@ namespace MockUpCalculator {
 
         private void Initialize() {
 
+            Resizer = new Resizer(this);
             GetDefaultDimension();
             SetupTopPanel();
             SetupKeypad();
@@ -63,17 +65,17 @@ namespace MockUpCalculator {
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            uiHelper.KeypadButtonMouseEnter(sender, e);
+            UIHelper.KeypadButtonMouseEnter(sender, e);
         }
 
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            uiHelper.KeypadButtonMouseLeave(sender, e);
+            UIHelper.KeypadButtonMouseLeave(sender, e);
         }
 
         private void GetPointerLocation(object sender, MouseEventArgs e) {
 
-            Pointer = uiHelper.GetPointerLocation(sender, e);
+            Pointer = UIHelper.GetPointerLocation(sender, e);
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -83,7 +85,7 @@ namespace MockUpCalculator {
                 return;
             }
 
-            uiHelper.DragWindow(sender, e, this, Pointer);
+            UIHelper.DragWindow(sender, e, this, Pointer);
         }
 
         private void Minimize(object sender, EventArgs e) {
@@ -94,7 +96,7 @@ namespace MockUpCalculator {
         private void ZoomToMax(object sender, EventArgs e) {
 
             var screen = Screen.FromControl(this).WorkingArea;
-            uiHelper.ScaleTo(this, Width + 20, Height + 20);
+            UIHelper.ScaleTo(this, Width + 20, Height + 20);
 
             if(Width >= screen.Width && Height >= screen.Height) {
 
@@ -111,8 +113,8 @@ namespace MockUpCalculator {
 
                 WindowState = FormWindowState.Normal;
                 Visible = false;
-                uiHelper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
-                uiHelper.CenterToPoint(this, ClientCenter);
+                UIHelper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
+                UIHelper.CenterToPoint(this, ClientCenter);
                 Visible = true;
 
                 return;
@@ -120,7 +122,7 @@ namespace MockUpCalculator {
 
             GetClientCenter();
             var screen = Screen.FromControl(this).WorkingArea;
-            uiHelper.ScaleTo(this, (int)(screen.Width * 0.95), (int)(screen.Height * 0.95));
+            UIHelper.ScaleTo(this, (int)(screen.Width * 0.95), (int)(screen.Height * 0.95));
             bottomPanel.Visible = false;
             zoomTimer.Tick += ZoomToMax;
             zoomTimer.Start();
@@ -142,6 +144,39 @@ namespace MockUpCalculator {
 
             closeTimer.Tick += CloseUI;
             closeTimer.Start();
+        }
+
+        private void MainCalculator_ResizeBegin(object sender, EventArgs e) {
+
+            mainLayout.Visible = false;
+        }
+
+        private void MainCalculator_ResizeEnd(object sender, EventArgs e) {
+
+            GetDefaultDimension();
+            mainLayout.Visible = true;
+        }
+
+        protected override void WndProc(ref Message message) {
+
+            base.WndProc(ref message);
+
+            if(message.Msg != 0x84) {
+
+                return;
+            }
+            //WM_NCHITTEST
+            var cursor = PointToClient(Cursor.Position);
+
+            foreach(int key in Resizer.Keys) {
+
+                if(Resizer.Boxes[key]().Contains(cursor)) {
+
+                    message.Result = (IntPtr)key;
+
+                    break;
+                }
+            }
         }
     }
 }
