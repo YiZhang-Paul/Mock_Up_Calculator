@@ -10,10 +10,10 @@ namespace ParseTreeClassLibrary {
     public class ParseTree : IParseTree {
 
         private INode Root { get; set; }
-        private ICalculator Calculator { get; set; }
+        private IEvaluator Calculator { get; set; }
         private IOperatorConverter Converter { get; set; }
 
-        public ParseTree(ICalculator calculator, IOperatorConverter converter) {
+        public ParseTree(IEvaluator calculator, IOperatorConverter converter) {
 
             Clear();
             Calculator = calculator;

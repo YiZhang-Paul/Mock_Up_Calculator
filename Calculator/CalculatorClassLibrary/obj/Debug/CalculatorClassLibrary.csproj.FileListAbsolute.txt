@@ -3,3 +3,5 @@ D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\CalculatorClas
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.dll
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.pdb
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UtilityClassLibrary.pdb

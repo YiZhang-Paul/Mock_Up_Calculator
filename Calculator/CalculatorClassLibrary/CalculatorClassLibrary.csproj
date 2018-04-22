@@ -39,9 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
-    <Compile Include="ICalculator.cs" />
+    <Compile Include="ExpressionBuilder.cs" />
+    <Compile Include="ExpressionEvaluator.cs" />
+    <Compile Include="IEvaluator.cs" />
+    <Compile Include="IExpressionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
+      <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
+      <Name>UtilityClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

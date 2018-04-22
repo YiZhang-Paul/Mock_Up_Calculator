@@ -9,14 +9,14 @@ namespace ParseTreeTest {
     [TestClass]
     public class ParseTreeTest {
 
-        Mock<ICalculator> calculator;
+        Mock<IEvaluator> calculator;
         Mock<IOperatorConverter> converter;
         ParseTree tree;
 
         [TestInitialize]
         public void Setup() {
 
-            calculator = new Mock<ICalculator>();
+            calculator = new Mock<IEvaluator>();
             converter = new Mock<IOperatorConverter>();
             tree = new ParseTree(calculator.Object, converter.Object);
         }

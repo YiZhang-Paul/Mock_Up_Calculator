@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CalculatorClassLibrary {
-    public interface ICalculator {
+    public interface IEvaluator {
 
         decimal Evaluate(string token, decimal operand1, decimal operand2);
     }

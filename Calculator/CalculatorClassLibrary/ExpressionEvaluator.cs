@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace CalculatorClassLibrary {
-    public class Calculator : ICalculator {
+    public class ExpressionEvaluator : IEvaluator {
 
         private Dictionary<string, Func<decimal, decimal, decimal>> Expression { get; set; }
 
-        public Calculator() {
+        public ExpressionEvaluator() {
 
             initialize();
         }
