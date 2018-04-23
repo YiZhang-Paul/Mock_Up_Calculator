@@ -15,9 +15,22 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
-        public void TestMethod1() {
+        [ExpectedException(typeof(InvalidOperationException), "Invalid Expression.")]
+        public void InvalidExpression() {
 
-            parenthesizer.Parenthesize("( ( 5 + 6 ) * 6 ) + ( 8 + 9 ) ^ 7");
+            parenthesizer.Parenthesize("( ( 5 + 6 ) × 6 ) + (");
+        }
+
+        [TestMethod]
+        public void Parenthesize() {
+
+            string result = parenthesizer.Parenthesize("( ( 5 + 6 ) × 6 ) + ( 8 + 9 ) ^ 7");
+
+            Assert.AreEqual("( ( ( 5 + 6 ) × 6 ) + ( ( 8 + 9 ) ^ 7 ) )", result);
+
+            result = parenthesizer.Parenthesize("8 ^ 5 fact + ( ( 5 + 6 fact ) × 7 ) log ÷ 11 Exp 2 + 9 × 2");
+
+            Assert.AreEqual("( ( ( 8 ^ ( 5 fact ) ) + ( ( ( ( 5 + ( 6 fact ) ) × 7 ) log ) ÷ ( 11 Exp 2 ) ) ) + ( 9 × 2 ) )", result);
         }
     }
 }

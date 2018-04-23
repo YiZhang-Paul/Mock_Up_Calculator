@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ExpressionsClassLibrary {
     public class Parenthesizer : IParenthesize {
@@ -40,11 +41,6 @@ namespace ExpressionsClassLibrary {
 
                 "+", "−"
             });
-        }
-
-        private bool IsOperator(string item) {
-
-            return Precedence.Any(group => group.Contains(item));
         }
 
         private bool IsNested(string item) {
@@ -102,11 +98,67 @@ namespace ExpressionsClassLibrary {
             return tokens.ToArray();
         }
 
-        public string Parenthesize(string expression) {
+        private void Nest(List<string> newTokens, string[] oldTokens, bool isUnary, ref int index) {
+
+            string head = "[ " + newTokens.Last() + " ";
+            string tail = isUnary ? " ]" : " " + oldTokens[index + 1] + " ]";
+            newTokens[newTokens.Count - 1] = head + oldTokens[index] + tail;
+
+            if(!isUnary) {
+
+                index++;
+            }
+        }
+
+        private string UnNest(string expression) {
+
+            return expression.Substring(1, expression.Length - 2).Trim();
+        }
+
+        private string ChangeParentheses(string expression) {
+
+            return Regex.Replace(expression, @"\[|\]", match => {
+
+                return match.Value == "[" ? "(" : ")";
+            });
+        }
+
+        private string TryParenthesize(string expression, bool topLevel = true) {
 
             var tokens = Tokenize(expression);
 
-            return "";
+            for(int i = 0; i < Precedence.Count; i++) {
+
+                var newTokens = new List<string>();
+
+                for(int j = 0; j < tokens.Length; j++) {
+
+                    if(Precedence[i].Contains(tokens[j])) {
+
+                        Nest(newTokens, tokens, i == 0, ref j);
+
+                        continue;
+                    }
+
+                    if(IsNested(tokens[j])) {
+
+                        newTokens.Add(TryParenthesize(UnNest(tokens[j]), false));
+
+                        continue;
+                    }
+
+                    newTokens.Add(tokens[j]);
+                }
+
+                tokens = newTokens.ToArray();
+            }
+
+            return topLevel ? ChangeParentheses(tokens[0]) : tokens[0];
+        }
+
+        public string Parenthesize(string expression) {
+
+            return TryParenthesize(expression);
         }
     }
 }
