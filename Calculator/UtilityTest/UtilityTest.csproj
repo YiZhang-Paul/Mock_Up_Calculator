@@ -75,6 +75,10 @@
     <Compile Include="KeyCheckerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">
+      <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
+      <Name>ExpressionsClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
       <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
       <Name>UtilityClassLibrary</Name>

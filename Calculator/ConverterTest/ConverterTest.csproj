@@ -59,6 +59,10 @@
       <Project>{0956361e-6fb8-4b37-a86d-c648e3822ec4}</Project>
       <Name>ConverterClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">
+      <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
+      <Name>ExpressionsClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

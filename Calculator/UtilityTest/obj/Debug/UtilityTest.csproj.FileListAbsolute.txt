@@ -14,3 +14,7 @@ D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Moq.pdb
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Moq.xml
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\System.ValueTuple.xml
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Deque.xml

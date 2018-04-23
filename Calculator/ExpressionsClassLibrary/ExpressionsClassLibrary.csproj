@@ -49,6 +49,7 @@
     <Compile Include="INode.cs" />
     <Compile Include="IParenthesize.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="OperatorLookup.cs" />
     <Compile Include="Parenthesizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

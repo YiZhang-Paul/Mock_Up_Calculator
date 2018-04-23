@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UtilityClassLibrary;
+using ExpressionsClassLibrary;
 
 namespace UtilityTest {
     [TestClass]
@@ -30,9 +31,9 @@ namespace UtilityTest {
         public void IsNotInputKey() {
 
             Assert.IsFalse(checker.IsInputKey("10"));
-            Assert.IsFalse(checker.IsInputKey("+"));
-            Assert.IsFalse(checker.IsInputKey("%"));
             Assert.IsFalse(checker.IsInputKey("CE"));
+            Assert.IsFalse(checker.IsInputKey(OperatorLookup.Plus));
+            Assert.IsFalse(checker.IsInputKey(OperatorLookup.Modulus));
         }
 
         [TestMethod]
@@ -47,20 +48,20 @@ namespace UtilityTest {
         [TestMethod]
         public void IsNotActionKey() {
 
-            Assert.IsFalse(checker.IsActionKey("+"));
-            Assert.IsFalse(checker.IsActionKey("%"));
             Assert.IsFalse(checker.IsActionKey("8"));
             Assert.IsFalse(checker.IsActionKey("MC"));
+            Assert.IsFalse(checker.IsActionKey(OperatorLookup.Plus));
+            Assert.IsFalse(checker.IsActionKey(OperatorLookup.Modulus));
         }
 
         [TestMethod]
         public void IsFunctionKey() {
 
-            Assert.IsTrue(checker.IsFunctionKey("log"));
-            Assert.IsTrue(checker.IsFunctionKey("+"));
-            Assert.IsTrue(checker.IsFunctionKey("÷"));
             Assert.IsTrue(checker.IsFunctionKey("("));
-            Assert.IsTrue(checker.IsFunctionKey("n!"));
+            Assert.IsTrue(checker.IsFunctionKey(OperatorLookup.Log));
+            Assert.IsTrue(checker.IsFunctionKey(OperatorLookup.Plus));
+            Assert.IsTrue(checker.IsFunctionKey(OperatorLookup.Divide));
+            Assert.IsTrue(checker.IsFunctionKey(OperatorLookup.Factorial));
         }
 
         [TestMethod]
@@ -86,12 +87,12 @@ namespace UtilityTest {
         [TestMethod]
         public void IsNotMemoryKey() {
 
-            Assert.IsFalse(checker.IsMemoryKey("DEG"));
-            Assert.IsFalse(checker.IsMemoryKey("+"));
-            Assert.IsFalse(checker.IsMemoryKey("%"));
             Assert.IsFalse(checker.IsMemoryKey("8"));
             Assert.IsFalse(checker.IsMemoryKey(")"));
             Assert.IsFalse(checker.IsMemoryKey("="));
+            Assert.IsFalse(checker.IsMemoryKey("DEG"));
+            Assert.IsFalse(checker.IsMemoryKey(OperatorLookup.Plus));
+            Assert.IsFalse(checker.IsMemoryKey(OperatorLookup.Modulus));
         }
     }
 }
