@@ -98,11 +98,11 @@ namespace ExpressionsClassLibrary {
             return tokens.ToArray();
         }
 
-        private void Nest(List<string> newTokens, string[] oldTokens, bool isUnary, ref int index) {
+        private void Nest(List<string> nested, string[] tokens, bool isUnary, ref int index) {
 
-            string head = "[ " + newTokens.Last() + " ";
-            string tail = isUnary ? " ]" : " " + oldTokens[index + 1] + " ]";
-            newTokens[newTokens.Count - 1] = head + oldTokens[index] + tail;
+            string head = "[ " + nested.Last() + " ";
+            string tail = (isUnary ? "" : " " + tokens[index + 1]) + " ]";
+            nested[nested.Count - 1] = head + tokens[index] + tail;
 
             if(!isUnary) {
 
@@ -129,28 +129,28 @@ namespace ExpressionsClassLibrary {
 
             for(int i = 0; i < Precedence.Count; i++) {
 
-                var newTokens = new List<string>();
+                var nested = new List<string>();
 
                 for(int j = 0; j < tokens.Length; j++) {
 
                     if(Precedence[i].Contains(tokens[j])) {
 
-                        Nest(newTokens, tokens, i == 0, ref j);
+                        Nest(nested, tokens, i == 0, ref j);
 
                         continue;
                     }
 
                     if(IsNested(tokens[j])) {
 
-                        newTokens.Add(TryParenthesize(UnNest(tokens[j]), false));
+                        nested.Add(TryParenthesize(UnNest(tokens[j]), false));
 
                         continue;
                     }
 
-                    newTokens.Add(tokens[j]);
+                    nested.Add(tokens[j]);
                 }
 
-                tokens = newTokens.ToArray();
+                tokens = nested.ToArray();
             }
 
             return topLevel ? ChangeParentheses(tokens[0]) : tokens[0];
