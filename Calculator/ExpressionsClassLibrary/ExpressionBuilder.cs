@@ -25,7 +25,7 @@ namespace ExpressionsClassLibrary {
 
             if(type < 0 || type > 5) {
 
-                return;
+                throw new ArgumentException("Invalid Key Type.");
             }
 
             var typeTable = new Dictionary<int, KeyType>() {
@@ -44,11 +44,6 @@ namespace ExpressionsClassLibrary {
             }
 
             LastKey = typeTable[type];
-        }
-
-        private string Nest(string expression) {
-
-            return "( " + expression + " )";
         }
 
         private int MissingParentheses() {
@@ -87,7 +82,18 @@ namespace ExpressionsClassLibrary {
 
         public void AddUnary(string input) {
 
+            if(LastKey == KeyType.Binary) {
 
+                throw new InvalidOperationException("Missing Operand.");
+            }
+
+            if(LastKey == KeyType.Left || LastKey == KeyType.Empty) {
+
+                AddValue(0);
+            }
+
+            Buffer.Add(input);
+            LastKey = KeyType.Unary;
         }
 
         public void AddBinary(string input) {

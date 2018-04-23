@@ -17,6 +17,14 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+         "Invalid Key Type.")]
+        public void InvalidKeyType() {
+
+            builder = new ExpressionBuilder("5", -1);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidOperationException),
          "Operands Must be Separated by Operators.")]
         public void ConsecutiveValueInput() {
@@ -185,6 +193,60 @@ namespace ExpressionsTest {
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 6 * ( 5 )", builder.Expression);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+         "Missing Operand.")]
+        public void UnaryOperatorAfterBinaryOperator() {
+
+            builder = new ExpressionBuilder("( 5 +", (int)KeyType.Binary);
+            builder.AddUnary("!");
+        }
+
+        [TestMethod]
+        public void UnaryOperatorAfterUnaryOperator() {
+
+            builder = new ExpressionBuilder("( 5 !", (int)KeyType.Unary);
+            builder.AddUnary("!");
+
+            Assert.AreEqual("( 5 ! !", builder.Expression);
+        }
+
+        [TestMethod]
+        public void UnaryOperatorAfterLeftParenthesis() {
+
+            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder.AddUnary("!");
+
+            Assert.AreEqual("( 0 !", builder.Expression);
+        }
+
+        [TestMethod]
+        public void UnaryOperatorAfterRightParenthesis() {
+
+            builder = new ExpressionBuilder("( 5 + 5 )", (int)KeyType.Right);
+            builder.AddUnary("!");
+
+            Assert.AreEqual("( 5 + 5 ) !", builder.Expression);
+        }
+
+        [TestMethod]
+        public void UnaryOperatorAfterValue() {
+
+            builder = new ExpressionBuilder("( 5", (int)KeyType.Value);
+            builder.AddUnary("!");
+
+            Assert.AreEqual("( 5 !", builder.Expression);
+        }
+
+        [TestMethod]
+        public void UnaryOperatorInEmptyExpression() {
+
+            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder.AddUnary("!");
+
+            Assert.AreEqual("0 !", builder.Expression);
         }
 
         [TestMethod]
