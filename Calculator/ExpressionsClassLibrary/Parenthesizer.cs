@@ -10,37 +10,19 @@ namespace ExpressionsClassLibrary {
 
         private List<HashSet<string>> Precedence { get; set; }
 
-        public Parenthesizer() {
+        public Parenthesizer(List<string[]> operators) {
 
-            SetPrecedence();
+            SetPrecedence(operators);
         }
 
-        private void SetPrecedence() {
+        private void SetPrecedence(List<string[]> operators) {
 
             Precedence = new List<HashSet<string>>();
 
-            Precedence.Add(new HashSet<string>() {
+            foreach(var precedence in operators) {
 
-                "√", "¹⁄ x", "eˣ", "sqr", "cube",
-                "fact", "log", "ln", "dms", "degrees", "negate",
-                "sin", "cos", "tan", "sinh", "cosh", "tanh",
-                "sin⁻¹", "cos⁻¹", "tan⁻¹", "sinh⁻¹", "cosh⁻¹", "tanh⁻¹"
-            });
-
-            Precedence.Add(new HashSet<string>() {
-
-                "^", "Exp", "yroot"
-            });
-
-            Precedence.Add(new HashSet<string>() {
-
-                "×", "÷", "Mod"
-            });
-
-            Precedence.Add(new HashSet<string>() {
-
-                "+", "−"
-            });
+                Precedence.Add(new HashSet<string>(precedence));
+            }
         }
 
         private bool IsNested(string item) {

@@ -8,7 +8,9 @@ namespace ConverterClassLibrary {
     public interface IOperatorConverter {
 
         bool IsOperator(string token);
-        int toValue(string token);
-        string toOperator(int value);
+        bool IsUnary(string token);
+        bool IsBinary(string token);
+        int ToValue(string token);
+        string ToOperator(int value);
     }
 }
