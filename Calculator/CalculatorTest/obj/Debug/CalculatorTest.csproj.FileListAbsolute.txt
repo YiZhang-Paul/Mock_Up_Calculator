@@ -1,7 +1,0 @@
-D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\CalculatorTest.dll
-D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\CalculatorTest.pdb
-D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\CalculatorClassLibrary.dll
-D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\CalculatorClassLibrary.pdb
-D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.csprojResolveAssemblyReference.cache
-D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.dll
-D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.pdb
