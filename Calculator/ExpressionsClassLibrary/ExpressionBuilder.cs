@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpressionsClassLibrary {
-    public class ExpressionBuilder {
+    public class ExpressionBuilder : IExpressionBuilder {
 
         private enum KeyType { Value, Unary, Binary, Left, Right, Empty };
 

@@ -18,3 +18,5 @@ D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ExpressionsClassLibrary.d
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Deque.dll
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ExpressionsClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\Deque.xml
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\UtilityTest\bin\Debug\ConverterClassLibrary.pdb

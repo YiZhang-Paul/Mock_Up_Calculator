@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace UtilityClassLibrary {
-    public class Formatter {
+    public class Formatter : IFormatter {
 
         private string RemoveLeadingComma(string digits) {
 

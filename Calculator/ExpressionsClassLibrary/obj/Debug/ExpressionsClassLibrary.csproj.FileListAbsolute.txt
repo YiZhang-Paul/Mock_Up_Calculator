@@ -5,3 +5,5 @@ D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\Deque.dll
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\obj\Debug\ExpressionsClassLibrary.dll
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\obj\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\ConverterClassLibrary.pdb
