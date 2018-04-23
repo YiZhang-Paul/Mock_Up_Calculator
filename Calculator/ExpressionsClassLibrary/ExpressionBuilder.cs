@@ -92,7 +92,18 @@ namespace ExpressionsClassLibrary {
 
         public void AddBinary(string input) {
 
+            if(LastKey == KeyType.Binary) {
 
+                throw new InvalidOperationException("Missing Operand.");
+            }
+
+            if(LastKey == KeyType.Left || LastKey == KeyType.Empty) {
+
+                AddValue(0);
+            }
+
+            Buffer.Add(input);
+            LastKey = KeyType.Binary;
         }
 
         private void AddLeftParenthesis(string input) {

@@ -186,5 +186,59 @@ namespace ExpressionsTest {
 
             Assert.AreEqual("( 6 * ( 5 )", builder.Expression);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+         "Missing Operand.")]
+        public void BinaryOperatorAfterBinaryOperator() {
+
+            builder = new ExpressionBuilder("( 5 +", (int)KeyType.Binary);
+            builder.AddBinary("+");
+        }
+
+        [TestMethod]
+        public void BinaryOperatorAfterUnaryOperator() {
+
+            builder = new ExpressionBuilder("( 5 !", (int)KeyType.Unary);
+            builder.AddBinary("+");
+
+            Assert.AreEqual("( 5 ! +", builder.Expression);
+        }
+
+        [TestMethod]
+        public void BinaryOperatorAfterLeftParenthesis() {
+
+            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder.AddBinary("+");
+
+            Assert.AreEqual("( 0 +", builder.Expression);
+        }
+
+        [TestMethod]
+        public void BinaryOperatorAfterRightParenthesis() {
+
+            builder = new ExpressionBuilder("( 5 + 5 )", (int)KeyType.Right);
+            builder.AddBinary("+");
+
+            Assert.AreEqual("( 5 + 5 ) +", builder.Expression);
+        }
+
+        [TestMethod]
+        public void BinaryOperatorAfterValue() {
+
+            builder = new ExpressionBuilder("( 5", (int)KeyType.Value);
+            builder.AddBinary("+");
+
+            Assert.AreEqual("( 5 +", builder.Expression);
+        }
+
+        [TestMethod]
+        public void BinaryOperatorInEmptyExpression() {
+
+            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder.AddBinary("+");
+
+            Assert.AreEqual("0 +", builder.Expression);
+        }
     }
 }
