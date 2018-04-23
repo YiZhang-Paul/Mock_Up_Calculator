@@ -302,5 +302,23 @@ namespace ExpressionsTest {
 
             Assert.AreEqual("0 +", builder.Expression);
         }
+
+        [TestMethod]
+        public void BuildExpression() {
+
+            builder.AddParentheses("(");
+            builder.AddValue(5);
+            builder.AddBinary("^");
+            builder.AddValue(7);
+            builder.AddUnary("!");
+            builder.AddParentheses(")");
+            builder.AddBinary("*");
+            builder.AddValue(79.7m);
+            builder.AddUnary("log");
+            builder.AddBinary("-");
+            builder.AddValue(6);
+
+            Assert.AreEqual("( 5 ^ 7 ! ) * 79.7 log - 6", builder.Expression);
+        }
     }
 }
