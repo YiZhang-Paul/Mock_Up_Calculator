@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="ExpressionBuilder.cs" />
     <Compile Include="IExpressionBuilder.cs" />
+    <Compile Include="IParenthesize.cs" />
+    <Compile Include="Parenthesizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ExpressionBuilderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ParenthesizerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">

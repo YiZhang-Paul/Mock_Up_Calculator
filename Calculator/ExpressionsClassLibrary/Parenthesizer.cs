@@ -42,12 +42,69 @@ namespace ExpressionsClassLibrary {
             });
         }
 
+        private bool IsOperator(string item) {
+
+            return Precedence.Any(group => group.Contains(item));
+        }
+
+        private bool IsNested(string item) {
+
+            return item.First() == '(' && item.Last() == ')';
+        }
+
+        private string[] GetItems(string expression) {
+
+            return expression.Split(' ').Where(item => item != " ").ToArray();
+        }
+
+        private string GetNested(string[] items, ref int index) {
+
+            int counter = 1;
+            var nested = new StringBuilder();
+
+            while(index + 1 < items.Length) {
+
+                nested.Append(items[index++] + " ");
+
+                if(items[index] == "(" || items[index] == ")") {
+
+                    counter += items[index] == "(" ? 1 : -1;
+
+                    if(counter == 0) {
+
+                        nested.Append(")");
+
+                        break;
+                    }
+                }
+            }
+
+            return nested.ToString();
+        }
+
         private string[] Tokenize(string expression) {
 
-            return null;
+            var items = GetItems(expression);
+            var tokens = new List<string>();
+
+            for(int i = 0; i < items.Length; i++) {
+
+                if(items[i] == "(") {
+
+                    tokens.Add(GetNested(items, ref i));
+
+                    continue;
+                }
+
+                tokens.Add(items[i]);
+            }
+
+            return tokens.ToArray();
         }
 
         public string Parenthesize(string expression) {
+
+            var tokens = Tokenize(expression);
 
             return "";
         }
