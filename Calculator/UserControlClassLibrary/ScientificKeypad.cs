@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class scientificKeypad : UserControl {
+    public partial class scientificKeypad : UserControl, IScientificKeypad {
 
         private IButtonTracker Tracker { get; set; }
         private Button[] AllKeys { get; set; }
@@ -20,6 +20,9 @@ namespace UserControlClassLibrary {
         private Button[] BasicKeys { get; set; }
         private bool ExtensionToggled { get; set; }
         private bool HypotenuseToggled { get; set; }
+
+        public int AngularUnit { get; private set; }
+        public bool EngineeringMode { get; private set; }
 
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
@@ -137,6 +140,48 @@ namespace UserControlClassLibrary {
 
                 button.Paint -= UIHelper.DrawUnderline;
             }
+        }
+
+        private void btnScientificFormat_Click(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+
+            if(Tracker.IsDisabled(button)) {
+
+                return;
+            }
+
+            EngineeringMode = !EngineeringMode;
+
+            if(EngineeringMode) {
+
+                button.Paint += UIHelper.DrawUnderline;
+            }
+            else {
+
+                button.Paint -= UIHelper.DrawUnderline;
+            }
+        }
+
+        private void btnDegRadGrad_Click(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+
+            if(Tracker.IsDisabled(button)) {
+
+                return;
+            }
+
+            AngularUnit = (AngularUnit + 1) % 3;
+
+            if(AngularUnit == 0) {
+
+                button.Text = "DEG";
+
+                return;
+            }
+
+            button.Text = AngularUnit == 1 ? "RAD" : "GRAD";
         }
     }
 }

@@ -914,7 +914,7 @@
             this.btnDegRadGrad.TabIndex = 2;
             this.btnDegRadGrad.Text = "DEG";
             this.btnDegRadGrad.UseVisualStyleBackColor = false;
-            this.btnDegRadGrad.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnDegRadGrad.Click += new System.EventHandler(this.btnDegRadGrad_Click);
             this.btnDegRadGrad.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDegRadGrad.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -936,7 +936,7 @@
             this.btnScientificFormat.TabIndex = 4;
             this.btnScientificFormat.Text = "F-E";
             this.btnScientificFormat.UseVisualStyleBackColor = false;
-            this.btnScientificFormat.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnScientificFormat.Click += new System.EventHandler(this.btnScientificFormat_Click);
             this.btnScientificFormat.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnScientificFormat.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
