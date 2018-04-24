@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evaluator.cs" />
     <Compile Include="ExpressionBuilder.cs" />
     <Compile Include="ExpressionParser.cs" />
+    <Compile Include="IEvaluate.cs" />
     <Compile Include="IExpressionBuilder.cs" />
     <Compile Include="IExpressionParser.cs" />
     <Compile Include="INode.cs" />

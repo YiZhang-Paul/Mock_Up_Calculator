@@ -17,19 +17,19 @@ namespace ExpressionsClassLibrary {
         public static string Dms { get { return "dms"; } }
         public static string Degrees { get { return "degrees"; } }
         public static string Negate { get { return "negate"; } }
-        public static string Reciprocal { get { return "¹⁄ x"; } }
+        public static string Reciprocal { get { return "¹⁄x"; } }
         public static string Sine { get { return "sin"; } }
         public static string Cosine { get { return "cos"; } }
         public static string Tangent { get { return "tan"; } }
-        public static string HyperbolicSine { get { return "sinh"; } }
-        public static string HyperbolicCosine { get { return "cosh"; } }
-        public static string HyperbolicTangent { get { return "tanh"; } }
-        public static string InverseSine { get { return "sin⁻¹"; } }
-        public static string InverseCosine { get { return "cos⁻¹"; } }
-        public static string InverseTangent { get { return "tan⁻¹"; } }
-        public static string InverseHyperbolicSine { get { return "sinh⁻¹"; } }
-        public static string InverseHyperbolicCosine { get { return "cosh⁻¹"; } }
-        public static string InverseHyperbolicTangent { get { return "tanh⁻¹"; } }
+        public static string Sinh { get { return "sinh"; } }
+        public static string Cosh { get { return "cosh"; } }
+        public static string Tanh { get { return "tanh"; } }
+        public static string ArcSin { get { return "sin⁻¹"; } }
+        public static string ArcCos { get { return "cos⁻¹"; } }
+        public static string ArcTan { get { return "tan⁻¹"; } }
+        public static string ArcSinh { get { return "sinh⁻¹"; } }
+        public static string ArcCosh { get { return "cosh⁻¹"; } }
+        public static string ArcTanh { get { return "tanh⁻¹"; } }
         public static string Power { get { return "^"; } }
         public static string Exp { get { return "Exp"; } }
         public static string NthRoot { get { return "yroot"; } }
@@ -49,10 +49,10 @@ namespace ExpressionsClassLibrary {
 
                         SquareRoot, Square, Cube, Exponential,
                         Factorial, Log, Ln, Dms, Degrees, Negate,
-                        Reciprocal, Sine, Cosine, Tangent, HyperbolicSine,
-                        HyperbolicCosine, HyperbolicTangent, InverseSine,
-                        InverseCosine, InverseTangent, InverseHyperbolicSine,
-                        InverseHyperbolicCosine, InverseHyperbolicTangent
+                        Reciprocal, Sine, Cosine, Tangent, Sinh,
+                        Cosh, Tanh, ArcSin,
+                        ArcCos, ArcTan, ArcSinh,
+                        ArcCosh, ArcTanh
                     },
 
                     new string[] { Power, Exp, NthRoot },

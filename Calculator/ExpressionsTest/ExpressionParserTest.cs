@@ -10,6 +10,7 @@ namespace ExpressionsTest {
 
         string plus = OperatorLookup.Plus;
         string multiply = OperatorLookup.Multiply;
+        string factorial = OperatorLookup.Factorial;
         Mock<IOperatorConverter> converter;
         ExpressionParser parser;
 
@@ -38,13 +39,13 @@ namespace ExpressionsTest {
         public void ParseValidExpression() {
 
             converter.Setup(x => x.IsOperator(It.IsAny<string>()))
-                     .Returns((string i) => i == plus || i == multiply);
+                     .Returns((string i) => i == plus || i == multiply || i == factorial);
             converter.Setup(x => x.IsUnary(It.IsAny<string>()))
                      .Returns((string i) => i != plus && i != multiply);
             converter.Setup(x => x.ToValue(It.IsAny<string>()))
-                     .Returns((string i) => i == plus ? 29 : 26);
+                .Returns((string i) => i == factorial ? 4 : (i == plus ? 29 : 26));
 
-            var node = parser.Parse("( ( 5 " + plus + " 7 ) " + multiply + " ( 4 " + plus + " 3 ) )");
+            var node = parser.Parse("( ( 5 " + plus + " ( 7 " + factorial + " ) ) " + multiply + " ( 4 " + plus + " 3 ) )");
         }
     }
 }

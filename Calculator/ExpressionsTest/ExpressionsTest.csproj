@@ -72,6 +72,7 @@
     <Compile Include="ParenthesizerTest.cs" />
     <Compile Include="NodeTest.cs" />
     <Compile Include="ExpressionParserTest.cs" />
+    <Compile Include="EvaluatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">

@@ -98,13 +98,9 @@ namespace ExpressionsClassLibrary {
 
                     node = (Node)ParseOperator(node, token);
                 }
-                else if(token == "(" || token == ")") {
-
-                    node = (Node)ParseParenthesis(node, token);
-                }
                 else {
 
-                    throw new ArgumentException("Invalid Expression.");
+                    node = (Node)ParseParenthesis(node, token);
                 }
             }
 
