@@ -75,7 +75,7 @@ namespace MockUpCalculator {
 
         private void GetPointerLocation(object sender, MouseEventArgs e) {
 
-            Pointer = UIHelper.GetPointerLocation(sender, e);
+            Pointer = UIHelper.GetPointerLocation(e);
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -85,7 +85,7 @@ namespace MockUpCalculator {
                 return;
             }
 
-            UIHelper.DragWindow(sender, e, this, Pointer);
+            UIHelper.DragWindow(e, this, Pointer);
         }
 
         private void Minimize(object sender, EventArgs e) {

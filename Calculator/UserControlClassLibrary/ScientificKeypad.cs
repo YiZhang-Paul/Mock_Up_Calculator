@@ -20,6 +20,8 @@ namespace UserControlClassLibrary {
         private Button[] BasicKeys { get; set; }
         private bool ExtensionToggled { get; set; }
         private bool HypotenuseToggled { get; set; }
+        private float ExtraKeyFontSize { get; set; }
+        private float BasicKeyFontSize { get; set; }
 
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
@@ -63,6 +65,8 @@ namespace UserControlClassLibrary {
             MemoryKeys = AllKeys.Where(IsMemoryKey).ToArray();
             HypotenuseKeys = AllKeys.Where(IsHypotenuseKey).ToArray();
             BasicKeys = AllKeys.Where(IsBasicKey).ToArray();
+            ExtraKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
+            BasicKeyFontSize = btnArcSine.Font.SizeInPoints;
         }
 
         private void Initialize() {
@@ -182,6 +186,28 @@ namespace UserControlClassLibrary {
             }
 
             button.Text = AngularUnit == 1 ? "RAD" : "GRAD";
+        }
+
+        private void ResizeText(object sender, EventArgs e) {
+
+            var button = (Button)sender;
+            float size = ExtraKeyFontSize;
+
+            if(AngularUnit != 2) {
+
+                button.Font = new Font(button.Font.FontFamily, size);
+
+                return;
+            }
+
+            float maxWidth = (button.Width - 2 * button.FlatAppearance.BorderSize) / 5 * 3.5f;
+
+            if(size * button.Text.Length > maxWidth) {
+
+                size *= maxWidth / (size * button.Text.Length);
+            }
+
+            button.Font = new Font(button.Font.FontFamily, size);
         }
     }
 }

@@ -78,12 +78,12 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static Point GetPointerLocation(object sender, MouseEventArgs e) {
+        public static Point GetPointerLocation(MouseEventArgs e) {
 
             return e.Location;
         }
 
-        public static void DragWindow(object sender, MouseEventArgs e, Form parent, Point pointer) {
+        public static void DragWindow(MouseEventArgs e, Form parent, Point pointer) {
 
             if(e.Button == MouseButtons.Left) {
 
@@ -95,20 +95,19 @@ namespace UserControlClassLibrary {
         public static void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
             var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 2;
             button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
         }
 
         public static void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
             var button = (Button)sender;
-            button.FlatAppearance.BorderSize = 0;
+            button.FlatAppearance.BorderColor = button.BackColor;
         }
 
         public static void DrawUnderline(object sender, PaintEventArgs e) {
 
             var button = (Button)sender;
-            int lineHeight = (int)(button.Height * 0.1);
+            int lineHeight = button.FlatAppearance.BorderSize * 2;
 
             e.Graphics.FillRectangle(
 

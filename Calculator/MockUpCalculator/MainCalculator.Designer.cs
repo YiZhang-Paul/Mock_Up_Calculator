@@ -113,7 +113,8 @@
             // 
             this.btnChangeCalculator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnChangeCalculator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnChangeCalculator.FlatAppearance.BorderSize = 0;
+            this.btnChangeCalculator.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnChangeCalculator.FlatAppearance.BorderSize = 2;
             this.btnChangeCalculator.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
             this.btnChangeCalculator.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnChangeCalculator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,7 +136,8 @@
             // 
             this.btnHistory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHistory.FlatAppearance.BorderSize = 0;
+            this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnHistory.FlatAppearance.BorderSize = 2;
             this.btnHistory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
             this.btnHistory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -222,7 +224,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(270, 510);
+            this.MinimumSize = new System.Drawing.Size(320, 500);
             this.Name = "MainCalculator";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
