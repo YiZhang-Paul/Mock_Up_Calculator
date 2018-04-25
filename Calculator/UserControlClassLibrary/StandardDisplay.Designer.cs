@@ -1,5 +1,5 @@
 ﻿namespace UserControlClassLibrary {
-    partial class standardDisplay {
+    partial class StandardDisplay {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

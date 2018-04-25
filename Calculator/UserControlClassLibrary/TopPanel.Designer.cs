@@ -1,5 +1,5 @@
 ﻿namespace UserControlClassLibrary {
-    partial class topPanel {
+    partial class TopPanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

@@ -9,19 +9,16 @@ namespace UtilityClassLibrary {
     public class InputBuffer : IInputBuffer {
 
         private StringBuilder Buffer { get; set; }
-        private IFormatter Formatter { get; set; }
-        private string Content { get { return Buffer.ToString(); } }
 
+        public string Content { get { return Buffer.ToString(); } }
+        public decimal Value { get { return decimal.Parse(Content); } }
         public bool IsEmpty { get; private set; }
         public bool IsDecimal { get { return Regex.IsMatch(Content, @"\."); } }
         public bool IsNegative { get { return Content[0] == '-'; } }
-        public decimal Value { get { return decimal.Parse(Content); } }
-        public string Formatted { get { return Formatter.Format(Content, IsDecimal); } }
 
-        public InputBuffer(IFormatter formatter) {
+        public InputBuffer() {
 
             Buffer = new StringBuilder();
-            Formatter = formatter;
             Clear();
         }
 

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class standardDisplay : UserControl, IDisplay {
+    public partial class StandardDisplay : UserControl, IDisplay {
 
         private IFormatter Formatter { get; set; }
 
-        public standardDisplay() {
+        public StandardDisplay() {
 
             InitializeComponent();
             Formatter = new Formatter();

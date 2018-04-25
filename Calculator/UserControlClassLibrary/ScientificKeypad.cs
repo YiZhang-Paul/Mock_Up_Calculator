@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class scientificKeypad : UserControl, IScientificKeypad {
+    public partial class ScientificKeypad : UserControl, IScientificKeypad {
 
         private IButtonTracker Tracker { get; set; }
         private Button[] AllKeys { get; set; }
@@ -30,7 +30,7 @@ namespace UserControlClassLibrary {
         public event EventHandler OnButtonMouseEnter;
         public event EventHandler OnButtonMouseLeave;
 
-        public scientificKeypad() {
+        public ScientificKeypad() {
 
             InitializeComponent();
             Initialize();

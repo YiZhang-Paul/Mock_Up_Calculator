@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace UtilityClassLibrary {
     public interface IFormatter {
 
-        string Format(string digits, bool keepDecimal = false);
+        string Format(string digits);
     }
 }

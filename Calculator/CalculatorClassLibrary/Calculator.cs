@@ -10,11 +10,11 @@ namespace CalculatorClassLibrary {
 
         protected IInputBuffer Buffer { get; set; }
 
-        public string Input { get { return Buffer.Formatted; } }
+        public string Input { get { return Buffer.Content; } }
 
         public Calculator() {
 
-            Buffer = new InputBuffer(new Formatter());
+            Buffer = new InputBuffer();
         }
 
         public virtual void Clear() {

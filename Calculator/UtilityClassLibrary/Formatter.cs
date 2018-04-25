@@ -26,13 +26,13 @@ namespace UtilityClassLibrary {
             return RemoveLeadingComma(string.Join("", result.ToString().Reverse()));
         }
 
-        public string Format(string digits, bool keepDecimal = false) {
+        public string Format(string number) {
 
-            bool isDecimal = Regex.IsMatch(digits, @"\.");
-            string integer = isDecimal ? digits.Split('.')[0] : digits;
-            string decimals = isDecimal ? digits.Split('.')[1] : "";
+            bool isDecimal = Regex.IsMatch(number, @"\.");
+            string integer = isDecimal ? number.Split('.')[0] : number;
+            string decimals = isDecimal ? number.Split('.')[1] : "";
 
-            return AddComma(integer) + (keepDecimal || isDecimal ? "." : "") + decimals;
+            return AddComma(integer) + (isDecimal ? "." : "") + decimals;
         }
     }
 }

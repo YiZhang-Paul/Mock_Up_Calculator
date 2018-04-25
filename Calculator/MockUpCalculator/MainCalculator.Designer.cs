@@ -33,9 +33,9 @@
             this.currentCalculatorLabel = new System.Windows.Forms.Label();
             this.zoomTimer = new System.Windows.Forms.Timer(this.components);
             this.closeTimer = new System.Windows.Forms.Timer(this.components);
-            this.topPanel = new UserControlClassLibrary.topPanel();
-            this.standardDisplay = new UserControlClassLibrary.standardDisplay();
-            this.scientificKeypad = new UserControlClassLibrary.scientificKeypad();
+            this.topPanel = new UserControlClassLibrary.TopPanel();
+            this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
+            this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
             this.mainLayout.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.uiLayout.SuspendLayout();
@@ -244,7 +244,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainLayout;
-        private UserControlClassLibrary.topPanel topPanel;
+        private UserControlClassLibrary.TopPanel topPanel;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Timer zoomTimer;
         private System.Windows.Forms.Timer closeTimer;
@@ -253,8 +253,8 @@
         private System.Windows.Forms.Button btnChangeCalculator;
         private System.Windows.Forms.Button btnHistory;
         private System.Windows.Forms.Label currentCalculatorLabel;
-        private UserControlClassLibrary.standardDisplay standardDisplay;
-        private UserControlClassLibrary.scientificKeypad scientificKeypad;
+        private UserControlClassLibrary.StandardDisplay standardDisplay;
+        private UserControlClassLibrary.ScientificKeypad scientificKeypad;
     }
 }
 

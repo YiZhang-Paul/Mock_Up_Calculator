@@ -1,5 +1,5 @@
 ﻿namespace UserControlClassLibrary {
-    partial class scientificKeypad {
+    partial class ScientificKeypad {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
