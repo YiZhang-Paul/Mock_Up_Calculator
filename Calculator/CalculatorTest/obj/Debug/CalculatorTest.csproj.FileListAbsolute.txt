@@ -7,3 +7,9 @@ D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\UtilityClassLibrary.pd
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.dll
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.pdb
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\Deque.xml

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExpressionsClassLibrary;
-using ConverterClassLibrary;
 using UtilityClassLibrary;
 
 namespace CalculatorClassLibrary {
     public abstract class Calculator : ICalculator {
 
-        private IInputBuffer Buffer { get; set; }
+        protected IInputBuffer Buffer { get; set; }
 
         public string Input { get { return Buffer.Formatted; } }
 
@@ -19,22 +17,22 @@ namespace CalculatorClassLibrary {
             Buffer = new InputBuffer(new Formatter());
         }
 
-        public void Clear() {
+        public virtual void Clear() {
 
             Buffer.Clear();
         }
 
-        public void Undo() {
+        public virtual void Undo() {
 
             Buffer.Undo();
         }
 
-        public void Add(decimal input) {
+        public virtual void Add(decimal input) {
 
             Buffer.Add(input.ToString());
         }
 
-        public void Add(string input) {
+        public virtual void Add(string input) {
 
             if(input == ".") {
 
