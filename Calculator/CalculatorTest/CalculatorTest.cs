@@ -3,15 +3,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CalculatorClassLibrary;
 
 namespace CalculatorTest {
+
+    public class TestCalculator : Calculator {
+
+        public override decimal Evaluate() {
+
+            return -1;
+        }
+    }
+
     [TestClass]
     public class CalculatorTest {
 
-        Calculator calculator;
+        TestCalculator calculator;
 
         [TestInitialize]
         public void Setup() {
 
-            calculator = new Calculator();
+            calculator = new TestCalculator();
         }
 
         [TestMethod]
@@ -136,6 +145,20 @@ namespace CalculatorTest {
             calculator.Add(".");
 
             Assert.AreEqual("5.", calculator.Input);
+        }
+
+        [TestMethod]
+        public void AddRandomCharacter() {
+
+            calculator.Add("t");
+
+            Assert.AreEqual("0", calculator.Input);
+        }
+
+        [TestMethod]
+        public void Evaluate() {
+
+            Assert.AreEqual(-1, calculator.Evaluate());
         }
     }
 }
