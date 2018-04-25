@@ -18,6 +18,7 @@ namespace ExpressionsClassLibrary {
         public static string Degrees { get { return "degrees"; } }
         public static string Negate { get { return "negate"; } }
         public static string Reciprocal { get { return "¹⁄x"; } }
+        public static string PowerOfTen { get { return "10ˣ"; } }
         public static string Sine { get { return "sin"; } }
         public static string Cosine { get { return "cos"; } }
         public static string Tangent { get { return "tan"; } }
@@ -47,12 +48,14 @@ namespace ExpressionsClassLibrary {
 
                     new string[] {
 
-                        SquareRoot, Square, Cube, Exponential,
-                        Factorial, Log, Ln, Dms, Degrees, Negate,
-                        Reciprocal, Sine, Cosine, Tangent, Sinh,
-                        Cosh, Tanh, ArcSin,
-                        ArcCos, ArcTan, ArcSinh,
-                        ArcCosh, ArcTanh
+                        SquareRoot, Square, Cube,
+                        Exponential, Factorial, Log,
+                        Ln, Dms, Degrees, Negate,
+                        Reciprocal, PowerOfTen,
+                        Sine, Cosine, Tangent,
+                        Sinh, Cosh, Tanh,
+                        ArcSin, ArcCos, ArcTan,
+                        ArcSinh, ArcCosh, ArcTanh
                     },
 
                     new string[] { Power, Exp, NthRoot },

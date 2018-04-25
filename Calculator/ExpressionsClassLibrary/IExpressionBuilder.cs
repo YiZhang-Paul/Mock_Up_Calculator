@@ -11,7 +11,6 @@ namespace ExpressionsClassLibrary {
 
         void Clear();
         void AddValue(decimal input);
-        void AddDecimal();
         void AddUnary(string input);
         void AddBinary(string input);
         void AddParentheses(string input);

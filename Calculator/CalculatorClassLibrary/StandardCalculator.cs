@@ -15,6 +15,7 @@ namespace CalculatorClassLibrary {
         protected IExpressionParser Parser { get; set; }
         protected IEvaluate Evaluator { get; set; }
 
+        public decimal LastResult { get; private set; }
         public string Expression { get { return Builder.Expression; } }
 
         public StandardCalculator() {
@@ -31,6 +32,7 @@ namespace CalculatorClassLibrary {
 
             base.Clear();
             Builder.Clear();
+            LastResult = 0;
         }
 
         public void ClearInput() {
@@ -38,21 +40,21 @@ namespace CalculatorClassLibrary {
             Buffer.Clear();
         }
 
-        public override void Add(decimal input) {
+        protected void PushBuffer() {
 
-            base.Add(input);
-            Builder.AddValue(input);
+            AddValue(Buffer.Value);
+            ClearInput();
         }
 
-        private void AddDecimal() {
+        private void AddValue(decimal value) {
 
             try {
 
-                Builder.AddDecimal();
+                Builder.AddValue(value);
             }
             catch(Exception) {
 
-                //TODO: handle decimal point
+                //TODO: add value
             }
         }
 
@@ -94,13 +96,20 @@ namespace CalculatorClassLibrary {
 
         public override void Add(string input) {
 
-            base.Add(input);
-
             if(input == ".") {
 
-                AddDecimal();
+                Buffer.Add(input);
+
+                return;
             }
-            else if(input == "(" || input == ")") {
+
+            if(!Buffer.IsEmpty) {
+
+                PushBuffer();
+                TryEvaluate();
+            }
+
+            if(input == "(" || input == ")") {
 
                 AddParentheses(input);
             }
@@ -112,15 +121,29 @@ namespace CalculatorClassLibrary {
 
                 AddBinary(input);
             }
+
+            TryEvaluate();
+        }
+
+        protected void TryEvaluate() {
+
+            try {
+
+                LastResult = Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+            }
+            catch(Exception) { }
         }
 
         public override decimal Evaluate() {
 
-            decimal result = 0;
+            if(!Buffer.IsEmpty) {
+
+                PushBuffer();
+            }
 
             try {
 
-                result = Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+                return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
             }
             catch(DivideByZeroException) {
 
@@ -130,12 +153,21 @@ namespace CalculatorClassLibrary {
 
                 //TODO: handle overflow exception
             }
-            catch(InvalidOperationException exception) {
+            catch(Exception) {
 
-                throw exception;
+                AddValue(LastResult);
+
+                try {
+
+                    return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+                }
+                catch(Exception) {
+
+                    return LastResult;
+                }
             }
 
-            return result;
+            return -999;
         }
     }
 }

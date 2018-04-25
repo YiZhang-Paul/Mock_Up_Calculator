@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CalculatorClassLibrary {
     public interface IStandardCalculator : ICalculator {
 
+        decimal LastResult { get; }
         string Expression { get; }
 
         void ClearInput();

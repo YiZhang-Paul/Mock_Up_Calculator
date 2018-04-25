@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserControlClassLibrary;
+using UtilityClassLibrary;
+using CalculatorClassLibrary;
 
 namespace MockUpCalculator {
     public partial class MainCalculator : Form {
@@ -18,6 +20,8 @@ namespace MockUpCalculator {
         private Point Pointer { get; set; }
         private Resizer Resizer { get; set; }
         private Rectangle Viewport { get { return Screen.FromControl(this).WorkingArea; } }
+        private IKeyChecker Checker { get; set; }
+        private IStandardCalculator Calculator { get; set; }
 
         public MainCalculator() {
 
@@ -55,14 +59,65 @@ namespace MockUpCalculator {
         private void Initialize() {
 
             Resizer = new Resizer(this);
+            Checker = new KeyChecker();
+            Calculator = new StandardCalculator();
             SaveDimension();
             SetupTopPanel();
             SetupKeypad();
         }
 
+        private void HandleActionKey(string key) {
+
+            if(key == "=") {
+
+                standardDisplay.Display(Calculator.Evaluate().ToString(), string.Empty);
+                Calculator.Clear();
+            }
+            else if(key == "C") {
+
+                Calculator.Clear();
+                standardDisplay.Display(Calculator.Input, string.Empty);
+            }
+            else if(key == "CE") {
+
+                Calculator.ClearInput();
+                standardDisplay.Display(Calculator.Input, Calculator.Expression);
+            }
+            else {
+
+                Calculator.Undo();
+                standardDisplay.Display(Calculator.Input, Calculator.Expression);
+            }
+        }
+
+        private void HandleCalculation(string key) {
+
+            decimal value = 0;
+
+            if(decimal.TryParse(key, out value)) {
+
+                Calculator.Add(value);
+                standardDisplay.Display(Calculator.Input, Calculator.Expression);
+            }
+            else {
+
+                Calculator.Add(key);
+                standardDisplay.Display(Calculator.LastResult.ToString(), Calculator.Expression);
+            }
+        }
+
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
+            string key = ((Button)sender).Tag.ToString();
 
+            if(Checker.IsActionKey(key)) {
+
+                HandleActionKey(key);
+
+                return;
+            }
+
+            HandleCalculation(key);
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {

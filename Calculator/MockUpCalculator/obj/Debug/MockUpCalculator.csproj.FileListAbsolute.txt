@@ -11,3 +11,11 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UserControlClassLibr
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UserControlClassLibrary.pdb
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UtilityClassLibrary.dll
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UtilityClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\CalculatorClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\CalculatorClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\Deque.xml

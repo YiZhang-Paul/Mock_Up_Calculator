@@ -21,7 +21,12 @@ namespace CalculatorTest {
             calculator.Add(5);
 
             Assert.AreEqual("5", calculator.Input);
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("0", calculator.Input);
+            Assert.AreEqual("5 +", calculator.Expression);
 
             calculator.Clear();
 
@@ -35,12 +40,17 @@ namespace CalculatorTest {
             calculator.Add(5);
 
             Assert.AreEqual("5", calculator.Input);
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("0", calculator.Input);
+            Assert.AreEqual("5 +", calculator.Expression);
 
             calculator.ClearInput();
 
             Assert.AreEqual("0", calculator.Input);
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual("5 +", calculator.Expression);
         }
 
         [TestMethod]
@@ -49,20 +59,21 @@ namespace CalculatorTest {
             calculator.Add(5);
 
             Assert.AreEqual("5", calculator.Input);
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
 
             calculator.Add(".");
 
             Assert.AreEqual("5.", calculator.Input);
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
 
             calculator.Add(5);
 
             Assert.AreEqual("5.5", calculator.Input);
-            Assert.AreEqual("5.5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
 
             calculator.Add("+");
 
+            Assert.AreEqual("0", calculator.Input);
             Assert.AreEqual("5.5 +", calculator.Expression);
 
             calculator.Add("(");
@@ -71,7 +82,7 @@ namespace CalculatorTest {
 
             calculator.Add(5);
 
-            Assert.AreEqual("5.5 + ( 5", calculator.Expression);
+            Assert.AreEqual("5.5 + (", calculator.Expression);
 
             calculator.Add(OperatorLookup.Factorial);
 
@@ -83,7 +94,7 @@ namespace CalculatorTest {
 
             calculator.Add(5);
 
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
 
             calculator.Add("+");
 
@@ -91,22 +102,21 @@ namespace CalculatorTest {
 
             calculator.Add(5);
 
-            Assert.AreEqual("5 + 5", calculator.Expression);
+            Assert.AreEqual("5 +", calculator.Expression);
 
             calculator.Add(OperatorLookup.Factorial);
 
             Assert.AreEqual("5 + 5 " + OperatorLookup.Factorial, calculator.Expression);
+
             Assert.AreEqual(125, calculator.Evaluate());
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
-         "Invalid Expression.")]
         public void EvaluateInvalidExpression() {
 
             calculator.Add(5);
 
-            Assert.AreEqual("5", calculator.Expression);
+            Assert.AreEqual(string.Empty, calculator.Expression);
 
             calculator.Add("+");
 
@@ -115,8 +125,7 @@ namespace CalculatorTest {
             calculator.Add("(");
 
             Assert.AreEqual("5 + (", calculator.Expression);
-
-            calculator.Evaluate();
+            Assert.AreEqual(5, calculator.Evaluate());
         }
     }
 }

@@ -34,6 +34,7 @@ namespace ExpressionsClassLibrary {
                 { OperatorLookup.Degrees, (op1, op2) => UnitConverter.DmsToDegree(op1) },
                 { OperatorLookup.Negate, (op1, op2) => decimal.Negate(op1) },
                 { OperatorLookup.Reciprocal, (op1, op2) => decimal.Divide(1, op1) },
+                { OperatorLookup.PowerOfTen, (op1, op2) => AsDecimal(10, op1, Math.Pow) },
                 { OperatorLookup.Sine, (op1, op2) => AsDecimal(op1, Math.Sin) },
                 { OperatorLookup.Cosine, (op1, op2) => AsDecimal(op1, Math.Cos) },
                 { OperatorLookup.Tangent, (op1, op2) => AsDecimal(op1, Math.Tan) },

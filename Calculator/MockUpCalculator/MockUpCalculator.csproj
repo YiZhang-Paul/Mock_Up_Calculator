@@ -78,9 +78,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalculatorClassLibrary\CalculatorClassLibrary.csproj">
+      <Project>{cc7a4186-27d9-4f12-b624-8c25bc36fd9e}</Project>
+      <Name>CalculatorClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserControlClassLibrary\UserControlClassLibrary.csproj">
       <Project>{065153FF-F33A-461F-BA24-A82927BD059A}</Project>
       <Name>UserControlClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
+      <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
+      <Name>UtilityClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

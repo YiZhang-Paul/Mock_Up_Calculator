@@ -7,7 +7,7 @@ namespace ExpressionsTest {
     [TestClass]
     public class ExpressionBuilderTest {
 
-        enum KeyType { Value, Unary, Binary, Left, Right, Empty, Point };
+        enum KeyType { Value, Unary, Binary, Left, Right, Empty };
 
         Mock<IParenthesize> parenthesizer;
         ExpressionBuilder builder;
@@ -95,24 +95,6 @@ namespace ExpressionsTest {
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException),
-         "Invalid Operation.")]
-        public void ValueInputAfterInvalidDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Point);
-            builder.AddValue(5);
-        }
-
-        [TestMethod]
-        public void ValueInputAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "0", (int)KeyType.Point);
-            builder.AddValue(5);
-
-            Assert.AreEqual("0.5", builder.Expression);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
          "Mismatched Parentheses.")]
         public void MismatchedParentheses() {
 
@@ -176,15 +158,6 @@ namespace ExpressionsTest {
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException),
-         "Missing Operators.")]
-        public void LeftParenthesisAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "0.", (int)KeyType.Point);
-            builder.AddParentheses("(");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
          "Mismatched Parentheses.")]
         public void RightParenthesisInEmptyExpression() {
 
@@ -232,15 +205,6 @@ namespace ExpressionsTest {
         public void RightParenthesisAfterValue() {
 
             builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5", (int)KeyType.Value);
-            builder.AddParentheses(")");
-
-            Assert.AreEqual("( 6 * ( 5 )", builder.Expression);
-        }
-
-        [TestMethod]
-        public void RightParenthesisAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5", (int)KeyType.Point);
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 6 * ( 5 )", builder.Expression);
@@ -301,19 +265,6 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
-        public void UnaryOperatorAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Point);
-            builder.AddUnary("!");
-
-            Assert.AreEqual("( 5 !", builder.Expression);
-
-            builder.AddUnary("!");
-
-            Assert.AreEqual("( 5 ! !", builder.Expression);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(InvalidOperationException),
          "Missing Operand.")]
         public void BinaryOperatorAfterBinaryOperator() {
@@ -365,94 +316,6 @@ namespace ExpressionsTest {
             builder.AddBinary("+");
 
             Assert.AreEqual("0 +", builder.Expression);
-        }
-
-        [TestMethod]
-        public void BinaryOperatorAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Point);
-            builder.AddBinary("+");
-
-            Assert.AreEqual("( 5 +", builder.Expression);
-
-            builder.AddValue(5.5m);
-
-            Assert.AreEqual("( 5 + 5.5", builder.Expression);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
-         "Decimal Point Already Exists.")]
-        public void DecimalPointAfterDecimalPoint() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Point);
-            builder.AddDecimal();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
-         "Cannot Insert Decimal Point Here.")]
-        public void DecimalPointAfterRightParenthesis() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 + 5 )", (int)KeyType.Right);
-            builder.AddDecimal();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
-         "Cannot Insert Decimal Point Here.")]
-        public void DecimalPointAfterUnaryOperator() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 !", (int)KeyType.Unary);
-            builder.AddDecimal();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException),
-         "Cannot Insert Decimal Point Here.")]
-        public void DecimalPointAfterBinaryOperator() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 +", (int)KeyType.Binary);
-            builder.AddDecimal();
-        }
-
-        [TestMethod]
-        public void DecimalPointAfterLeftParenthesis() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
-            builder.AddDecimal();
-
-            Assert.AreEqual("( 0", builder.Expression);
-
-            builder.AddValue(8);
-
-            Assert.AreEqual("( 0.8", builder.Expression);
-        }
-
-        [TestMethod]
-        public void DecimalPointAfterValue() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Value);
-            builder.AddDecimal();
-
-            Assert.AreEqual("( 5", builder.Expression);
-
-            builder.AddValue(8);
-
-            Assert.AreEqual("( 5.8", builder.Expression);
-        }
-
-        [TestMethod]
-        public void DecimalPointInEmptyExpression() {
-
-            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
-            builder.AddDecimal();
-
-            Assert.AreEqual("0", builder.Expression);
-
-            builder.AddValue(8);
-
-            Assert.AreEqual("0.8", builder.Expression);
         }
 
         [TestMethod]

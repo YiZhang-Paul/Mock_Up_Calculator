@@ -12,7 +12,7 @@ namespace UtilityClassLibrary {
         private IFormatter Formatter { get; set; }
         private string Content { get { return Buffer.ToString(); } }
 
-        public bool IsEmpty { get { return Content.Length == 0; } }
+        public bool IsEmpty { get; private set; }
         public bool IsDecimal { get { return Regex.IsMatch(Content, @"\."); } }
         public bool IsNegative { get { return Content[0] == '-'; } }
         public decimal Value { get { return decimal.Parse(Content); } }
@@ -28,6 +28,7 @@ namespace UtilityClassLibrary {
         public void Clear() {
 
             Set("0");
+            IsEmpty = true;
         }
 
         public void Add(string input) {
@@ -37,7 +38,7 @@ namespace UtilityClassLibrary {
                 return;
             }
 
-            if(Content == "0" || IsEmpty) {
+            if(Content == "0") {
 
                 Set(input == "." ? "0." : input);
             }
@@ -45,6 +46,8 @@ namespace UtilityClassLibrary {
 
                 Buffer.Append(input);
             }
+
+            IsEmpty = false;
         }
 
         public void Set(string input) {

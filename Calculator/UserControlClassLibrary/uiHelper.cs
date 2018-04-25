@@ -30,6 +30,8 @@ namespace UserControlClassLibrary {
 
                 return (append ? match.Value : string.Empty) + replace;
             });
+
+            button.Tag = button.Text;
         }
 
         public static void DisableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {

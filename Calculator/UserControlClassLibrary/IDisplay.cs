@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace UserControlClassLibrary {
     public interface IDisplay {
 
-        void Display(string input);
+        void Display(string input, string expression);
     }
 }

@@ -57,7 +57,7 @@ namespace ConverterTest {
         [TestMethod]
         public void ConvertValidOperatorToValue() {
 
-            Assert.AreEqual(30, converter.ToValue(OperatorLookup.Minus));
+            Assert.AreEqual(31, converter.ToValue(OperatorLookup.Minus));
         }
 
         [TestMethod]
@@ -69,7 +69,7 @@ namespace ConverterTest {
         [TestMethod]
         public void ConvertToOperator() {
 
-            Assert.AreEqual(OperatorLookup.Modulus, converter.ToOperator(28));
+            Assert.AreEqual(OperatorLookup.Modulus, converter.ToOperator(29));
         }
     }
 }
