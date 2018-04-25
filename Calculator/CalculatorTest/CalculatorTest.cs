@@ -27,6 +27,26 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void Clear() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5", calculator.Input);
+
+            calculator.Clear();
+
+            Assert.AreEqual("0", calculator.Input);
+
+            calculator.Add(8);
+
+            Assert.AreEqual("8", calculator.Input);
+
+            calculator.Clear();
+
+            Assert.AreEqual("0", calculator.Input);
+        }
+
+        [TestMethod]
         public void AddDecimalPoint() {
 
             calculator.Add(5);

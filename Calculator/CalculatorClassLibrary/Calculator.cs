@@ -28,6 +28,8 @@ namespace CalculatorClassLibrary {
 
         public void Clear() {
 
+            Buffer.Clear();
+            Builder.Clear();
         }
 
         public void Undo() {
