@@ -55,7 +55,7 @@ namespace UtilityClassLibrary {
 
         public void Undo() {
 
-            if(Math.Abs(Value).ToString().Length == 1) {
+            if(!IsDecimal && Math.Abs(Value).ToString().Length == 1) {
 
                 Clear();
             }

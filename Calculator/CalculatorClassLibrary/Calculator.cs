@@ -33,6 +33,8 @@ namespace CalculatorClassLibrary {
         }
 
         public void Undo() {
+
+            Buffer.Undo();
         }
 
         public void Add(decimal input) {

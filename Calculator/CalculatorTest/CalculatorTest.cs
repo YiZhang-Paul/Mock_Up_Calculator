@@ -47,6 +47,50 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void UndoWhenInputIsEmpty() {
+
+            calculator.Undo();
+
+            Assert.AreEqual("0", calculator.Input);
+        }
+
+        [TestMethod]
+        public void Undo() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5", calculator.Input);
+
+            calculator.Undo();
+
+            Assert.AreEqual("0", calculator.Input);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5", calculator.Input);
+
+            calculator.Add(8);
+
+            Assert.AreEqual("58", calculator.Input);
+
+            calculator.Undo();
+
+            Assert.AreEqual("5", calculator.Input);
+
+            calculator.Add(".");
+
+            Assert.AreEqual("5.", calculator.Input);
+
+            calculator.Add(".");
+
+            Assert.AreEqual("5.", calculator.Input);
+
+            calculator.Undo();
+
+            Assert.AreEqual("5", calculator.Input);
+        }
+
+        [TestMethod]
         public void AddDecimalPoint() {
 
             calculator.Add(5);
