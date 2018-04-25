@@ -9,18 +9,22 @@ using ConverterClassLibrary;
 namespace CalculatorClassLibrary {
     public class StandardCalculator : Calculator, IStandardCalculator {
 
+        protected IUnitConverter UnitConverter { get; set; }
         protected IOperatorConverter OperatorConverter { get; set; }
         protected IExpressionBuilder Builder { get; set; }
         protected IExpressionParser Parser { get; set; }
+        protected IEvaluate Evaluator { get; set; }
 
         public string Expression { get { return Builder.Expression; } }
 
         public StandardCalculator() {
 
             var parenthesizer = new Parenthesizer(OperatorLookup.Operators);
+            UnitConverter = new UnitConverter();
             OperatorConverter = new OperatorConverter(OperatorLookup.Operators);
             Builder = new ExpressionBuilder(parenthesizer);
             Parser = new ExpressionParser(OperatorConverter);
+            Evaluator = new Evaluator(UnitConverter, OperatorConverter);
         }
 
         public override void Clear() {
@@ -38,6 +42,18 @@ namespace CalculatorClassLibrary {
 
             base.Add(input);
             Builder.AddValue(input);
+        }
+
+        private void AddDecimal() {
+
+            try {
+
+                Builder.AddDecimal();
+            }
+            catch(Exception) {
+
+                //TODO: handle decimal point
+            }
         }
 
         private void AddParentheses(string input) {
@@ -80,7 +96,11 @@ namespace CalculatorClassLibrary {
 
             base.Add(input);
 
-            if(input == "(" || input == ")") {
+            if(input == ".") {
+
+                AddDecimal();
+            }
+            else if(input == "(" || input == ")") {
 
                 AddParentheses(input);
             }
@@ -96,7 +116,26 @@ namespace CalculatorClassLibrary {
 
         public override decimal Evaluate() {
 
-            return -1;
+            decimal result = 0;
+
+            try {
+
+                result = Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+            }
+            catch(DivideByZeroException) {
+
+                //TODO: handle dividebyzero exception
+            }
+            catch(OverflowException) {
+
+                //TODO: handle overflow exception
+            }
+            catch(InvalidOperationException exception) {
+
+                throw exception;
+            }
+
+            return result;
         }
     }
 }

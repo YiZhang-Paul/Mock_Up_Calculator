@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ExpressionsClassLibrary {
     public class ExpressionBuilder : IExpressionBuilder {
 
-        private enum KeyType { Value, Unary, Binary, Left, Right, Empty };
+        private enum KeyType { Value, Unary, Binary, Left, Right, Empty, Point };
 
         private Deque<string> Buffer { get; set; }
         private KeyType LastKey { get; set; }
@@ -24,7 +24,7 @@ namespace ExpressionsClassLibrary {
 
         public ExpressionBuilder(IParenthesize parenthesizer, string expression, int type) : this(parenthesizer) {
 
-            if(type < 0 || type > 5) {
+            if(type < 0 || type > 6) {
 
                 throw new ArgumentException("Invalid Key Type.");
             }
@@ -37,6 +37,7 @@ namespace ExpressionsClassLibrary {
                 { 3, KeyType.Left },
                 { 4, KeyType.Right },
                 { 5, KeyType.Empty },
+                { 6, KeyType.Point },
             };
 
             if(expression != null) {
@@ -79,8 +80,43 @@ namespace ExpressionsClassLibrary {
 
                 default :
 
-                    Buffer.Add(input.ToString());
+                    if(LastKey == KeyType.Point) {
+
+                        Buffer.Add(Buffer.RemoveBack() + "." + input.ToString());
+                    }
+                    else {
+
+                        Buffer.Add(input.ToString());
+                    }
+
                     LastKey = KeyType.Value;
+
+                    break;
+            }
+        }
+
+        public void AddDecimal() {
+
+            switch(LastKey) {
+
+                case KeyType.Point :
+
+                    throw new InvalidOperationException("Decimal Point Already Exists.");
+
+                case KeyType.Right :
+                case KeyType.Unary :
+                case KeyType.Binary :
+
+                    throw new InvalidOperationException("Cannot Insert Decimal Point Here.");
+
+                default :
+
+                    if(LastKey != KeyType.Value) {
+
+                        AddValue(0);
+                    }
+
+                    LastKey = KeyType.Point;
 
                     break;
             }
@@ -120,7 +156,7 @@ namespace ExpressionsClassLibrary {
 
         private void AddLeftParenthesis(string input) {
 
-            if(LastKey == KeyType.Value || LastKey == KeyType.Unary) {
+            if(LastKey == KeyType.Value || LastKey == KeyType.Point || LastKey == KeyType.Unary) {
 
                 throw new InvalidOperationException("Missing Operators.");
             }

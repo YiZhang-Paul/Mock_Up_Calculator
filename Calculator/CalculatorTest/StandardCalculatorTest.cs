@@ -48,6 +48,64 @@ namespace CalculatorTest {
 
             calculator.Add(5);
 
+            Assert.AreEqual("5", calculator.Input);
+            Assert.AreEqual("5", calculator.Expression);
+
+            calculator.Add(".");
+
+            Assert.AreEqual("5.", calculator.Input);
+            Assert.AreEqual("5", calculator.Expression);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5.5", calculator.Input);
+            Assert.AreEqual("5.5", calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("5.5 +", calculator.Expression);
+
+            calculator.Add("(");
+
+            Assert.AreEqual("5.5 + (", calculator.Expression);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5.5 + ( 5", calculator.Expression);
+
+            calculator.Add(OperatorLookup.Factorial);
+
+            Assert.AreEqual("5.5 + ( 5 " + OperatorLookup.Factorial, calculator.Expression);
+        }
+
+        [TestMethod]
+        public void EvaluateValidExpression() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5", calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("5 +", calculator.Expression);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5 + 5", calculator.Expression);
+
+            calculator.Add(OperatorLookup.Factorial);
+
+            Assert.AreEqual("5 + 5 " + OperatorLookup.Factorial, calculator.Expression);
+            Assert.AreEqual(125, calculator.Evaluate());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+         "Invalid Expression.")]
+        public void EvaluateInvalidExpression() {
+
+            calculator.Add(5);
+
             Assert.AreEqual("5", calculator.Expression);
 
             calculator.Add("+");
@@ -58,13 +116,7 @@ namespace CalculatorTest {
 
             Assert.AreEqual("5 + (", calculator.Expression);
 
-            calculator.Add(5);
-
-            Assert.AreEqual("5 + ( 5", calculator.Expression);
-
-            calculator.Add(OperatorLookup.Factorial);
-
-            Assert.AreEqual("5 + ( 5 " + OperatorLookup.Factorial, calculator.Expression);
+            calculator.Evaluate();
         }
     }
 }
