@@ -13,14 +13,17 @@ namespace CalculatorClassLibrary {
         private IInputBuffer Buffer { get; set; }
         private IExpressionBuilder Builder { get; set; }
         private IExpressionParser Parser { get; set; }
+        private IUnitConverter Converter { get; set; }
 
-        public string Input { get { return Buffer.Value.ToString(); } }
+        public string Input { get { return Buffer.Formatted; } }
 
         public Calculator() {
 
+            var parenthesizer = new Parenthesizer(OperatorLookup.Operators);
+            var converter = new OperatorConverter(OperatorLookup.Operators);
             Buffer = new InputBuffer(new Formatter());
-            Builder = new ExpressionBuilder(new Parenthesizer(OperatorLookup.Operators));
-            Parser = new ExpressionParser(new OperatorConverter(OperatorLookup.Operators));
+            Builder = new ExpressionBuilder(parenthesizer);
+            Parser = new ExpressionParser(converter);
         }
 
         public void Clear() {
@@ -31,9 +34,18 @@ namespace CalculatorClassLibrary {
         }
 
         public void Add(decimal input) {
+
+            Buffer.Add(input.ToString());
         }
 
         public void Add(string input) {
+
+            if(input == ".") {
+
+                Buffer.Add(input);
+
+                return;
+            }
         }
 
         public decimal Evaluate() {
