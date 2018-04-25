@@ -8,11 +8,12 @@ namespace ExpressionsClassLibrary {
     public interface IExpressionBuilder {
 
         string Expression { get; }
-        string Parenthesized { get; }
 
+        void Clear();
         void AddValue(decimal input);
         void AddUnary(string input);
         void AddBinary(string input);
         void AddParentheses(string input);
+        string Build();
     }
 }

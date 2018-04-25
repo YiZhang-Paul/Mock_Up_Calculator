@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ExpressionsClassLibrary;
+using Moq;
 
 namespace ExpressionsTest {
     [TestClass]
@@ -8,12 +9,26 @@ namespace ExpressionsTest {
 
         enum KeyType { Value, Unary, Binary, Left, Right, Empty };
 
+        Mock<IParenthesize> parenthesizer;
         ExpressionBuilder builder;
 
         [TestInitialize]
         public void Setup() {
 
-            builder = new ExpressionBuilder();
+            parenthesizer = new Mock<IParenthesize>();
+            builder = new ExpressionBuilder(parenthesizer.Object);
+        }
+
+        [TestMethod]
+        public void Clear() {
+
+            builder = new ExpressionBuilder(parenthesizer.Object, "5", (int)KeyType.Value);
+
+            Assert.AreEqual("5", builder.Expression);
+
+            builder.Clear();
+
+            Assert.AreEqual(string.Empty, builder.Expression);
         }
 
         [TestMethod]
@@ -21,7 +36,7 @@ namespace ExpressionsTest {
          "Invalid Key Type.")]
         public void InvalidKeyType() {
 
-            builder = new ExpressionBuilder("5", -1);
+            builder = new ExpressionBuilder(parenthesizer.Object, "5", -1);
         }
 
         [TestMethod]
@@ -29,7 +44,7 @@ namespace ExpressionsTest {
          "Operands Must be Separated by Operators.")]
         public void ConsecutiveValueInput() {
 
-            builder = new ExpressionBuilder("5", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "5", (int)KeyType.Value);
             builder.AddValue(5);
         }
 
@@ -38,7 +53,7 @@ namespace ExpressionsTest {
          "Operands Must be Separated by Operators.")]
         public void ValueInputAfterRightParenthesis() {
 
-            builder = new ExpressionBuilder(")", (int)KeyType.Right);
+            builder = new ExpressionBuilder(parenthesizer.Object, ")", (int)KeyType.Right);
             builder.AddValue(5);
         }
 
@@ -47,14 +62,14 @@ namespace ExpressionsTest {
          "Operands Must be Separated by Operators.")]
         public void ValueInputAfterUnaryOperator() {
 
-            builder = new ExpressionBuilder("!", (int)KeyType.Unary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "!", (int)KeyType.Unary);
             builder.AddValue(5);
         }
 
         [TestMethod]
         public void ValueInputAfterLeftParenthesis() {
 
-            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
             builder.AddValue(5);
 
             Assert.AreEqual("( 5", builder.Expression);
@@ -63,7 +78,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void ValueInputAfterBinaryOperator() {
 
-            builder = new ExpressionBuilder("+", (int)KeyType.Binary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "+", (int)KeyType.Binary);
             builder.AddValue(5);
 
             Assert.AreEqual("+ 5", builder.Expression);
@@ -72,7 +87,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void ValueInputInEmptyExpression() {
 
-            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
             builder.AddValue(5);
 
             Assert.AreEqual("5", builder.Expression);
@@ -83,7 +98,7 @@ namespace ExpressionsTest {
          "Mismatched Parentheses.")]
         public void MismatchedParentheses() {
 
-            builder = new ExpressionBuilder("( 5 + 6 ) * 3", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 + 6 ) * 3", (int)KeyType.Value);
             builder.AddParentheses(")");
         }
 
@@ -92,7 +107,7 @@ namespace ExpressionsTest {
          "Mismatched Parentheses.")]
         public void LeftParenthesisAfterRightParenthesis() {
 
-            builder = new ExpressionBuilder("( 5 + 6 )", (int)KeyType.Right);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 + 6 )", (int)KeyType.Right);
             builder.AddParentheses("(");
         }
 
@@ -101,7 +116,7 @@ namespace ExpressionsTest {
          "Missing Operators.")]
         public void LeftParenthesisAfterUnaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 !", (int)KeyType.Unary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 !", (int)KeyType.Unary);
             builder.AddParentheses("(");
         }
 
@@ -110,14 +125,14 @@ namespace ExpressionsTest {
          "Missing Operators.")]
         public void LeftParenthesisAfterValue() {
 
-            builder = new ExpressionBuilder("( 5", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Value);
             builder.AddParentheses("(");
         }
 
         [TestMethod]
         public void LeftParenthesisAfterBinaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 +", (int)KeyType.Binary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 +", (int)KeyType.Binary);
             builder.AddParentheses("(");
 
             Assert.AreEqual("( 5 + (", builder.Expression);
@@ -126,7 +141,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void LeftParenthesisAfterLeftParenthesis() {
 
-            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
             builder.AddParentheses("(");
 
             Assert.AreEqual("( (", builder.Expression);
@@ -135,7 +150,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void LeftParenthesisInEmptyExpression() {
 
-            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
             builder.AddParentheses("(");
 
             Assert.AreEqual("(", builder.Expression);
@@ -146,7 +161,7 @@ namespace ExpressionsTest {
          "Mismatched Parentheses.")]
         public void RightParenthesisInEmptyExpression() {
 
-            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
             builder.AddParentheses(")");
         }
 
@@ -155,14 +170,14 @@ namespace ExpressionsTest {
          "Missing Operand.")]
         public void RightParenthesisAfterBinaryOperator() {
 
-            builder = new ExpressionBuilder("( 6 * ( 5 +", (int)KeyType.Binary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5 +", (int)KeyType.Binary);
             builder.AddParentheses(")");
         }
 
         [TestMethod]
         public void RightParenthesisAfterLeftParenthesis() {
 
-            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 0 )", builder.Expression);
@@ -171,7 +186,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void RightParenthesisAfterRightParenthesis() {
 
-            builder = new ExpressionBuilder("( 6 * ( 5 + 5 )", (int)KeyType.Right);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5 + 5 )", (int)KeyType.Right);
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 6 * ( 5 + 5 ) )", builder.Expression);
@@ -180,7 +195,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void RightParenthesisAfterUnaryOperator() {
 
-            builder = new ExpressionBuilder("( 6 * ( 5 + 5 !", (int)KeyType.Unary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5 + 5 !", (int)KeyType.Unary);
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 6 * ( 5 + 5 ! )", builder.Expression);
@@ -189,7 +204,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void RightParenthesisAfterValue() {
 
-            builder = new ExpressionBuilder("( 6 * ( 5", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 6 * ( 5", (int)KeyType.Value);
             builder.AddParentheses(")");
 
             Assert.AreEqual("( 6 * ( 5 )", builder.Expression);
@@ -200,14 +215,14 @@ namespace ExpressionsTest {
          "Missing Operand.")]
         public void UnaryOperatorAfterBinaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 +", (int)KeyType.Binary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 +", (int)KeyType.Binary);
             builder.AddUnary("!");
         }
 
         [TestMethod]
         public void UnaryOperatorAfterUnaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 !", (int)KeyType.Unary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 !", (int)KeyType.Unary);
             builder.AddUnary("!");
 
             Assert.AreEqual("( 5 ! !", builder.Expression);
@@ -216,7 +231,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void UnaryOperatorAfterLeftParenthesis() {
 
-            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
             builder.AddUnary("!");
 
             Assert.AreEqual("( 0 !", builder.Expression);
@@ -225,7 +240,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void UnaryOperatorAfterRightParenthesis() {
 
-            builder = new ExpressionBuilder("( 5 + 5 )", (int)KeyType.Right);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 + 5 )", (int)KeyType.Right);
             builder.AddUnary("!");
 
             Assert.AreEqual("( 5 + 5 ) !", builder.Expression);
@@ -234,7 +249,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void UnaryOperatorAfterValue() {
 
-            builder = new ExpressionBuilder("( 5", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Value);
             builder.AddUnary("!");
 
             Assert.AreEqual("( 5 !", builder.Expression);
@@ -243,7 +258,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void UnaryOperatorInEmptyExpression() {
 
-            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
             builder.AddUnary("!");
 
             Assert.AreEqual("0 !", builder.Expression);
@@ -254,14 +269,14 @@ namespace ExpressionsTest {
          "Missing Operand.")]
         public void BinaryOperatorAfterBinaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 +", (int)KeyType.Binary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 +", (int)KeyType.Binary);
             builder.AddBinary("+");
         }
 
         [TestMethod]
         public void BinaryOperatorAfterUnaryOperator() {
 
-            builder = new ExpressionBuilder("( 5 !", (int)KeyType.Unary);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 !", (int)KeyType.Unary);
             builder.AddBinary("+");
 
             Assert.AreEqual("( 5 ! +", builder.Expression);
@@ -270,7 +285,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void BinaryOperatorAfterLeftParenthesis() {
 
-            builder = new ExpressionBuilder("(", (int)KeyType.Left);
+            builder = new ExpressionBuilder(parenthesizer.Object, "(", (int)KeyType.Left);
             builder.AddBinary("+");
 
             Assert.AreEqual("( 0 +", builder.Expression);
@@ -279,7 +294,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void BinaryOperatorAfterRightParenthesis() {
 
-            builder = new ExpressionBuilder("( 5 + 5 )", (int)KeyType.Right);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5 + 5 )", (int)KeyType.Right);
             builder.AddBinary("+");
 
             Assert.AreEqual("( 5 + 5 ) +", builder.Expression);
@@ -288,7 +303,7 @@ namespace ExpressionsTest {
         [TestMethod]
         public void BinaryOperatorAfterValue() {
 
-            builder = new ExpressionBuilder("( 5", (int)KeyType.Value);
+            builder = new ExpressionBuilder(parenthesizer.Object, "( 5", (int)KeyType.Value);
             builder.AddBinary("+");
 
             Assert.AreEqual("( 5 +", builder.Expression);
@@ -297,14 +312,14 @@ namespace ExpressionsTest {
         [TestMethod]
         public void BinaryOperatorInEmptyExpression() {
 
-            builder = new ExpressionBuilder(null, (int)KeyType.Empty);
+            builder = new ExpressionBuilder(parenthesizer.Object, null, (int)KeyType.Empty);
             builder.AddBinary("+");
 
             Assert.AreEqual("0 +", builder.Expression);
         }
 
         [TestMethod]
-        public void BuildExpression() {
+        public void GetExpression() {
 
             builder.AddParentheses("(");
             builder.AddValue(5);
@@ -319,6 +334,14 @@ namespace ExpressionsTest {
             builder.AddValue(6);
 
             Assert.AreEqual("( 5 ^ 7 ! ) * 79.7 log - 6", builder.Expression);
+        }
+
+        [TestMethod]
+        public void BuildExpression() {
+
+            parenthesizer.Setup(x => x.Parenthesize(It.IsAny<string>())).Returns("( 5 + 5 )");
+
+            Assert.AreEqual("( 5 + 5 )", builder.Build());
         }
     }
 }

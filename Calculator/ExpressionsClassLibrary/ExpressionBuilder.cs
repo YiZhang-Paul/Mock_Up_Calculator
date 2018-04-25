@@ -11,17 +11,18 @@ namespace ExpressionsClassLibrary {
 
         private Deque<string> Buffer { get; set; }
         private KeyType LastKey { get; set; }
+        private IParenthesize Parenthesizer { get; set; }
 
         public string Expression { get { return string.Join(" ", Buffer); } }
-        public string Parenthesized { get; set; }
 
-        public ExpressionBuilder() {
+        public ExpressionBuilder(IParenthesize parenthesizer) {
 
             Buffer = new Deque<string>();
             LastKey = KeyType.Empty;
+            Parenthesizer = parenthesizer;
         }
 
-        public ExpressionBuilder(string expression, int type) : this() {
+        public ExpressionBuilder(IParenthesize parenthesizer, string expression, int type) : this(parenthesizer) {
 
             if(type < 0 || type > 5) {
 
@@ -44,6 +45,11 @@ namespace ExpressionsClassLibrary {
             }
 
             LastKey = typeTable[type];
+        }
+
+        public void Clear() {
+
+            Buffer.Clear();
         }
 
         private int MissingParentheses() {
@@ -159,6 +165,11 @@ namespace ExpressionsClassLibrary {
             }
 
             AddRightParenthesis(input);
+        }
+
+        public string Build() {
+
+            return Parenthesizer.Parenthesize(Expression);
         }
     }
 }
