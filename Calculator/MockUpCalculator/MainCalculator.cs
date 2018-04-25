@@ -102,7 +102,8 @@ namespace MockUpCalculator {
             else {
 
                 Calculator.Add(key);
-                standardDisplay.Display(Calculator.LastResult.ToString(), Calculator.Expression);
+                string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
+                standardDisplay.Display(result, Calculator.Expression);
             }
         }
 
