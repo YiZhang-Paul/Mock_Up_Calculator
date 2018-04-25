@@ -53,11 +53,11 @@ namespace ExpressionsClassLibrary {
             LastKey = KeyType.Empty;
         }
 
-        private int MissingParentheses() {
+        private int MissingParentheses(string expression) {
 
             int total = 0;
 
-            foreach(char item in Expression) {
+            foreach(char item in expression) {
 
                 if(item == '(' || item == ')') {
 
@@ -142,7 +142,7 @@ namespace ExpressionsClassLibrary {
                 throw new InvalidOperationException("Missing Operand.");
             }
 
-            if(MissingParentheses() < 1) {
+            if(MissingParentheses(Expression) < 1) {
 
                 throw new InvalidOperationException("Mismatched Parentheses.");
             }
@@ -170,9 +170,9 @@ namespace ExpressionsClassLibrary {
 
         public string Build() {
 
-            var test = Parenthesizer.Parenthesize(Expression);
+            string result = Parenthesizer.Parenthesize(Expression);
 
-            return Parenthesizer.Parenthesize(Expression);
+            return MissingParentheses(result) == 0 ? result : null;
         }
     }
 }

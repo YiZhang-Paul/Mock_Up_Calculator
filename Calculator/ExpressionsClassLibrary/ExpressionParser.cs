@@ -78,6 +78,11 @@ namespace ExpressionsClassLibrary {
 
         public INode Parse(string expression) {
 
+            if(expression == null) {
+
+                throw new ArgumentException("Invalid Expression.");
+            }
+
             var root = new Node();
             var node = root;
 
