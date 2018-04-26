@@ -14,6 +14,9 @@ using CalculatorClassLibrary;
 namespace MockUpCalculator {
     public partial class MainCalculator : Form {
 
+        private const string divideByZeroMessage = "Cannot divide by zero";
+        private const string invalidInput = "Invalid input";
+
         private int DefaultWidth { get; set; }
         private int DefaultHeight { get; set; }
         private Point ClientCenter { get; set; }
@@ -73,10 +76,22 @@ namespace MockUpCalculator {
         private void HandleActionKey(string key) {
 
             if(key == "=") {
-                //TODO: handle dividebyzero exception
-                //TODO: handle overflow exception
-                standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
-                Calculator.Clear();
+
+                try {
+
+                    standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
+                    Calculator.Clear();
+                }
+                catch(DivideByZeroException) {
+
+                    standardDisplay.DisplayError(divideByZeroMessage);
+                    scientificKeypad.Disable();
+                }
+                catch(Exception) {
+
+                    standardDisplay.DisplayError(invalidInput);
+                    scientificKeypad.Disable();
+                }
 
                 return;
             }
@@ -108,11 +123,23 @@ namespace MockUpCalculator {
                 standardDisplay.DisplayResult(Calculator.Input);
             }
             else {
-                //TODO: handle dividebyzero exception
-                //TODO: handle overflow exception
-                Calculator.Add(key);
-                string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
-                standardDisplay.DisplayResult(result);
+
+                try {
+
+                    Calculator.Add(key);
+                    string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
+                    standardDisplay.DisplayResult(result);
+                }
+                catch(DivideByZeroException) {
+
+                    standardDisplay.DisplayError(divideByZeroMessage);
+                    scientificKeypad.Disable();
+                }
+                catch(Exception) {
+
+                    standardDisplay.DisplayError(invalidInput);
+                    scientificKeypad.Disable();
+                }
             }
 
             standardDisplay.DisplayExpression(Calculator.Expression);

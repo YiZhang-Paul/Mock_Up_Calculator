@@ -35,7 +35,6 @@ namespace UserControlClassLibrary {
 
             InitializeComponent();
             Initialize();
-            Disable();
         }
 
         private Button[] GetAllKeys() {
