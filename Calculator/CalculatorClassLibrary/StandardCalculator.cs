@@ -67,10 +67,7 @@ namespace CalculatorClassLibrary {
 
                 Builder.AddParentheses(input);
             }
-            catch(Exception) {
-
-                //TODO: track matched parentheses
-            }
+            catch(Exception) { }
         }
 
         private void AddUnary(string input) {

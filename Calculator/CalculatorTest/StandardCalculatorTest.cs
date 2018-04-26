@@ -152,6 +152,26 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void InvalidParenthesis() {
+
+            calculator.Add("(");
+
+            Assert.AreEqual("(", calculator.Expression);
+
+            calculator.Add(")");
+
+            Assert.AreEqual("( 0 )", calculator.Expression);
+
+            calculator.Add(")");
+
+            Assert.AreEqual("( 0 )", calculator.Expression);
+
+            calculator.Add("(");
+
+            Assert.AreEqual("( 0 )", calculator.Expression);
+        }
+
+        [TestMethod]
         public void InvalidBinaryOperator() {
 
             calculator.Add(5);
