@@ -981,7 +981,7 @@
             this.btnDegRadGrad.TabIndex = 2;
             this.btnDegRadGrad.Text = "DEG";
             this.btnDegRadGrad.UseVisualStyleBackColor = false;
-            this.btnDegRadGrad.TextChanged += new System.EventHandler(this.ResizeText);
+            this.btnDegRadGrad.TextChanged += new System.EventHandler(this.ResizeUnitKeyText);
             this.btnDegRadGrad.Click += new System.EventHandler(this.btnDegRadGrad_Click);
             this.btnDegRadGrad.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDegRadGrad.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);

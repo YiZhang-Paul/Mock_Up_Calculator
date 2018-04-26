@@ -4,14 +4,22 @@ using UtilityClassLibrary;
 
 namespace UtilityTest {
     [TestClass]
-    public class FormatterTest {
+    public class NumberFormatterTest {
 
-        Formatter formatter;
+        NumberFormatter formatter;
 
         [TestInitialize]
         public void Setup() {
 
-            formatter = new Formatter();
+            formatter = new NumberFormatter();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException),
+         "Invalid Number.")]
+        public void FormatInvalidNumber() {
+
+            formatter.Format("1000a120");
         }
 
         [TestMethod]

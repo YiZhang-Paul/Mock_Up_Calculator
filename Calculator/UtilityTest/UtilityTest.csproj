@@ -68,7 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FormatterTest.cs" />
+    <Compile Include="NumberFormatterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InputBufferTest.cs" />
     <Compile Include="ButtonTrackerTest.cs" />

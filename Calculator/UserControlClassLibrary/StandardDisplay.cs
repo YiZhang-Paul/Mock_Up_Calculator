@@ -18,7 +18,7 @@ namespace UserControlClassLibrary {
         public StandardDisplay() {
 
             InitializeComponent();
-            Formatter = new Formatter();
+            Formatter = new NumberFormatter();
             expressionLabel.MouseWheel += ScrollExpression;
             scrollPanel.MouseWheel += ScrollExpression;
         }

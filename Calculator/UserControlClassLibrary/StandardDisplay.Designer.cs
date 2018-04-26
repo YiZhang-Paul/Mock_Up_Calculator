@@ -31,9 +31,9 @@
             this.scrollPanel = new System.Windows.Forms.Panel();
             this.expressionLabel = new System.Windows.Forms.Label();
             this.rightArrowPanel = new System.Windows.Forms.Panel();
+            this.rightArrowLabel = new System.Windows.Forms.Label();
             this.leftArrowPanel = new System.Windows.Forms.Panel();
             this.leftArrowLabel = new System.Windows.Forms.Label();
-            this.rightArrowLabel = new System.Windows.Forms.Label();
             this.displayLayout.SuspendLayout();
             this.resultPanel.SuspendLayout();
             this.expressionLayout.SuspendLayout();
@@ -145,6 +145,22 @@
             this.rightArrowPanel.Size = new System.Drawing.Size(25, 36);
             this.rightArrowPanel.TabIndex = 5;
             // 
+            // rightArrowLabel
+            // 
+            this.rightArrowLabel.AutoSize = true;
+            this.rightArrowLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rightArrowLabel.Font = new System.Drawing.Font("Courier Prime Code", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightArrowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.rightArrowLabel.Location = new System.Drawing.Point(0, 0);
+            this.rightArrowLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.rightArrowLabel.Name = "rightArrowLabel";
+            this.rightArrowLabel.Padding = new System.Windows.Forms.Padding(0, 5, 5, 0);
+            this.rightArrowLabel.Size = new System.Drawing.Size(27, 28);
+            this.rightArrowLabel.TabIndex = 0;
+            this.rightArrowLabel.Text = ">";
+            this.rightArrowLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rightArrowLabel.Visible = false;
+            // 
             // leftArrowPanel
             // 
             this.leftArrowPanel.Controls.Add(this.leftArrowLabel);
@@ -170,22 +186,6 @@
             this.leftArrowLabel.Text = "<";
             this.leftArrowLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.leftArrowLabel.Visible = false;
-            // 
-            // rightArrowLabel
-            // 
-            this.rightArrowLabel.AutoSize = true;
-            this.rightArrowLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rightArrowLabel.Font = new System.Drawing.Font("Courier Prime Code", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightArrowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.rightArrowLabel.Location = new System.Drawing.Point(0, 0);
-            this.rightArrowLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.rightArrowLabel.Name = "rightArrowLabel";
-            this.rightArrowLabel.Padding = new System.Windows.Forms.Padding(0, 5, 5, 0);
-            this.rightArrowLabel.Size = new System.Drawing.Size(27, 28);
-            this.rightArrowLabel.TabIndex = 0;
-            this.rightArrowLabel.Text = ">";
-            this.rightArrowLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rightArrowLabel.Visible = false;
             // 
             // StandardDisplay
             // 

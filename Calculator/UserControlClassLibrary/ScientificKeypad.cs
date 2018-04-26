@@ -20,8 +20,7 @@ namespace UserControlClassLibrary {
         private HashSet<Button> BasicKeys { get; set; }
         private bool ExtensionToggled { get; set; }
         private bool HypotenuseToggled { get; set; }
-        private float ExtraKeyFontSize { get; set; }
-        private float BasicKeyFontSize { get; set; }
+        private float UnitKeyFontSize { get; set; }
 
         public bool IsDisabled { get; private set; }
         public int AngularUnit { get; private set; }
@@ -67,8 +66,7 @@ namespace UserControlClassLibrary {
             MemoryKeys = new HashSet<Button>(AllKeys.Where(IsMemoryKey));
             HypotenuseKeys = new HashSet<Button>(AllKeys.Where(IsHypotenuseKey));
             BasicKeys = new HashSet<Button>(AllKeys.Where(IsBasicKey));
-            ExtraKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
-            BasicKeyFontSize = btnArcSine.Font.SizeInPoints;
+            UnitKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
         }
 
         private void Initialize() {
@@ -213,10 +211,10 @@ namespace UserControlClassLibrary {
             button.Text = AngularUnit == 1 ? "RAD" : "GRAD";
         }
 
-        private void ResizeText(object sender, EventArgs e) {
+        private void ResizeUnitKeyText(object sender, EventArgs e) {
 
             var button = (Button)sender;
-            float size = ExtraKeyFontSize;
+            float size = UnitKeyFontSize;
 
             if(AngularUnit != 2) {
 
