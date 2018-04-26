@@ -92,7 +92,7 @@ namespace ExpressionsClassLibrary {
 
             if(number < 1) {
 
-                throw new ArgumentException("Invalid Input.");
+                throw new ArgumentOutOfRangeException("Invalid Input.");
             }
 
             return NaturalLogarithm(number + NthRoot(AsDecimal(number, 2, Math.Pow) - 1, 2));
@@ -102,7 +102,7 @@ namespace ExpressionsClassLibrary {
 
             if(Math.Abs(number) >= 1) {
 
-                throw new ArgumentException("Invalid Input.");
+                throw new ArgumentOutOfRangeException("Invalid Input.");
             }
 
             return decimal.Divide(NaturalLogarithm(decimal.Divide(1 + number, 1 - number)), 2);

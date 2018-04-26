@@ -69,7 +69,8 @@ namespace MockUpCalculator {
         private void HandleActionKey(string key) {
 
             if(key == "=") {
-
+                //TODO: handle dividebyzero exception
+                //TODO: handle overflow exception
                 standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
                 Calculator.Clear();
 
@@ -103,7 +104,8 @@ namespace MockUpCalculator {
                 standardDisplay.DisplayResult(Calculator.Input);
             }
             else {
-
+                //TODO: handle dividebyzero exception
+                //TODO: handle overflow exception
                 Calculator.Add(key);
                 string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
                 standardDisplay.DisplayResult(result);

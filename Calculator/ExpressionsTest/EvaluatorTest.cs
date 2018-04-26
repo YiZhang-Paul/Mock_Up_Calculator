@@ -432,7 +432,7 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException),
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
          "Invalid Input.")]
         public void InvalidArcCosh() {
 
@@ -457,7 +457,7 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException),
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
          "Invalid Input.")]
         public void InvalidArcTanh() {
 

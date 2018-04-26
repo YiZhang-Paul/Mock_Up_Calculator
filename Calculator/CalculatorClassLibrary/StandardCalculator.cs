@@ -132,13 +132,30 @@ namespace CalculatorClassLibrary {
             return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
         }
 
-        protected void TryEvaluate() {
+        protected decimal TryEvaluate() {
 
             try {
 
                 LastResult = GetResult();
+
+                return LastResult;
             }
-            catch(Exception) { }
+            catch(DivideByZeroException exception) {
+
+                throw exception;
+            }
+            catch(OverflowException exception) {
+
+                throw exception;
+            }
+            catch(ArgumentOutOfRangeException exception) {
+
+                throw exception;
+            }
+            catch(Exception) {
+
+                return LastResult;
+            }
         }
 
         public override decimal Evaluate() {
@@ -152,29 +169,24 @@ namespace CalculatorClassLibrary {
 
                 return GetResult();
             }
-            catch(DivideByZeroException) {
+            catch(DivideByZeroException exception) {
 
-                //TODO: handle dividebyzero exception
+                throw exception;
             }
-            catch(OverflowException) {
+            catch(OverflowException exception) {
 
-                //TODO: handle overflow exception
+                throw exception;
+            }
+            catch(ArgumentOutOfRangeException exception) {
+
+                throw exception;
             }
             catch(Exception) {
 
                 AddValue(LastResult);
 
-                try {
-
-                    return GetResult();
-                }
-                catch(Exception) {
-
-                    return LastResult;
-                }
+                return TryEvaluate();
             }
-
-            return -999;
         }
     }
 }
