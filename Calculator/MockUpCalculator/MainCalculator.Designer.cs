@@ -25,17 +25,17 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.topPanel = new UserControlClassLibrary.TopPanel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.uiLayout = new System.Windows.Forms.TableLayoutPanel();
             this.menuBarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.currentCalculatorLabel = new System.Windows.Forms.Label();
-            this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
-            this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
             this.zoomTimer = new System.Windows.Forms.Timer(this.components);
             this.closeTimer = new System.Windows.Forms.Timer(this.components);
+            this.topPanel = new UserControlClassLibrary.TopPanel();
+            this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
+            this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
             this.mainLayout.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.uiLayout.SuspendLayout();
@@ -60,18 +60,6 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayout.Size = new System.Drawing.Size(337, 589);
             this.mainLayout.TabIndex = 1;
-            // 
-            // topPanel
-            // 
-            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(337, 32);
-            this.topPanel.TabIndex = 0;
             // 
             // bottomPanel
             // 
@@ -180,6 +168,26 @@
             this.currentCalculatorLabel.Text = "Scientific";
             this.currentCalculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // zoomTimer
+            // 
+            this.zoomTimer.Interval = 16;
+            // 
+            // closeTimer
+            // 
+            this.closeTimer.Interval = 1;
+            // 
+            // topPanel
+            // 
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(337, 32);
+            this.topPanel.TabIndex = 0;
+            // 
             // standardDisplay
             // 
             this.standardDisplay.AutoSize = true;
@@ -205,14 +213,6 @@
             this.scientificKeypad.Name = "scientificKeypad";
             this.scientificKeypad.Size = new System.Drawing.Size(337, 406);
             this.scientificKeypad.TabIndex = 2;
-            // 
-            // zoomTimer
-            // 
-            this.zoomTimer.Interval = 16;
-            // 
-            // closeTimer
-            // 
-            this.closeTimer.Interval = 1;
             // 
             // MainCalculator
             // 

@@ -19,6 +19,8 @@ namespace UserControlClassLibrary {
 
             InitializeComponent();
             Formatter = new Formatter();
+            expressionLabel.MouseWheel += ScrollExpression;
+            scrollPanel.MouseWheel += ScrollExpression;
         }
 
         private int CountLength(string input) {
@@ -31,7 +33,7 @@ namespace UserControlClassLibrary {
             return Regex.Matches(input, "[0-9]").Count;
         }
 
-        private void ResizeLabel(Label label, float limit = 0.5f) {
+        private void ResizeLabelText(Label label, float limit = 0.9f) {
 
             float size = label.Parent.Height * limit;
             float width = label.Parent.Width;
@@ -54,18 +56,56 @@ namespace UserControlClassLibrary {
         public void DisplayResult(string result) {
 
             resultLabel.Text = Formatter.Format(result);
-            ResizeLabel(resultLabel);
+            ResizeLabelText(resultLabel, 0.5f);
         }
 
         public void DisplayExpression(string expression) {
 
             expressionLabel.Text = expression;
+            scrollPanel.Width = expressionLabel.Width;
+            scrollPanel.Left = Parent.Right - scrollPanel.Width;
         }
 
         public void DisplayError(string message) {
 
             resultLabel.Text = message;
-            ResizeLabel(resultLabel, 1);
+            ResizeLabelText(resultLabel, 1);
+        }
+
+        private bool CanScroll() {
+
+            return scrollPanel.Width > Parent.Width;
+        }
+
+        private void ScrollExpression(object sender, MouseEventArgs e) {
+
+            const int speed = 35;
+
+            if(e.Delta > 0) {
+
+                if(!CanScroll()) {
+
+                    return;
+                }
+
+                int maxX = Parent.Left + expressionLabel.Padding.Right;
+                scrollPanel.Left = Math.Min(scrollPanel.Left + speed, maxX);
+            }
+            else {
+
+                int minX = Parent.Right - scrollPanel.Width;
+                scrollPanel.Left = Math.Max(scrollPanel.Left - speed, minX);
+            }
+        }
+
+        private void expressionLabel_MouseHover(object sender, EventArgs e) {
+
+            ((Label)sender).Focus();
+        }
+
+        private void scrollPanel_MouseHover(object sender, EventArgs e) {
+
+            ((Panel)sender).Focus();
         }
     }
 }
