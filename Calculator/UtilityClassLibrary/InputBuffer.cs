@@ -51,6 +51,7 @@ namespace UtilityClassLibrary {
 
             Buffer.Clear();
             Buffer.Append(input);
+            IsEmpty = false;
         }
 
         public void Undo() {

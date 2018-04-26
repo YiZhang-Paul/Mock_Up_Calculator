@@ -39,6 +39,7 @@ namespace ExpressionsClassLibrary {
         public static string Modulus { get { return "Mod"; } }
         public static string Plus { get { return "+"; } }
         public static string Minus { get { return "−"; } }
+        public static string PI { get { return "π"; } }
 
         public static List<string[]> Operators {
 

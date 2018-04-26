@@ -105,6 +105,13 @@ namespace CalculatorClassLibrary {
                 return;
             }
 
+            if(input == OperatorLookup.PI) {
+
+                Buffer.Set(Math.PI.ToString());
+
+                return;
+            }
+
             if(!Buffer.IsEmpty) {
 
                 PushBuffer();

@@ -100,7 +100,7 @@ namespace UserControlClassLibrary {
 
         private void ButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseLeave, Tracker);
+            OnButtonMouseLeave(sender, e);
         }
 
         private void ButtonMouseClick(object sender, EventArgs e) {

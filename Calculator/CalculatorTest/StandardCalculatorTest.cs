@@ -90,6 +90,15 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void AddPI() {
+
+            calculator.Add(OperatorLookup.PI);
+
+            Assert.AreEqual(Math.PI.ToString(), calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+        }
+
+        [TestMethod]
         public void ValueInputAfterRightParenthesis() {
 
             calculator.Add("(");

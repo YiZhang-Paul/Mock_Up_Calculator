@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserControlClassLibrary;
-using UtilityClassLibrary;
+using ExpressionsClassLibrary;
 using CalculatorClassLibrary;
+using UtilityClassLibrary;
 
 namespace MockUpCalculator {
     public partial class MainCalculator : Form {
@@ -69,6 +70,7 @@ namespace MockUpCalculator {
             Resizer = new Resizer(this);
             Checker = new KeyChecker();
             Calculator = new StandardCalculator();
+            standardDisplay.DisplayResult(Calculator.Input);
             SaveDimension();
             SetupTopPanel();
             SetupKeypad();
@@ -128,7 +130,8 @@ namespace MockUpCalculator {
                 try {
 
                     Calculator.Add(key);
-                    string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
+                    bool isValue = key == "." || key == OperatorLookup.PI;
+                    string result = isValue ? Calculator.Input : Calculator.LastResult.ToString();
                     standardDisplay.DisplayResult(result);
                 }
                 catch(DivideByZeroException) {
