@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace UserControlClassLibrary {
     public interface IKeypad {
 
-        void Enable();
-        void Disable();
+        event EventHandler OnKeypadEnable;
+
+        bool IsDisabled { get; }
+
+        void EnableKeys();
+        void DisableKeys();
     }
 }

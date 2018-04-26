@@ -18,15 +18,16 @@ namespace UserControlClassLibrary {
         private HashSet<Button> MemoryKeys { get; set; }
         private HashSet<Button> HypotenuseKeys { get; set; }
         private HashSet<Button> BasicKeys { get; set; }
-        private bool Enabled { get; set; }
         private bool ExtensionToggled { get; set; }
         private bool HypotenuseToggled { get; set; }
         private float ExtraKeyFontSize { get; set; }
         private float BasicKeyFontSize { get; set; }
 
+        public bool IsDisabled { get; private set; }
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
 
+        public event EventHandler OnKeypadEnable;
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
         public event EventHandler OnButtonMouseLeave;
@@ -75,20 +76,21 @@ namespace UserControlClassLibrary {
             RecordKeys();
             Tracker = new ButtonTracker();
             UIHelper.DisableKeys(MemoryKeys, Tracker);
+            EnableKeys();
         }
 
-        public void Enable() {
+        public void EnableKeys() {
 
             UIHelper.EnableKeys(AllKeys, Tracker);
             UIHelper.DisableKeys(MemoryKeys, Tracker);
-            Enabled = true;
+            IsDisabled = false;
         }
 
-        public void Disable() {
+        public void DisableKeys() {
 
             UIHelper.DisableKeys(AllKeys, Tracker);
             UIHelper.EnableKeys(BasicKeys, Tracker);
-            Enabled = false;
+            IsDisabled = true;
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {
@@ -103,9 +105,12 @@ namespace UserControlClassLibrary {
 
         private void ButtonMouseClick(object sender, EventArgs e) {
 
-            if(!Enabled && BasicKeys.Contains((Button)sender)) {
+            if(IsDisabled && BasicKeys.Contains((Button)sender)) {
 
-                Enable();
+                EnableKeys();
+                OnKeypadEnable(sender, e);
+
+                return;
             }
 
             UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);

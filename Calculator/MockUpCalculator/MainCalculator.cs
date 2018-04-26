@@ -47,6 +47,7 @@ namespace MockUpCalculator {
 
         private void SetupKeypad() {
 
+            scientificKeypad.OnKeypadEnable += KeypadEnable;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -85,12 +86,12 @@ namespace MockUpCalculator {
                 catch(DivideByZeroException) {
 
                     standardDisplay.DisplayError(divideByZeroMessage);
-                    scientificKeypad.Disable();
+                    scientificKeypad.DisableKeys();
                 }
                 catch(Exception) {
 
                     standardDisplay.DisplayError(invalidInput);
-                    scientificKeypad.Disable();
+                    scientificKeypad.DisableKeys();
                 }
 
                 return;
@@ -133,12 +134,12 @@ namespace MockUpCalculator {
                 catch(DivideByZeroException) {
 
                     standardDisplay.DisplayError(divideByZeroMessage);
-                    scientificKeypad.Disable();
+                    scientificKeypad.DisableKeys();
                 }
                 catch(Exception) {
 
                     standardDisplay.DisplayError(invalidInput);
-                    scientificKeypad.Disable();
+                    scientificKeypad.DisableKeys();
                 }
             }
 
@@ -158,6 +159,22 @@ namespace MockUpCalculator {
             }
 
             HandleCalculation(key);
+        }
+
+        private void KeypadEnable(object sender, EventArgs e) {
+
+            standardDisplay.Clear();
+            Calculator.Clear();
+            string key = ((Button)sender).Tag.ToString();
+
+            if(Checker.IsInputKey(key)) {
+
+                HandleCalculation(key);
+            }
+            else {
+
+                standardDisplay.DisplayResult(Calculator.Input);
+            }
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
