@@ -74,23 +74,27 @@ namespace ExpressionsClassLibrary {
             return total;
         }
 
+        public bool CanAddValue() {
+
+            var invalidTypes = new HashSet<KeyType>() {
+
+                KeyType.Value,
+                KeyType.Unary,
+                KeyType.Right
+            };
+
+            return !invalidTypes.Contains(LastKey.Last());
+        }
+
         public void AddValue(decimal input) {
 
-            switch(LastKey.Last()) {
+            if(!CanAddValue()) {
 
-                case KeyType.Value :
-                case KeyType.Unary :
-                case KeyType.Right :
-
-                    throw new InvalidOperationException("Operands Must be Separated by Operators.");
-
-                default :
-
-                    Buffer.Add(input.ToString());
-                    LastKey.Add(KeyType.Value);
-
-                    break;
+                throw new InvalidOperationException("Operands Must be Separated by Operators.");
             }
+
+            Buffer.Add(input.ToString());
+            LastKey.Add(KeyType.Value);
         }
 
         public void AddUnary(string input) {

@@ -11,6 +11,7 @@ namespace ExpressionsClassLibrary {
 
         void Clear();
         void Undo();
+        bool CanAddValue();
         void AddValue(decimal input);
         void AddUnary(string input);
         void AddBinary(string input);

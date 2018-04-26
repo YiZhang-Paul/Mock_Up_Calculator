@@ -46,16 +46,19 @@ namespace CalculatorClassLibrary {
             ClearInput();
         }
 
+        public override void Add(decimal input) {
+
+            if(!Builder.CanAddValue()) {
+
+                Clear();
+            }
+
+            base.Add(input);
+        }
+
         private void AddValue(decimal value) {
 
-            try {
-
-                Builder.AddValue(value);
-            }
-            catch(Exception) {
-
-                //TODO: add value
-            }
+            Builder.AddValue(value);
         }
 
         private void AddParentheses(string input) {

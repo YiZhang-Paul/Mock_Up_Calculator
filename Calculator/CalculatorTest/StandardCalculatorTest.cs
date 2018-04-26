@@ -90,6 +90,52 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void ValueInputAfterRightParenthesis() {
+
+            calculator.Add("(");
+
+            Assert.AreEqual("(", calculator.Expression);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("(", calculator.Expression);
+
+            calculator.Add(OperatorLookup.Plus);
+
+            Assert.AreEqual("( 5 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(5);
+
+            Assert.AreEqual("( 5 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(")");
+
+            Assert.AreEqual("( 5 " + OperatorLookup.Plus + " 5 )", calculator.Expression);
+
+            calculator.Add(8);
+
+            Assert.AreEqual("8", calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+        }
+
+        [TestMethod]
+        public void ValueInputAfterUnaryOperator() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Factorial);
+
+            Assert.AreEqual("5 " + OperatorLookup.Factorial, calculator.Expression);
+
+            calculator.Add(9);
+
+            Assert.AreEqual("9", calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+        }
+
+        [TestMethod]
         public void InvalidUnaryOperator() {
 
             calculator.Add(5);
