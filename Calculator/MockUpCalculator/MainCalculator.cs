@@ -172,6 +172,7 @@ namespace MockUpCalculator {
 
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
+            ButtonLoseFocus(sender, e);
             standardDisplay.Clear();
             string key = ((Button)sender).Tag.ToString();
 
@@ -199,6 +200,11 @@ namespace MockUpCalculator {
 
                 standardDisplay.DisplayResult(Calculator.Input);
             }
+        }
+
+        private void ButtonLoseFocus(object sender, EventArgs e) {
+
+            currentCalculatorLabel.Focus();
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {

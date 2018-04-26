@@ -25,25 +25,25 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.topPanel = new UserControlClassLibrary.TopPanel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.uiLayout = new System.Windows.Forms.TableLayoutPanel();
             this.menuBarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.currentCalculatorLabel = new System.Windows.Forms.Label();
-            this.zoomTimer = new System.Windows.Forms.Timer(this.components);
-            this.closeTimer = new System.Windows.Forms.Timer(this.components);
-            this.topPanel = new UserControlClassLibrary.TopPanel();
             this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
             this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
+            this.zoomTimer = new System.Windows.Forms.Timer(this.components);
+            this.closeTimer = new System.Windows.Forms.Timer(this.components);
             this.mainLayout.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.uiLayout.SuspendLayout();
             this.menuBarLayout.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // mainLayout
-            //
+            // 
             this.mainLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.mainLayout.ColumnCount = 1;
@@ -60,9 +60,21 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayout.Size = new System.Drawing.Size(337, 589);
             this.mainLayout.TabIndex = 1;
-            //
+            // 
+            // topPanel
+            // 
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(337, 32);
+            this.topPanel.TabIndex = 0;
+            // 
             // bottomPanel
-            //
+            // 
             this.bottomPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bottomPanel.Controls.Add(this.uiLayout);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -71,9 +83,9 @@
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(337, 557);
             this.bottomPanel.TabIndex = 1;
-            //
+            // 
             // uiLayout
-            //
+            // 
             this.uiLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.uiLayout.ColumnCount = 1;
             this.uiLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -90,9 +102,9 @@
             this.uiLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.88166F));
             this.uiLayout.Size = new System.Drawing.Size(337, 557);
             this.uiLayout.TabIndex = 0;
-            //
+            // 
             // menuBarLayout
-            //
+            // 
             this.menuBarLayout.ColumnCount = 3;
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -108,9 +120,9 @@
             this.menuBarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.menuBarLayout.Size = new System.Drawing.Size(337, 50);
             this.menuBarLayout.TabIndex = 0;
-            //
+            // 
             // btnChangeCalculator
-            //
+            // 
             this.btnChangeCalculator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnChangeCalculator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnChangeCalculator.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -129,11 +141,12 @@
             this.btnChangeCalculator.Text = "≡";
             this.btnChangeCalculator.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChangeCalculator.UseVisualStyleBackColor = true;
+            this.btnChangeCalculator.Click += new System.EventHandler(this.ButtonLoseFocus);
             this.btnChangeCalculator.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnChangeCalculator.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
-            //
+            // 
             // btnHistory
-            //
+            // 
             this.btnHistory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -150,11 +163,12 @@
             this.btnHistory.TabIndex = 2;
             this.btnHistory.Text = "⏲";
             this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Click += new System.EventHandler(this.ButtonLoseFocus);
             this.btnHistory.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnHistory.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
-            //
+            // 
             // currentCalculatorLabel
-            //
+            // 
             this.currentCalculatorLabel.AutoSize = true;
             this.currentCalculatorLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.currentCalculatorLabel.Font = new System.Drawing.Font("Segoe UI", 18F);
@@ -165,29 +179,9 @@
             this.currentCalculatorLabel.TabIndex = 3;
             this.currentCalculatorLabel.Text = "Scientific";
             this.currentCalculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
-            // zoomTimer
-            //
-            this.zoomTimer.Interval = 16;
-            //
-            // closeTimer
-            //
-            this.closeTimer.Interval = 1;
-            //
-            // topPanel
-            //
-            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(337, 32);
-            this.topPanel.TabIndex = 0;
-            //
+            // 
             // standardDisplay
-            //
+            // 
             this.standardDisplay.AutoSize = true;
             this.standardDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.standardDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -199,9 +193,9 @@
             this.standardDisplay.Name = "standardDisplay";
             this.standardDisplay.Size = new System.Drawing.Size(337, 101);
             this.standardDisplay.TabIndex = 1;
-            //
+            // 
             // scientificKeypad
-            //
+            // 
             this.scientificKeypad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.scientificKeypad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scientificKeypad.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -211,9 +205,17 @@
             this.scientificKeypad.Name = "scientificKeypad";
             this.scientificKeypad.Size = new System.Drawing.Size(337, 406);
             this.scientificKeypad.TabIndex = 2;
-            //
+            // 
+            // zoomTimer
+            // 
+            this.zoomTimer.Interval = 16;
+            // 
+            // closeTimer
+            // 
+            this.closeTimer.Interval = 1;
+            // 
             // MainCalculator
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
