@@ -96,18 +96,37 @@ namespace CalculatorClassLibrary {
             }
         }
 
-        public override void Add(string input) {
+        public virtual bool IsSpecialKey(string input) {
+
+            if(input == "." || input == OperatorLookup.PI) {
+
+                return true;
+            }
+
+            return input == OperatorLookup.Negate && !Buffer.IsEmpty;
+        }
+
+        protected virtual void HandleSpecialKey(string input) {
 
             if(input == ".") {
 
                 Buffer.Add(input);
-
-                return;
             }
-
-            if(input == OperatorLookup.PI) {
+            else if(input == OperatorLookup.PI) {
 
                 Buffer.Set(Math.PI.ToString());
+            }
+            else {
+
+                Buffer.Negate();
+            }
+        }
+
+        public override void Add(string input) {
+
+            if(IsSpecialKey(input)) {
+
+                HandleSpecialKey(input);
 
                 return;
             }

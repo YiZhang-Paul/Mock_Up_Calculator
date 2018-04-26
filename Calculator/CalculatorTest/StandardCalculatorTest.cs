@@ -99,6 +99,25 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void NegateInput() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual("5", calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Negate);
+
+            Assert.AreEqual("-5", calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Negate);
+
+            Assert.AreEqual("5", calculator.Input);
+            Assert.AreEqual(string.Empty, calculator.Expression);
+        }
+
+        [TestMethod]
         public void ValueInputAfterRightParenthesis() {
 
             calculator.Add("(");

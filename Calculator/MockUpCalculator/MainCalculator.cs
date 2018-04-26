@@ -76,25 +76,30 @@ namespace MockUpCalculator {
             SetupKeypad();
         }
 
+        private void HandleEvaluation() {
+
+            try {
+
+                standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
+                Calculator.Clear();
+            }
+            catch(DivideByZeroException) {
+
+                standardDisplay.DisplayError(divideByZeroMessage);
+                scientificKeypad.DisableKeys();
+            }
+            catch(Exception) {
+
+                standardDisplay.DisplayError(invalidInput);
+                scientificKeypad.DisableKeys();
+            }
+        }
+
         private void HandleActionKey(string key) {
 
             if(key == "=") {
 
-                try {
-
-                    standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
-                    Calculator.Clear();
-                }
-                catch(DivideByZeroException) {
-
-                    standardDisplay.DisplayError(divideByZeroMessage);
-                    scientificKeypad.DisableKeys();
-                }
-                catch(Exception) {
-
-                    standardDisplay.DisplayError(invalidInput);
-                    scientificKeypad.DisableKeys();
-                }
+                HandleEvaluation();
 
                 return;
             }
@@ -116,34 +121,50 @@ namespace MockUpCalculator {
             standardDisplay.DisplayExpression(Calculator.Expression);
         }
 
+        private void HandleValue(decimal value) {
+
+            Calculator.Add(value);
+            standardDisplay.DisplayResult(Calculator.Input);
+        }
+
+        private void HandleOperator(string key) {
+
+            try {
+
+                Calculator.Add(key);
+
+                if(Calculator.IsSpecialKey(key)) {
+
+                    standardDisplay.DisplayResult(Calculator.Input);
+
+                    return;
+                }
+
+                standardDisplay.DisplayResult(Calculator.LastResult.ToString());
+            }
+            catch(DivideByZeroException) {
+
+                standardDisplay.DisplayError(divideByZeroMessage);
+                scientificKeypad.DisableKeys();
+            }
+            catch(Exception) {
+
+                standardDisplay.DisplayError(invalidInput);
+                scientificKeypad.DisableKeys();
+            }
+        }
+
         private void HandleCalculation(string key) {
 
             decimal value = 0;
 
             if(decimal.TryParse(key, out value)) {
 
-                Calculator.Add(value);
-                standardDisplay.DisplayResult(Calculator.Input);
+                HandleValue(value);
             }
             else {
 
-                try {
-
-                    Calculator.Add(key);
-                    bool isValue = key == "." || key == OperatorLookup.PI;
-                    string result = isValue ? Calculator.Input : Calculator.LastResult.ToString();
-                    standardDisplay.DisplayResult(result);
-                }
-                catch(DivideByZeroException) {
-
-                    standardDisplay.DisplayError(divideByZeroMessage);
-                    scientificKeypad.DisableKeys();
-                }
-                catch(Exception) {
-
-                    standardDisplay.DisplayError(invalidInput);
-                    scientificKeypad.DisableKeys();
-                }
+                HandleOperator(key);
             }
 
             standardDisplay.DisplayExpression(Calculator.Expression);

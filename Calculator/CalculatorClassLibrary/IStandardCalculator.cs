@@ -11,5 +11,6 @@ namespace CalculatorClassLibrary {
         string Expression { get; }
 
         void ClearInput();
+        bool IsSpecialKey(string input);
     }
 }
