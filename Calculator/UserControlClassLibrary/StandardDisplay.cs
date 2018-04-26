@@ -63,7 +63,8 @@ namespace UserControlClassLibrary {
 
             expressionLabel.Text = expression;
             scrollPanel.Width = expressionLabel.Width;
-            scrollPanel.Left = Parent.Right - scrollPanel.Width;
+            scrollPanel.Left = MinScrollX();
+            ShowArrows();
         }
 
         public void DisplayError(string message) {
@@ -74,28 +75,58 @@ namespace UserControlClassLibrary {
 
         private bool CanScroll() {
 
-            return scrollPanel.Width > Parent.Width;
+            int width = Parent.Width - leftArrowPanel.Width - rightArrowPanel.Width;
+
+            return scrollPanel.Width > width;
+        }
+
+        private int MaxScrollX() {
+
+            return Parent.Left + expressionLabel.Padding.Right + leftArrowPanel.Width;
+        }
+
+        private int MinScrollX() {
+
+            return Parent.Right - rightArrowPanel.Width - scrollPanel.Width;
+        }
+
+        private void ShowArrows() {
+
+            leftArrowLabel.Visible = scrollPanel.Left < MaxScrollX();
+            rightArrowLabel.Visible = scrollPanel.Left > MinScrollX();
+        }
+
+        private void ScrollLeft(int speed) {
+
+            if(!CanScroll()) {
+
+                return;
+            }
+
+            int maxX = MaxScrollX();
+            scrollPanel.Left = Math.Min(scrollPanel.Left + speed, maxX);
+        }
+
+        private void ScrollRight(int speed) {
+
+            int minX = MinScrollX();
+            scrollPanel.Left = Math.Max(scrollPanel.Left - speed, minX);
         }
 
         private void ScrollExpression(object sender, MouseEventArgs e) {
 
-            const int speed = 35;
+            const int speed = 25;
 
             if(e.Delta > 0) {
 
-                if(!CanScroll()) {
-
-                    return;
-                }
-
-                int maxX = Parent.Left + expressionLabel.Padding.Right;
-                scrollPanel.Left = Math.Min(scrollPanel.Left + speed, maxX);
+                ScrollLeft(speed);
             }
             else {
 
-                int minX = Parent.Right - scrollPanel.Width;
-                scrollPanel.Left = Math.Max(scrollPanel.Left - speed, minX);
+                ScrollRight(speed);
             }
+
+            ShowArrows();
         }
 
         private void expressionLabel_MouseHover(object sender, EventArgs e) {
