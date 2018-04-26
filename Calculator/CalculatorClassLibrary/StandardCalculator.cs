@@ -177,10 +177,6 @@ namespace CalculatorClassLibrary {
 
                 throw exception;
             }
-            catch(ArgumentOutOfRangeException exception) {
-
-                throw exception;
-            }
             catch(Exception) {
 
                 AddValue(LastResult);

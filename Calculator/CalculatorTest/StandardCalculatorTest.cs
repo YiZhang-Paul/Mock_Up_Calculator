@@ -178,6 +178,69 @@ namespace CalculatorTest {
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException),
          "Cannot Divide by Zero.")]
+        public void TryEvaluateDivideByZero() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Divide);
+
+            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+
+            calculator.Add(0);
+
+            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Plus);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException),
+         "Operand is Too Large.")]
+        public void TryEvaluateOverflow() {
+
+            calculator.Add(35000000000000000000000000000m);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Plus);
+
+            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(35000000000000000000000000000m);
+
+            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Plus);
+
+            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus + " 35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(35000000000000000000000000000m);
+
+            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus + " 35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(OperatorLookup.Plus);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+         "Invalid Input")]
+        public void TryEvaluateInvalidInput() {
+
+            calculator.Add(8);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add(OperatorLookup.ArcTanh);
+
+            Assert.AreEqual("8 " + OperatorLookup.ArcTanh, calculator.Expression);
+            calculator.Evaluate();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException),
+         "Cannot Divide by Zero.")]
         public void EvaluateDivideByZero() {
 
             calculator.Add(5);
@@ -206,6 +269,11 @@ namespace CalculatorTest {
             calculator.Add(OperatorLookup.Plus);
 
             Assert.AreEqual("50000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
+            calculator.Add(50000000000000000000000000000m);
+
+            Assert.AreEqual("50000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+
             calculator.Evaluate();
         }
 
@@ -220,7 +288,12 @@ namespace CalculatorTest {
 
             calculator.Add(OperatorLookup.ArcTanh);
 
-            Assert.AreEqual("8 " + OperatorLookup.ArcTanh, calculator.Expression);
+            try {
+
+                Assert.AreEqual("8 " + OperatorLookup.ArcTanh, calculator.Expression);
+            }
+            catch(Exception) { }
+
             calculator.Evaluate();
         }
     }
