@@ -11,13 +11,14 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class ScientificKeypad : UserControl, IScientificKeypad {
+    public partial class ScientificKeypad : UserControl, IKeypad, IScientificKeypad {
 
         private IButtonTracker Tracker { get; set; }
-        private Button[] AllKeys { get; set; }
-        private Button[] MemoryKeys { get; set; }
-        private Button[] HypotenuseKeys { get; set; }
-        private Button[] BasicKeys { get; set; }
+        private HashSet<Button> AllKeys { get; set; }
+        private HashSet<Button> MemoryKeys { get; set; }
+        private HashSet<Button> HypotenuseKeys { get; set; }
+        private HashSet<Button> BasicKeys { get; set; }
+        private bool Enabled { get; set; }
         private bool ExtensionToggled { get; set; }
         private bool HypotenuseToggled { get; set; }
         private float ExtraKeyFontSize { get; set; }
@@ -34,6 +35,7 @@ namespace UserControlClassLibrary {
 
             InitializeComponent();
             Initialize();
+            Disable();
         }
 
         private Button[] GetAllKeys() {
@@ -61,10 +63,10 @@ namespace UserControlClassLibrary {
 
         private void RecordKeys() {
 
-            AllKeys = GetAllKeys();
-            MemoryKeys = AllKeys.Where(IsMemoryKey).ToArray();
-            HypotenuseKeys = AllKeys.Where(IsHypotenuseKey).ToArray();
-            BasicKeys = AllKeys.Where(IsBasicKey).ToArray();
+            AllKeys = new HashSet<Button>(GetAllKeys());
+            MemoryKeys = new HashSet<Button>(AllKeys.Where(IsMemoryKey));
+            HypotenuseKeys = new HashSet<Button>(AllKeys.Where(IsHypotenuseKey));
+            BasicKeys = new HashSet<Button>(AllKeys.Where(IsBasicKey));
             ExtraKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
             BasicKeyFontSize = btnArcSine.Font.SizeInPoints;
         }
@@ -74,6 +76,20 @@ namespace UserControlClassLibrary {
             RecordKeys();
             Tracker = new ButtonTracker();
             UIHelper.DisableKeys(MemoryKeys, Tracker);
+        }
+
+        public void Enable() {
+
+            UIHelper.EnableKeys(AllKeys, Tracker);
+            UIHelper.DisableKeys(MemoryKeys, Tracker);
+            Enabled = true;
+        }
+
+        public void Disable() {
+
+            UIHelper.DisableKeys(AllKeys, Tracker);
+            UIHelper.EnableKeys(BasicKeys, Tracker);
+            Enabled = false;
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {
@@ -87,6 +103,11 @@ namespace UserControlClassLibrary {
         }
 
         private void ButtonMouseClick(object sender, EventArgs e) {
+
+            if(!Enabled && BasicKeys.Contains((Button)sender)) {
+
+                Enable();
+            }
 
             UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
         }

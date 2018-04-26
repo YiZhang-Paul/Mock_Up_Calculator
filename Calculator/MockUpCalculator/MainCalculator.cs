@@ -26,6 +26,10 @@ namespace MockUpCalculator {
         public MainCalculator() {
 
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             Initialize();
         }
 
