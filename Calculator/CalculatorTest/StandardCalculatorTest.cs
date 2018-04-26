@@ -90,6 +90,38 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void InvalidUnaryOperator() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("5 +", calculator.Expression);
+
+            calculator.Add(OperatorLookup.Factorial);
+
+            Assert.AreEqual("5 + 5 " + OperatorLookup.Factorial, calculator.Expression);
+        }
+
+        [TestMethod]
+        public void InvalidBinaryOperator() {
+
+            calculator.Add(5);
+
+            Assert.AreEqual(string.Empty, calculator.Expression);
+
+            calculator.Add("+");
+
+            Assert.AreEqual("5 +", calculator.Expression);
+
+            calculator.Add(OperatorLookup.Modulus);
+
+            Assert.AreEqual("5 " + OperatorLookup.Modulus, calculator.Expression);
+        }
+
+        [TestMethod]
         public void EvaluateValidExpression() {
 
             calculator.Add(5);

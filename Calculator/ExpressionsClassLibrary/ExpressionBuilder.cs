@@ -10,7 +10,7 @@ namespace ExpressionsClassLibrary {
         private enum KeyType { Value, Unary, Binary, Left, Right, Empty };
 
         private Deque<string> Buffer { get; set; }
-        private KeyType LastKey { get; set; }
+        private Deque<KeyType> LastKey { get; set; }
         private IParenthesize Parenthesizer { get; set; }
 
         public string Expression { get { return string.Join(" ", Buffer); } }
@@ -18,7 +18,7 @@ namespace ExpressionsClassLibrary {
         public ExpressionBuilder(IParenthesize parenthesizer) {
 
             Buffer = new Deque<string>();
-            LastKey = KeyType.Empty;
+            LastKey = new Deque<KeyType>() { KeyType.Empty };
             Parenthesizer = parenthesizer;
         }
 
@@ -44,13 +44,19 @@ namespace ExpressionsClassLibrary {
                 Buffer.Add(expression);
             }
 
-            LastKey = typeTable[type];
+            LastKey.Add(typeTable[type]);
         }
 
         public void Clear() {
 
             Buffer.Clear();
-            LastKey = KeyType.Empty;
+            LastKey = new Deque<KeyType>() { KeyType.Empty };
+        }
+
+        public void Undo() {
+
+            Buffer.RemoveBack();
+            LastKey.RemoveBack();
         }
 
         private int MissingParentheses(string expression) {
@@ -70,7 +76,7 @@ namespace ExpressionsClassLibrary {
 
         public void AddValue(decimal input) {
 
-            switch(LastKey) {
+            switch(LastKey.Last()) {
 
                 case KeyType.Value :
                 case KeyType.Unary :
@@ -81,7 +87,7 @@ namespace ExpressionsClassLibrary {
                 default :
 
                     Buffer.Add(input.ToString());
-                    LastKey = KeyType.Value;
+                    LastKey.Add(KeyType.Value);
 
                     break;
             }
@@ -89,55 +95,55 @@ namespace ExpressionsClassLibrary {
 
         public void AddUnary(string input) {
 
-            if(LastKey == KeyType.Binary) {
+            if(LastKey.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
 
-            if(LastKey == KeyType.Left || LastKey == KeyType.Empty) {
+            if(LastKey.Last() == KeyType.Left || LastKey.Last() == KeyType.Empty) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey = KeyType.Unary;
+            LastKey.Add(KeyType.Unary);
         }
 
         public void AddBinary(string input) {
 
-            if(LastKey == KeyType.Binary) {
+            if(LastKey.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
 
-            if(LastKey == KeyType.Left || LastKey == KeyType.Empty) {
+            if(LastKey.Last() == KeyType.Left || LastKey.Last() == KeyType.Empty) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey = KeyType.Binary;
+            LastKey.Add(KeyType.Binary);
         }
 
         private void AddLeftParenthesis(string input) {
 
-            if(LastKey == KeyType.Value || LastKey == KeyType.Unary) {
+            if(LastKey.Last() == KeyType.Value || LastKey.Last() == KeyType.Unary) {
 
                 throw new InvalidOperationException("Missing Operators.");
             }
 
-            if(LastKey == KeyType.Right) {
+            if(LastKey.Last() == KeyType.Right) {
 
                 throw new InvalidOperationException("Mismatched Parentheses.");
             }
 
             Buffer.Add(input);
-            LastKey = KeyType.Left;
+            LastKey.Add(KeyType.Left);
         }
 
         private void AddRightParenthesis(string input) {
 
-            if(LastKey == KeyType.Binary) {
+            if(LastKey.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
@@ -147,13 +153,13 @@ namespace ExpressionsClassLibrary {
                 throw new InvalidOperationException("Mismatched Parentheses.");
             }
 
-            if(LastKey == KeyType.Left) {
+            if(LastKey.Last() == KeyType.Left) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey = KeyType.Right;
+            LastKey.Add(KeyType.Right);
         }
 
         public void AddParentheses(string input) {

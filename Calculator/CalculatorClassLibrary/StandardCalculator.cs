@@ -76,9 +76,10 @@ namespace CalculatorClassLibrary {
 
                 Builder.AddUnary(input);
             }
-            catch(Exception) {
+            catch(InvalidOperationException) {
 
-                //TODO: add current evaluated value
+                Builder.AddValue(LastResult);
+                Builder.AddUnary(input);
             }
         }
 
@@ -88,9 +89,10 @@ namespace CalculatorClassLibrary {
 
                 Builder.AddBinary(input);
             }
-            catch(Exception) {
+            catch(InvalidOperationException) {
 
-                //TODO: change last binary operator
+                Builder.Undo();
+                Builder.AddBinary(input);
             }
         }
 
@@ -125,11 +127,16 @@ namespace CalculatorClassLibrary {
             TryEvaluate();
         }
 
+        protected decimal GetResult() {
+
+            return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+        }
+
         protected void TryEvaluate() {
 
             try {
 
-                LastResult = Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+                LastResult = GetResult();
             }
             catch(Exception) { }
         }
@@ -143,7 +150,7 @@ namespace CalculatorClassLibrary {
 
             try {
 
-                return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+                return GetResult();
             }
             catch(DivideByZeroException) {
 
@@ -159,7 +166,7 @@ namespace CalculatorClassLibrary {
 
                 try {
 
-                    return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+                    return GetResult();
                 }
                 catch(Exception) {
 

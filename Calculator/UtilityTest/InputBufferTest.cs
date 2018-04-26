@@ -1,20 +1,17 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UtilityClassLibrary;
-using Moq;
 
 namespace UtilityTest {
     [TestClass]
     public class InputBufferTest {
 
-        Mock<IFormatter> formatter;
         InputBuffer buffer;
 
         [TestInitialize]
         public void Setup() {
 
-            formatter = new Mock<IFormatter>();
-            buffer = new InputBuffer(formatter.Object);
+            buffer = new InputBuffer();
         }
 
         [TestMethod]
@@ -166,29 +163,6 @@ namespace UtilityTest {
             buffer.Negate();
             Assert.AreEqual(11.21m, buffer.Value);
             Assert.IsFalse(buffer.IsNegative);
-        }
-
-        [TestMethod]
-        public void GetFormattedInput() {
-
-            formatter.Setup(x => x.Format(It.IsAny<string>(), It.IsAny<bool>()))
-                     .Returns((string digits, bool isDecimal) => {
-
-                         if(digits == "0.01") {
-
-                             return "0.01";
-                         }
-
-                         return digits == "-11." ? "-11." : "";
-                     });
-
-            buffer.Set("0.01");
-            Assert.AreEqual(0.01m, buffer.Value);
-            Assert.AreEqual("0.01", buffer.Formatted);
-
-            buffer.Set("-11.");
-            Assert.AreEqual(-11, buffer.Value);
-            Assert.AreEqual("-11.", buffer.Formatted);
         }
     }
 }

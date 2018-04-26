@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace UserControlClassLibrary {
     public interface IDisplay {
 
-        void Display(string input, string expression);
+        void Clear();
+        void DisplayResult(string result);
+        void DisplayExpression(string expression);
+        void DisplayError(string error);
     }
 }

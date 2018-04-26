@@ -39,12 +39,12 @@ namespace UtilityTest {
         [TestMethod]
         public void KeepDecimalPoint() {
 
-            Assert.AreEqual("1,000,120.", formatter.Format("1000120", true));
-            Assert.AreEqual("-1,000,120.", formatter.Format("-1000120", true));
-            Assert.AreEqual("1,990.", formatter.Format("1990", true));
-            Assert.AreEqual("990.", formatter.Format("990", true));
-            Assert.AreEqual("-0.", formatter.Format("-0", true));
-            Assert.AreEqual("0.", formatter.Format("0", true));
+            Assert.AreEqual("1,000,120.", formatter.Format("1000120."));
+            Assert.AreEqual("-1,000,120.", formatter.Format("-1000120."));
+            Assert.AreEqual("1,990.", formatter.Format("1990."));
+            Assert.AreEqual("990.", formatter.Format("990."));
+            Assert.AreEqual("-0.", formatter.Format("-0."));
+            Assert.AreEqual("0.", formatter.Format("0."));
         }
     }
 }

@@ -20,10 +20,25 @@ namespace UserControlClassLibrary {
             Formatter = new Formatter();
         }
 
-        public void Display(string result, string expression) {
+        public void Clear() {
+
+            resultLabel.Text = string.Empty;
+            expressionLabel.Text = string.Empty;
+        }
+
+        public void DisplayResult(string result) {
 
             resultLabel.Text = Formatter.Format(result);
+        }
+
+        public void DisplayExpression(string expression) {
+
             expressionLabel.Text = expression;
+        }
+
+        public void DisplayError(string message) {
+
+            resultLabel.Text = message;
         }
     }
 }

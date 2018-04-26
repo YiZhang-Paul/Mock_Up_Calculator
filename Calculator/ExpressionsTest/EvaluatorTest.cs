@@ -555,6 +555,14 @@ namespace ExpressionsTest {
         }
 
         [TestMethod]
+        public void PowerOfTen() {
+
+            var node = parser.Parse("( 5 " + OperatorLookup.PowerOfTen + " )");
+
+            Assert.IsTrue(IsAccurate(100000, evaluator.Evaluate(node)));
+        }
+
+        [TestMethod]
         public void DmsToDegrees() {
 
             unitConverter.Setup(x => x.DmsToDegree(It.IsAny<decimal>())).Returns(1);

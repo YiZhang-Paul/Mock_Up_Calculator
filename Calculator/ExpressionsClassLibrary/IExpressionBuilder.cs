@@ -10,6 +10,7 @@ namespace ExpressionsClassLibrary {
         string Expression { get; }
 
         void Clear();
+        void Undo();
         void AddValue(decimal input);
         void AddUnary(string input);
         void AddBinary(string input);

@@ -70,24 +70,27 @@ namespace MockUpCalculator {
 
             if(key == "=") {
 
-                standardDisplay.Display(Calculator.Evaluate().ToString(), string.Empty);
+                standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
                 Calculator.Clear();
+
+                return;
             }
-            else if(key == "C") {
+
+            if(key == "C") {
 
                 Calculator.Clear();
-                standardDisplay.Display(Calculator.Input, string.Empty);
             }
             else if(key == "CE") {
 
                 Calculator.ClearInput();
-                standardDisplay.Display(Calculator.Input, Calculator.Expression);
             }
             else {
 
                 Calculator.Undo();
-                standardDisplay.Display(Calculator.Input, Calculator.Expression);
             }
+
+            standardDisplay.DisplayResult(Calculator.Input);
+            standardDisplay.DisplayExpression(Calculator.Expression);
         }
 
         private void HandleCalculation(string key) {
@@ -97,18 +100,21 @@ namespace MockUpCalculator {
             if(decimal.TryParse(key, out value)) {
 
                 Calculator.Add(value);
-                standardDisplay.Display(Calculator.Input, Calculator.Expression);
+                standardDisplay.DisplayResult(Calculator.Input);
             }
             else {
 
                 Calculator.Add(key);
                 string result = key == "." ? Calculator.Input : Calculator.LastResult.ToString();
-                standardDisplay.Display(result, Calculator.Expression);
+                standardDisplay.DisplayResult(result);
             }
+
+            standardDisplay.DisplayExpression(Calculator.Expression);
         }
 
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
+            standardDisplay.Clear();
             string key = ((Button)sender).Tag.ToString();
 
             if(Checker.IsActionKey(key)) {
