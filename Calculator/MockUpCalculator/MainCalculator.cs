@@ -25,6 +25,8 @@ namespace MockUpCalculator {
         private Resizer Resizer { get; set; }
         private Rectangle Viewport { get { return Screen.FromControl(this).WorkingArea; } }
         private IKeyChecker Checker { get; set; }
+        private IFormatter NumberFormatter { get; set; }
+        private IFormatter EngineeringFormatter { get; set; }
         private IStandardCalculator Calculator { get; set; }
 
         public MainCalculator() {
@@ -49,6 +51,7 @@ namespace MockUpCalculator {
         private void SetupKeypad() {
 
             scientificKeypad.OnKeypadEnable += KeypadEnable;
+            scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -70,17 +73,34 @@ namespace MockUpCalculator {
             Resizer = new Resizer(this);
             Checker = new KeyChecker();
             Calculator = new StandardCalculator();
-            standardDisplay.DisplayResult(Calculator.Input);
+            NumberFormatter = new NumberFormatter();
+            EngineeringFormatter = new EngineeringFormatter();
+            DisplayValue(Calculator.Input);
             SaveDimension();
             SetupTopPanel();
             SetupKeypad();
+        }
+
+        private IFormatter GetFormatter() {
+
+            if(scientificKeypad.EngineeringMode) {
+
+                return EngineeringFormatter;
+            }
+
+            return NumberFormatter;
+        }
+
+        private void DisplayValue(string value) {
+
+            standardDisplay.DisplayResult(value, GetFormatter());
         }
 
         private void HandleEvaluation() {
 
             try {
 
-                standardDisplay.DisplayResult(Calculator.Evaluate().ToString());
+                DisplayValue(Calculator.Evaluate().ToString());
                 Calculator.Clear();
             }
             catch(DivideByZeroException) {
@@ -117,14 +137,14 @@ namespace MockUpCalculator {
                 Calculator.Undo();
             }
 
-            standardDisplay.DisplayResult(Calculator.Input);
+            DisplayValue(Calculator.Input);
             standardDisplay.DisplayExpression(Calculator.Expression);
         }
 
         private void HandleValue(decimal value) {
 
             Calculator.Add(value);
-            standardDisplay.DisplayResult(Calculator.Input);
+            DisplayValue(Calculator.Input);
         }
 
         private void HandleOperator(string key) {
@@ -135,12 +155,12 @@ namespace MockUpCalculator {
 
                 if(Calculator.IsSpecialKey(key)) {
 
-                    standardDisplay.DisplayResult(Calculator.Input);
+                    DisplayValue(Calculator.Input);
 
                     return;
                 }
 
-                standardDisplay.DisplayResult(Calculator.LastResult.ToString());
+                DisplayValue(Calculator.LastResult.ToString());
             }
             catch(DivideByZeroException) {
 
@@ -198,8 +218,13 @@ namespace MockUpCalculator {
             }
             else {
 
-                standardDisplay.DisplayResult(Calculator.Input);
+                DisplayValue(Calculator.Input);
             }
+        }
+
+        private void RefreshDisplay(object sender, EventArgs e) {
+
+            standardDisplay.RefreshDisplay(GetFormatter());
         }
 
         private void ButtonLoseFocus(object sender, EventArgs e) {

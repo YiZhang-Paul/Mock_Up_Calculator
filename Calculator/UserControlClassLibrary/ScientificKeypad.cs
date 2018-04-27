@@ -27,6 +27,7 @@ namespace UserControlClassLibrary {
         public bool EngineeringMode { get; private set; }
 
         public event EventHandler OnKeypadEnable;
+        public event EventHandler OnEngineeringModeToggle;
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
         public event EventHandler OnButtonMouseLeave;
@@ -169,7 +170,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void btnScientificFormat_Click(object sender, EventArgs e) {
+        private void btnEngineeringFormat_Click(object sender, EventArgs e) {
 
             var button = (Button)sender;
 
@@ -179,6 +180,7 @@ namespace UserControlClassLibrary {
             }
 
             EngineeringMode = !EngineeringMode;
+            OnEngineeringModeToggle(sender, e);
 
             if(EngineeringMode) {
 

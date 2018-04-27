@@ -13,12 +13,11 @@ using UtilityClassLibrary;
 namespace UserControlClassLibrary {
     public partial class StandardDisplay : UserControl, IDisplay {
 
-        private IFormatter Formatter { get; set; }
+        private decimal CurrentValue { get; set; }
 
         public StandardDisplay() {
 
             InitializeComponent();
-            Formatter = new NumberFormatter();
             expressionLabel.MouseWheel += ScrollExpression;
             scrollPanel.MouseWheel += ScrollExpression;
         }
@@ -53,9 +52,15 @@ namespace UserControlClassLibrary {
             expressionLabel.Text = string.Empty;
         }
 
-        public void DisplayResult(string result) {
+        public void RefreshDisplay(IFormatter formatter) {
 
-            resultLabel.Text = Formatter.Format(result);
+            DisplayResult(CurrentValue.ToString(), formatter);
+        }
+
+        public void DisplayResult(string result, IFormatter formatter) {
+
+            CurrentValue = decimal.Parse(result);
+            resultLabel.Text = formatter.Format(result);
             ResizeLabelText(resultLabel, 0.5f);
         }
 

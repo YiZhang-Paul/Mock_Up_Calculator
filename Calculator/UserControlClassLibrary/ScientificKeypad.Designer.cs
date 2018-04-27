@@ -59,7 +59,7 @@
             this.btnMemoryClear = new System.Windows.Forms.Button();
             this.btnHypotenuse = new System.Windows.Forms.Button();
             this.btnDegRadGrad = new System.Windows.Forms.Button();
-            this.btnScientificFormat = new System.Windows.Forms.Button();
+            this.btnEngineeringFormat = new System.Windows.Forms.Button();
             this.extensionKeyBackPanel = new System.Windows.Forms.Panel();
             this.extensionOnePanel = new System.Windows.Forms.Panel();
             this.extensionOneLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -789,7 +789,7 @@
             this.extraKeysLayout.Controls.Add(this.btnMemoryClear, 0, 1);
             this.extraKeysLayout.Controls.Add(this.btnHypotenuse, 1, 0);
             this.extraKeysLayout.Controls.Add(this.btnDegRadGrad, 0, 0);
-            this.extraKeysLayout.Controls.Add(this.btnScientificFormat, 2, 0);
+            this.extraKeysLayout.Controls.Add(this.btnEngineeringFormat, 2, 0);
             this.extraKeysLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extraKeysLayout.Location = new System.Drawing.Point(3, 3);
             this.extraKeysLayout.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -986,28 +986,28 @@
             this.btnDegRadGrad.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDegRadGrad.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
-            // btnScientificFormat
+            // btnEngineeringFormat
             // 
-            this.btnScientificFormat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnScientificFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.btnScientificFormat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnScientificFormat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.btnScientificFormat.FlatAppearance.BorderSize = 2;
-            this.btnScientificFormat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btnScientificFormat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
-            this.btnScientificFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScientificFormat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnScientificFormat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnScientificFormat.Location = new System.Drawing.Point(112, 2);
-            this.btnScientificFormat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnScientificFormat.Name = "btnScientificFormat";
-            this.btnScientificFormat.Size = new System.Drawing.Size(51, 36);
-            this.btnScientificFormat.TabIndex = 4;
-            this.btnScientificFormat.Text = "F-E";
-            this.btnScientificFormat.UseVisualStyleBackColor = false;
-            this.btnScientificFormat.Click += new System.EventHandler(this.btnScientificFormat_Click);
-            this.btnScientificFormat.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
-            this.btnScientificFormat.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.btnEngineeringFormat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEngineeringFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnEngineeringFormat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEngineeringFormat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnEngineeringFormat.FlatAppearance.BorderSize = 2;
+            this.btnEngineeringFormat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btnEngineeringFormat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.btnEngineeringFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEngineeringFormat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnEngineeringFormat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEngineeringFormat.Location = new System.Drawing.Point(112, 2);
+            this.btnEngineeringFormat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEngineeringFormat.Name = "btnEngineeringFormat";
+            this.btnEngineeringFormat.Size = new System.Drawing.Size(51, 36);
+            this.btnEngineeringFormat.TabIndex = 4;
+            this.btnEngineeringFormat.Text = "F-E";
+            this.btnEngineeringFormat.UseVisualStyleBackColor = false;
+            this.btnEngineeringFormat.Click += new System.EventHandler(this.btnEngineeringFormat_Click);
+            this.btnEngineeringFormat.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnEngineeringFormat.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // extensionKeyBackPanel
             // 
@@ -1577,7 +1577,7 @@
             this.btnArcTangent.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnArcTangent.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
-            // scientificKeypad
+            // ScientificKeypad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1586,7 +1586,7 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "scientificKeypad";
+            this.Name = "ScientificKeypad";
             this.Size = new System.Drawing.Size(337, 406);
             this.mainLayout.ResumeLayout(false);
             this.baseKeyLayout.ResumeLayout(false);
@@ -1638,7 +1638,7 @@
         private System.Windows.Forms.Button btnMemoryClear;
         private System.Windows.Forms.Button btnHypotenuse;
         private System.Windows.Forms.Button btnDegRadGrad;
-        private System.Windows.Forms.Button btnScientificFormat;
+        private System.Windows.Forms.Button btnEngineeringFormat;
         private System.Windows.Forms.Panel extensionKeyBackPanel;
         private System.Windows.Forms.Panel extensionOnePanel;
         private System.Windows.Forms.TableLayoutPanel extensionOneLayout;

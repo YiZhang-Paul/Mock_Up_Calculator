@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
     public interface IDisplay {
 
         void Clear();
-        void DisplayResult(string result);
+        void RefreshDisplay(IFormatter formatter);
+        void DisplayResult(string result, IFormatter formatter);
         void DisplayExpression(string expression);
         void DisplayError(string error);
     }
