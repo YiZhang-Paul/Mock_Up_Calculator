@@ -73,6 +73,7 @@
     <Compile Include="InputBufferTest.cs" />
     <Compile Include="ButtonTrackerTest.cs" />
     <Compile Include="KeyCheckerTest.cs" />
+    <Compile Include="EngineeringFormatterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">
