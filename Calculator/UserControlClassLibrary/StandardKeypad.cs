@@ -13,6 +13,7 @@ using UtilityClassLibrary;
 namespace UserControlClassLibrary {
     public partial class StandardKeypad : UserControl, IKeypad {
 
+        protected bool HasMemory { get; set; }
         protected IButtonTracker Tracker { get; set; }
         protected HashSet<Button> AllKeys { get; set; }
         protected HashSet<Button> MemoryKeys { get; set; }
@@ -21,6 +22,12 @@ namespace UserControlClassLibrary {
         public bool IsDisabled { get; private set; }
 
         public event EventHandler OnKeypadEnable;
+        public event EventHandler OnMemoryStore;
+        public event EventHandler OnMemoryAdd;
+        public event EventHandler OnMemorySubtract;
+        public event EventHandler OnMemoryRecall;
+        public event EventHandler OnMemoryClear;
+        public event EventHandler OnMemoryToggle;
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
         public event EventHandler OnButtonMouseLeave;
@@ -66,7 +73,7 @@ namespace UserControlClassLibrary {
         public void EnableKeys() {
 
             UIHelper.EnableKeys(AllKeys, Tracker);
-            UIHelper.DisableKeys(MemoryKeys, Tracker);
+            DisableMemoryKeys();
             IsDisabled = false;
         }
 
@@ -75,6 +82,25 @@ namespace UserControlClassLibrary {
             UIHelper.DisableKeys(AllKeys, Tracker);
             UIHelper.EnableKeys(BasicKeys, Tracker);
             IsDisabled = true;
+        }
+
+        private void CheckMemory() {
+
+            if(!HasMemory) {
+
+                HasMemory = true;
+                EnableMemoryKeys();
+            }
+        }
+
+        protected void EnableMemoryKeys() {
+
+            UIHelper.EnableKeys(MemoryKeys, Tracker);
+        }
+
+        protected void DisableMemoryKeys() {
+
+            UIHelper.DisableKeys(MemoryKeys, Tracker);
         }
 
         protected virtual void ButtonMouseEnter(object sender, EventArgs e) {
@@ -98,6 +124,70 @@ namespace UserControlClassLibrary {
             }
 
             UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
+        }
+
+        protected virtual void MemoryStoreClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            CheckMemory();
+            OnMemoryStore(sender, e);
+        }
+
+        protected virtual void MemoryAddClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            CheckMemory();
+            OnMemoryAdd(sender, e);
+        }
+
+        protected virtual void MemorySubtractClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            CheckMemory();
+            OnMemorySubtract(sender, e);
+        }
+
+        protected virtual void MemoryClearClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            DisableMemoryKeys();
+            OnMemoryClear(sender, e);
+        }
+
+        protected virtual void MemoryRecallClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            OnMemoryRecall(sender, e);
+        }
+
+        protected virtual void MemoryToggleClick(object sender, EventArgs e) {
+
+            if(Tracker.IsDisabled((Button)sender)) {
+
+                return;
+            }
+
+            OnMemoryToggle(sender, e);
         }
     }
 }

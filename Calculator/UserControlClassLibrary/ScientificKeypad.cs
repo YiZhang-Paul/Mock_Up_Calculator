@@ -177,5 +177,35 @@ namespace UserControlClassLibrary {
 
             button.Font = new Font(button.Font.FontFamily, size);
         }
+
+        protected override void MemoryStoreClick(object sender, EventArgs e) {
+
+            base.MemoryStoreClick(sender, e);
+        }
+
+        protected override void MemoryAddClick(object sender, EventArgs e) {
+
+            base.MemoryAddClick(sender, e);
+        }
+
+        protected override void MemorySubtractClick(object sender, EventArgs e) {
+
+            base.MemorySubtractClick(sender, e);
+        }
+
+        protected override void MemoryClearClick(object sender, EventArgs e) {
+
+            base.MemoryClearClick(sender, e);
+        }
+
+        protected override void MemoryRecallClick(object sender, EventArgs e) {
+
+            base.MemoryRecallClick(sender, e);
+        }
+
+        protected override void MemoryToggleClick(object sender, EventArgs e) {
+
+            base.MemoryToggleClick(sender, e);
+        }
     }
 }
