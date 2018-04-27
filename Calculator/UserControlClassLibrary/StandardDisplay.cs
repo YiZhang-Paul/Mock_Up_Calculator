@@ -22,28 +22,34 @@ namespace UserControlClassLibrary {
             scrollPanel.MouseWheel += ScrollExpression;
         }
 
-        private int CountLength(string input) {
+        private Size GetTextSize(Label label, float size) {
 
-            if(!Regex.IsMatch(input, "[0-9]")) {
+            var font = new Font(label.Font.FontFamily, size, GraphicsUnit.Pixel);
 
-                return Regex.Matches(input, @"\S").Count;
-            }
-
-            return Regex.Matches(input, "[0-9]").Count;
+            return TextRenderer.MeasureText(label.Text, font);
         }
 
-        private void ResizeLabelText(Label label, float limit = 0.9f) {
+        private void SetFontSize(Label label, float size) {
+
+            label.Font = new Font(label.Font.FontFamily, size, GraphicsUnit.Pixel);
+        }
+
+        private void ResizeLabelText(Label label, float limit = 0.7f) {
 
             float size = label.Parent.Height * limit;
-            float width = label.Parent.Width;
-            int length = CountLength(label.Text);
+            float width = label.Parent.Width * 0.95f;
 
-            if(size * length > width) {
+            while(size > 0) {
 
-                size = width / length;
+                if(GetTextSize(label, size).Width <= width) {
+
+                    break;
+                }
+
+                size--;
             }
 
-            label.Font = new Font(label.Font.FontFamily, size);
+            SetFontSize(label, size);
         }
 
         public void Clear() {
@@ -61,7 +67,7 @@ namespace UserControlClassLibrary {
 
             CurrentValue = decimal.Parse(result);
             resultLabel.Text = formatter.Format(result);
-            ResizeLabelText(resultLabel, 0.5f);
+            ResizeLabelText(resultLabel);
         }
 
         public void DisplayExpression(string expression) {
