@@ -1,4 +1,3 @@
-D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\CalculatorClassLibrary.dll
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\CalculatorClassLibrary.pdb
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\ConverterClassLibrary.dll
@@ -11,5 +10,6 @@ D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\ExpressionsCla
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UserControlClassLibrary.pdb
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UtilityClassLibrary.pdb
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\Deque.xml
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.dll
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.pdb

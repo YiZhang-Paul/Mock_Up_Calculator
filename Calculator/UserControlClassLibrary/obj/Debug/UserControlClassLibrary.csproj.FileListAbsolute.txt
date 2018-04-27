@@ -1,11 +1,11 @@
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UserControlClassLibrary.dll
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UserControlClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UtilityClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UtilityClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ScientificKeypad.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.StandardDisplay.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.TopPanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.csproj.GenerateResource.Cache
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.dll
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.pdb
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.topPanel.resources
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.standardDisplay.resources
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.scientificKeypad.resources
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UtilityClassLibrary.dll
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UtilityClassLibrary.pdb

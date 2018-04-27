@@ -11,109 +11,50 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class ScientificKeypad : UserControl, IKeypad, IScientificKeypad {
+    public partial class ScientificKeypad : StandardKeypad, IScientificKeypad {
 
-        private IButtonTracker Tracker { get; set; }
-        private HashSet<Button> AllKeys { get; set; }
-        private HashSet<Button> MemoryKeys { get; set; }
-        private HashSet<Button> HypotenuseKeys { get; set; }
-        private HashSet<Button> BasicKeys { get; set; }
+        private HashSet<Button> TrigonometricKeys { get; set; }
         private bool ExtensionToggled { get; set; }
-        private bool HypotenuseToggled { get; set; }
+        private bool TrigonometricToggled { get; set; }
         private float UnitKeyFontSize { get; set; }
 
-        public bool IsDisabled { get; private set; }
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
 
-        public event EventHandler OnKeypadEnable;
-        public event EventHandler OnEngineeringModeToggle;
         public event EventHandler OnAngularUnitToggle;
-        public event EventHandler OnButtonMouseClick;
-        public event EventHandler OnButtonMouseEnter;
-        public event EventHandler OnButtonMouseLeave;
+        public event EventHandler OnEngineeringModeToggle;
 
         public ScientificKeypad() {
 
             InitializeComponent();
             Initialize();
+            UnitKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
         }
 
-        private Button[] GetAllKeys() {
-
-            var keys = new List<Button>();
-            UIHelper.ControlsOfType<Button>(this, keys);
-
-            return keys.ToArray();
-        }
-
-        private bool IsMemoryKey(Button button) {
-
-            return Regex.IsMatch(button.Text, "^(MC|MR|M▾)$");
-        }
-
-        private bool IsHypotenuseKey(Button button) {
+        private bool IsTrigonometricKey(Button button) {
 
             return Regex.IsMatch(button.Text, "sin|cos|tan");
         }
 
-        private bool IsBasicKey(Button button) {
+        protected override void RecordKeys() {
 
-            return Regex.IsMatch(button.Text, "^([0-9=]|CE|C|⌫)$");
+            base.RecordKeys();
+            TrigonometricKeys = new HashSet<Button>(AllKeys.Where(IsTrigonometricKey));
         }
 
-        private void RecordKeys() {
+        protected override void ButtonMouseEnter(object sender, EventArgs e) {
 
-            AllKeys = new HashSet<Button>(GetAllKeys());
-            MemoryKeys = new HashSet<Button>(AllKeys.Where(IsMemoryKey));
-            HypotenuseKeys = new HashSet<Button>(AllKeys.Where(IsHypotenuseKey));
-            BasicKeys = new HashSet<Button>(AllKeys.Where(IsBasicKey));
-            UnitKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
+            base.ButtonMouseEnter(sender, e);
         }
 
-        private void Initialize() {
+        protected override void ButtonMouseLeave(object sender, EventArgs e) {
 
-            RecordKeys();
-            Tracker = new ButtonTracker();
-            UIHelper.DisableKeys(MemoryKeys, Tracker);
-            EnableKeys();
+            base.ButtonMouseLeave(sender, e);
         }
 
-        public void EnableKeys() {
+        protected override void ButtonMouseClick(object sender, EventArgs e) {
 
-            UIHelper.EnableKeys(AllKeys, Tracker);
-            UIHelper.DisableKeys(MemoryKeys, Tracker);
-            IsDisabled = false;
-        }
-
-        public void DisableKeys() {
-
-            UIHelper.DisableKeys(AllKeys, Tracker);
-            UIHelper.EnableKeys(BasicKeys, Tracker);
-            IsDisabled = true;
-        }
-
-        private void ButtonMouseEnter(object sender, EventArgs e) {
-
-            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
-        }
-
-        private void ButtonMouseLeave(object sender, EventArgs e) {
-
-            OnButtonMouseLeave(sender, e);
-        }
-
-        private void ButtonMouseClick(object sender, EventArgs e) {
-
-            if(IsDisabled && BasicKeys.Contains((Button)sender)) {
-
-                EnableKeys();
-                OnKeypadEnable(sender, e);
-
-                return;
-            }
-
-            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
+            base.ButtonMouseClick(sender, e);
         }
 
         private void btnExtend_Click(object sender, EventArgs e) {
@@ -139,13 +80,13 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void UpdateHypotenuseKeys() {
+        private void UpdateTrigonometricKeys() {
 
-            foreach(var key in HypotenuseKeys) {
+            foreach(var key in TrigonometricKeys) {
 
-                string pattern = HypotenuseToggled ? "sin|cos|tan" : "h";
-                string replace = HypotenuseToggled ? "h" : string.Empty;
-                UIHelper.UpdateKeyText(key, pattern, replace, HypotenuseToggled);
+                string pattern = TrigonometricToggled ? "sin|cos|tan" : "h";
+                string replace = TrigonometricToggled ? "h" : string.Empty;
+                UIHelper.UpdateKeyText(key, pattern, replace, TrigonometricToggled);
             }
         }
 
@@ -158,10 +99,10 @@ namespace UserControlClassLibrary {
                 return;
             }
 
-            HypotenuseToggled = !HypotenuseToggled;
-            UpdateHypotenuseKeys();
+            TrigonometricToggled = !TrigonometricToggled;
+            UpdateTrigonometricKeys();
 
-            if(HypotenuseToggled) {
+            if(TrigonometricToggled) {
 
                 button.Paint += UIHelper.DrawUnderline;
             }

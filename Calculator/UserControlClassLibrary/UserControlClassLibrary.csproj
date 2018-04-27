@@ -58,6 +58,12 @@
     <Compile Include="StandardDisplay.Designer.cs">
       <DependentUpon>StandardDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="StandardKeypad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StandardKeypad.Designer.cs">
+      <DependentUpon>StandardKeypad.cs</DependentUpon>
+    </Compile>
     <Compile Include="TopPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
