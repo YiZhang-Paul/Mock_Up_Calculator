@@ -28,6 +28,7 @@ namespace UserControlClassLibrary {
 
         public event EventHandler OnKeypadEnable;
         public event EventHandler OnEngineeringModeToggle;
+        public event EventHandler OnAngularUnitToggle;
         public event EventHandler OnButtonMouseClick;
         public event EventHandler OnButtonMouseEnter;
         public event EventHandler OnButtonMouseLeave;
@@ -202,6 +203,7 @@ namespace UserControlClassLibrary {
             }
 
             AngularUnit = (AngularUnit + 1) % 3;
+            OnAngularUnitToggle(sender, e);
 
             if(AngularUnit == 0) {
 

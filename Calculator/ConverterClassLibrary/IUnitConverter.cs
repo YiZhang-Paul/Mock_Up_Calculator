@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace ConverterClassLibrary {
     public interface IUnitConverter {
 
-        decimal DegreeToRadian(decimal degree);
         decimal RadianToDegree(decimal radian);
+        decimal DegreeToRadian(decimal degree);
+        decimal RadianToGradian(decimal radian);
+        decimal GradianToRadian(decimal gradian);
         decimal DmsToDegree(decimal dms);
         decimal DegreeToDms(decimal degree);
     }

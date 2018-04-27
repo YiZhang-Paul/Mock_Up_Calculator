@@ -27,7 +27,7 @@ namespace MockUpCalculator {
         private IKeyChecker Checker { get; set; }
         private IFormatter NumberFormatter { get; set; }
         private IFormatter EngineeringFormatter { get; set; }
-        private IStandardCalculator Calculator { get; set; }
+        private IScientificCalculator Calculator { get; set; }
 
         public MainCalculator() {
 
@@ -52,6 +52,7 @@ namespace MockUpCalculator {
 
             scientificKeypad.OnKeypadEnable += KeypadEnable;
             scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
+            scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -72,7 +73,7 @@ namespace MockUpCalculator {
 
             Resizer = new Resizer(this);
             Checker = new KeyChecker();
-            Calculator = new StandardCalculator();
+            Calculator = new ScientificCalculator();
             NumberFormatter = new NumberFormatter();
             EngineeringFormatter = new EngineeringFormatter();
             DisplayValue(Calculator.Input);
@@ -151,7 +152,7 @@ namespace MockUpCalculator {
 
             try {
 
-                Calculator.Add(key);
+                Calculator.Add(Calculator.CheckTrigonometricKey(key));
 
                 if(Calculator.IsSpecialKey(key)) {
 
@@ -225,6 +226,11 @@ namespace MockUpCalculator {
         private void RefreshDisplay(object sender, EventArgs e) {
 
             standardDisplay.RefreshDisplay(GetFormatter());
+        }
+
+        private void ChangeAngularUnit(object sender, EventArgs e) {
+
+            Calculator.ChangeAngularUnit();
         }
 
         private void ButtonLoseFocus(object sender, EventArgs e) {

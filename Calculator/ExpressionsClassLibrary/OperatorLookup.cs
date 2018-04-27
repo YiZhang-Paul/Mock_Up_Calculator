@@ -19,15 +19,27 @@ namespace ExpressionsClassLibrary {
         public static string Negate { get { return "negate"; } }
         public static string Reciprocal { get { return "¹⁄x"; } }
         public static string PowerOfTen { get { return "10ˣ"; } }
-        public static string Sine { get { return "sin"; } }
-        public static string Cosine { get { return "cos"; } }
-        public static string Tangent { get { return "tan"; } }
+        public static string SineDEG { get { return "sin₀"; } }
+        public static string SineRAD { get { return "sinᵣ"; } }
+        public static string SineGRAD { get { return "sin₉"; } }
+        public static string CosineDEG { get { return "cos₀"; } }
+        public static string CosineRAD { get { return "cosᵣ"; } }
+        public static string CosineGRAD { get { return "cos₉"; } }
+        public static string TangentDEG { get { return "tan₀"; } }
+        public static string TangentRAD { get { return "tanᵣ"; } }
+        public static string TangentGRAD { get { return "tan₉"; } }
+        public static string ArcSinDEG { get { return "sin₀⁻¹"; } }
+        public static string ArcSinRAD { get { return "sinᵣ⁻¹"; } }
+        public static string ArcSinGRAD { get { return "sin₉⁻¹"; } }
+        public static string ArcCosDEG { get { return "cos₀⁻¹"; } }
+        public static string ArcCosRAD { get { return "cosᵣ⁻¹"; } }
+        public static string ArcCosGRAD { get { return "cos₉⁻¹"; } }
+        public static string ArcTanDEG { get { return "tan₀⁻¹"; } }
+        public static string ArcTanRAD { get { return "tanᵣ⁻¹"; } }
+        public static string ArcTanGRAD { get { return "tan₉⁻¹"; } }
         public static string Sinh { get { return "sinh"; } }
         public static string Cosh { get { return "cosh"; } }
         public static string Tanh { get { return "tanh"; } }
-        public static string ArcSin { get { return "sin⁻¹"; } }
-        public static string ArcCos { get { return "cos⁻¹"; } }
-        public static string ArcTan { get { return "tan⁻¹"; } }
         public static string ArcSinh { get { return "sinh⁻¹"; } }
         public static string ArcCosh { get { return "cosh⁻¹"; } }
         public static string ArcTanh { get { return "tanh⁻¹"; } }
@@ -53,9 +65,13 @@ namespace ExpressionsClassLibrary {
                         Exponential, Factorial, Log,
                         Ln, Dms, Degrees, Negate,
                         Reciprocal, PowerOfTen,
-                        Sine, Cosine, Tangent,
+                        SineDEG, SineRAD, SineGRAD,
+                        CosineDEG, CosineRAD, CosineGRAD,
+                        TangentDEG, TangentRAD, TangentGRAD,
+                        ArcSinDEG, ArcSinRAD, ArcSinGRAD,
+                        ArcCosDEG, ArcCosRAD, ArcCosGRAD,
+                        ArcTanDEG, ArcTanRAD, ArcTanGRAD,
                         Sinh, Cosh, Tanh,
-                        ArcSin, ArcCos, ArcTan,
                         ArcSinh, ArcCosh, ArcTanh
                     },
 

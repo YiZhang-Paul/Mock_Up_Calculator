@@ -35,15 +35,27 @@ namespace ExpressionsClassLibrary {
                 { OperatorLookup.Negate, (op1, op2) => decimal.Negate(op1) },
                 { OperatorLookup.Reciprocal, (op1, op2) => decimal.Divide(1, op1) },
                 { OperatorLookup.PowerOfTen, (op1, op2) => AsDecimal(10, op1, Math.Pow) },
-                { OperatorLookup.Sine, (op1, op2) => AsDecimal(op1, Math.Sin) },
-                { OperatorLookup.Cosine, (op1, op2) => AsDecimal(op1, Math.Cos) },
-                { OperatorLookup.Tangent, (op1, op2) => AsDecimal(op1, Math.Tan) },
+                { OperatorLookup.SineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Sin) },
+                { OperatorLookup.SineRAD, (op1, op2) => AsDecimal(op1, Math.Sin) },
+                { OperatorLookup.SineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Sin) },
+                { OperatorLookup.CosineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Cos) },
+                { OperatorLookup.CosineRAD, (op1, op2) => AsDecimal(op1, Math.Cos) },
+                { OperatorLookup.CosineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Cos) },
+                { OperatorLookup.TangentDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Tan) },
+                { OperatorLookup.TangentRAD, (op1, op2) => AsDecimal(op1, Math.Tan) },
+                { OperatorLookup.TangentGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Tan) },
+                { OperatorLookup.ArcSinDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Asin)) },
+                { OperatorLookup.ArcSinRAD, (op1, op2) => AsDecimal(op1, Math.Asin) },
+                { OperatorLookup.ArcSinGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Asin)) },
+                { OperatorLookup.ArcCosDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Acos)) },
+                { OperatorLookup.ArcCosRAD, (op1, op2) => AsDecimal(op1, Math.Acos) },
+                { OperatorLookup.ArcCosGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Acos)) },
+                { OperatorLookup.ArcTanDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Atan)) },
+                { OperatorLookup.ArcTanRAD, (op1, op2) => AsDecimal(op1, Math.Atan) },
+                { OperatorLookup.ArcTanGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Atan)) },
                 { OperatorLookup.Sinh, (op1, op2) => AsDecimal(op1, Math.Sinh) },
                 { OperatorLookup.Cosh, (op1, op2) => AsDecimal(op1, Math.Cosh) },
                 { OperatorLookup.Tanh, (op1, op2) => AsDecimal(op1, Math.Tanh) },
-                { OperatorLookup.ArcSin, (op1, op2) => AsDecimal(op1, Math.Asin) },
-                { OperatorLookup.ArcCos, (op1, op2) => AsDecimal(op1, Math.Acos) },
-                { OperatorLookup.ArcTan, (op1, op2) => AsDecimal(op1, Math.Atan) },
                 { OperatorLookup.ArcSinh, (op1, op2) => ArcSinh(op1) },
                 { OperatorLookup.ArcCosh, (op1, op2) => ArcCosh(op1) },
                 { OperatorLookup.ArcTanh, (op1, op2) => ArcTanh(op1) },
@@ -66,6 +78,26 @@ namespace ExpressionsClassLibrary {
         private decimal AsDecimal(decimal operand1, decimal operand2, Func<double, double, double> callback) {
 
             return (decimal)callback((double)operand1, (double)operand2);
+        }
+
+        private decimal ToRadian(decimal angle, bool isDegree = true) {
+
+            if(isDegree) {
+
+                return UnitConverter.DegreeToRadian(angle);
+            }
+
+            return UnitConverter.GradianToRadian(angle);
+        }
+
+        private decimal ToDegree(decimal radian) {
+
+            return UnitConverter.RadianToDegree(radian);
+        }
+
+        private decimal ToGradian(decimal radian) {
+
+            return UnitConverter.RadianToGradian(radian);
         }
 
         private decimal ToPowerOfTen(decimal number, decimal power) {

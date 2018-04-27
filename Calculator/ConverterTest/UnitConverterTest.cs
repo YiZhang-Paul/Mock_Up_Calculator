@@ -20,6 +20,14 @@ namespace ConverterTest {
         }
 
         [TestMethod]
+        public void RadianToDegree() {
+
+            Assert.IsTrue(IsAccurate(45, converter.RadianToDegree((decimal)(Math.PI * 0.25))));
+            Assert.IsTrue(IsAccurate(90, converter.RadianToDegree((decimal)(Math.PI * 0.5))));
+            Assert.IsTrue(IsAccurate(135, converter.RadianToDegree((decimal)(Math.PI * 0.75))));
+        }
+
+        [TestMethod]
         public void DegreeToRadian() {
 
             Assert.IsTrue(IsAccurate((decimal)(Math.PI * 0.25), converter.DegreeToRadian(45)));
@@ -28,11 +36,19 @@ namespace ConverterTest {
         }
 
         [TestMethod]
-        public void RadianToDegree() {
+        public void RadianToGradian() {
 
-            Assert.IsTrue(IsAccurate(45, converter.RadianToDegree((decimal)(Math.PI * 0.25))));
-            Assert.IsTrue(IsAccurate(90, converter.RadianToDegree((decimal)(Math.PI * 0.5))));
-            Assert.IsTrue(IsAccurate(135, converter.RadianToDegree((decimal)(Math.PI * 0.75))));
+            Assert.IsTrue(IsAccurate(1, converter.RadianToGradian(0.0157075m)));
+            Assert.IsTrue(IsAccurate(5, converter.RadianToGradian(0.0785375m)));
+            Assert.IsTrue(IsAccurate(100, converter.RadianToGradian(1.57075m)));
+        }
+
+        [TestMethod]
+        public void GradianToRadian() {
+
+            Assert.IsTrue(IsAccurate(0.0157075m, converter.GradianToRadian(1)));
+            Assert.IsTrue(IsAccurate(0.0785375m, converter.GradianToRadian(5)));
+            Assert.IsTrue(IsAccurate(1.57075m, converter.GradianToRadian(100)));
         }
 
         [TestMethod]

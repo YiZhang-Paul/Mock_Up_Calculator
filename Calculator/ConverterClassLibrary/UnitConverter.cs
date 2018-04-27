@@ -7,14 +7,24 @@ using System.Threading.Tasks;
 namespace ConverterClassLibrary {
     public class UnitConverter : IUnitConverter {
 
+        public decimal RadianToDegree(decimal radian) {
+
+            return radian / (decimal)Math.PI * 180;
+        }
+
         public decimal DegreeToRadian(decimal degree) {
 
             return degree / 180 * (decimal)Math.PI;
         }
 
-        public decimal RadianToDegree(decimal radian) {
+        public decimal RadianToGradian(decimal radian) {
 
-            return radian * 180 / (decimal)Math.PI;
+            return radian / 0.0157075m;
+        }
+
+        public decimal GradianToRadian(decimal gradian) {
+
+            return gradian * 0.0157075m;
         }
 
         private string GetDecimal(decimal decimals, int padding) {
