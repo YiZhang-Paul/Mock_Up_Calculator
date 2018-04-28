@@ -329,6 +329,18 @@ namespace MockUpCalculator {
             }
         }
 
+        private MemoryItem GetMemoryItem(int key, decimal value) {
+
+            var item = new MemoryItem(key, value, NumberFormatter);
+            item.Parent = memoryPanel;
+            item.Visible = false;
+            item.OnDelete += MemoryRemove;
+            item.OnMemoryPlus += MemoryPlusByKey;
+            item.OnMemoryMinus += MemoryMinusByKey;
+
+            return item;
+        }
+
         private void ShowMemoryItems() {
 
             const int visibleItems = 3;
@@ -337,19 +349,31 @@ namespace MockUpCalculator {
             int totalHeight = (int)((double)panelHeight / visibleItems);
             decimal[] items = Calculator.MemoryValues;
 
-            for(int i = 0; i < items.Length; i++) {
+            for(int i = items.Length - 1, j = 0; i >= 0; i--, j++) {
 
-                var item = new MemoryItem(i, items[i], NumberFormatter);
-                item.Parent = memoryPanel;
+                var item = GetMemoryItem(i, items[i]);
                 item.Height = totalHeight - itemMargin;
-                item.Visible = false;
 
-                if(i < visibleItems) {
+                if(j < visibleItems) {
 
-                    item.Top = totalHeight * i + itemMargin;
+                    item.Top = totalHeight * j + itemMargin;
                     item.Visible = true;
                 }
             }
+        }
+
+        private void RefreshMemoryItems() {
+
+            RemoveMemoryItems();
+            ShowMemoryItems();
+        }
+
+        private int TryGetItemKey(object sender) {
+
+            var button = (Button)sender;
+            var item = (IMemoryItem)button.Tag;
+
+            return item.Key;
         }
 
         private void MemoryStore(object sender, EventArgs e) {
@@ -376,28 +400,54 @@ namespace MockUpCalculator {
             DisplayValue(Calculator.Input);
         }
 
+        private void MemoryRemove(object sender, EventArgs e) {
+
+            Calculator.MemoryRemove(TryGetItemKey(sender));
+            RefreshMemoryItems();
+        }
+
         private void MemoryPlus(object sender, EventArgs e) {
 
-            if(Calculator.MemoryValues.Length == 0) {
+            int total = Calculator.MemoryValues.Length;
+
+            if(total == 0) {
 
                 Calculator.MemoryStore(standardDisplay.RecentValue);
+            }
+            else {
 
-                return;
+                Calculator.MemoryPlus(total - 1, standardDisplay.RecentValue);
             }
 
-            Calculator.MemoryPlus(0, standardDisplay.RecentValue);
+            Calculator.ClearInput();
+        }
+
+        private void MemoryPlusByKey(object sender, EventArgs e) {
+
+            Calculator.MemoryPlus(TryGetItemKey(sender), standardDisplay.RecentValue);
+            RefreshMemoryItems();
         }
 
         private void MemoryMinus(object sender, EventArgs e) {
 
-            if(Calculator.MemoryValues.Length == 0) {
+            int total = Calculator.MemoryValues.Length;
 
-                Calculator.MemoryStore(standardDisplay.RecentValue);
+            if(total == 0) {
 
-                return;
+                Calculator.MemoryStore(-standardDisplay.RecentValue);
+            }
+            else {
+
+                Calculator.MemoryMinus(total - 1, standardDisplay.RecentValue);
             }
 
-            Calculator.MemoryMinus(0, standardDisplay.RecentValue);
+            Calculator.ClearInput();
+        }
+
+        private void MemoryMinusByKey(object sender, EventArgs e) {
+
+            Calculator.MemoryMinus(TryGetItemKey(sender), standardDisplay.RecentValue);
+            RefreshMemoryItems();
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
