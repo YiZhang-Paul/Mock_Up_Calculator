@@ -80,7 +80,12 @@ namespace UserControlClassLibrary {
         public void EnableValidKeys() {
 
             UIHelper.EnableKeys(AllKeys, Tracker);
-            DisableMemoryKeys();
+
+            if(!HasMemory) {
+
+                DisableMemoryKeys();
+            }
+
             IsDisabled = false;
         }
 
