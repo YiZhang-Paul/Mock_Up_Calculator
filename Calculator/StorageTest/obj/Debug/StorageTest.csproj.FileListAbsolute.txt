@@ -1,0 +1,7 @@
+D:\mock_up_calculator\Calculator\StorageTest\bin\Debug\StorageTest.dll
+D:\mock_up_calculator\Calculator\StorageTest\bin\Debug\StorageTest.pdb
+D:\mock_up_calculator\Calculator\StorageTest\bin\Debug\StorageClassLibrary.dll
+D:\mock_up_calculator\Calculator\StorageTest\bin\Debug\StorageClassLibrary.pdb
+D:\mock_up_calculator\Calculator\StorageTest\obj\Debug\StorageTest.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\StorageTest\obj\Debug\StorageTest.dll
+D:\mock_up_calculator\Calculator\StorageTest\obj\Debug\StorageTest.pdb

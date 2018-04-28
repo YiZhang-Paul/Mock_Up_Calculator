@@ -1,0 +1,5 @@
+D:\mock_up_calculator\Calculator\StorageClassLibrary\bin\Debug\StorageClassLibrary.dll
+D:\mock_up_calculator\Calculator\StorageClassLibrary\bin\Debug\StorageClassLibrary.pdb
+D:\mock_up_calculator\Calculator\StorageClassLibrary\obj\Debug\StorageClassLibrary.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\StorageClassLibrary\obj\Debug\StorageClassLibrary.dll
+D:\mock_up_calculator\Calculator\StorageClassLibrary\obj\Debug\StorageClassLibrary.pdb
