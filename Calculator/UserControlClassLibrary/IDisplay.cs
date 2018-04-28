@@ -8,6 +8,7 @@ using FormatterClassLibrary;
 namespace UserControlClassLibrary {
     public interface IDisplay {
 
+        decimal RecentValue { get; }
         string Content { get; }
 
         void Clear();

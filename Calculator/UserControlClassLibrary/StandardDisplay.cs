@@ -13,8 +13,7 @@ using FormatterClassLibrary;
 namespace UserControlClassLibrary {
     public partial class StandardDisplay : UserControl, IDisplay {
 
-        private decimal CurrentValue { get; set; }
-
+        public decimal RecentValue { get; private set; }
         public string Content { get { return resultLabel.Text; } }
 
         public StandardDisplay() {
@@ -62,12 +61,12 @@ namespace UserControlClassLibrary {
 
         public void RefreshDisplay(IFormatter formatter) {
 
-            DisplayResult(CurrentValue.ToString(), formatter);
+            DisplayResult(RecentValue.ToString(), formatter);
         }
 
         public void DisplayResult(string result, IFormatter formatter) {
 
-            CurrentValue = decimal.Parse(result);
+            RecentValue = decimal.Parse(result);
             resultLabel.Text = formatter.Format(result);
             ResizeLabelText(resultLabel);
         }
