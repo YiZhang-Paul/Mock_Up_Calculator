@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExpressionsClassLibrary;
 using ConverterClassLibrary;
+using StorageClassLibrary;
 
 namespace CalculatorClassLibrary {
     public class StandardCalculator : Calculator, IStandardCalculator {
@@ -14,9 +15,11 @@ namespace CalculatorClassLibrary {
         protected IExpressionBuilder Builder { get; set; }
         protected IExpressionParser Parser { get; set; }
         protected IEvaluate Evaluator { get; set; }
+        protected IMemoryStorage Memory { get; set; }
 
         public decimal LastResult { get; private set; }
         public string Expression { get { return Builder.Expression; } }
+        public decimal[] MemoryValues { get { return Memory.Values; } }
 
         public StandardCalculator() {
 
@@ -26,6 +29,7 @@ namespace CalculatorClassLibrary {
             Builder = new ExpressionBuilder(parenthesizer);
             Parser = new ExpressionParser(OperatorConverter);
             Evaluator = new Evaluator(UnitConverter, OperatorConverter);
+            Memory = new MemoryStorage();
         }
 
         public override void Clear() {
@@ -38,6 +42,36 @@ namespace CalculatorClassLibrary {
         public void ClearInput() {
 
             Buffer.Clear();
+        }
+
+        public void MemoryClear() {
+
+            Memory.Clear();
+        }
+
+        public void MemoryRemove(int key) {
+
+            Memory.Remove(key);
+        }
+
+        public void MemoryRecall() {
+
+            Buffer.Set(Memory.Last.ToString());
+        }
+
+        public void MemoryStore(decimal value) {
+
+            Memory.Store(value);
+        }
+
+        public void MemoryPlus(int key, decimal value) {
+
+            Memory.Plus(key, value);
+        }
+
+        public void MemoryMinus(int key, decimal value) {
+
+            Memory.Minus(key, value);
         }
 
         protected void PushBuffer() {

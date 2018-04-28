@@ -9,7 +9,14 @@ namespace CalculatorClassLibrary {
 
         decimal LastResult { get; }
         string Expression { get; }
+        decimal[] MemoryValues { get; }
 
+        void MemoryClear();
+        void MemoryRemove(int key);
+        void MemoryRecall();
+        void MemoryStore(decimal value);
+        void MemoryPlus(int key, decimal value);
+        void MemoryMinus(int key, decimal value);
         void ClearInput();
         bool IsSpecialKey(string input);
     }

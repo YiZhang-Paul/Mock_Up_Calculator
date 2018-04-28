@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 namespace StorageClassLibrary {
     public class MemoryStorage : IMemoryStorage {
 
-        private List<decimal> Values { get; set; }
+        private List<decimal> Buffer { get; set; }
 
-        public int Size { get { return Values.Count; } }
-        public decimal Last { get { return Size == 0 ? 0 : Values.Last(); } }
+        public int Size { get { return Buffer.Count; } }
+        public decimal Last { get { return Size == 0 ? 0 : Buffer.Last(); } }
+        public decimal[] Values { get { return Buffer.ToArray(); } }
 
         public MemoryStorage() {
 
-            Values = new List<decimal>();
+            Buffer = new List<decimal>();
         }
 
         public MemoryStorage(IEnumerable<decimal> values) : this() {
@@ -27,32 +28,32 @@ namespace StorageClassLibrary {
 
         public void Clear() {
 
-            Values.Clear();
+            Buffer.Clear();
         }
 
         public void Store(decimal value) {
 
-            Values.Add(value);
+            Buffer.Add(value);
         }
 
         public void Remove(int key) {
 
-            Values.RemoveAt(key);
+            Buffer.RemoveAt(key);
         }
 
         public decimal Retrieve(int key) {
 
-            return Values[key];
+            return Buffer[key];
         }
 
         public void Plus(int key, decimal value) {
 
-            Values[key] += value;
+            Buffer[key] += value;
         }
 
         public void Minus(int key, decimal value) {
 
-            Values[key] -= value;
+            Buffer[key] -= value;
         }
     }
 }

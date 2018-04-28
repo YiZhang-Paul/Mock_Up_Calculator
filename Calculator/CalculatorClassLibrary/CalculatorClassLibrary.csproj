@@ -56,6 +56,10 @@
       <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
       <Name>ExpressionsClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StorageClassLibrary\StorageClassLibrary.csproj">
+      <Project>{0d93dada-de8f-44a1-88bb-d4d14219a64e}</Project>
+      <Name>StorageClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserControlClassLibrary\UserControlClassLibrary.csproj">
       <Project>{065153ff-f33a-461f-ba24-a82927bd059a}</Project>
       <Name>UserControlClassLibrary</Name>

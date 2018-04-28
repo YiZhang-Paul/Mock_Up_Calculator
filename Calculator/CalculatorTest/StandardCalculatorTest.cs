@@ -54,6 +54,230 @@ namespace CalculatorTest {
         }
 
         [TestMethod]
+        public void MemoryClear() {
+
+            calculator.MemoryStore(3);
+            calculator.MemoryStore(4);
+            calculator.MemoryStore(5);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+
+            calculator.MemoryClear();
+
+            Assert.AreEqual(0, calculator.MemoryValues.Length);
+        }
+
+        [TestMethod]
+        public void MemoryStore() {
+
+            Assert.AreEqual(0, calculator.MemoryValues.Length);
+
+            calculator.MemoryStore(3);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+
+            calculator.MemoryStore(4);
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+
+            calculator.MemoryStore(5);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+        }
+
+        [TestMethod]
+        public void MemoryRecall() {
+
+            Assert.AreEqual(0, calculator.MemoryValues.Length);
+            Assert.AreEqual("0", calculator.Input);
+
+            calculator.MemoryStore(55);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+            Assert.AreEqual("0", calculator.Input);
+
+            calculator.MemoryRecall();
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+            Assert.AreEqual("55", calculator.Input);
+
+            calculator.MemoryStore(-666);
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+            Assert.AreEqual("55", calculator.Input);
+
+            calculator.MemoryRecall();
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+            Assert.AreEqual("-666", calculator.Input);
+
+            calculator.MemoryStore(150);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            Assert.AreEqual("-666", calculator.Input);
+
+            calculator.MemoryRecall();
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            Assert.AreEqual("150", calculator.Input);
+
+            calculator.MemoryRemove(1);
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+            Assert.AreEqual("150", calculator.Input);
+
+            calculator.MemoryRecall();
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+            Assert.AreEqual("150", calculator.Input);
+
+            calculator.MemoryRemove(1);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+            Assert.AreEqual("150", calculator.Input);
+
+            calculator.MemoryRecall();
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+            Assert.AreEqual("55", calculator.Input);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+         "Invalid Key.")]
+        public void MemoryRemoveWithInvalidKey() {
+
+            calculator.MemoryRemove(calculator.MemoryValues.Length);
+        }
+
+        [TestMethod]
+        public void MemoryRemove() {
+
+            calculator.MemoryStore(6);
+            calculator.MemoryStore(7);
+            calculator.MemoryStore(12);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryRemove(1);
+
+            Assert.AreEqual(2, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryRemove(1);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6 }, calculator.MemoryValues);
+
+            calculator.MemoryRemove(0);
+
+            Assert.AreEqual(0, calculator.MemoryValues.Length);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+         "Invalid Key.")]
+        public void MemoryPlusWithInvalidKey() {
+
+            calculator.MemoryPlus(calculator.MemoryValues.Length, 5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException),
+         "Operand is Too Large.")]
+        public void OverflowWhenMemoryPlus() {
+
+            calculator.MemoryStore(decimal.MaxValue);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+
+            calculator.MemoryPlus(0, 1);
+        }
+
+        [TestMethod]
+        public void MemoryPlus() {
+
+            calculator.MemoryStore(6);
+            calculator.MemoryStore(7);
+            calculator.MemoryStore(12);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryPlus(1, 8);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 15, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryPlus(1, -50);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, -35, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryPlus(0, 100);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 106, -35, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryPlus(2, -100);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 106, -35, -88 }, calculator.MemoryValues);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+         "Invalid Key.")]
+        public void MemoryMinusWithInvalidKey() {
+
+            calculator.MemoryMinus(calculator.MemoryValues.Length, 5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException),
+         "Operand is Too Small.")]
+        public void OverflowWhenMemoryMinus() {
+
+            calculator.MemoryStore(-decimal.MaxValue);
+
+            Assert.AreEqual(1, calculator.MemoryValues.Length);
+
+            calculator.MemoryMinus(0, 1);
+        }
+
+        [TestMethod]
+        public void MemoryMinus() {
+
+            calculator.MemoryStore(6);
+            calculator.MemoryStore(7);
+            calculator.MemoryStore(12);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryMinus(1, 8);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, -1, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryMinus(1, -50);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 49, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryMinus(0, 100);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { -94, 49, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryMinus(2, -100);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { -94, 49, 112 }, calculator.MemoryValues);
+        }
+
+        [TestMethod]
         public void AddExpression() {
 
             calculator.Add(5);

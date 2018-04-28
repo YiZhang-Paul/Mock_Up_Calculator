@@ -15,3 +15,5 @@ D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClas
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\obj\Debug\CalculatorClassLibrary.pdb
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\FormatterClassLibrary.dll
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\FormatterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\StorageClassLibrary.dll
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\StorageClassLibrary.pdb
