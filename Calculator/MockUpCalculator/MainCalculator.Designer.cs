@@ -133,7 +133,7 @@
             this.btnChangeCalculator.Text = "≡";
             this.btnChangeCalculator.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChangeCalculator.UseVisualStyleBackColor = true;
-            this.btnChangeCalculator.Click += new System.EventHandler(this.ButtonLoseFocus);
+            this.btnChangeCalculator.Click += new System.EventHandler(this.RemoveFocus);
             this.btnChangeCalculator.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnChangeCalculator.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 
@@ -155,7 +155,7 @@
             this.btnHistory.TabIndex = 2;
             this.btnHistory.Text = "⏲";
             this.btnHistory.UseVisualStyleBackColor = true;
-            this.btnHistory.Click += new System.EventHandler(this.ButtonLoseFocus);
+            this.btnHistory.Click += new System.EventHandler(this.RemoveFocus);
             this.btnHistory.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnHistory.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 

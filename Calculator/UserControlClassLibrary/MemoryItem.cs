@@ -51,28 +51,28 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void LostFocus() {
+        private void RemoveFocus() {
 
             displayLabel.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e) {
 
-            LostFocus();
+            RemoveFocus();
             ((Button)sender).Tag = this;
             OnDelete(sender, e);
         }
 
         private void btnPlus_Click(object sender, EventArgs e) {
 
-            LostFocus();
+            RemoveFocus();
             ((Button)sender).Tag = this;
             OnMemoryPlus(sender, e);
         }
 
         private void btnMinus_Click(object sender, EventArgs e) {
 
-            LostFocus();
+            RemoveFocus();
             ((Button)sender).Tag = this;
             OnMemoryMinus(sender, e);
         }

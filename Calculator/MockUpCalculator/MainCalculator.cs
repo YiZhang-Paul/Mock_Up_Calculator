@@ -202,7 +202,7 @@ namespace MockUpCalculator {
 
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
-            ButtonLoseFocus(sender, e);
+            RemoveFocus(sender, e);
             standardDisplay.Clear();
             string key = ((Button)sender).Tag.ToString();
 
@@ -242,7 +242,7 @@ namespace MockUpCalculator {
             Calculator.ChangeAngularUnit();
         }
 
-        private void ButtonLoseFocus(object sender, EventArgs e) {
+        private void RemoveFocus(object sender, EventArgs e) {
 
             currentCalculatorLabel.Focus();
         }
@@ -297,6 +297,15 @@ namespace MockUpCalculator {
             memoryTimer.Tick -= OpenMemoryPanel;
             memoryTimer.Tick += CloseMemoryPanel;
             memoryTimer.Start();
+
+            if(Calculator.MemoryValues.Length == 0) {
+
+                scientificKeypad.HasMemory = false;
+                scientificKeypad.EnableValidKeys();
+
+                return;
+            }
+
             scientificKeypad.EnableAllKeys();
         }
 
@@ -326,6 +335,13 @@ namespace MockUpCalculator {
             for(int i = 0; i < controls.Length; i++) {
 
                 controls[i].Dispose();
+            }
+
+            var labels = memoryPanel.Controls.OfType<Label>().ToArray();
+
+            if(labels.Length != 0) {
+
+                labels[0].Dispose();
             }
         }
 
@@ -404,6 +420,11 @@ namespace MockUpCalculator {
 
             Calculator.MemoryRemove(TryGetItemKey(sender));
             RefreshMemoryItems();
+
+            if(Calculator.MemoryValues.Length == 0) {
+
+                UIHelper.AddLabel(memoryPanel, "There's nothing saved in memory", 11, 10, 15);
+            }
         }
 
         private void MemoryPlus(object sender, EventArgs e) {

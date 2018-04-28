@@ -80,6 +80,19 @@ namespace UserControlClassLibrary {
             }
         }
 
+        public static void AddLabel(Panel panel, string text, int fontSize, int leftMargin, int topMargin) {
+
+            var label = new Label();
+            label.Parent = panel;
+            label.Text = text;
+            label.Font = new Font(label.Font.FontFamily, fontSize, FontStyle.Bold);
+            var dimension = TextRenderer.MeasureText(label.Text, label.Font);
+            label.Height = dimension.Height;
+            label.Width = dimension.Width;
+            label.Left = leftMargin;
+            label.Top = topMargin;
+        }
+
         public static Point GetPointerLocation(MouseEventArgs e) {
 
             return e.Location;

@@ -13,12 +13,12 @@ using UtilityClassLibrary;
 namespace UserControlClassLibrary {
     public partial class StandardKeypad : UserControl, IKeypad {
 
-        protected bool HasMemory { get; set; }
         protected IButtonTracker Tracker { get; set; }
         protected HashSet<Button> AllKeys { get; set; }
         protected HashSet<Button> MemoryKeys { get; set; }
         protected HashSet<Button> BasicKeys { get; set; }
 
+        public bool HasMemory { get; set; }
         public virtual int MainAreaHeight { get; private set; }
         public bool IsDisabled { get; private set; }
         public bool ExtraKeysSuspended { get; set; }

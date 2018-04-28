@@ -10,6 +10,7 @@ namespace UserControlClassLibrary {
 
         event EventHandler OnKeypadEnable;
 
+        bool HasMemory { get; set; }
         int MainAreaHeight { get; }
         bool IsDisabled { get; }
         bool ExtraKeysSuspended { get; set; }
