@@ -18,6 +18,7 @@ namespace UserControlClassLibrary {
         private bool TrigonometricToggled { get; set; }
         private float UnitKeyFontSize { get; set; }
 
+        public override int MainAreaHeight { get { return Height - extraKeysLayout.Height; } }
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
 
@@ -40,6 +41,12 @@ namespace UserControlClassLibrary {
 
             base.RecordKeys();
             TrigonometricKeys = new HashSet<Button>(AllKeys.Where(IsTrigonometricKey));
+        }
+
+        public override void LeaveMemoryKeyOn() {
+
+            base.LeaveMemoryKeyOn();
+            UIHelper.EnableKeys(new Button[] { btnMemory }, Tracker);
         }
 
         protected override void ButtonMouseEnter(object sender, EventArgs e) {

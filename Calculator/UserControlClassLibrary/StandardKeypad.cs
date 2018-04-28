@@ -19,6 +19,7 @@ namespace UserControlClassLibrary {
         protected HashSet<Button> MemoryKeys { get; set; }
         protected HashSet<Button> BasicKeys { get; set; }
 
+        public virtual int MainAreaHeight { get; private set; }
         public bool IsDisabled { get; private set; }
 
         public event EventHandler OnKeypadEnable;
@@ -67,21 +68,31 @@ namespace UserControlClassLibrary {
 
             Tracker = new ButtonTracker();
             RecordKeys();
-            EnableKeys();
+            EnableValidKeys();
         }
 
-        public void EnableKeys() {
+        public void EnableAllKeys() {
+
+            UIHelper.EnableKeys(AllKeys, Tracker);
+        }
+
+        public void EnableValidKeys() {
 
             UIHelper.EnableKeys(AllKeys, Tracker);
             DisableMemoryKeys();
             IsDisabled = false;
         }
 
-        public void DisableKeys() {
+        public void LeaveBasicKeysOn() {
 
             UIHelper.DisableKeys(AllKeys, Tracker);
             UIHelper.EnableKeys(BasicKeys, Tracker);
             IsDisabled = true;
+        }
+
+        public virtual void LeaveMemoryKeyOn() {
+
+            UIHelper.DisableKeys(AllKeys, Tracker);
         }
 
         private void CheckMemory() {
@@ -117,7 +128,7 @@ namespace UserControlClassLibrary {
 
             if(IsDisabled && BasicKeys.Contains((Button)sender)) {
 
-                EnableKeys();
+                EnableValidKeys();
                 OnKeypadEnable(sender, e);
 
                 return;
@@ -166,6 +177,7 @@ namespace UserControlClassLibrary {
                 return;
             }
 
+            HasMemory = false;
             DisableMemoryKeys();
             OnMemoryClear(sender, e);
         }

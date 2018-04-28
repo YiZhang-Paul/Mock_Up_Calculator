@@ -20,6 +20,8 @@ namespace MockUpCalculator {
 
         private int DefaultWidth { get; set; }
         private int DefaultHeight { get; set; }
+        private bool MemoryPanelOn { get; set; }
+        private bool MemoryPanelDeselected { get; set; }
         private Point ClientCenter { get; set; }
         private Point Pointer { get; set; }
         private Resizer Resizer { get; set; }
@@ -53,6 +55,7 @@ namespace MockUpCalculator {
             scientificKeypad.OnKeypadEnable += KeypadEnable;
             scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
             scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
+            scientificKeypad.OnMemoryToggle += ToggleMemoryPanel;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -107,12 +110,12 @@ namespace MockUpCalculator {
             catch(DivideByZeroException) {
 
                 standardDisplay.DisplayError(divideByZeroMessage);
-                scientificKeypad.DisableKeys();
+                scientificKeypad.LeaveBasicKeysOn();
             }
             catch(Exception) {
 
                 standardDisplay.DisplayError(invalidInput);
-                scientificKeypad.DisableKeys();
+                scientificKeypad.LeaveBasicKeysOn();
             }
         }
 
@@ -166,12 +169,12 @@ namespace MockUpCalculator {
             catch(DivideByZeroException) {
 
                 standardDisplay.DisplayError(divideByZeroMessage);
-                scientificKeypad.DisableKeys();
+                scientificKeypad.LeaveBasicKeysOn();
             }
             catch(Exception) {
 
                 standardDisplay.DisplayError(invalidInput);
-                scientificKeypad.DisableKeys();
+                scientificKeypad.LeaveBasicKeysOn();
             }
         }
 
@@ -236,6 +239,76 @@ namespace MockUpCalculator {
         private void ButtonLoseFocus(object sender, EventArgs e) {
 
             currentCalculatorLabel.Focus();
+        }
+
+        private void OpenMemoryPanel(object sender, EventArgs e) {
+
+            int speed = Math.Min(65, scientificKeypad.MainAreaHeight - memoryPanel.Height);
+            memoryPanel.Top -= speed;
+            memoryPanel.Height += speed;
+
+            if(memoryPanel.Height >= scientificKeypad.MainAreaHeight) {
+
+                MemoryPanelOn = true;
+                memoryTimer.Tick -= OpenMemoryPanel;
+                memoryTimer.Stop();
+            }
+        }
+
+        private void CloseMemoryPanel(object sender, EventArgs e) {
+
+            int alpha = Math.Max(0, memoryPanel.BackColor.A - 75);
+            int red = memoryPanel.BackColor.R;
+            int green = memoryPanel.BackColor.G;
+            int blue = memoryPanel.BackColor.B;
+            memoryPanel.BackColor = Color.FromArgb(alpha, red, green, blue);
+
+            if(alpha <= 0) {
+
+                MemoryPanelOn = false;
+                memoryPanel.Height = 50;
+                memoryPanel.Top += scientificKeypad.MainAreaHeight - memoryPanel.Height;
+                memoryPanel.BackColor = Color.FromArgb(255, red, green, blue);
+                memoryTimer.Tick -= CloseMemoryPanel;
+                memoryTimer.Stop();
+                scientificKeypad.BringToFront();
+            }
+        }
+
+        private void StartMemoryPanelOpen() {
+
+            memoryTimer.Tick -= CloseMemoryPanel;
+            memoryTimer.Tick += OpenMemoryPanel;
+            memoryTimer.Start();
+            memoryPanel.BringToFront();
+            scientificKeypad.LeaveMemoryKeyOn();
+        }
+
+        private void StartMemoryPanelClose() {
+
+            memoryTimer.Tick -= OpenMemoryPanel;
+            memoryTimer.Tick += CloseMemoryPanel;
+            memoryTimer.Start();
+            scientificKeypad.EnableAllKeys();
+        }
+
+        private void ToggleMemoryPanel(object sender, EventArgs e) {
+
+            if(MemoryPanelDeselected) {
+
+                MemoryPanelDeselected = false;
+
+                return;
+            }
+
+            if(!MemoryPanelOn) {
+
+                StartMemoryPanelOpen();
+
+                return;
+            }
+
+            StartMemoryPanelClose();
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
@@ -340,15 +413,8 @@ namespace MockUpCalculator {
             mainLayout.Visible = true;
         }
 
-        protected override void WndProc(ref Message message) {
+        private void ResizeWindow(ref Message message) {
 
-            base.WndProc(ref message);
-
-            if(message.Msg != 0x84) {
-
-                return;
-            }
-            //WM_NCHITTEST
             var cursor = PointToClient(Cursor.Position);
 
             foreach(int key in Resizer.Keys) {
@@ -359,6 +425,40 @@ namespace MockUpCalculator {
 
                     break;
                 }
+            }
+        }
+
+        private void DeselectMemoryPanel() {
+
+            bool hoverOnTopPanel = UIHelper.ContainsPointer(topPanel);
+            bool hoverOnMemoryPanel = UIHelper.ContainsPointer(memoryPanel);
+
+            if(MemoryPanelOn && !hoverOnTopPanel && !hoverOnMemoryPanel) {
+
+                StartMemoryPanelClose();
+                MemoryPanelDeselected = true;
+
+                return;
+            }
+
+            MemoryPanelDeselected = false;
+        }
+
+        protected override void WndProc(ref Message message) {
+
+            base.WndProc(ref message);
+
+            const int resize = 0x84;  //WM_NCHITTEST
+            const int notify = 0x210; //WM_PARENTNOTIFY
+            const int click = 0x201;  //WM_LBUTTONDOWN
+
+            if(message.Msg == resize) {
+
+                ResizeWindow(ref message);
+            }
+            else if(message.Msg == click || (message.Msg == notify && (int)message.WParam == click)) {
+
+                DeselectMemoryPanel();
             }
         }
     }

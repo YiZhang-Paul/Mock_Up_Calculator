@@ -85,6 +85,13 @@ namespace UserControlClassLibrary {
             return e.Location;
         }
 
+        public static bool ContainsPointer(Control control) {
+
+            var pointer = control.PointToClient(Cursor.Position);
+
+            return control.ClientRectangle.Contains(pointer);
+        }
+
         public static void DragWindow(MouseEventArgs e, Form parent, Point pointer) {
 
             if(e.Button == MouseButtons.Left) {
