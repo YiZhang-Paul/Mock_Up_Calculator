@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using UserControlClassLibrary;
 using ExpressionsClassLibrary;
 using CalculatorClassLibrary;
+using FormatterClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {

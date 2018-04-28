@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UtilityClassLibrary;
+using FormatterClassLibrary;
 
-namespace UtilityTest {
+namespace FormatterTest {
     [TestClass]
     public class EngineeringFormatterTest {
 

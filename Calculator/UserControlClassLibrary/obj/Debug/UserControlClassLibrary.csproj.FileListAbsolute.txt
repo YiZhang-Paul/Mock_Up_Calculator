@@ -9,3 +9,5 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.csproj.GenerateResource.Cache
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.dll
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.pdb

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using UtilityClassLibrary;
+using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
     public partial class StandardDisplay : UserControl, IDisplay {

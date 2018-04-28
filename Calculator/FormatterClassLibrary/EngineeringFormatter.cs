@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace UtilityClassLibrary {
+namespace FormatterClassLibrary {
     public class EngineeringFormatter : IFormatter {
 
         private string RemoveLeadZero(string number) {

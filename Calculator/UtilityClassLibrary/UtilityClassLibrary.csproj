@@ -41,10 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonTracker.cs" />
-    <Compile Include="EngineeringFormatter.cs" />
-    <Compile Include="NumberFormatter.cs" />
     <Compile Include="IButtonTracker.cs" />
-    <Compile Include="IFormatter.cs" />
     <Compile Include="IInputBuffer.cs" />
     <Compile Include="IKeyChecker.cs" />
     <Compile Include="InputBuffer.cs" />

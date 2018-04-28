@@ -84,6 +84,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">
+      <Project>{080ef227-2736-4b89-b517-7c34b000f155}</Project>
+      <Name>FormatterClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
       <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
       <Name>UtilityClassLibrary</Name>

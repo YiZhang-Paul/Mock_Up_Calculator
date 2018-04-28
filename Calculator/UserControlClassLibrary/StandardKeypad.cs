@@ -156,7 +156,7 @@ namespace UserControlClassLibrary {
             }
 
             CheckMemory();
-            //OnMemoryStore(sender, e);
+            OnMemoryStore(sender, e);
         }
 
         protected virtual void MemoryAddClick(object sender, EventArgs e) {

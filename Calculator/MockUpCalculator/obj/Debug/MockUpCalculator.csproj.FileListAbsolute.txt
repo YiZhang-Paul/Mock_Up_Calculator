@@ -19,3 +19,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.Pro
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.csproj.GenerateResource.Cache
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.exe
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrary.pdb

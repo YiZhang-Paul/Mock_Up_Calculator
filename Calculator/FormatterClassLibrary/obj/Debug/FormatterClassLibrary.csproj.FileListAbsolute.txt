@@ -1,0 +1,5 @@
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\FormatterClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\FormatterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.pdb

@@ -86,6 +86,10 @@
       <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
       <Name>ExpressionsClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">
+      <Project>{080ef227-2736-4b89-b517-7c34b000f155}</Project>
+      <Name>FormatterClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserControlClassLibrary\UserControlClassLibrary.csproj">
       <Project>{065153FF-F33A-461F-BA24-A82927BD059A}</Project>
       <Name>UserControlClassLibrary</Name>

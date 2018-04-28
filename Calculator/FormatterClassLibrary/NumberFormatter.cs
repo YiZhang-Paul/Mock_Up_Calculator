@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace UtilityClassLibrary {
+namespace FormatterClassLibrary {
     public class NumberFormatter : IFormatter {
 
         private decimal GetInteger(string number) {

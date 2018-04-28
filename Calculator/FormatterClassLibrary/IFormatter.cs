@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UtilityClassLibrary {
+namespace FormatterClassLibrary {
     public interface IFormatter {
 
         string Format(string number);
