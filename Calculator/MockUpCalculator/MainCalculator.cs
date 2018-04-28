@@ -58,6 +58,8 @@ namespace MockUpCalculator {
             scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
             scientificKeypad.OnMemoryToggle += ToggleMemoryPanel;
             scientificKeypad.OnMemoryStore += MemoryStore;
+            scientificKeypad.OnMemoryClear += MemoryClear;
+            scientificKeypad.OnMemoryRecall += MemoryRecall;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -359,6 +361,17 @@ namespace MockUpCalculator {
 
             Calculator.MemoryStore(value);
             Calculator.ClearInput();
+        }
+
+        private void MemoryClear(object sender, EventArgs e) {
+
+            Calculator.MemoryClear();
+        }
+
+        private void MemoryRecall(object sender, EventArgs e) {
+
+            Calculator.MemoryRecall();
+            DisplayValue(Calculator.Input);
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
