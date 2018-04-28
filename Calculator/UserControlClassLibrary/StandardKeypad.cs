@@ -21,6 +21,7 @@ namespace UserControlClassLibrary {
 
         public virtual int MainAreaHeight { get; private set; }
         public bool IsDisabled { get; private set; }
+        public bool ExtraKeysSuspended { get; set; }
 
         public event EventHandler OnKeypadEnable;
         public event EventHandler OnMemoryStore;
@@ -137,20 +138,25 @@ namespace UserControlClassLibrary {
             UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
         }
 
+        protected bool CanUseExtraKey(Button button) {
+
+            return !ExtraKeysSuspended && !Tracker.IsDisabled(button);
+        }
+
         protected virtual void MemoryStoreClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }
 
             CheckMemory();
-            OnMemoryStore(sender, e);
+            //OnMemoryStore(sender, e);
         }
 
         protected virtual void MemoryAddClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }
@@ -161,7 +167,7 @@ namespace UserControlClassLibrary {
 
         protected virtual void MemorySubtractClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }
@@ -172,7 +178,7 @@ namespace UserControlClassLibrary {
 
         protected virtual void MemoryClearClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }
@@ -184,7 +190,7 @@ namespace UserControlClassLibrary {
 
         protected virtual void MemoryRecallClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }
@@ -194,7 +200,7 @@ namespace UserControlClassLibrary {
 
         protected virtual void MemoryToggleClick(object sender, EventArgs e) {
 
-            if(Tracker.IsDisabled((Button)sender)) {
+            if(!CanUseExtraKey((Button)sender)) {
 
                 return;
             }

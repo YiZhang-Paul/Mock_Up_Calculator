@@ -101,7 +101,7 @@ namespace UserControlClassLibrary {
 
             var button = (Button)sender;
 
-            if(Tracker.IsDisabled(button)) {
+            if(!CanUseExtraKey(button)) {
 
                 return;
             }
@@ -123,7 +123,7 @@ namespace UserControlClassLibrary {
 
             var button = (Button)sender;
 
-            if(Tracker.IsDisabled(button)) {
+            if(!CanUseExtraKey(button)) {
 
                 return;
             }
@@ -145,7 +145,7 @@ namespace UserControlClassLibrary {
 
             var button = (Button)sender;
 
-            if(Tracker.IsDisabled(button)) {
+            if(!CanUseExtraKey(button)) {
 
                 return;
             }

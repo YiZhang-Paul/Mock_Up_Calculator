@@ -12,6 +12,7 @@ namespace UserControlClassLibrary {
 
         int MainAreaHeight { get; }
         bool IsDisabled { get; }
+        bool ExtraKeysSuspended { get; set; }
 
         void EnableAllKeys();
         void EnableValidKeys();

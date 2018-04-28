@@ -432,16 +432,15 @@ namespace MockUpCalculator {
 
             bool hoverOnTopPanel = UIHelper.ContainsPointer(topPanel);
             bool hoverOnMemoryPanel = UIHelper.ContainsPointer(memoryPanel);
+            bool deselected = MemoryPanelOn && !hoverOnTopPanel && !hoverOnMemoryPanel;
 
-            if(MemoryPanelOn && !hoverOnTopPanel && !hoverOnMemoryPanel) {
+            if(deselected) {
 
                 StartMemoryPanelClose();
-                MemoryPanelDeselected = true;
-
-                return;
             }
 
-            MemoryPanelDeselected = false;
+            MemoryPanelDeselected = deselected;
+            scientificKeypad.ExtraKeysSuspended = deselected;
         }
 
         protected override void WndProc(ref Message message) {
