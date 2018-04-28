@@ -8,6 +8,8 @@ using FormatterClassLibrary;
 namespace UserControlClassLibrary {
     public interface IDisplay {
 
+        string Content { get; }
+
         void Clear();
         void RefreshDisplay(IFormatter formatter);
         void DisplayResult(string result, IFormatter formatter);

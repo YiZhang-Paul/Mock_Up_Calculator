@@ -57,6 +57,7 @@ namespace MockUpCalculator {
             scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
             scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
             scientificKeypad.OnMemoryToggle += ToggleMemoryPanel;
+            scientificKeypad.OnMemoryStore += MemoryStore;
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
@@ -253,6 +254,7 @@ namespace MockUpCalculator {
                 MemoryPanelOn = true;
                 memoryTimer.Tick -= OpenMemoryPanel;
                 memoryTimer.Stop();
+                ShowMemoryItems();
             }
         }
 
@@ -287,6 +289,7 @@ namespace MockUpCalculator {
 
         private void StartMemoryPanelClose() {
 
+            RemoveMemoryItems();
             memoryTimer.Tick -= OpenMemoryPanel;
             memoryTimer.Tick += CloseMemoryPanel;
             memoryTimer.Start();
@@ -310,6 +313,52 @@ namespace MockUpCalculator {
             }
 
             StartMemoryPanelClose();
+        }
+
+        private void RemoveMemoryItems() {
+
+            var controls = memoryPanel.Controls.OfType<MemoryItem>().ToArray();
+
+            for(int i = 0; i < controls.Length; i++) {
+
+                controls[i].Dispose();
+            }
+        }
+
+        private void ShowMemoryItems() {
+
+            const int visibleItems = 3;
+            const int itemMargin = 15;
+            int panelHeight = scientificKeypad.MainAreaHeight;
+            int totalHeight = (int)((double)panelHeight / visibleItems);
+            decimal[] items = Calculator.MemoryValues;
+
+            for(int i = 0; i < items.Length; i++) {
+
+                var item = new MemoryItem(i, items[i], NumberFormatter);
+                item.Parent = memoryPanel;
+                item.Height = totalHeight - itemMargin;
+                item.Visible = false;
+
+                if(i < visibleItems) {
+
+                    item.Top = totalHeight * i + itemMargin;
+                    item.Visible = true;
+                }
+            }
+        }
+
+        private void MemoryStore(object sender, EventArgs e) {
+
+            decimal value = 0;
+
+            if(!decimal.TryParse(standardDisplay.Content, out value)) {
+
+                return;
+            }
+
+            Calculator.MemoryStore(value);
+            Calculator.ClearInput();
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
@@ -412,6 +461,11 @@ namespace MockUpCalculator {
 
             SaveDimension();
             mainLayout.Visible = true;
+        }
+
+        private void MainCalculator_Deactivate(object sender, EventArgs e) {
+
+            DeselectMemoryPanel();
         }
 
         private void ResizeWindow(ref Message message) {

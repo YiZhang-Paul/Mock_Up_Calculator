@@ -15,6 +15,8 @@ namespace UserControlClassLibrary {
 
         private decimal CurrentValue { get; set; }
 
+        public string Content { get { return resultLabel.Text; } }
+
         public StandardDisplay() {
 
             InitializeComponent();
