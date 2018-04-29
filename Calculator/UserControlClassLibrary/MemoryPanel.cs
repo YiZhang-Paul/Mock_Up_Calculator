@@ -12,15 +12,16 @@ using FormatterClassLibrary;
 namespace UserControlClassLibrary {
     public partial class MemoryPanel : UserControl, IMemoryItemDisplay {
 
-        private int VisibleItems { get; set; }
-        private int ItemMargin { get; set; }
+        private int VisibleItems { get { return Math.Max(3, TargetHeight / 108); } }
         private int TargetHeight { get; set; }
-        private int ItemHeight { get { return (int)((double)Height / VisibleItems); } }
+        private int ItemHeight { get { return TargetHeight / VisibleItems; } }
+        private int ItemMargin { get; set; }
         private int ItemPointer { get; set; }
         private decimal[] Items { get; set; }
         private IFormatter Formatter { get; set; }
 
-        public event EventHandler OnDelete;
+        public event EventHandler OnMemoryDelete;
+        public event EventHandler OnMemoryClear;
         public event EventHandler OnMemorySelect;
         public event EventHandler OnMemoryPlus;
         public event EventHandler OnMemoryMinus;
@@ -35,7 +36,6 @@ namespace UserControlClassLibrary {
 
         private void Initialize() {
 
-            VisibleItems = 3;
             ItemMargin = 15;
             mainPanel.MouseWheel += ScrollPanel;
         }
@@ -109,6 +109,7 @@ namespace UserControlClassLibrary {
                 }
 
                 var item = CreateItem(j, Items[j], Formatter);
+                item.Width = Width;
                 item.Height = ItemHeight - ItemMargin;
                 item.Top = ItemHeight * i + ItemMargin;
             }
@@ -120,6 +121,21 @@ namespace UserControlClassLibrary {
             ShowItems(values, formatter);
         }
 
+        private void ButtonMouseEnter(object sender, EventArgs e) {
+
+            ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
+        }
+
+        private void ButtonMouseLeave(object sender, EventArgs e) {
+
+            UIHelper.ButtonMouseLeave((Button)sender, e);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e) {
+
+            OnMemoryClear(sender, e);
+        }
+
         private void mainPanel_MouseEnter(object sender, EventArgs e) {
 
             UIHelper.ReceiveFocus(sender);
@@ -127,7 +143,7 @@ namespace UserControlClassLibrary {
 
         private void MemoryClear(object sender, EventArgs e) {
 
-            OnDelete(sender, e);
+            OnMemoryDelete(sender, e);
         }
 
         private void MemorySelect(object sender, EventArgs e) {
@@ -178,12 +194,21 @@ namespace UserControlClassLibrary {
             }
         }
 
+        private void ResizeBottomPanel() {
+
+            UIHelper.SetHeight(bottomPanel, ItemHeight);
+            bottomPanel.Width = Width;
+            UIHelper.SetHeight(btnClear, bottomPanel.Height / 2);
+            btnClear.Width = btnClear.Height;
+        }
+
         public void Extend(int height) {
 
             TargetHeight = height;
             memoryTimer.Tick -= ShrinkPanel;
             memoryTimer.Tick += ExtendPanel;
             memoryTimer.Start();
+            ResizeBottomPanel();
             BringToFront();
         }
 
@@ -203,7 +228,7 @@ namespace UserControlClassLibrary {
 
         private void ScrollUp() {
 
-            if(ItemPointer >= Items.Length - 1) {
+            if(ItemPointer >= Items.Length - 2) {
 
                 return;
             }

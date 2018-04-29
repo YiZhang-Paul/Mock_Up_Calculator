@@ -80,6 +80,12 @@ namespace UserControlClassLibrary {
             }
         }
 
+        public static void SetHeight(Control control, int height) {
+
+            control.Top -= height - control.Height;
+            control.Height = height;
+        }
+
         public static void AddLabel(Panel panel, string text, int fontSize, int leftMargin, int topMargin) {
 
             var label = new Label();
@@ -119,13 +125,13 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void KeypadButtonMouseEnter(object sender, EventArgs e) {
+        public static void ButtonMouseEnter(object sender, EventArgs e) {
 
             var button = (Button)sender;
             button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
         }
 
-        public static void KeypadButtonMouseLeave(object sender, EventArgs e) {
+        public static void ButtonMouseLeave(object sender, EventArgs e) {
 
             var button = (Button)sender;
             button.FlatAppearance.BorderColor = button.BackColor;

@@ -9,7 +9,8 @@ using FormatterClassLibrary;
 namespace UserControlClassLibrary {
     public interface IMemoryItemDisplay {
 
-        event EventHandler OnDelete;
+        event EventHandler OnMemoryDelete;
+        event EventHandler OnMemoryClear;
         event EventHandler OnMemorySelect;
         event EventHandler OnMemoryPlus;
         event EventHandler OnMemoryMinus;

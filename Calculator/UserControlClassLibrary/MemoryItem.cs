@@ -88,7 +88,7 @@ namespace UserControlClassLibrary {
 
         private void ButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.KeypadButtonMouseLeave((Button)sender, e);
+            UIHelper.ButtonMouseLeave((Button)sender, e);
         }
 
         private void PanelMouseEnter(object sender, EventArgs e) {

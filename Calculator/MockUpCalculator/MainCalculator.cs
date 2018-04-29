@@ -53,7 +53,7 @@ namespace MockUpCalculator {
 
         private void SetupKeypad() {
 
-            scientificKeypad.OnKeypadEnable += KeypadEnable;
+            scientificKeypad.OnKeypadEnable += EnableKeypadFromError;
             scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
             scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
             scientificKeypad.OnMemoryToggle += ToggleMemoryPanel;
@@ -69,7 +69,8 @@ namespace MockUpCalculator {
 
         private void SetupMemoryPanel() {
 
-            memoryPanel.OnDelete += MemoryRemove;
+            memoryPanel.OnMemoryDelete += MemoryRemove;
+            memoryPanel.OnMemoryClear += MemoryPanelClear;
             memoryPanel.OnMemorySelect += MemorySelect;
             memoryPanel.OnMemoryPlus += MemoryPlusByKey;
             memoryPanel.OnMemoryMinus += MemoryMinusByKey;
@@ -227,7 +228,13 @@ namespace MockUpCalculator {
             HandleCalculation(key);
         }
 
-        private void KeypadEnable(object sender, EventArgs e) {
+        private void EnableKeypad() {
+
+            scientificKeypad.HasMemory = Calculator.MemoryValues.Length != 0;
+            scientificKeypad.EnableValidKeys();
+        }
+
+        private void EnableKeypadFromError(object sender, EventArgs e) {
 
             standardDisplay.Clear();
             Calculator.Clear();
@@ -267,16 +274,7 @@ namespace MockUpCalculator {
         private void CloseMemoryPanel() {
 
             memoryPanel.Shrink();
-
-            if(Calculator.MemoryValues.Length == 0) {
-
-                scientificKeypad.HasMemory = false;
-                scientificKeypad.EnableValidKeys();
-
-                return;
-            }
-
-            scientificKeypad.EnableAllKeys();
+            EnableKeypad();
         }
 
         private void MemoryPanelExtended(object sender, EventArgs e) {
@@ -331,6 +329,12 @@ namespace MockUpCalculator {
         private void MemoryClear(object sender, EventArgs e) {
 
             Calculator.MemoryClear();
+        }
+
+        private void MemoryPanelClear(object sender, EventArgs e) {
+
+            MemoryClear(sender, e);
+            CloseMemoryPanel();
         }
 
         private void MemoryRemove(object sender, EventArgs e) {
@@ -402,12 +406,12 @@ namespace MockUpCalculator {
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.KeypadButtonMouseEnter(sender, e);
+            UIHelper.ButtonMouseEnter(sender, e);
         }
 
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.KeypadButtonMouseLeave(sender, e);
+            UIHelper.ButtonMouseLeave(sender, e);
         }
 
         private void GetPointerLocation(object sender, MouseEventArgs e) {
