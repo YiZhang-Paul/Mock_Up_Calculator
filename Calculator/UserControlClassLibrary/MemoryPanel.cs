@@ -72,14 +72,9 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private MemoryItem[] GetMemoryItems() {
-
-            return mainPanel.Controls.OfType<MemoryItem>().ToArray();
-        }
-
         public void ClearItems() {
 
-            var items = GetMemoryItems();
+            var items = mainPanel.Controls.OfType<MemoryItem>().ToArray();
 
             for(int i = 0; i < items.Length; i++) {
 
@@ -87,6 +82,30 @@ namespace UserControlClassLibrary {
             }
 
             ClearMessage();
+            scrollBar.Visible = false;
+        }
+
+        private bool CanScroll() {
+
+            return ItemPointer > 0 || Items.Length > VisibleItems - 1;
+        }
+
+        private void SetScrollBar() {
+
+            scrollBar.Visible = CanScroll();
+
+            if(!scrollBar.Visible) {
+
+                return;
+            }
+
+            int height = Height - bottomPanel.Height;
+            int padding = height / 10;
+            height -= padding;
+            double percentage = (double)ItemPointer / (Items.Length - 2);
+            scrollBar.Height = (int)((double)height / Items.Length * (VisibleItems - 1));
+            scrollBar.Top = padding + (int)((height - scrollBar.Height) * percentage);
+            scrollBar.Left = Parent.Right - scrollBar.Width * 2 - 1;
         }
 
         public void ShowItems(decimal[] values, IFormatter formatter) {
@@ -113,6 +132,8 @@ namespace UserControlClassLibrary {
                 item.Height = ItemHeight - ItemMargin;
                 item.Top = ItemHeight * i + ItemMargin;
             }
+
+            SetScrollBar();
         }
 
         public void RefreshItems(decimal[] values, IFormatter formatter) {
@@ -131,17 +152,22 @@ namespace UserControlClassLibrary {
             UIHelper.ButtonMouseLeave((Button)sender, e);
         }
 
-        private void btnClear_Click(object sender, EventArgs e) {
-
-            OnMemoryClear(sender, e);
-        }
-
         private void mainPanel_MouseEnter(object sender, EventArgs e) {
 
             UIHelper.ReceiveFocus(sender);
         }
 
+        private void btnClear_Click(object sender, EventArgs e) {
+
+            OnMemoryClear(sender, e);
+        }
+
         private void MemoryClear(object sender, EventArgs e) {
+
+            if(ItemPointer == Items.Length - 2 && ItemPointer > 0) {
+
+                ItemPointer--;
+            }
 
             OnMemoryDelete(sender, e);
         }
@@ -219,11 +245,6 @@ namespace UserControlClassLibrary {
             memoryTimer.Tick -= ExtendPanel;
             memoryTimer.Tick += ShrinkPanel;
             memoryTimer.Start();
-        }
-
-        private bool CanScroll() {
-
-            return ItemPointer > 0 || Items.Length > VisibleItems;
         }
 
         private void ScrollUp() {

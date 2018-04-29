@@ -23,11 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.memoryTimer = new System.Windows.Forms.Timer(this.components);
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
+            this.memoryTimer = new System.Windows.Forms.Timer();
+            this.scrollBar = new System.Windows.Forms.Panel();
             this.mainPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -35,6 +35,7 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.mainPanel.Controls.Add(this.scrollBar);
             this.mainPanel.Controls.Add(this.bottomPanel);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
@@ -43,10 +44,6 @@
             this.mainPanel.Size = new System.Drawing.Size(288, 82);
             this.mainPanel.TabIndex = 0;
             this.mainPanel.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
-            // 
-            // memoryTimer
-            // 
-            this.memoryTimer.Interval = 1;
             // 
             // bottomPanel
             // 
@@ -82,6 +79,21 @@
             this.btnClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
+            // memoryTimer
+            // 
+            this.memoryTimer.Interval = 1;
+            // 
+            // scrollBar
+            // 
+            this.scrollBar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.scrollBar.BackColor = System.Drawing.Color.Gray;
+            this.scrollBar.Location = new System.Drawing.Point(286, 0);
+            this.scrollBar.Margin = new System.Windows.Forms.Padding(0);
+            this.scrollBar.Name = "scrollBar";
+            this.scrollBar.Size = new System.Drawing.Size(2, 18);
+            this.scrollBar.TabIndex = 6;
+            this.scrollBar.Visible = false;
+            // 
             // MemoryPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.Timer memoryTimer;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Panel scrollBar;
     }
 }
