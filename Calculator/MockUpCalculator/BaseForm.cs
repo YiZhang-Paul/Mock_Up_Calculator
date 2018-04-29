@@ -23,7 +23,6 @@ namespace MockUpCalculator {
         protected Panel BottomPanel { get; set; }
         protected IResize Resizer { get; set; }
         protected IKeyChecker Checker { get; set; }
-        protected IFormatter NumberFormatter { get; set; }
 
         public BaseForm() {
 
@@ -53,7 +52,6 @@ namespace MockUpCalculator {
 
         protected virtual void Initialize() {
 
-            NumberFormatter = new NumberFormatter();
             SaveDimension();
             SaveClientCenter();
         }
