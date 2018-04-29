@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 namespace UserControlClassLibrary {
-    public class Resizer {
+    public class Resizer : IResize {
 
         public int[] Keys { get; private set; }
         public Dictionary<int, Func<Rectangle>> Boxes { get; private set; }

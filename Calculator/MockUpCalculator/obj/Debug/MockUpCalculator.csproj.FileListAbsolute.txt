@@ -14,7 +14,6 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UtilityClassLibrary.
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\ConverterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.csprojResolveAssemblyReference.cache
-D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.MainCalculator.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.Properties.Resources.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.csproj.GenerateResource.Cache
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.exe
@@ -23,3 +22,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrar
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\StorageClassLibrary.dll
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\StorageClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.BaseForm.resources
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.MainForm.resources

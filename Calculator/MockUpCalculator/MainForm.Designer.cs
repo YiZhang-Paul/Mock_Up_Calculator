@@ -1,5 +1,5 @@
 ﻿namespace MockUpCalculator {
-    partial class MainCalculator {
+    partial class MainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,19 +23,16 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.topPanel = new UserControlClassLibrary.TopPanel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.uiLayout = new System.Windows.Forms.TableLayoutPanel();
             this.menuBarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.currentCalculatorLabel = new System.Windows.Forms.Label();
-            this.keypadPanel = new System.Windows.Forms.Panel();
-            this.zoomTimer = new System.Windows.Forms.Timer(this.components);
-            this.closeTimer = new System.Windows.Forms.Timer(this.components);
-            this.topPanel = new UserControlClassLibrary.TopPanel();
             this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
+            this.keypadPanel = new System.Windows.Forms.Panel();
             this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
             this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.mainLayout.SuspendLayout();
@@ -63,6 +60,18 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayout.Size = new System.Drawing.Size(337, 589);
             this.mainLayout.TabIndex = 1;
+            // 
+            // topPanel
+            // 
+            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(337, 32);
+            this.topPanel.TabIndex = 0;
             // 
             // bottomPanel
             // 
@@ -171,37 +180,6 @@
             this.currentCalculatorLabel.Text = "Scientific";
             this.currentCalculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // keypadPanel
-            // 
-            this.keypadPanel.Controls.Add(this.scientificKeypad);
-            this.keypadPanel.Controls.Add(this.memoryPanel);
-            this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keypadPanel.Location = new System.Drawing.Point(0, 151);
-            this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.keypadPanel.Name = "keypadPanel";
-            this.keypadPanel.Size = new System.Drawing.Size(337, 406);
-            this.keypadPanel.TabIndex = 2;
-            // 
-            // zoomTimer
-            // 
-            this.zoomTimer.Interval = 16;
-            // 
-            // closeTimer
-            // 
-            this.closeTimer.Interval = 1;
-            // 
-            // topPanel
-            // 
-            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.topPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(337, 32);
-            this.topPanel.TabIndex = 0;
-            // 
             // standardDisplay
             // 
             this.standardDisplay.AutoSize = true;
@@ -215,6 +193,17 @@
             this.standardDisplay.Name = "standardDisplay";
             this.standardDisplay.Size = new System.Drawing.Size(337, 101);
             this.standardDisplay.TabIndex = 1;
+            // 
+            // keypadPanel
+            // 
+            this.keypadPanel.Controls.Add(this.scientificKeypad);
+            this.keypadPanel.Controls.Add(this.memoryPanel);
+            this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keypadPanel.Location = new System.Drawing.Point(0, 151);
+            this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.keypadPanel.Name = "keypadPanel";
+            this.keypadPanel.Size = new System.Drawing.Size(337, 406);
+            this.keypadPanel.TabIndex = 2;
             // 
             // scientificKeypad
             // 
@@ -243,7 +232,7 @@
             this.memoryPanel.Size = new System.Drawing.Size(337, 50);
             this.memoryPanel.TabIndex = 4;
             // 
-            // MainCalculator
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,13 +245,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(320, 500);
-            this.Name = "MainCalculator";
+            this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.Deactivate += new System.EventHandler(this.MainCalculator_Deactivate);
-            this.ResizeBegin += new System.EventHandler(this.MainCalculator_ResizeBegin);
-            this.ResizeEnd += new System.EventHandler(this.MainCalculator_ResizeEnd);
             this.mainLayout.ResumeLayout(false);
             this.bottomPanel.ResumeLayout(false);
             this.uiLayout.ResumeLayout(false);
@@ -279,8 +266,6 @@
         private System.Windows.Forms.TableLayoutPanel mainLayout;
         private UserControlClassLibrary.TopPanel topPanel;
         private System.Windows.Forms.Panel bottomPanel;
-        private System.Windows.Forms.Timer zoomTimer;
-        private System.Windows.Forms.Timer closeTimer;
         private System.Windows.Forms.TableLayoutPanel uiLayout;
         private System.Windows.Forms.TableLayoutPanel menuBarLayout;
         private System.Windows.Forms.Button btnChangeCalculator;

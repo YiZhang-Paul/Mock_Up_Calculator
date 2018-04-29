@@ -45,6 +45,7 @@
     <Compile Include="IKeypad.cs" />
     <Compile Include="IMemoryItem.cs" />
     <Compile Include="IMemoryItemDisplay.cs" />
+    <Compile Include="IResize.cs" />
     <Compile Include="IScientificKeypad.cs" />
     <Compile Include="MemoryItem.cs">
       <SubType>UserControl</SubType>

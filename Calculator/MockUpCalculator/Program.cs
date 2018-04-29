@@ -13,7 +13,7 @@ namespace MockUpCalculator {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainCalculator());
+            Application.Run(new MainForm());
         }
     }
 }
