@@ -10,6 +10,7 @@ namespace UserControlClassLibrary {
     public interface IMemoryItemDisplay {
 
         event EventHandler OnDelete;
+        event EventHandler OnMemorySelect;
         event EventHandler OnMemoryPlus;
         event EventHandler OnMemoryMinus;
         event EventHandler OnExtended;

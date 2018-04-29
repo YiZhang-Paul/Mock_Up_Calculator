@@ -145,6 +145,43 @@ namespace CalculatorTest {
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException),
          "Invalid Key.")]
+        public void MemoryRetrieveWithInvalidKey() {
+
+            calculator.MemoryRetrieve(calculator.MemoryValues.Length);
+        }
+
+        [TestMethod]
+        public void MemoryRetrieve() {
+
+            calculator.MemoryStore(6);
+            calculator.MemoryStore(7);
+            calculator.MemoryStore(12);
+
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryRetrieve(0);
+
+            Assert.AreEqual("6", calculator.Input);
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryRetrieve(1);
+
+            Assert.AreEqual("7", calculator.Input);
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+
+            calculator.MemoryRetrieve(2);
+
+            Assert.AreEqual("12", calculator.Input);
+            Assert.AreEqual(3, calculator.MemoryValues.Length);
+            CollectionAssert.AreEqual(new decimal[] { 6, 7, 12 }, calculator.MemoryValues);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+         "Invalid Key.")]
         public void MemoryRemoveWithInvalidKey() {
 
             calculator.MemoryRemove(calculator.MemoryValues.Length);

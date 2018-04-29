@@ -70,6 +70,7 @@ namespace MockUpCalculator {
         private void SetupMemoryPanel() {
 
             memoryPanel.OnDelete += MemoryRemove;
+            memoryPanel.OnMemorySelect += MemorySelect;
             memoryPanel.OnMemoryPlus += MemoryPlusByKey;
             memoryPanel.OnMemoryMinus += MemoryMinusByKey;
             memoryPanel.OnExtended += MemoryPanelExtended;
@@ -257,13 +258,13 @@ namespace MockUpCalculator {
             currentCalculatorLabel.Focus();
         }
 
-        private void StartMemoryPanelOpen() {
+        private void OpenMemoryPanel() {
 
             memoryPanel.Extend(scientificKeypad.MainAreaHeight);
             scientificKeypad.LeaveMemoryKeyOn();
         }
 
-        private void StartMemoryPanelClose() {
+        private void CloseMemoryPanel() {
 
             memoryPanel.Shrink();
 
@@ -301,12 +302,12 @@ namespace MockUpCalculator {
 
             if(!MemoryPanelOn) {
 
-                StartMemoryPanelOpen();
+                OpenMemoryPanel();
 
                 return;
             }
 
-            StartMemoryPanelClose();
+            CloseMemoryPanel();
         }
 
         private void RefreshMemoryPanel() {
@@ -343,6 +344,14 @@ namespace MockUpCalculator {
 
             Calculator.MemoryRecall();
             DisplayValue(Calculator.Input);
+        }
+
+        private void MemorySelect(object sender, EventArgs e) {
+
+            int key = memoryPanel.TryGetKey(sender);
+            Calculator.MemoryRetrieve(key);
+            DisplayValue(Calculator.Input);
+            CloseMemoryPanel();
         }
 
         private void MemoryPlus(object sender, EventArgs e) {
@@ -521,7 +530,7 @@ namespace MockUpCalculator {
 
             if(deselected) {
 
-                StartMemoryPanelClose();
+                CloseMemoryPanel();
             }
 
             MemoryPanelDeselected = deselected;

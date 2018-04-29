@@ -59,6 +59,11 @@ namespace CalculatorClassLibrary {
             Buffer.Set(Memory.Last.ToString());
         }
 
+        public void MemoryRetrieve(int key) {
+
+            Buffer.Set(Memory.Retrieve(key).ToString());
+        }
+
         public void MemoryStore(decimal value) {
 
             Memory.Store(value);

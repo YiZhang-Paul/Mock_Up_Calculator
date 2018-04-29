@@ -14,6 +14,7 @@ namespace CalculatorClassLibrary {
         void MemoryClear();
         void MemoryRemove(int key);
         void MemoryRecall();
+        void MemoryRetrieve(int key);
         void MemoryStore(decimal value);
         void MemoryPlus(int key, decimal value);
         void MemoryMinus(int key, decimal value);

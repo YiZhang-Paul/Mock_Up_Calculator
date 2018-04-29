@@ -17,6 +17,7 @@ namespace UserControlClassLibrary {
         private int TargetHeight { get; set; }
 
         public event EventHandler OnDelete;
+        public event EventHandler OnMemorySelect;
         public event EventHandler OnMemoryPlus;
         public event EventHandler OnMemoryMinus;
         public event EventHandler OnExtended;
@@ -40,6 +41,7 @@ namespace UserControlClassLibrary {
             item.Parent = mainPanel;
             item.Visible = false;
             item.OnDelete += MemoryClear;
+            item.OnMemorySelect += MemorySelect;
             item.OnMemoryPlus += MemoryPlus;
             item.OnMemoryMinus += MemoryMinus;
 
@@ -106,6 +108,11 @@ namespace UserControlClassLibrary {
         private void MemoryClear(object sender, EventArgs e) {
 
             OnDelete(sender, e);
+        }
+
+        private void MemorySelect(object sender, EventArgs e) {
+
+            OnMemorySelect(sender, e);
         }
 
         private void MemoryPlus(object sender, EventArgs e) {

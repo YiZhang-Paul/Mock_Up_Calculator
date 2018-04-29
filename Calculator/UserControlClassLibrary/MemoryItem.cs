@@ -18,6 +18,7 @@ namespace UserControlClassLibrary {
         public decimal Value { get; private set; }
 
         public event EventHandler OnDelete;
+        public event EventHandler OnMemorySelect;
         public event EventHandler OnMemoryPlus;
         public event EventHandler OnMemoryMinus;
 
@@ -54,6 +55,11 @@ namespace UserControlClassLibrary {
         private void RemoveFocus() {
 
             displayLabel.Focus();
+        }
+
+        private void PanelClick(object sender, EventArgs e) {
+
+            OnMemorySelect(this, e);
         }
 
         private void btnClear_Click(object sender, EventArgs e) {

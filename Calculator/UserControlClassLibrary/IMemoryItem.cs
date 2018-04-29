@@ -12,6 +12,7 @@ namespace UserControlClassLibrary {
         decimal Value { get; }
 
         event EventHandler OnDelete;
+        event EventHandler OnMemorySelect;
         event EventHandler OnMemoryPlus;
         event EventHandler OnMemoryMinus;
 

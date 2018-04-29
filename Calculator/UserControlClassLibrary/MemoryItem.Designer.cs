@@ -25,11 +25,11 @@
         private void InitializeComponent() {
             this.mainPanel = new System.Windows.Forms.Panel();
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.displayLabel = new System.Windows.Forms.Label();
             this.buttonLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
+            this.displayLabel = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.mainLayout.SuspendLayout();
             this.buttonLayout.SuspendLayout();
@@ -62,22 +62,9 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.25F));
             this.mainLayout.Size = new System.Drawing.Size(337, 80);
             this.mainLayout.TabIndex = 0;
+            this.mainLayout.Click += new System.EventHandler(this.PanelClick);
             this.mainLayout.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
             this.mainLayout.MouseLeave += new System.EventHandler(this.PanelMouseLeave);
-            // 
-            // displayLabel
-            // 
-            this.displayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.displayLabel.AutoSize = true;
-            this.displayLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
-            this.displayLabel.Location = new System.Drawing.Point(290, 3);
-            this.displayLabel.Margin = new System.Windows.Forms.Padding(0, 3, 15, 0);
-            this.displayLabel.Name = "displayLabel";
-            this.displayLabel.Size = new System.Drawing.Size(32, 40);
-            this.displayLabel.TabIndex = 0;
-            this.displayLabel.Text = "0";
-            this.displayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // buttonLayout
             // 
@@ -97,6 +84,7 @@
             this.buttonLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.buttonLayout.Size = new System.Drawing.Size(337, 37);
             this.buttonLayout.TabIndex = 1;
+            this.buttonLayout.Click += new System.EventHandler(this.PanelClick);
             this.buttonLayout.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
             this.buttonLayout.MouseLeave += new System.EventHandler(this.PanelMouseLeave);
             // 
@@ -165,6 +153,21 @@
             this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             this.btnMinus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMinus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            // 
+            // displayLabel
+            // 
+            this.displayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.displayLabel.AutoSize = true;
+            this.displayLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
+            this.displayLabel.Location = new System.Drawing.Point(290, 3);
+            this.displayLabel.Margin = new System.Windows.Forms.Padding(0, 3, 15, 0);
+            this.displayLabel.Name = "displayLabel";
+            this.displayLabel.Size = new System.Drawing.Size(32, 40);
+            this.displayLabel.TabIndex = 0;
+            this.displayLabel.Text = "0";
+            this.displayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.displayLabel.Click += new System.EventHandler(this.PanelClick);
             // 
             // MemoryItem
             // 
