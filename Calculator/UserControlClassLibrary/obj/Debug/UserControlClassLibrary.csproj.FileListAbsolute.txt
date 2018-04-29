@@ -12,3 +12,4 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.dll
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.MemoryItem.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.MemoryPanel.resources

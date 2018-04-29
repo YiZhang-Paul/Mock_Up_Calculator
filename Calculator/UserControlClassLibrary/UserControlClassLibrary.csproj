@@ -44,12 +44,19 @@
     <Compile Include="IDisplay.cs" />
     <Compile Include="IKeypad.cs" />
     <Compile Include="IMemoryItem.cs" />
+    <Compile Include="IMemoryItemDisplay.cs" />
     <Compile Include="IScientificKeypad.cs" />
     <Compile Include="MemoryItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MemoryItem.Designer.cs">
       <DependentUpon>MemoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemoryPanel.Designer.cs">
+      <DependentUpon>MemoryPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resizer.cs" />
@@ -82,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="MemoryItem.resx">
       <DependentUpon>MemoryItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryPanel.resx">
+      <DependentUpon>MemoryPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScientificKeypad.resx">
       <DependentUpon>ScientificKeypad.cs</DependentUpon>

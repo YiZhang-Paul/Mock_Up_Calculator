@@ -67,6 +67,13 @@ namespace MockUpCalculator {
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
         }
 
+        private void SetupMemoryPanel() {
+
+            memoryPanel.OnDelete += MemoryRemove;
+            memoryPanel.OnMemoryPlus += MemoryPlusByKey;
+            memoryPanel.OnMemoryMinus += MemoryMinusByKey;
+        }
+
         private void SaveDimension() {
 
             DefaultWidth = Width;
@@ -89,6 +96,7 @@ namespace MockUpCalculator {
             SaveDimension();
             SetupTopPanel();
             SetupKeypad();
+            SetupMemoryPanel();
         }
 
         private IFormatter GetFormatter() {
@@ -258,7 +266,7 @@ namespace MockUpCalculator {
                 MemoryPanelOn = true;
                 memoryTimer.Tick -= OpenMemoryPanel;
                 memoryTimer.Stop();
-                ShowMemoryItems();
+                memoryPanel.ShowItems(Calculator.MemoryValues, NumberFormatter);
             }
         }
 
@@ -293,7 +301,7 @@ namespace MockUpCalculator {
 
         private void StartMemoryPanelClose() {
 
-            RemoveMemoryItems();
+            memoryPanel.ClearItems();
             memoryTimer.Tick -= OpenMemoryPanel;
             memoryTimer.Tick += CloseMemoryPanel;
             memoryTimer.Start();
@@ -328,68 +336,9 @@ namespace MockUpCalculator {
             StartMemoryPanelClose();
         }
 
-        private void RemoveMemoryItems() {
+        private void RefreshMemoryPanel() {
 
-            var controls = memoryPanel.Controls.OfType<MemoryItem>().ToArray();
-
-            for(int i = 0; i < controls.Length; i++) {
-
-                controls[i].Dispose();
-            }
-
-            var labels = memoryPanel.Controls.OfType<Label>().ToArray();
-
-            if(labels.Length != 0) {
-
-                labels[0].Dispose();
-            }
-        }
-
-        private MemoryItem GetMemoryItem(int key, decimal value) {
-
-            var item = new MemoryItem(key, value, NumberFormatter);
-            item.Parent = memoryPanel;
-            item.Visible = false;
-            item.OnDelete += MemoryRemove;
-            item.OnMemoryPlus += MemoryPlusByKey;
-            item.OnMemoryMinus += MemoryMinusByKey;
-
-            return item;
-        }
-
-        private void ShowMemoryItems() {
-
-            const int visibleItems = 3;
-            const int itemMargin = 15;
-            int panelHeight = scientificKeypad.MainAreaHeight;
-            int totalHeight = (int)((double)panelHeight / visibleItems);
-            decimal[] items = Calculator.MemoryValues;
-
-            for(int i = items.Length - 1, j = 0; i >= 0; i--, j++) {
-
-                var item = GetMemoryItem(i, items[i]);
-                item.Height = totalHeight - itemMargin;
-
-                if(j < visibleItems) {
-
-                    item.Top = totalHeight * j + itemMargin;
-                    item.Visible = true;
-                }
-            }
-        }
-
-        private void RefreshMemoryItems() {
-
-            RemoveMemoryItems();
-            ShowMemoryItems();
-        }
-
-        private int TryGetItemKey(object sender) {
-
-            var button = (Button)sender;
-            var item = (IMemoryItem)button.Tag;
-
-            return item.Key;
+            memoryPanel.RefreshItems(Calculator.MemoryValues, NumberFormatter);
         }
 
         private void MemoryStore(object sender, EventArgs e) {
@@ -410,21 +359,17 @@ namespace MockUpCalculator {
             Calculator.MemoryClear();
         }
 
+        private void MemoryRemove(object sender, EventArgs e) {
+
+            int key = memoryPanel.TryGetKey(sender);
+            Calculator.MemoryRemove(key);
+            RefreshMemoryPanel();
+        }
+
         private void MemoryRecall(object sender, EventArgs e) {
 
             Calculator.MemoryRecall();
             DisplayValue(Calculator.Input);
-        }
-
-        private void MemoryRemove(object sender, EventArgs e) {
-
-            Calculator.MemoryRemove(TryGetItemKey(sender));
-            RefreshMemoryItems();
-
-            if(Calculator.MemoryValues.Length == 0) {
-
-                UIHelper.AddLabel(memoryPanel, "There's nothing saved in memory", 11, 10, 15);
-            }
         }
 
         private void MemoryPlus(object sender, EventArgs e) {
@@ -445,8 +390,9 @@ namespace MockUpCalculator {
 
         private void MemoryPlusByKey(object sender, EventArgs e) {
 
-            Calculator.MemoryPlus(TryGetItemKey(sender), standardDisplay.RecentValue);
-            RefreshMemoryItems();
+            int key = memoryPanel.TryGetKey(sender);
+            Calculator.MemoryPlus(key, standardDisplay.RecentValue);
+            RefreshMemoryPanel();
         }
 
         private void MemoryMinus(object sender, EventArgs e) {
@@ -467,8 +413,9 @@ namespace MockUpCalculator {
 
         private void MemoryMinusByKey(object sender, EventArgs e) {
 
-            Calculator.MemoryMinus(TryGetItemKey(sender), standardDisplay.RecentValue);
-            RefreshMemoryItems();
+            int key = memoryPanel.TryGetKey(sender);
+            Calculator.MemoryMinus(key, standardDisplay.RecentValue);
+            RefreshMemoryPanel();
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {

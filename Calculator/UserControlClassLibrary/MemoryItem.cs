@@ -59,22 +59,19 @@ namespace UserControlClassLibrary {
         private void btnClear_Click(object sender, EventArgs e) {
 
             RemoveFocus();
-            ((Button)sender).Tag = this;
-            OnDelete(sender, e);
+            OnDelete(this, e);
         }
 
         private void btnPlus_Click(object sender, EventArgs e) {
 
             RemoveFocus();
-            ((Button)sender).Tag = this;
-            OnMemoryPlus(sender, e);
+            OnMemoryPlus(this, e);
         }
 
         private void btnMinus_Click(object sender, EventArgs e) {
 
             RemoveFocus();
-            ((Button)sender).Tag = this;
-            OnMemoryMinus(sender, e);
+            OnMemoryMinus(this, e);
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {

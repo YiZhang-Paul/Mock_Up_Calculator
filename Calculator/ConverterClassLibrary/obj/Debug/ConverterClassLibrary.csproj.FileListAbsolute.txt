@@ -2,3 +2,4 @@ D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\ConverterClassL
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\ConverterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\obj\Debug\ConverterClassLibrary.dll
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\obj\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ConverterClassLibrary\obj\Debug\ConverterClassLibrary.csprojResolveAssemblyReference.cache
