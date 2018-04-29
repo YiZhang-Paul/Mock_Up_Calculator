@@ -117,7 +117,7 @@
             this.scrollPanel.Location = new System.Drawing.Point(0, 0);
             this.scrollPanel.Margin = new System.Windows.Forms.Padding(0);
             this.scrollPanel.Name = "scrollPanel";
-            this.scrollPanel.Size = new System.Drawing.Size(297, 36);
+            this.scrollPanel.Size = new System.Drawing.Size(287, 36);
             this.scrollPanel.TabIndex = 8;
             this.scrollPanel.MouseHover += new System.EventHandler(this.scrollPanel_MouseHover);
             // 
@@ -127,7 +127,7 @@
             this.expressionLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.expressionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.expressionLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.expressionLabel.Location = new System.Drawing.Point(272, 0);
+            this.expressionLabel.Location = new System.Drawing.Point(262, 0);
             this.expressionLabel.Margin = new System.Windows.Forms.Padding(0);
             this.expressionLabel.Name = "expressionLabel";
             this.expressionLabel.Padding = new System.Windows.Forms.Padding(0, 5, 25, 0);

@@ -110,11 +110,6 @@ namespace UserControlClassLibrary {
 
         private void ScrollLeft(int speed) {
 
-            if(!CanScroll()) {
-
-                return;
-            }
-
             int maxX = MaxScrollX();
             scrollPanel.Left = Math.Min(scrollPanel.Left + speed, maxX);
         }
@@ -126,6 +121,11 @@ namespace UserControlClassLibrary {
         }
 
         private void ScrollExpression(object sender, MouseEventArgs e) {
+
+            if(!CanScroll()) {
+
+                return;
+            }
 
             const int speed = 25;
 
