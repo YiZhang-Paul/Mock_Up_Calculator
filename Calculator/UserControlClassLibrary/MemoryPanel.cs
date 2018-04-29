@@ -17,8 +17,8 @@ namespace UserControlClassLibrary {
         private int TargetHeight { get; set; }
         private int ItemHeight { get { return (int)((double)Height / VisibleItems); } }
         private int ItemIndex { get; set; }
-        private decimal[] RecentItems { get; set; }
-        private IFormatter RecentFormatter { get; set; }
+        private decimal[] Items { get; set; }
+        private IFormatter Formatter { get; set; }
 
         public event EventHandler OnDelete;
         public event EventHandler OnMemorySelect;
@@ -99,12 +99,12 @@ namespace UserControlClassLibrary {
                 return;
             }
 
-            RecentItems = values;
-            RecentFormatter = formatter;
+            Items = values;
+            Formatter = formatter;
 
-            for(int i = RecentItems.Length - 1, j = 0; i >= 0; i--, j++) {
+            for(int i = Items.Length - 1, j = 0; i >= 0; i--, j++) {
 
-                var item = CreateItem(i, RecentItems[i], RecentFormatter);
+                var item = CreateItem(i, Items[i], Formatter);
                 item.Height = ItemHeight - ItemMargin;
 
                 if(j >= ItemIndex && j - ItemIndex < VisibleItems) {
@@ -204,13 +204,13 @@ namespace UserControlClassLibrary {
 
         private void ScrollUp() {
 
-            if(ItemIndex >= RecentItems.Length - 1) {
+            if(ItemIndex >= Items.Length - 1) {
 
                 return;
             }
 
             ItemIndex++;
-            RefreshItems(RecentItems, RecentFormatter);
+            RefreshItems(Items, Formatter);
         }
 
         private void ScrollDown() {
@@ -221,7 +221,7 @@ namespace UserControlClassLibrary {
             }
 
             ItemIndex--;
-            RefreshItems(RecentItems, RecentFormatter);
+            RefreshItems(Items, Formatter);
         }
 
         private void ScrollPanel(object sender, MouseEventArgs e) {

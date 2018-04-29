@@ -83,6 +83,7 @@ namespace UserControlClassLibrary {
         private void ButtonMouseEnter(object sender, EventArgs e) {
 
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
+            UIHelper.ReceiveFocus(Parent);
         }
 
         private void ButtonMouseLeave(object sender, EventArgs e) {
@@ -95,6 +96,7 @@ namespace UserControlClassLibrary {
             if(Visible) {
 
                 SetBackColor(Color.FromArgb(58, 58, 58));
+                UIHelper.ReceiveFocus(Parent);
             }
         }
 
