@@ -105,6 +105,11 @@ namespace UserControlClassLibrary {
             return control.ClientRectangle.Contains(pointer);
         }
 
+        public static void ReceiveFocus(object sender) {
+
+            ((Control)sender).Focus();
+        }
+
         public static void DragWindow(MouseEventArgs e, Form parent, Point pointer) {
 
             if(e.Button == MouseButtons.Left) {

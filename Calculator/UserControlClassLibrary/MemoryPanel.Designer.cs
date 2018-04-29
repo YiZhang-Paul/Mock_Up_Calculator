@@ -37,6 +37,7 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(288, 82);
             this.mainPanel.TabIndex = 0;
+            this.mainPanel.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
             // 
             // memoryTimer
             // 

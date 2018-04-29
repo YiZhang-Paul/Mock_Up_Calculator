@@ -15,6 +15,10 @@ namespace UserControlClassLibrary {
         private int VisibleItems { get; set; }
         private int ItemMargin { get; set; }
         private int TargetHeight { get; set; }
+        private int ItemHeight { get { return (int)((double)Height / VisibleItems); } }
+        private int ItemIndex { get; set; }
+        private decimal[] RecentItems { get; set; }
+        private IFormatter RecentFormatter { get; set; }
 
         public event EventHandler OnDelete;
         public event EventHandler OnMemorySelect;
@@ -26,8 +30,14 @@ namespace UserControlClassLibrary {
         public MemoryPanel() {
 
             InitializeComponent();
+            Initialize();
+        }
+
+        private void Initialize() {
+
             VisibleItems = 3;
             ItemMargin = 15;
+            mainPanel.MouseWheel += ScrollPanel;
         }
 
         public int TryGetKey(object sender) {
@@ -63,9 +73,14 @@ namespace UserControlClassLibrary {
             }
         }
 
+        private MemoryItem[] GetMemoryItems() {
+
+            return mainPanel.Controls.OfType<MemoryItem>().ToArray();
+        }
+
         public void ClearItems() {
 
-            var items = mainPanel.Controls.OfType<MemoryItem>().ToArray();
+            var items = GetMemoryItems();
 
             for(int i = 0; i < items.Length; i++) {
 
@@ -84,16 +99,17 @@ namespace UserControlClassLibrary {
                 return;
             }
 
-            int totalHeight = (int)((double)Height / VisibleItems);
+            RecentItems = values;
+            RecentFormatter = formatter;
 
-            for(int i = values.Length - 1, j = 0; i >= 0; i--, j++) {
+            for(int i = RecentItems.Length - 1, j = 0; i >= 0; i--, j++) {
 
-                var item = CreateItem(i, values[i], formatter);
-                item.Height = totalHeight - ItemMargin;
+                var item = CreateItem(i, RecentItems[i], RecentFormatter);
+                item.Height = ItemHeight - ItemMargin;
 
-                if(j < VisibleItems) {
+                if(j >= ItemIndex && j - ItemIndex < VisibleItems) {
 
-                    item.Top = totalHeight * j + ItemMargin;
+                    item.Top = ItemHeight * (j - ItemIndex) + ItemMargin;
                     item.Visible = true;
                 }
             }
@@ -103,6 +119,11 @@ namespace UserControlClassLibrary {
 
             ClearItems();
             ShowItems(values, formatter);
+        }
+
+        private void mainPanel_MouseEnter(object sender, EventArgs e) {
+
+            UIHelper.ReceiveFocus(sender);
         }
 
         private void MemoryClear(object sender, EventArgs e) {
@@ -170,9 +191,54 @@ namespace UserControlClassLibrary {
         public void Shrink() {
 
             ClearItems();
+            ItemIndex = 0;
             memoryTimer.Tick -= ExtendPanel;
             memoryTimer.Tick += ShrinkPanel;
             memoryTimer.Start();
+        }
+
+        private bool CanScroll() {
+
+            return ItemIndex > 0 || GetMemoryItems().Length > VisibleItems;
+        }
+
+        private void ScrollUp() {
+
+            if(ItemIndex >= RecentItems.Length - 1) {
+
+                return;
+            }
+
+            ItemIndex++;
+            RefreshItems(RecentItems, RecentFormatter);
+        }
+
+        private void ScrollDown() {
+
+            if(ItemIndex <= 0) {
+
+                return;
+            }
+
+            ItemIndex--;
+            RefreshItems(RecentItems, RecentFormatter);
+        }
+
+        private void ScrollPanel(object sender, MouseEventArgs e) {
+
+            if(!CanScroll()) {
+
+                return;
+            }
+
+            if(e.Delta > 0) {
+
+                ScrollDown();
+
+                return;
+            }
+
+            ScrollUp();
         }
     }
 }
