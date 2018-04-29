@@ -12,10 +12,14 @@ namespace UserControlClassLibrary {
         event EventHandler OnDelete;
         event EventHandler OnMemoryPlus;
         event EventHandler OnMemoryMinus;
+        event EventHandler OnExtended;
+        event EventHandler OnShrunken;
 
         int TryGetKey(object sender);
         void ClearItems();
         void ShowItems(decimal[] values, IFormatter formatter);
         void RefreshItems(decimal[] values, IFormatter formatter);
+        void Extend(int height);
+        void Shrink();
     }
 }

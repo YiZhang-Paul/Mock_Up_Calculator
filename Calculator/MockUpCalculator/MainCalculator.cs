@@ -72,6 +72,8 @@ namespace MockUpCalculator {
             memoryPanel.OnDelete += MemoryRemove;
             memoryPanel.OnMemoryPlus += MemoryPlusByKey;
             memoryPanel.OnMemoryMinus += MemoryMinusByKey;
+            memoryPanel.OnExtended += MemoryPanelExtended;
+            memoryPanel.OnShrunken += MemoryPanelShrunken;
         }
 
         private void SaveDimension() {
@@ -255,56 +257,15 @@ namespace MockUpCalculator {
             currentCalculatorLabel.Focus();
         }
 
-        private void OpenMemoryPanel(object sender, EventArgs e) {
-
-            int speed = Math.Min(65, scientificKeypad.MainAreaHeight - memoryPanel.Height);
-            memoryPanel.Top -= speed;
-            memoryPanel.Height += speed;
-
-            if(memoryPanel.Height >= scientificKeypad.MainAreaHeight) {
-
-                MemoryPanelOn = true;
-                memoryTimer.Tick -= OpenMemoryPanel;
-                memoryTimer.Stop();
-                memoryPanel.ShowItems(Calculator.MemoryValues, NumberFormatter);
-            }
-        }
-
-        private void CloseMemoryPanel(object sender, EventArgs e) {
-
-            int alpha = Math.Max(0, memoryPanel.BackColor.A - 75);
-            int red = memoryPanel.BackColor.R;
-            int green = memoryPanel.BackColor.G;
-            int blue = memoryPanel.BackColor.B;
-            memoryPanel.BackColor = Color.FromArgb(alpha, red, green, blue);
-
-            if(alpha <= 0) {
-
-                MemoryPanelOn = false;
-                memoryPanel.Height = 50;
-                memoryPanel.Top += scientificKeypad.MainAreaHeight - memoryPanel.Height;
-                memoryPanel.BackColor = Color.FromArgb(255, red, green, blue);
-                memoryTimer.Tick -= CloseMemoryPanel;
-                memoryTimer.Stop();
-                scientificKeypad.BringToFront();
-            }
-        }
-
         private void StartMemoryPanelOpen() {
 
-            memoryTimer.Tick -= CloseMemoryPanel;
-            memoryTimer.Tick += OpenMemoryPanel;
-            memoryTimer.Start();
-            memoryPanel.BringToFront();
+            memoryPanel.Extend(scientificKeypad.MainAreaHeight);
             scientificKeypad.LeaveMemoryKeyOn();
         }
 
         private void StartMemoryPanelClose() {
 
-            memoryPanel.ClearItems();
-            memoryTimer.Tick -= OpenMemoryPanel;
-            memoryTimer.Tick += CloseMemoryPanel;
-            memoryTimer.Start();
+            memoryPanel.Shrink();
 
             if(Calculator.MemoryValues.Length == 0) {
 
@@ -315,6 +276,18 @@ namespace MockUpCalculator {
             }
 
             scientificKeypad.EnableAllKeys();
+        }
+
+        private void MemoryPanelExtended(object sender, EventArgs e) {
+
+            MemoryPanelOn = true;
+            memoryPanel.ShowItems(Calculator.MemoryValues, NumberFormatter);
+        }
+
+        private void MemoryPanelShrunken(object sender, EventArgs e) {
+
+            MemoryPanelOn = false;
+            scientificKeypad.BringToFront();
         }
 
         private void ToggleMemoryPanel(object sender, EventArgs e) {

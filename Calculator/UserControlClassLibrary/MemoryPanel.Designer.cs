@@ -23,7 +23,9 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.memoryTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // mainPanel
@@ -35,6 +37,10 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(288, 82);
             this.mainPanel.TabIndex = 0;
+            // 
+            // memoryTimer
+            // 
+            this.memoryTimer.Interval = 1;
             // 
             // MemoryPanel
             // 
@@ -54,5 +60,6 @@
         #endregion
 
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Timer memoryTimer;
     }
 }

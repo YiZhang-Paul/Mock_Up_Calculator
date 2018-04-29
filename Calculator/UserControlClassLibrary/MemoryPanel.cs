@@ -14,10 +14,13 @@ namespace UserControlClassLibrary {
 
         private int VisibleItems { get; set; }
         private int ItemMargin { get; set; }
+        private int TargetHeight { get; set; }
 
         public event EventHandler OnDelete;
         public event EventHandler OnMemoryPlus;
         public event EventHandler OnMemoryMinus;
+        public event EventHandler OnExtended;
+        public event EventHandler OnShrunken;
 
         public MemoryPanel() {
 
@@ -113,6 +116,56 @@ namespace UserControlClassLibrary {
         private void MemoryMinus(object sender, EventArgs e) {
 
             OnMemoryMinus(sender, e);
+        }
+
+        private void ExtendPanel(object sender, EventArgs e) {
+
+            int speed = Math.Min(65, TargetHeight - Height);
+            Top -= speed;
+            Height += speed;
+
+            if(Height >= TargetHeight) {
+
+                memoryTimer.Tick -= ExtendPanel;
+                memoryTimer.Stop();
+                OnExtended(sender, e);
+            }
+        }
+
+        private void ShrinkPanel(object sender, EventArgs e) {
+
+            int alpha = Math.Max(0, BackColor.A - 75);
+            int red = BackColor.R;
+            int green = BackColor.G;
+            int blue = BackColor.B;
+            BackColor = Color.FromArgb(alpha, red, green, blue);
+
+            if(alpha <= 0) {
+
+                Top += Height - 50;
+                Height = 50;
+                BackColor = Color.FromArgb(255, red, green, blue);
+                memoryTimer.Tick -= ShrinkPanel;
+                memoryTimer.Stop();
+                OnShrunken(sender, e);
+            }
+        }
+
+        public void Extend(int height) {
+
+            TargetHeight = height;
+            memoryTimer.Tick -= ShrinkPanel;
+            memoryTimer.Tick += ExtendPanel;
+            memoryTimer.Start();
+            BringToFront();
+        }
+
+        public void Shrink() {
+
+            ClearItems();
+            memoryTimer.Tick -= ExtendPanel;
+            memoryTimer.Tick += ShrinkPanel;
+            memoryTimer.Start();
         }
     }
 }
