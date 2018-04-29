@@ -16,7 +16,7 @@ namespace UserControlClassLibrary {
         private int ItemMargin { get; set; }
         private int TargetHeight { get; set; }
         private int ItemHeight { get { return (int)((double)Height / VisibleItems); } }
-        private int ItemIndex { get; set; }
+        private int ItemPointer { get; set; }
         private decimal[] Items { get; set; }
         private IFormatter Formatter { get; set; }
 
@@ -49,7 +49,6 @@ namespace UserControlClassLibrary {
 
             var item = new MemoryItem(key, value, formatter);
             item.Parent = mainPanel;
-            item.Visible = false;
             item.OnDelete += MemoryClear;
             item.OnMemorySelect += MemorySelect;
             item.OnMemoryPlus += MemoryPlus;
@@ -102,16 +101,16 @@ namespace UserControlClassLibrary {
             Items = values;
             Formatter = formatter;
 
-            for(int i = Items.Length - 1, j = 0; i >= 0; i--, j++) {
+            for(int i = 0, j = Items.Length - 1 - ItemPointer; i < VisibleItems; i++, j--) {
 
-                var item = CreateItem(i, Items[i], Formatter);
-                item.Height = ItemHeight - ItemMargin;
+                if(j < 0) {
 
-                if(j >= ItemIndex && j - ItemIndex < VisibleItems) {
-
-                    item.Top = ItemHeight * (j - ItemIndex) + ItemMargin;
-                    item.Visible = true;
+                    break;
                 }
+
+                var item = CreateItem(j, Items[j], Formatter);
+                item.Height = ItemHeight - ItemMargin;
+                item.Top = ItemHeight * i + ItemMargin;
             }
         }
 
@@ -191,7 +190,7 @@ namespace UserControlClassLibrary {
         public void Shrink() {
 
             ClearItems();
-            ItemIndex = 0;
+            ItemPointer = 0;
             memoryTimer.Tick -= ExtendPanel;
             memoryTimer.Tick += ShrinkPanel;
             memoryTimer.Start();
@@ -199,28 +198,28 @@ namespace UserControlClassLibrary {
 
         private bool CanScroll() {
 
-            return ItemIndex > 0 || GetMemoryItems().Length > VisibleItems;
+            return ItemPointer > 0 || Items.Length > VisibleItems;
         }
 
         private void ScrollUp() {
 
-            if(ItemIndex >= Items.Length - 1) {
+            if(ItemPointer >= Items.Length - 1) {
 
                 return;
             }
 
-            ItemIndex++;
+            ItemPointer++;
             RefreshItems(Items, Formatter);
         }
 
         private void ScrollDown() {
 
-            if(ItemIndex <= 0) {
+            if(ItemPointer <= 0) {
 
                 return;
             }
 
-            ItemIndex--;
+            ItemPointer--;
             RefreshItems(Items, Formatter);
         }
 
