@@ -18,9 +18,16 @@ namespace UserControlClassLibrary {
         private bool TrigonometricToggled { get; set; }
         private float UnitKeyFontSize { get; set; }
 
-        public override int MainAreaHeight { get { return Height - extraKeysLayout.Height; } }
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
+
+        public override int MainAreaHeight {
+
+            get {
+
+                return Height - extraKeysLayout.Height - extensionOneLayout.Margin.Top;
+            }
+        }
 
         public event EventHandler OnAngularUnitToggle;
         public event EventHandler OnEngineeringModeToggle;

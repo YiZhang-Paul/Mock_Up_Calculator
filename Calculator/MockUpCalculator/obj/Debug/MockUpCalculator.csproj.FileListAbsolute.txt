@@ -22,6 +22,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrar
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\FormatterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\StorageClassLibrary.dll
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\StorageClassLibrary.pdb
-D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.BaseForm.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.MainForm.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.ScientificCalculatorPanel.resources

@@ -99,6 +99,11 @@ namespace UserControlClassLibrary {
             label.Top = topMargin;
         }
 
+        public static Rectangle GetViewport(Form form) {
+
+            return Screen.FromControl(form).WorkingArea;
+        }
+
         public static Point GetPointerLocation(MouseEventArgs e) {
 
             return e.Location;
