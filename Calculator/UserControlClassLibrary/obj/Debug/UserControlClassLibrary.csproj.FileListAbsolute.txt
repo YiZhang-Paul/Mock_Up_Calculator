@@ -15,3 +15,4 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ExpandableDisplayPanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.Keypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.StandardKeypad.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.SidePanel.resources

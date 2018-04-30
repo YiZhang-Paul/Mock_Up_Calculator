@@ -62,30 +62,30 @@ namespace MockUpCalculator {
             SaveClientCenter();
             SetupTopPanel();
 
-            //CalculatorPanel = new ScientificCalculatorPanel(
+            CalculatorPanel = new ScientificCalculatorPanel(
 
-            //    new ScientificCalculator(),
-            //    new KeyChecker(),
-            //    new NumberFormatter(),
-            //    new EngineeringFormatter()
-            //);
-
-            //CalculatorPanel.Parent = uiLayout;
-            //CalculatorPanel.Dock = DockStyle.Fill;
-            //CalculatorPanel.Show();
-            //CalculatorLabel.Text = "Scientific";
-
-            CalculatorPanel = new StandardCalculatorPanel(
-
+                new ScientificCalculator(),
                 new KeyChecker(),
                 new NumberFormatter(),
-                new StandardCalculator()
+                new EngineeringFormatter()
             );
 
             CalculatorPanel.Parent = uiLayout;
             CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
-            CalculatorLabel.Text = "Standard";
+            CalculatorLabel.Text = "Scientific";
+
+            //CalculatorPanel = new StandardCalculatorPanel(
+
+            //    new KeyChecker(),
+            //    new NumberFormatter(),
+            //    new StandardCalculator()
+            //);
+
+            //CalculatorPanel.Parent = uiLayout;
+            //CalculatorPanel.Dock = DockStyle.Fill;
+            //CalculatorPanel.Show();
+            //CalculatorLabel.Text = "Standard";
         }
 
         private void RemoveFocus(object sender, EventArgs e) {

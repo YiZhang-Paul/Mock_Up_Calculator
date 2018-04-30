@@ -76,6 +76,12 @@
     <Compile Include="ScientificKeypad.Designer.cs">
       <DependentUpon>ScientificKeypad.cs</DependentUpon>
     </Compile>
+    <Compile Include="SidePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SidePanel.Designer.cs">
+      <DependentUpon>SidePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="StandardDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScientificKeypad.resx">
       <DependentUpon>ScientificKeypad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SidePanel.resx">
+      <DependentUpon>SidePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StandardDisplay.resx">
       <DependentUpon>StandardDisplay.cs</DependentUpon>
