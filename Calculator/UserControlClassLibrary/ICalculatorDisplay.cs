@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
-    public interface IDisplay {
+    public interface ICalculatorDisplay {
 
         decimal RecentValue { get; }
         string Content { get; }

@@ -10,10 +10,9 @@ using System.Windows.Forms;
 using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class MemoryPanel : UserControl, IMemoryItemDisplay {
+    public partial class MemoryPanel : ExpandableDisplayPanel, IMemoryItemDisplay {
 
         private int VisibleItems { get { return Math.Max(3, TargetHeight / 108); } }
-        private int TargetHeight { get; set; }
         private int ItemHeight { get { return TargetHeight / VisibleItems; } }
         private int ItemMargin { get; set; }
         private int ItemPointer { get; set; }
@@ -21,12 +20,9 @@ namespace UserControlClassLibrary {
         private IFormatter Formatter { get; set; }
 
         public event EventHandler OnMemoryDelete;
-        public event EventHandler OnMemoryClear;
         public event EventHandler OnMemorySelect;
         public event EventHandler OnMemoryPlus;
         public event EventHandler OnMemoryMinus;
-        public event EventHandler OnExtended;
-        public event EventHandler OnShrunken;
 
         public MemoryPanel() {
 
@@ -34,10 +30,12 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
-        private void Initialize() {
+        protected override void Initialize() {
 
+            base.Initialize();
             ItemMargin = 15;
-            mainPanel.MouseWheel += ScrollPanel;
+            MainPanel.MouseWheel += ScrollPanel;
+            OnClear += ClearPanel;
         }
 
         public int TryGetKey(object sender) {
@@ -48,7 +46,7 @@ namespace UserControlClassLibrary {
         private MemoryItem CreateItem(int key, decimal value, IFormatter formatter) {
 
             var item = new MemoryItem(key, value, formatter);
-            item.Parent = mainPanel;
+            item.Parent = MainPanel;
             item.OnDelete += MemoryClear;
             item.OnMemorySelect += MemorySelect;
             item.OnMemoryPlus += MemoryPlus;
@@ -57,24 +55,9 @@ namespace UserControlClassLibrary {
             return item;
         }
 
-        private void ShowMessage(string message) {
-
-            UIHelper.AddLabel(mainPanel, message, 11, 10, 15);
-        }
-
-        private void ClearMessage() {
-
-            var labels = mainPanel.Controls.OfType<Label>().ToArray();
-
-            if(labels.Length != 0) {
-
-                labels[0].Dispose();
-            }
-        }
-
         public void ClearItems() {
 
-            var items = mainPanel.Controls.OfType<MemoryItem>().ToArray();
+            var items = MainPanel.Controls.OfType<MemoryItem>().ToArray();
 
             for(int i = 0; i < items.Length; i++) {
 
@@ -82,7 +65,7 @@ namespace UserControlClassLibrary {
             }
 
             ClearMessage();
-            scrollBar.Visible = false;
+            ScrollBar.Visible = false;
         }
 
         private bool CanScroll() {
@@ -92,20 +75,20 @@ namespace UserControlClassLibrary {
 
         private void SetScrollBar() {
 
-            scrollBar.Visible = CanScroll();
+            ScrollBar.Visible = CanScroll();
 
-            if(!scrollBar.Visible) {
+            if(!ScrollBar.Visible) {
 
                 return;
             }
 
-            int height = Height - bottomPanel.Height;
+            int height = Height - BottomPanel.Height;
             int padding = height / 10;
             height -= padding;
             double percentage = (double)ItemPointer / (Items.Length - 2);
-            scrollBar.Height = (int)((double)height / Items.Length * (VisibleItems - 1));
-            scrollBar.Top = padding + (int)((height - scrollBar.Height) * percentage);
-            scrollBar.Left = Parent.Right - scrollBar.Width * 2 - 1;
+            ScrollBar.Height = (int)((double)height / Items.Length * (VisibleItems - 1));
+            ScrollBar.Top = padding + (int)((height - ScrollBar.Height) * percentage);
+            ScrollBar.Left = Parent.Right - ScrollBar.Width * 2 - 1;
         }
 
         public void ShowItems(decimal[] values, IFormatter formatter) {
@@ -142,24 +125,9 @@ namespace UserControlClassLibrary {
             ShowItems(values, formatter);
         }
 
-        private void ButtonMouseEnter(object sender, EventArgs e) {
+        private void ClearPanel(object sender, EventArgs e) {
 
-            ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
-        }
-
-        private void ButtonMouseLeave(object sender, EventArgs e) {
-
-            UIHelper.ButtonMouseLeave((Button)sender, e);
-        }
-
-        private void mainPanel_MouseEnter(object sender, EventArgs e) {
-
-            UIHelper.ReceiveFocus(sender);
-        }
-
-        private void btnClear_Click(object sender, EventArgs e) {
-
-            OnMemoryClear(sender, e);
+            ItemPointer = 0;
         }
 
         private void MemoryClear(object sender, EventArgs e) {
@@ -187,64 +155,17 @@ namespace UserControlClassLibrary {
             OnMemoryMinus(sender, e);
         }
 
-        private void ExtendPanel(object sender, EventArgs e) {
+        protected override void ResizeBottomPanel() {
 
-            int speed = Math.Min(65, TargetHeight - Height);
-            Top -= speed;
-            Height += speed;
-
-            if(Height >= TargetHeight) {
-
-                memoryTimer.Tick -= ExtendPanel;
-                memoryTimer.Stop();
-                OnExtended(sender, e);
-            }
+            base.ResizeBottomPanel();
+            UIHelper.SetHeight(BottomPanel, ItemHeight);
+            BottomPanel.Width = Width;
         }
 
-        private void ShrinkPanel(object sender, EventArgs e) {
-
-            int alpha = Math.Max(0, BackColor.A - 75);
-            int red = BackColor.R;
-            int green = BackColor.G;
-            int blue = BackColor.B;
-            BackColor = Color.FromArgb(alpha, red, green, blue);
-
-            if(alpha <= 0) {
-
-                Top += Height - 50;
-                Height = 50;
-                BackColor = Color.FromArgb(255, red, green, blue);
-                memoryTimer.Tick -= ShrinkPanel;
-                memoryTimer.Stop();
-                OnShrunken(sender, e);
-            }
-        }
-
-        private void ResizeBottomPanel() {
-
-            UIHelper.SetHeight(bottomPanel, ItemHeight);
-            bottomPanel.Width = Width;
-            UIHelper.SetHeight(btnClear, bottomPanel.Height / 2);
-            btnClear.Width = btnClear.Height;
-        }
-
-        public void Extend(int height) {
-
-            TargetHeight = height;
-            memoryTimer.Tick -= ShrinkPanel;
-            memoryTimer.Tick += ExtendPanel;
-            memoryTimer.Start();
-            ResizeBottomPanel();
-            BringToFront();
-        }
-
-        public void Shrink() {
+        public override void Shrink() {
 
             ClearItems();
-            ItemPointer = 0;
-            memoryTimer.Tick -= ExtendPanel;
-            memoryTimer.Tick += ShrinkPanel;
-            memoryTimer.Start();
+            base.Shrink();
         }
 
         private void ScrollUp() {

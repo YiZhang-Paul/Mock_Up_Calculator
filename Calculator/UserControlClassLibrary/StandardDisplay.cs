@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class StandardDisplay : UserControl, IDisplay {
+    public partial class StandardDisplay : UserControl, ICalculatorDisplay {
 
         public decimal RecentValue { get; private set; }
         public string Content { get { return resultLabel.Text; } }

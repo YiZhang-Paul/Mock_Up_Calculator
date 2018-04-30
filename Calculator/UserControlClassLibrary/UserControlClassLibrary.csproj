@@ -41,7 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDisplay.cs" />
+    <Compile Include="ExpandablePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExpandablePanel.Designer.cs">
+      <DependentUpon>ExpandablePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ICalculatorDisplay.cs" />
+    <Compile Include="IDisplayPanel.cs" />
+    <Compile Include="IExpandable.cs" />
+    <Compile Include="IItemDisplay.cs" />
     <Compile Include="IKeypad.cs" />
     <Compile Include="IMemoryItem.cs" />
     <Compile Include="IMemoryItemDisplay.cs" />
@@ -88,11 +97,11 @@
     <Compile Include="UIHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ExpandablePanel.resx">
+      <DependentUpon>ExpandablePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemoryItem.resx">
       <DependentUpon>MemoryItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemoryPanel.resx">
-      <DependentUpon>MemoryPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScientificKeypad.resx">
       <DependentUpon>ScientificKeypad.cs</DependentUpon>

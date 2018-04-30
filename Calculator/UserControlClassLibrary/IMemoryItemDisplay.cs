@@ -7,21 +7,11 @@ using System.Windows.Forms;
 using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
-    public interface IMemoryItemDisplay {
+    public interface IMemoryItemDisplay : IItemDisplay<decimal> {
 
         event EventHandler OnMemoryDelete;
-        event EventHandler OnMemoryClear;
         event EventHandler OnMemorySelect;
         event EventHandler OnMemoryPlus;
         event EventHandler OnMemoryMinus;
-        event EventHandler OnExtended;
-        event EventHandler OnShrunken;
-
-        int TryGetKey(object sender);
-        void ClearItems();
-        void ShowItems(decimal[] values, IFormatter formatter);
-        void RefreshItems(decimal[] values, IFormatter formatter);
-        void Extend(int height);
-        void Shrink();
     }
 }

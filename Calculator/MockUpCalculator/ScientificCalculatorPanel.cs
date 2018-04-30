@@ -63,7 +63,7 @@ namespace MockUpCalculator {
         private void SetupMemoryPanel() {
 
             memoryPanel.OnMemoryDelete += MemoryRemove;
-            memoryPanel.OnMemoryClear += MemoryPanelClear;
+            memoryPanel.OnClear += MemoryPanelClear;
             memoryPanel.OnMemorySelect += MemorySelect;
             memoryPanel.OnMemoryPlus += MemoryPlusByKey;
             memoryPanel.OnMemoryMinus += MemoryMinusByKey;
