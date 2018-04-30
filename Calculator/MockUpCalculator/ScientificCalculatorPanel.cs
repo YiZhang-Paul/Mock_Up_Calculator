@@ -203,7 +203,6 @@ namespace MockUpCalculator {
 
         private void KeypadButtonMouseClick(object sender, EventArgs e) {
 
-            RemoveFocus(sender, e);
             standardDisplay.Clear();
             string key = ((Button)sender).Tag.ToString();
 

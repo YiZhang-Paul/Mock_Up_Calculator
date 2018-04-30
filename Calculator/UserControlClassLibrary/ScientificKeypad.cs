@@ -56,6 +56,11 @@ namespace UserControlClassLibrary {
             UIHelper.EnableKeys(new Button[] { btnMemory }, Tracker);
         }
 
+        private void RemoveFocus() {
+
+            mainLayout.Focus();
+        }
+
         protected override void ButtonMouseEnter(object sender, EventArgs e) {
 
             base.ButtonMouseEnter(sender, e);
@@ -68,6 +73,7 @@ namespace UserControlClassLibrary {
 
         protected override void ButtonMouseClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.ButtonMouseClick(sender, e);
         }
 
@@ -81,6 +87,7 @@ namespace UserControlClassLibrary {
             }
 
             ExtensionToggled = !ExtensionToggled;
+            RemoveFocus();
 
             if(ExtensionToggled) {
 
@@ -115,6 +122,7 @@ namespace UserControlClassLibrary {
 
             TrigonometricToggled = !TrigonometricToggled;
             UpdateTrigonometricKeys();
+            RemoveFocus();
 
             if(TrigonometricToggled) {
 
@@ -137,6 +145,7 @@ namespace UserControlClassLibrary {
 
             EngineeringMode = !EngineeringMode;
             OnEngineeringModeToggle(sender, e);
+            RemoveFocus();
 
             if(EngineeringMode) {
 
@@ -159,6 +168,7 @@ namespace UserControlClassLibrary {
 
             AngularUnit = (AngularUnit + 1) % 3;
             OnAngularUnitToggle(sender, e);
+            RemoveFocus();
 
             if(AngularUnit == 0) {
 
@@ -194,31 +204,37 @@ namespace UserControlClassLibrary {
 
         protected override void MemoryStoreClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemoryStoreClick(sender, e);
         }
 
         protected override void MemoryAddClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemoryAddClick(sender, e);
         }
 
         protected override void MemorySubtractClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemorySubtractClick(sender, e);
         }
 
         protected override void MemoryClearClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemoryClearClick(sender, e);
         }
 
         protected override void MemoryRecallClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemoryRecallClick(sender, e);
         }
 
         protected override void MemoryToggleClick(object sender, EventArgs e) {
 
+            RemoveFocus();
             base.MemoryToggleClick(sender, e);
         }
     }
