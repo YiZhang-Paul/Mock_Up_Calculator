@@ -13,17 +13,25 @@ using FormatterClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {
-    public partial class ScientificCalculatorPanel : UserControl {
-
-        protected const string _divideByZeroMessage = "Cannot divide by zero";
-        protected const string _invalidInputMessage = "Invalid input";
+    public partial class ScientificCalculatorPanel : BaseCalculatorPanel {
 
         private bool MemoryPanelActivated { get; set; }
         private bool MemoryPanelDeactivated { get; set; }
-        private IScientificCalculator Calculator { get; set; }
-        private IKeyChecker Checker { get; set; }
-        private IFormatter NumberFormatter { get; set; }
         private IFormatter EngineeringFormatter { get; set; }
+        private new IScientificCalculator Calculator { get; set; }
+
+        protected override IFormatter ActiveFormatter {
+
+            get {
+
+                if(scientificKeypad.EngineeringMode) {
+
+                    return EngineeringFormatter;
+                }
+
+                return base.ActiveFormatter;
+            }
+        }
 
         public ScientificCalculatorPanel(
 
@@ -32,13 +40,12 @@ namespace MockUpCalculator {
             IFormatter numberFormatter,
             IFormatter engineeringFormatter
 
-        ) {
+        ) : base(checker, numberFormatter, calculator) {
 
             InitializeComponent();
-            Calculator = calculator;
-            Checker = checker;
-            NumberFormatter = numberFormatter;
+            Display = standardDisplay;
             EngineeringFormatter = engineeringFormatter;
+            Calculator = calculator;
             SetupKeypad();
             SetupMemoryPanel();
             DisplayValue(Calculator.Input);
@@ -46,6 +53,7 @@ namespace MockUpCalculator {
 
         private void SetupKeypad() {
 
+            Keypad = scientificKeypad;
             scientificKeypad.OnKeypadEnable += EnableKeypadFromError;
             scientificKeypad.OnEngineeringModeToggle += RefreshDisplay;
             scientificKeypad.OnAngularUnitToggle += ChangeAngularUnit;
@@ -71,124 +79,9 @@ namespace MockUpCalculator {
             memoryPanel.OnShrunken += MemoryPanelShrunken;
         }
 
-        private IFormatter GetFormatter() {
+        protected override void HandleOperator(string key) {
 
-            if(scientificKeypad.EngineeringMode) {
-
-                return EngineeringFormatter;
-            }
-
-            return NumberFormatter;
-        }
-
-        private void DisplayValue(string value) {
-
-            standardDisplay.DisplayResult(value, GetFormatter());
-        }
-
-        private void RefreshDisplay(object sender, EventArgs e) {
-
-            standardDisplay.RefreshDisplay(GetFormatter());
-        }
-
-        private void EnableKeypad() {
-
-            scientificKeypad.HasMemory = Calculator.MemoryValues.Length != 0;
-            scientificKeypad.EnableValidKeys();
-        }
-
-        private void HandleEvaluation() {
-
-            try {
-
-                DisplayValue(Calculator.Evaluate().ToString());
-                Calculator.Clear();
-            }
-            catch(DivideByZeroException) {
-
-                standardDisplay.DisplayError(_divideByZeroMessage);
-                scientificKeypad.LeaveBasicKeysOn();
-            }
-            catch(Exception) {
-
-                standardDisplay.DisplayError(_invalidInputMessage);
-                scientificKeypad.LeaveBasicKeysOn();
-            }
-        }
-
-        private void HandleActionKey(string key) {
-
-            if(key == "=") {
-
-                HandleEvaluation();
-
-                return;
-            }
-
-            if(key == "C") {
-
-                Calculator.Clear();
-            }
-            else if(key == "CE") {
-
-                Calculator.ClearInput();
-            }
-            else {
-
-                Calculator.Undo();
-            }
-
-            DisplayValue(Calculator.Input);
-            standardDisplay.DisplayExpression(Calculator.Expression);
-        }
-
-        private void HandleValue(decimal value) {
-
-            Calculator.Add(value);
-            DisplayValue(Calculator.Input);
-        }
-
-        private void HandleOperator(string key) {
-
-            try {
-
-                Calculator.Add(Calculator.CheckTrigonometricKey(key));
-
-                if(Calculator.IsSpecialKey(key)) {
-
-                    DisplayValue(Calculator.Input);
-
-                    return;
-                }
-
-                DisplayValue(Calculator.LastResult.ToString());
-            }
-            catch(DivideByZeroException) {
-
-                standardDisplay.DisplayError(_divideByZeroMessage);
-                scientificKeypad.LeaveBasicKeysOn();
-            }
-            catch(Exception) {
-
-                standardDisplay.DisplayError(_invalidInputMessage);
-                scientificKeypad.LeaveBasicKeysOn();
-            }
-        }
-
-        private void HandleCalculation(string key) {
-
-            decimal value = 0;
-
-            if(decimal.TryParse(key, out value)) {
-
-                HandleValue(value);
-            }
-            else {
-
-                HandleOperator(key);
-            }
-
-            standardDisplay.DisplayExpression(Calculator.Expression);
+            base.HandleOperator(Calculator.CheckTrigonometricKey(key));
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
@@ -199,21 +92,6 @@ namespace MockUpCalculator {
         private void ChangeAngularUnit(object sender, EventArgs e) {
 
             Calculator.ChangeAngularUnit();
-        }
-
-        private void KeypadButtonMouseClick(object sender, EventArgs e) {
-
-            standardDisplay.Clear();
-            string key = ((Button)sender).Tag.ToString();
-
-            if(Checker.IsActionKey(key)) {
-
-                HandleActionKey(key);
-
-                return;
-            }
-
-            HandleCalculation(key);
         }
 
         private void EnableKeypadFromError(object sender, EventArgs e) {
@@ -369,16 +247,6 @@ namespace MockUpCalculator {
             int key = memoryPanel.TryGetKey(sender);
             Calculator.MemoryMinus(key, standardDisplay.RecentValue);
             RefreshMemoryPanel();
-        }
-
-        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
-
-            UIHelper.ButtonMouseEnter(sender, e);
-        }
-
-        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
-
-            UIHelper.ButtonMouseLeave(sender, e);
         }
 
         public void DeactivateMemoryPanel() {

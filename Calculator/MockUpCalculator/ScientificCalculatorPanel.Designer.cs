@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
             this.keypadPanel = new System.Windows.Forms.Panel();
+            this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
             this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
             this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.mainLayout.SuspendLayout();
@@ -51,6 +51,17 @@
             this.mainLayout.Size = new System.Drawing.Size(337, 507);
             this.mainLayout.TabIndex = 0;
             // 
+            // keypadPanel
+            // 
+            this.keypadPanel.Controls.Add(this.scientificKeypad);
+            this.keypadPanel.Controls.Add(this.memoryPanel);
+            this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keypadPanel.Location = new System.Drawing.Point(0, 102);
+            this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.keypadPanel.Name = "keypadPanel";
+            this.keypadPanel.Size = new System.Drawing.Size(337, 405);
+            this.keypadPanel.TabIndex = 1;
+            // 
             // standardDisplay
             // 
             this.standardDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -63,17 +74,6 @@
             this.standardDisplay.Name = "standardDisplay";
             this.standardDisplay.Size = new System.Drawing.Size(337, 102);
             this.standardDisplay.TabIndex = 0;
-            // 
-            // keypadPanel
-            // 
-            this.keypadPanel.Controls.Add(this.scientificKeypad);
-            this.keypadPanel.Controls.Add(this.memoryPanel);
-            this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keypadPanel.Location = new System.Drawing.Point(0, 102);
-            this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.keypadPanel.Name = "keypadPanel";
-            this.keypadPanel.Size = new System.Drawing.Size(337, 405);
-            this.keypadPanel.TabIndex = 1;
             // 
             // scientificKeypad
             // 
@@ -102,13 +102,13 @@
             this.memoryPanel.Size = new System.Drawing.Size(337, 82);
             this.memoryPanel.TabIndex = 1;
             // 
-            // StandardCalculatorPanel
+            // ScientificCalculatorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainLayout);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "StandardCalculatorPanel";
+            this.Name = "ScientificCalculatorPanel";
             this.Size = new System.Drawing.Size(337, 507);
             this.mainLayout.ResumeLayout(false);
             this.keypadPanel.ResumeLayout(false);

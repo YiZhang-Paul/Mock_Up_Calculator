@@ -16,7 +16,8 @@ using UtilityClassLibrary;
 namespace MockUpCalculator {
     public partial class MainForm : Form {
 
-        private ScientificCalculatorPanel CalculatorPanel { get; set; }
+        private ScientificCalculatorPanel ScientificCalculatorPanel { get; set; }
+        private StandardCalculatorPanel StandardCalculatorPanel { get; set; }
 
         private int DefaultWidth { get; set; }
         private int DefaultHeight { get; set; }
@@ -62,7 +63,7 @@ namespace MockUpCalculator {
             SaveClientCenter();
             SetupTopPanel();
 
-            CalculatorPanel = new ScientificCalculatorPanel(
+            ScientificCalculatorPanel = new ScientificCalculatorPanel(
 
                 new ScientificCalculator(),
                 new KeyChecker(),
@@ -70,9 +71,20 @@ namespace MockUpCalculator {
                 new EngineeringFormatter()
             );
 
-            CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
-            CalculatorPanel.Show();
+            //ScientificCalculatorPanel.Parent = uiLayout;
+            //ScientificCalculatorPanel.Dock = DockStyle.Fill;
+            //ScientificCalculatorPanel.Show();
+
+            StandardCalculatorPanel = new StandardCalculatorPanel(
+
+                new KeyChecker(),
+                new NumberFormatter(),
+                new StandardCalculator()
+            );
+
+            StandardCalculatorPanel.Parent = uiLayout;
+            StandardCalculatorPanel.Dock = DockStyle.Fill;
+            StandardCalculatorPanel.Show();
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
@@ -108,7 +120,7 @@ namespace MockUpCalculator {
 
         private void MainCalculator_Deactivate(object sender, EventArgs e) {
 
-            CalculatorPanel.DeactivateMemoryPanel();
+            ScientificCalculatorPanel.DeactivateMemoryPanel();
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -218,7 +230,7 @@ namespace MockUpCalculator {
 
                 if(!UIHelper.ContainsPointer(topPanel)) {
 
-                    CalculatorPanel.DeactivateMemoryPanel();
+                    ScientificCalculatorPanel.DeactivateMemoryPanel();
                 }
             }
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CalculatorClassLibrary {
-    public interface IScientificCalculator : ICalculator, IStandardCalculator {
+    public interface IScientificCalculator : IStandardCalculator {
 
         int AngularUnit { get; }
 

@@ -13,3 +13,5 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClas
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.MemoryItem.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ExpandableDisplayPanel.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.Keypad.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.StandardKeypad.resources

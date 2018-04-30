@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public partial class ScientificKeypad : StandardKeypad, IScientificKeypad {
+    public partial class ScientificKeypad : Keypad, IScientificKeypad {
 
         private HashSet<Button> TrigonometricKeys { get; set; }
         private bool ExtensionToggled { get; set; }
