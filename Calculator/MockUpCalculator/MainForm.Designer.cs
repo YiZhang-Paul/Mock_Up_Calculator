@@ -31,7 +31,7 @@
             this.menuBarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
-            this.currentCalculatorLabel = new System.Windows.Forms.Label();
+            this.CalculatorLabel = new System.Windows.Forms.Label();
             this.zoomTimer = new System.Windows.Forms.Timer(this.components);
             this.closeTimer = new System.Windows.Forms.Timer(this.components);
             this.mainLayout.SuspendLayout();
@@ -106,7 +106,7 @@
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.menuBarLayout.Controls.Add(this.btnChangeCalculator, 0, 0);
             this.menuBarLayout.Controls.Add(this.btnHistory, 2, 0);
-            this.menuBarLayout.Controls.Add(this.currentCalculatorLabel, 1, 0);
+            this.menuBarLayout.Controls.Add(this.CalculatorLabel, 1, 0);
             this.menuBarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuBarLayout.Location = new System.Drawing.Point(0, 0);
             this.menuBarLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -162,18 +162,17 @@
             this.btnHistory.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnHistory.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 
-            // currentCalculatorLabel
+            // CalculatorLabel
             // 
-            this.currentCalculatorLabel.AutoSize = true;
-            this.currentCalculatorLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.currentCalculatorLabel.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.currentCalculatorLabel.Location = new System.Drawing.Point(50, 0);
-            this.currentCalculatorLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.currentCalculatorLabel.Name = "currentCalculatorLabel";
-            this.currentCalculatorLabel.Size = new System.Drawing.Size(111, 50);
-            this.currentCalculatorLabel.TabIndex = 3;
-            this.currentCalculatorLabel.Text = "Scientific";
-            this.currentCalculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CalculatorLabel.AutoSize = true;
+            this.CalculatorLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CalculatorLabel.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.CalculatorLabel.Location = new System.Drawing.Point(50, 0);
+            this.CalculatorLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.CalculatorLabel.Name = "CalculatorLabel";
+            this.CalculatorLabel.Size = new System.Drawing.Size(0, 50);
+            this.CalculatorLabel.TabIndex = 3;
+            this.CalculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // zoomTimer
             // 
@@ -221,7 +220,7 @@
         private System.Windows.Forms.TableLayoutPanel menuBarLayout;
         private System.Windows.Forms.Button btnChangeCalculator;
         private System.Windows.Forms.Button btnHistory;
-        private System.Windows.Forms.Label currentCalculatorLabel;
+        private System.Windows.Forms.Label CalculatorLabel;
         private System.Windows.Forms.Timer zoomTimer;
         private System.Windows.Forms.Timer closeTimer;
     }

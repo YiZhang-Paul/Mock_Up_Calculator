@@ -19,9 +19,9 @@ namespace UserControlClassLibrary {
         protected HashSet<Button> BasicKeys { get; set; }
 
         public bool HasMemory { get; set; }
-        public virtual int MainAreaHeight { get; private set; }
         public bool IsDisabled { get; private set; }
         public bool ExtraKeysSuspended { get; set; }
+        public virtual int MainAreaHeight { get; private set; }
 
         public event EventHandler OnKeypadEnable;
         public event EventHandler OnMemoryStore;

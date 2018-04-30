@@ -157,9 +157,11 @@ namespace UserControlClassLibrary {
 
         protected override void ResizeBottomPanel() {
 
-            base.ResizeBottomPanel();
             UIHelper.SetHeight(BottomPanel, ItemHeight);
             BottomPanel.Width = Width;
+            UIHelper.SetHeight(ClearButton, BottomPanel.Height / 2);
+            ClearButton.Width = ClearButton.Height;
+            ClearButton.Left = Width - ClearButton.Width - 4;
         }
 
         public override void Shrink() {

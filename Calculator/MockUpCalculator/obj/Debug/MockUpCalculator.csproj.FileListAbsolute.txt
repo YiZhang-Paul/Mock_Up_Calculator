@@ -25,4 +25,4 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\StorageClassLibrary.
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.MainForm.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.ScientificCalculatorPanel.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.StandardCalculatorPanel.resources
-D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.BaseCalculatorPanel.resources
+D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.CalculatorPanel.resources

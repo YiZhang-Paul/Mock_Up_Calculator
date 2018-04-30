@@ -125,6 +125,7 @@
             this.btnMemory.TabIndex = 15;
             this.btnMemory.Text = "M▾";
             this.btnMemory.UseVisualStyleBackColor = false;
+            this.btnMemory.Click += new System.EventHandler(this.MemoryToggleClick);
             this.btnMemory.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemory.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -146,6 +147,7 @@
             this.btnMemorySave.TabIndex = 14;
             this.btnMemorySave.Text = "MS";
             this.btnMemorySave.UseVisualStyleBackColor = false;
+            this.btnMemorySave.Click += new System.EventHandler(this.MemoryStoreClick);
             this.btnMemorySave.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemorySave.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -167,6 +169,7 @@
             this.btnMemoryMinus.TabIndex = 13;
             this.btnMemoryMinus.Text = "M-";
             this.btnMemoryMinus.UseVisualStyleBackColor = false;
+            this.btnMemoryMinus.Click += new System.EventHandler(this.MemorySubtractClick);
             this.btnMemoryMinus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryMinus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -188,6 +191,7 @@
             this.btnMemoryClear.TabIndex = 6;
             this.btnMemoryClear.Text = "MC";
             this.btnMemoryClear.UseVisualStyleBackColor = false;
+            this.btnMemoryClear.Click += new System.EventHandler(this.MemoryClearClick);
             this.btnMemoryClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -209,6 +213,7 @@
             this.btnMemoryRecall.TabIndex = 11;
             this.btnMemoryRecall.Text = "MR";
             this.btnMemoryRecall.UseVisualStyleBackColor = false;
+            this.btnMemoryRecall.Click += new System.EventHandler(this.MemoryRecallClick);
             this.btnMemoryRecall.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryRecall.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -230,6 +235,7 @@
             this.btnMemoryPlus.TabIndex = 12;
             this.btnMemoryPlus.Text = "M+";
             this.btnMemoryPlus.UseVisualStyleBackColor = false;
+            this.btnMemoryPlus.Click += new System.EventHandler(this.MemoryAddClick);
             this.btnMemoryPlus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryPlus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 

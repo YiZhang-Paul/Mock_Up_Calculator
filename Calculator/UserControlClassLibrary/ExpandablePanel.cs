@@ -15,6 +15,7 @@ namespace UserControlClassLibrary {
         protected Panel MainPanel { get; set; }
         protected Panel BottomPanel { get; set; }
         protected Panel ScrollBar { get; set; }
+        protected Button ClearButton { get; set; }
 
         public event EventHandler OnExtended;
         public event EventHandler OnShrunken;
@@ -30,6 +31,7 @@ namespace UserControlClassLibrary {
             MainPanel = mainPanel;
             BottomPanel = bottomPanel;
             ScrollBar = scrollBar;
+            ClearButton = btnClear;
         }
 
         public void ShowMessage(string message) {
@@ -51,8 +53,9 @@ namespace UserControlClassLibrary {
 
             UIHelper.SetHeight(BottomPanel, TargetHeight / 3);
             BottomPanel.Width = Width;
-            UIHelper.SetHeight(btnClear, BottomPanel.Height / 2);
-            btnClear.Width = btnClear.Height;
+            UIHelper.SetHeight(ClearButton, BottomPanel.Height / 2);
+            ClearButton.Width = ClearButton.Height;
+            ClearButton.Left = Width - ClearButton.Width - 4;
         }
 
         private void ExtendPanel(object sender, EventArgs e) {

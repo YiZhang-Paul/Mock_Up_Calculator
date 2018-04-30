@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using FormatterClassLibrary;
 
 namespace UserControlClassLibrary {
-    public interface IMemoryItemDisplay : IItemDisplay<decimal> {
+    public interface IMemoryItemDisplay : IExpandable, IDisplayPanel, IItemDisplay<decimal> {
 
         event EventHandler OnMemoryDelete;
         event EventHandler OnMemorySelect;

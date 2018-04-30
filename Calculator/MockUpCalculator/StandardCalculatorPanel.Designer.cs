@@ -25,8 +25,11 @@
         private void InitializeComponent() {
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
+            this.keypadPanel = new System.Windows.Forms.Panel();
+            this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.standardKeypad = new UserControlClassLibrary.StandardKeypad();
             this.mainLayout.SuspendLayout();
+            this.keypadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainLayout
@@ -34,7 +37,7 @@
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Controls.Add(this.standardDisplay, 0, 0);
-            this.mainLayout.Controls.Add(this.standardKeypad, 0, 1);
+            this.mainLayout.Controls.Add(this.keypadPanel, 0, 1);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -58,6 +61,30 @@
             this.standardDisplay.Size = new System.Drawing.Size(337, 102);
             this.standardDisplay.TabIndex = 0;
             // 
+            // keypadPanel
+            // 
+            this.keypadPanel.Controls.Add(this.standardKeypad);
+            this.keypadPanel.Controls.Add(this.memoryPanel);
+            this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keypadPanel.Location = new System.Drawing.Point(0, 102);
+            this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.keypadPanel.Name = "keypadPanel";
+            this.keypadPanel.Size = new System.Drawing.Size(337, 405);
+            this.keypadPanel.TabIndex = 1;
+            // 
+            // memoryPanel
+            // 
+            this.memoryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.memoryPanel.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.memoryPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.memoryPanel.Location = new System.Drawing.Point(0, 323);
+            this.memoryPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.memoryPanel.Name = "memoryPanel";
+            this.memoryPanel.Size = new System.Drawing.Size(337, 82);
+            this.memoryPanel.TabIndex = 1;
+            // 
             // standardKeypad
             // 
             this.standardKeypad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -66,11 +93,11 @@
             this.standardKeypad.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.standardKeypad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.standardKeypad.HasMemory = false;
-            this.standardKeypad.Location = new System.Drawing.Point(0, 102);
+            this.standardKeypad.Location = new System.Drawing.Point(0, 0);
             this.standardKeypad.Margin = new System.Windows.Forms.Padding(0);
             this.standardKeypad.Name = "standardKeypad";
             this.standardKeypad.Size = new System.Drawing.Size(337, 405);
-            this.standardKeypad.TabIndex = 1;
+            this.standardKeypad.TabIndex = 0;
             // 
             // StandardCalculatorPanel
             // 
@@ -78,12 +105,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.Controls.Add(this.mainLayout);
-            this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "StandardCalculatorPanel";
-            this.Size = new System.Drawing.Size(337, 507);
             this.mainLayout.ResumeLayout(false);
+            this.keypadPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -92,6 +116,8 @@
 
         private System.Windows.Forms.TableLayoutPanel mainLayout;
         private UserControlClassLibrary.StandardDisplay standardDisplay;
+        private System.Windows.Forms.Panel keypadPanel;
         private UserControlClassLibrary.StandardKeypad standardKeypad;
+        private UserControlClassLibrary.MemoryPanel memoryPanel;
     }
 }

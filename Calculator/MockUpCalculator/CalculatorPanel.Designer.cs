@@ -1,5 +1,5 @@
 ﻿namespace MockUpCalculator {
-    partial class BaseCalculatorPanel {
+    partial class CalculatorPanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

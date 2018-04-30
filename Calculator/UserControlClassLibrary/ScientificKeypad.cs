@@ -20,14 +20,7 @@ namespace UserControlClassLibrary {
 
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
-
-        public override int MainAreaHeight {
-
-            get {
-
-                return Height - extraKeysLayout.Height - extensionOneLayout.Margin.Top;
-            }
-        }
+        public override int MainAreaHeight { get { return Height - extraKeysLayout.Height; } }
 
         public event EventHandler OnAngularUnitToggle;
         public event EventHandler OnEngineeringModeToggle;

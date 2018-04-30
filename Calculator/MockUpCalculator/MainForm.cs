@@ -16,8 +16,7 @@ using UtilityClassLibrary;
 namespace MockUpCalculator {
     public partial class MainForm : Form {
 
-        private ScientificCalculatorPanel ScientificCalculatorPanel { get; set; }
-        private StandardCalculatorPanel StandardCalculatorPanel { get; set; }
+        private CalculatorPanel CalculatorPanel { get; set; }
 
         private int DefaultWidth { get; set; }
         private int DefaultHeight { get; set; }
@@ -63,33 +62,35 @@ namespace MockUpCalculator {
             SaveClientCenter();
             SetupTopPanel();
 
-            ScientificCalculatorPanel = new ScientificCalculatorPanel(
+            //CalculatorPanel = new ScientificCalculatorPanel(
 
-                new ScientificCalculator(),
-                new KeyChecker(),
-                new NumberFormatter(),
-                new EngineeringFormatter()
-            );
+            //    new ScientificCalculator(),
+            //    new KeyChecker(),
+            //    new NumberFormatter(),
+            //    new EngineeringFormatter()
+            //);
 
-            //ScientificCalculatorPanel.Parent = uiLayout;
-            //ScientificCalculatorPanel.Dock = DockStyle.Fill;
-            //ScientificCalculatorPanel.Show();
+            //CalculatorPanel.Parent = uiLayout;
+            //CalculatorPanel.Dock = DockStyle.Fill;
+            //CalculatorPanel.Show();
+            //CalculatorLabel.Text = "Scientific";
 
-            StandardCalculatorPanel = new StandardCalculatorPanel(
+            CalculatorPanel = new StandardCalculatorPanel(
 
                 new KeyChecker(),
                 new NumberFormatter(),
                 new StandardCalculator()
             );
 
-            StandardCalculatorPanel.Parent = uiLayout;
-            StandardCalculatorPanel.Dock = DockStyle.Fill;
-            StandardCalculatorPanel.Show();
+            CalculatorPanel.Parent = uiLayout;
+            CalculatorPanel.Dock = DockStyle.Fill;
+            CalculatorPanel.Show();
+            CalculatorLabel.Text = "Standard";
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
 
-            currentCalculatorLabel.Focus();
+            CalculatorLabel.Focus();
         }
 
         private void SavePointerLocation(object sender, MouseEventArgs e) {
@@ -120,7 +121,7 @@ namespace MockUpCalculator {
 
         private void MainCalculator_Deactivate(object sender, EventArgs e) {
 
-            ScientificCalculatorPanel.DeactivateMemoryPanel();
+            CalculatorPanel.DeactivateMemoryPanel();
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -230,7 +231,7 @@ namespace MockUpCalculator {
 
                 if(!UIHelper.ContainsPointer(topPanel)) {
 
-                    ScientificCalculatorPanel.DeactivateMemoryPanel();
+                    CalculatorPanel.DeactivateMemoryPanel();
                 }
             }
         }

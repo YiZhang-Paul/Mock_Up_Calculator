@@ -44,11 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseCalculatorPanel.cs">
+    <Compile Include="CalculatorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseCalculatorPanel.Designer.cs">
-      <DependentUpon>BaseCalculatorPanel.cs</DependentUpon>
+    <Compile Include="CalculatorPanel.Designer.cs">
+      <DependentUpon>CalculatorPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -70,8 +70,8 @@
     <Compile Include="StandardCalculatorPanel.Designer.cs">
       <DependentUpon>StandardCalculatorPanel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaseCalculatorPanel.resx">
-      <DependentUpon>BaseCalculatorPanel.cs</DependentUpon>
+    <EmbeddedResource Include="CalculatorPanel.resx">
+      <DependentUpon>CalculatorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
