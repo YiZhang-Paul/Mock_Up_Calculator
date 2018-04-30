@@ -16,13 +16,13 @@ using UtilityClassLibrary;
 namespace MockUpCalculator {
     public partial class MainForm : Form {
 
-        private CalculatorPanel CalculatorPanel { get; set; }
-
         private int DefaultWidth { get; set; }
         private int DefaultHeight { get; set; }
         private Point ClientCenter { get; set; }
         private Point Pointer { get; set; }
         private Rectangle Viewport { get { return UIHelper.GetViewport(this); } }
+        private List<string[]> MenuItems { get; set; }
+        private CalculatorPanel CalculatorPanel { get; set; }
         private IResize Resizer { get; set; }
 
         public MainForm() {
@@ -44,6 +44,13 @@ namespace MockUpCalculator {
             topPanel.OnExit += Exit;
         }
 
+        private void SetupSidePanel() {
+
+            sidePanel.OnExtended += ShowMenu;
+            sidePanel.OnShrunken += HideMenu;
+            sidePanel.OnSelect += SelectMenu;
+        }
+
         private void SaveDimension() {
 
             DefaultWidth = Width;
@@ -61,6 +68,13 @@ namespace MockUpCalculator {
             SaveDimension();
             SaveClientCenter();
             SetupTopPanel();
+            SetupSidePanel();
+
+            MenuItems = new List<string[]>() {
+
+                new string[] { "Calculator", "Standard", "Scientific" },
+                new string[] { "Converter", "Currency" }
+            };
 
             CalculatorPanel = new ScientificCalculatorPanel(
 
@@ -73,24 +87,12 @@ namespace MockUpCalculator {
             CalculatorPanel.Parent = uiLayout;
             CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
-            CalculatorLabel.Text = "Scientific";
-
-            //CalculatorPanel = new StandardCalculatorPanel(
-
-            //    new KeyChecker(),
-            //    new NumberFormatter(),
-            //    new StandardCalculator()
-            //);
-
-            //CalculatorPanel.Parent = uiLayout;
-            //CalculatorPanel.Dock = DockStyle.Fill;
-            //CalculatorPanel.Show();
-            //CalculatorLabel.Text = "Standard";
+            calculatorLabel.Text = "Scientific";
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
 
-            CalculatorLabel.Focus();
+            calculatorLabel.Focus();
         }
 
         private void SavePointerLocation(object sender, MouseEventArgs e) {
@@ -106,6 +108,67 @@ namespace MockUpCalculator {
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
             UIHelper.ButtonMouseLeave(sender, e);
+        }
+
+        private void btnChangeCalculator_Click(object sender, EventArgs e) {
+
+            RemoveFocus(sender, e);
+            sidePanel.Extend(Math.Min(280, Width / 4 * 3));
+        }
+
+        private void ShowMenu(object sender, EventArgs e) {
+
+            sidePanel.ShowMenu(MenuItems, calculatorLabel.Text);
+        }
+
+        private void HideMenu(object sender, EventArgs e) {
+
+            sidePanel.SendToBack();
+        }
+
+        private void SelectMenu(object sender, EventArgs e) {
+
+            if(((Control)sender).Tag.ToString() == "Scientific") {
+
+                if(calculatorLabel.Text == "Scientific") {
+
+                    return;
+                }
+
+                CalculatorPanel.Dispose();
+                CalculatorPanel = new ScientificCalculatorPanel(
+
+                    new ScientificCalculator(),
+                    new KeyChecker(),
+                    new NumberFormatter(),
+                    new EngineeringFormatter()
+                );
+
+                CalculatorPanel.Parent = uiLayout;
+                CalculatorPanel.Dock = DockStyle.Fill;
+                CalculatorPanel.Show();
+                calculatorLabel.Text = "Scientific";
+
+                return;
+            }
+
+            if(calculatorLabel.Text == "Standard") {
+
+                return;
+            }
+
+            CalculatorPanel.Dispose();
+            CalculatorPanel = new StandardCalculatorPanel(
+
+                new KeyChecker(),
+                new NumberFormatter(),
+                new StandardCalculator()
+            );
+
+            CalculatorPanel.Parent = uiLayout;
+            CalculatorPanel.Dock = DockStyle.Fill;
+            CalculatorPanel.Show();
+            calculatorLabel.Text = "Standard";
         }
 
         private void FormResizeBegin(object sender, EventArgs e) {

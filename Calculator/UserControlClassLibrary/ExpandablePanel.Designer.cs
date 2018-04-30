@@ -28,7 +28,7 @@
             this.scrollBar = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
-            this.memoryTimer = new System.Windows.Forms.Timer(this.components);
+            this.expandTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -91,9 +91,9 @@
             this.btnClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
-            // memoryTimer
+            // expandTimer
             // 
-            this.memoryTimer.Interval = 1;
+            this.expandTimer.Interval = 1;
             // 
             // ExpandableDisplayPanel
             // 
@@ -118,6 +118,6 @@
         private System.Windows.Forms.Panel scrollBar;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Timer memoryTimer;
+        private System.Windows.Forms.Timer expandTimer;
     }
 }

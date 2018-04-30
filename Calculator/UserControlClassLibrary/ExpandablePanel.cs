@@ -66,8 +66,8 @@ namespace UserControlClassLibrary {
 
             if(Height >= TargetHeight) {
 
-                memoryTimer.Tick -= ExtendPanel;
-                memoryTimer.Stop();
+                expandTimer.Tick -= ExtendPanel;
+                expandTimer.Stop();
                 OnExtended(sender, e);
             }
         }
@@ -85,8 +85,8 @@ namespace UserControlClassLibrary {
                 Top += Height - 50;
                 Height = 50;
                 BackColor = Color.FromArgb(255, red, green, blue);
-                memoryTimer.Tick -= ShrinkPanel;
-                memoryTimer.Stop();
+                expandTimer.Tick -= ShrinkPanel;
+                expandTimer.Stop();
                 OnShrunken(sender, e);
             }
         }
@@ -94,18 +94,18 @@ namespace UserControlClassLibrary {
         public virtual void Extend(int height) {
 
             TargetHeight = height;
-            memoryTimer.Tick -= ShrinkPanel;
-            memoryTimer.Tick += ExtendPanel;
-            memoryTimer.Start();
+            expandTimer.Tick -= ShrinkPanel;
+            expandTimer.Tick += ExtendPanel;
+            expandTimer.Start();
             ResizeBottomPanel();
             BringToFront();
         }
 
         public virtual void Shrink() {
 
-            memoryTimer.Tick -= ExtendPanel;
-            memoryTimer.Tick += ShrinkPanel;
-            memoryTimer.Start();
+            expandTimer.Tick -= ExtendPanel;
+            expandTimer.Tick += ShrinkPanel;
+            expandTimer.Start();
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {
