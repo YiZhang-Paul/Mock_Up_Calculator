@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // BaseCalculatorPanel
+            // CalculatorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -33,12 +33,13 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "BaseCalculatorPanel";
+            this.Name = "CalculatorPanel";
             this.Size = new System.Drawing.Size(337, 507);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }

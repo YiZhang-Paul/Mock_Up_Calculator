@@ -56,19 +56,19 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void CenterToPoint(Form parent, Point point) {
+        public static void CenterToPoint(Control parent, Point point) {
 
             parent.Top = point.Y - parent.Height / 2;
             parent.Left = point.X - parent.Width / 2;
         }
 
-        public static void CenterToScreen(Form parent) {
+        public static void CenterToScreen(Control parent) {
 
             var screen = Screen.FromControl(parent).WorkingArea;
             CenterToPoint(parent, new Point(screen.Width / 2, screen.Height / 2));
         }
 
-        public static void ScaleTo(Form parent, int width, int height, bool center = true) {
+        public static void ScaleTo(Control parent, int width, int height, bool center = true) {
 
             var screen = Screen.FromControl(parent).WorkingArea;
             parent.Width = Math.Min(width, screen.Width);

@@ -17,6 +17,7 @@ namespace UserControlClassLibrary {
         protected HashSet<Button> AllKeys { get; set; }
         protected HashSet<Button> MemoryKeys { get; set; }
         protected HashSet<Button> BasicKeys { get; set; }
+        protected Point ClientCenter { get; set; }
 
         public bool HasMemory { get; set; }
         public bool IsDisabled { get; private set; }
@@ -210,6 +211,41 @@ namespace UserControlClassLibrary {
             }
 
             OnMemoryToggle(sender, e);
+        }
+
+        protected void SaveClientCenter() {
+
+            ClientCenter = new Point(Width / 2, Height / 2);
+        }
+
+        protected void ScaleTo(float scale) {
+
+            Width = (int)(Width * scale);
+            Height = (int)(Height * scale);
+            Top = ClientCenter.Y - Height / 2;
+            Left = ClientCenter.X - Width / 2;
+        }
+
+        private void ShowKeys(object sender, EventArgs e) {
+
+            float scale = 1.015f;
+            ScaleTo(scale);
+
+            if(Width * scale >= ClientCenter.X * 2 || Height * scale >= ClientCenter.Y * 2) {
+
+                Dock = DockStyle.Fill;
+                loadTimer.Tick -= ShowKeys;
+                loadTimer.Stop();
+            }
+        }
+
+        protected virtual void LoadKeypad(object sender, EventArgs e) {
+
+            SaveClientCenter();
+            Anchor = AnchorStyles.None;
+            ScaleTo(0.95f);
+            loadTimer.Tick += ShowKeys;
+            loadTimer.Start();
         }
     }
 }

@@ -77,7 +77,6 @@ namespace MockUpCalculator {
             );
 
             CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
             calculatorLabel.Text = "Standard";
         }
@@ -110,7 +109,6 @@ namespace MockUpCalculator {
             SaveClientCenter();
             SetupTopPanel();
             SetupSidePanel();
-            ToScientificCalculatorPanel();
 
             MenuItems = new List<string[]>() {
 
@@ -232,7 +230,9 @@ namespace MockUpCalculator {
         private void NormalToMaximize() {
 
             SaveClientCenter();
-            UIHelper.ScaleTo(this, (int)(Viewport.Width * 0.95), (int)(Viewport.Height * 0.95));
+            int width = (int)(Viewport.Width * 0.95);
+            int height = (int)(Viewport.Height * 0.95);
+            UIHelper.ScaleTo(this, width, height);
             bottomPanel.Visible = false;
             zoomTimer.Tick += ZoomToMax;
             zoomTimer.Start();
@@ -250,18 +250,30 @@ namespace MockUpCalculator {
             NormalToMaximize();
         }
 
+        private void FinishLoadUI(object sender, EventArgs e) {
+
+            Opacity += 0.02;
+
+            if(Opacity >= 1) {
+
+                Opacity = 1;
+                openTimer.Tick -= FinishLoadUI;
+                openTimer.Stop();
+            }
+        }
+
         private void ZoomUI(object sender, EventArgs e) {
 
-            int width = Width + (int)(DefaultWidth * 0.004);
-            int height = Height + (int)(DefaultHeight * 0.004);
-            UIHelper.ScaleTo(this, width, height);
+            float scale = 1.025f;
+            UIHelper.ScaleTo(this, (int)(Width * scale), (int)(Height * scale));
 
-            if(Width >= DefaultWidth || Height >= DefaultHeight) {
+            if(Width * scale >= DefaultWidth || Height * scale >= DefaultHeight) {
 
+                Opacity = 0.9;
                 UIHelper.ScaleTo(this, DefaultWidth, DefaultHeight);
-                mainLayout.Visible = true;
                 openTimer.Tick -= ZoomUI;
-                openTimer.Stop();
+                openTimer.Tick += FinishLoadUI;
+                ToScientificCalculatorPanel();
             }
         }
 
@@ -272,7 +284,6 @@ namespace MockUpCalculator {
             int width = (int)(DefaultWidth * 0.97);
             int height = (int)(DefaultHeight * 0.97);
             UIHelper.ScaleTo(this, width, height);
-            mainLayout.Visible = false;
             openTimer.Tick += ZoomUI;
             openTimer.Start();
         }
