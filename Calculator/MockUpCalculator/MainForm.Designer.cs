@@ -36,6 +36,7 @@
             this.sidePanel = new UserControlClassLibrary.SidePanel();
             this.zoomTimer = new System.Windows.Forms.Timer(this.components);
             this.closeTimer = new System.Windows.Forms.Timer(this.components);
+            this.openTimer = new System.Windows.Forms.Timer(this.components);
             this.mainLayout.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.uiLayout.SuspendLayout();
@@ -206,6 +207,10 @@
             // 
             this.closeTimer.Interval = 1;
             // 
+            // openTimer
+            // 
+            this.openTimer.Interval = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -224,6 +229,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.Deactivate += new System.EventHandler(this.MainCalculator_Deactivate);
+            this.Load += new System.EventHandler(this.LoadUI);
             this.ResizeBegin += new System.EventHandler(this.FormResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.FormResizeEnd);
             this.mainLayout.ResumeLayout(false);
@@ -250,6 +256,7 @@
         private System.Windows.Forms.Panel switchPanel;
         private System.Windows.Forms.Button btnChangeCalculator;
         private UserControlClassLibrary.SidePanel sidePanel;
+        private System.Windows.Forms.Timer openTimer;
     }
 }
 

@@ -183,7 +183,7 @@ namespace UserControlClassLibrary {
 
         private void ShrinkPanel(object sender, EventArgs e) {
 
-            int speed = Math.Min(40, Width - 1);
+            int speed = Math.Min(85, Width - 1);
             Width -= speed;
             Left = 0;
 

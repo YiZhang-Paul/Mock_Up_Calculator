@@ -250,6 +250,33 @@ namespace MockUpCalculator {
             NormalToMaximize();
         }
 
+        private void ZoomUI(object sender, EventArgs e) {
+
+            int width = Width + (int)(DefaultWidth * 0.004);
+            int height = Height + (int)(DefaultHeight * 0.004);
+            UIHelper.ScaleTo(this, width, height);
+
+            if(Width >= DefaultWidth || Height >= DefaultHeight) {
+
+                UIHelper.ScaleTo(this, DefaultWidth, DefaultHeight);
+                mainLayout.Visible = true;
+                openTimer.Tick -= ZoomUI;
+                openTimer.Stop();
+            }
+        }
+
+        private void LoadUI(object sender, EventArgs e) {
+
+            SaveClientCenter();
+            SaveDimension();
+            int width = (int)(DefaultWidth * 0.97);
+            int height = (int)(DefaultHeight * 0.97);
+            UIHelper.ScaleTo(this, width, height);
+            mainLayout.Visible = false;
+            openTimer.Tick += ZoomUI;
+            openTimer.Start();
+        }
+
         private void CloseUI(object sender, EventArgs e) {
 
             Opacity -= 0.05;
