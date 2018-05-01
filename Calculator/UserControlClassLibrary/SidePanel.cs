@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public partial class SidePanel : UserControl, IExpandable {
+    public partial class SidePanel : UserControl, IExpandable, IMenu {
 
         private int TargetWidth { get; set; }
         private string Selected { get; set; }
@@ -36,26 +36,53 @@ namespace UserControlClassLibrary {
             }
         }
 
+        private Label GetLabel(string text, bool isOption) {
+
+            var label = new Label();
+
+            label.Text = text;
+            label.Left = btnChange.Width + (isOption ? 0 : 8);
+            label.Font = new Font(btnChange.Font.FontFamily, isOption ? 15 : 12);
+            label.Top = (topPanel.Height - label.Height) / 2;
+
+            return label;
+        }
+
+        private Panel GetPanel(int top) {
+
+            var panel = new Panel();
+
+            panel.Parent = mainPanel;
+            panel.Height = topPanel.Height;
+            panel.Width = Width;
+            panel.Top = top;
+            panel.Show();
+
+            return panel;
+        }
+
+        private void SetupMenuItem(Panel panel, Label label, bool isSelected) {
+
+            int rgb = isSelected ? 53 : 40;
+            panel.BackColor = Color.FromArgb(rgb, rgb, rgb);
+            panel.MouseEnter += PanelMouseEnter;
+            panel.MouseLeave += PanelMouseLeave;
+            panel.Click += ControlMouseClick;
+            panel.Tag = label.Text;
+            label.MouseEnter += LabelMouseEnter;
+            label.MouseLeave += LabelMouseLeave;
+            label.Click += ControlMouseClick;
+            label.Tag = label.Text;
+            Selected = isSelected ? label.Text : Selected;
+        }
+
         public void ShowMenu(List<string[]> items, string current) {
 
             for(int i = 0, total = 0; i < items.Count; i++) {
 
                 for(int j = 0; j < items[i].Length; j++, total++) {
 
-                    var label = new Label();
-                    label.Left = btnChangeCalculator.Width + (j == 0 ? 0 : 8);
-                    label.Text = items[i][j];
-
-                    label.Font = new Font(
-
-                        btnChangeCalculator.Font.FontFamily,
-                        j == 0 ? 15 : 12
-                    );
-
-                    var dimension = TextRenderer.MeasureText(label.Text, label.Font);
-                    label.Width = dimension.Width;
-                    label.Height = dimension.Height;
-                    label.Top = (topPanel.Height - label.Height) / 2;
+                    var label = GetLabel(items[i][j], j == 0);
 
                     if(i == 0 && j == 0) {
 
@@ -64,32 +91,12 @@ namespace UserControlClassLibrary {
                         continue;
                     }
 
-                    var item = new Panel();
-                    label.Parent = item;
-                    item.Parent = mainPanel;
-                    item.Height = topPanel.Height;
-                    item.Width = Width;
-                    item.Top = item.Height * total;
-                    item.Show();
+                    var panel = GetPanel(topPanel.Height * total);
+                    label.Parent = panel;
 
                     if(j != 0) {
 
-                        bool selected = current == label.Text;
-                        int rgb = selected ? 53 : 40;
-                        item.BackColor = Color.FromArgb(rgb, rgb, rgb);
-                        item.MouseEnter += PanelMouseEnter;
-                        item.MouseLeave += PanelMouseLeave;
-                        item.Click += ControlMouseClick;
-                        label.MouseEnter += LabelMouseEnter;
-                        label.MouseLeave += LabelMouseLeave;
-                        label.Click += ControlMouseClick;
-                        item.Tag = label.Text;
-                        label.Tag = label.Text;
-
-                        if(selected) {
-
-                            Selected = current;
-                        }
+                        SetupMenuItem(panel, label, current == label.Text);
                     }
                 }
             }
@@ -145,6 +152,21 @@ namespace UserControlClassLibrary {
             }
         }
 
+        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
+
+            UIHelper.ButtonMouseEnter(sender, e);
+        }
+
+        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
+
+            UIHelper.ButtonMouseLeave(sender, e);
+        }
+
+        private void btnChange_Click(object sender, EventArgs e) {
+
+            Shrink();
+        }
+
         private void ExtendPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(40, TargetWidth - Width);
@@ -167,9 +189,9 @@ namespace UserControlClassLibrary {
 
             if(Width <= 1) {
 
+                ClearMenu();
                 expandTimer.Tick -= ShrinkPanel;
                 expandTimer.Stop();
-                ClearMenu();
                 OnShrunken(sender, e);
             }
         }
@@ -189,21 +211,6 @@ namespace UserControlClassLibrary {
             expandTimer.Tick -= ExtendPanel;
             expandTimer.Tick += ShrinkPanel;
             expandTimer.Start();
-        }
-
-        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
-
-            UIHelper.ButtonMouseEnter(sender, e);
-        }
-
-        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
-
-            UIHelper.ButtonMouseLeave(sender, e);
-        }
-
-        private void btnChangeCalculator_Click(object sender, EventArgs e) {
-
-            Shrink();
         }
     }
 }

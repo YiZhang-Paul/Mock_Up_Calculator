@@ -46,9 +46,9 @@ namespace MockUpCalculator {
 
         private void SetupSidePanel() {
 
-            sidePanel.OnExtended += ShowMenu;
-            sidePanel.OnShrunken += HideMenu;
-            sidePanel.OnSelect += SelectMenu;
+            sidePanel.OnExtended += ShowSidePanel;
+            sidePanel.OnShrunken += HideSidePanel;
+            sidePanel.OnSelect += SelectCalculator;
         }
 
         private void SaveDimension() {
@@ -62,6 +62,47 @@ namespace MockUpCalculator {
             ClientCenter = PointToScreen(new Point(Width / 2, Height / 2));
         }
 
+        private void ToStandardCalculator() {
+
+            if(CalculatorPanel != null) {
+
+                CalculatorPanel.Dispose();
+            }
+
+            CalculatorPanel = new StandardCalculatorPanel(
+
+                new KeyChecker(),
+                new NumberFormatter(),
+                new StandardCalculator()
+            );
+
+            CalculatorPanel.Parent = uiLayout;
+            CalculatorPanel.Dock = DockStyle.Fill;
+            CalculatorPanel.Show();
+            calculatorLabel.Text = "Standard";
+        }
+
+        private void ToScientificCalculatorPanel() {
+
+            if(CalculatorPanel != null) {
+
+                CalculatorPanel.Dispose();
+            }
+
+            CalculatorPanel = new ScientificCalculatorPanel(
+
+                new KeyChecker(),
+                new NumberFormatter(),
+                new EngineeringFormatter(),
+                new ScientificCalculator()
+            );
+
+            CalculatorPanel.Parent = uiLayout;
+            CalculatorPanel.Dock = DockStyle.Fill;
+            CalculatorPanel.Show();
+            calculatorLabel.Text = "Scientific";
+        }
+
         private void Initialize() {
 
             Resizer = new Resizer(this);
@@ -69,25 +110,13 @@ namespace MockUpCalculator {
             SaveClientCenter();
             SetupTopPanel();
             SetupSidePanel();
+            ToScientificCalculatorPanel();
 
             MenuItems = new List<string[]>() {
 
                 new string[] { "Calculator", "Standard", "Scientific" },
                 new string[] { "Converter", "Currency" }
             };
-
-            CalculatorPanel = new ScientificCalculatorPanel(
-
-                new ScientificCalculator(),
-                new KeyChecker(),
-                new NumberFormatter(),
-                new EngineeringFormatter()
-            );
-
-            CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
-            CalculatorPanel.Show();
-            calculatorLabel.Text = "Scientific";
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
@@ -113,62 +142,38 @@ namespace MockUpCalculator {
         private void btnChangeCalculator_Click(object sender, EventArgs e) {
 
             RemoveFocus(sender, e);
+            calculatorLabel.Visible = false;
             sidePanel.Extend(Math.Min(280, Width / 4 * 3));
         }
 
-        private void ShowMenu(object sender, EventArgs e) {
+        private void ShowSidePanel(object sender, EventArgs e) {
 
             sidePanel.ShowMenu(MenuItems, calculatorLabel.Text);
         }
 
-        private void HideMenu(object sender, EventArgs e) {
+        private void HideSidePanel(object sender, EventArgs e) {
 
+            calculatorLabel.Visible = true;
             sidePanel.SendToBack();
         }
 
-        private void SelectMenu(object sender, EventArgs e) {
+        private void SelectCalculator(object sender, EventArgs e) {
 
-            if(((Control)sender).Tag.ToString() == "Scientific") {
+            string selection = ((Control)sender).Tag.ToString();
 
-                if(calculatorLabel.Text == "Scientific") {
-
-                    return;
-                }
-
-                CalculatorPanel.Dispose();
-                CalculatorPanel = new ScientificCalculatorPanel(
-
-                    new ScientificCalculator(),
-                    new KeyChecker(),
-                    new NumberFormatter(),
-                    new EngineeringFormatter()
-                );
-
-                CalculatorPanel.Parent = uiLayout;
-                CalculatorPanel.Dock = DockStyle.Fill;
-                CalculatorPanel.Show();
-                calculatorLabel.Text = "Scientific";
+            if(selection == calculatorLabel.Text) {
 
                 return;
             }
 
-            if(calculatorLabel.Text == "Standard") {
+            if(selection == "Scientific") {
+
+                ToScientificCalculatorPanel();
 
                 return;
             }
 
-            CalculatorPanel.Dispose();
-            CalculatorPanel = new StandardCalculatorPanel(
-
-                new KeyChecker(),
-                new NumberFormatter(),
-                new StandardCalculator()
-            );
-
-            CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
-            CalculatorPanel.Show();
-            calculatorLabel.Text = "Standard";
+            ToStandardCalculator();
         }
 
         private void FormResizeBegin(object sender, EventArgs e) {

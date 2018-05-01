@@ -33,10 +33,10 @@ namespace MockUpCalculator {
 
         public ScientificCalculatorPanel(
 
-            IScientificCalculator calculator,
             IKeyChecker checker,
             IFormatter numberFormatter,
-            IFormatter engineeringFormatter
+            IFormatter engineeringFormatter,
+            IScientificCalculator calculator
 
         ) : base(checker, numberFormatter, calculator) {
 

@@ -26,7 +26,7 @@
             this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.btnChangeCalculator = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
             this.expandTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -45,7 +45,7 @@
             // 
             // topPanel
             // 
-            this.topPanel.Controls.Add(this.btnChangeCalculator);
+            this.topPanel.Controls.Add(this.btnChange);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -55,27 +55,27 @@
             // 
             // btnChangeCalculator
             // 
-            this.btnChangeCalculator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnChangeCalculator.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnChangeCalculator.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.btnChangeCalculator.FlatAppearance.BorderSize = 2;
-            this.btnChangeCalculator.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
-            this.btnChangeCalculator.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
-            this.btnChangeCalculator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangeCalculator.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.btnChangeCalculator.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnChangeCalculator.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnChangeCalculator.Location = new System.Drawing.Point(0, 0);
-            this.btnChangeCalculator.Margin = new System.Windows.Forms.Padding(0);
-            this.btnChangeCalculator.Name = "btnChangeCalculator";
-            this.btnChangeCalculator.Size = new System.Drawing.Size(50, 50);
-            this.btnChangeCalculator.TabIndex = 2;
-            this.btnChangeCalculator.Text = "≡";
-            this.btnChangeCalculator.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnChangeCalculator.UseVisualStyleBackColor = true;
-            this.btnChangeCalculator.Click += new System.EventHandler(this.btnChangeCalculator_Click);
-            this.btnChangeCalculator.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
-            this.btnChangeCalculator.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
+            this.btnChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnChange.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnChange.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.btnChange.FlatAppearance.BorderSize = 2;
+            this.btnChange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
+            this.btnChange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChange.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.btnChange.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnChange.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnChange.Location = new System.Drawing.Point(0, 0);
+            this.btnChange.Margin = new System.Windows.Forms.Padding(0);
+            this.btnChange.Name = "btnChangeCalculator";
+            this.btnChange.Size = new System.Drawing.Size(50, 50);
+            this.btnChange.TabIndex = 2;
+            this.btnChange.Text = "≡";
+            this.btnChange.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
+            this.btnChange.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
+            this.btnChange.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 
             // expandTimer
             // 
@@ -102,7 +102,7 @@
 
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel topPanel;
-        private System.Windows.Forms.Button btnChangeCalculator;
+        private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Timer expandTimer;
 
     }
