@@ -11,18 +11,18 @@ namespace FormatterClassLibrary {
 
         private string[] Tokenize(string expression) {
 
-            return expression.Split(' ').Where(token => token != " ").ToArray();
+            return expression.Split(' ');
         }
 
-        private HashSet<string> FindUnaryOperator(string expression) {
+        private HashSet<string> UnaryOperatorUsed(string expression) {
 
             var tokens = Tokenize(expression);
-            var unarys = OperatorLookup.UnaryOperator;
+            var unarys = OperatorLookup.Unary;
 
             return new HashSet<string>(tokens.Where(token => unarys.Contains(token)));
         }
 
-        private bool HasUnformattedUnaryOperator(string expression, HashSet<string> unarys) {
+        private bool HasUnformattedUnary(string expression, HashSet<string> unarys) {
 
             return unarys.Any(unary => Regex.IsMatch(expression, unary + @"(?!\s*\()"));
         }
@@ -34,9 +34,7 @@ namespace FormatterClassLibrary {
                 return tokens[index];
             }
 
-            int counter = 1;
-
-            for(int i = index - 1; i >= 0; i--) {
+            for(int i = index - 1, counter = 1; i >= 0; i--) {
 
                 if(tokens[i].Last() == '(' || tokens[i] == ")") {
 
@@ -52,6 +50,11 @@ namespace FormatterClassLibrary {
             return string.Empty;
         }
 
+        private string EscapeParentheses(string pattern) {
+
+            return Regex.Replace(pattern, @"\(|\)", match => "\\" + match.Value);
+        }
+
         private string FormatUnary(string expression, HashSet<string> unarys) {
 
             var tokens = Tokenize(expression);
@@ -60,9 +63,9 @@ namespace FormatterClassLibrary {
 
                 if(unarys.Contains(tokens[i])) {
 
-                    var operand = GetOperand(tokens, i - 1);
-                    var pattern = Regex.Replace(operand + " " + tokens[i], @"\(|\)", match => "\\" + match.Value);
-                    var replace = tokens[i] + "( " + operand + " )";
+                    string operand = GetOperand(tokens, i - 1);
+                    string pattern = EscapeParentheses(operand + " " + tokens[i]);
+                    string replace = tokens[i] + "( " + operand + " )";
 
                     return Regex.Replace(expression, pattern, replace);
                 }
@@ -71,11 +74,11 @@ namespace FormatterClassLibrary {
             return expression;
         }
 
-        private string FormatUnaryOperator(string expression) {
+        private string FormatOperators(string expression) {
 
-            var unarys = FindUnaryOperator(expression);
+            var unarys = UnaryOperatorUsed(expression);
 
-            while(HasUnformattedUnaryOperator(expression, unarys)) {
+            while(HasUnformattedUnary(expression, unarys)) {
 
                 expression = FormatUnary(expression, unarys);
             }
@@ -90,7 +93,7 @@ namespace FormatterClassLibrary {
 
         public string Format(string expression) {
 
-            expression = FormatUnaryOperator(expression);
+            expression = FormatOperators(expression);
 
             return RemoveParenthesesSpacing(expression);
         }

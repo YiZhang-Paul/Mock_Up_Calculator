@@ -45,6 +45,10 @@ namespace FormatterTest {
             expression = "5 + 6 " + OperatorLookup.Factorial + " " + OperatorLookup.SineDEG;
 
             Assert.AreEqual("5 + " + OperatorLookup.SineDEG + "(" + OperatorLookup.Factorial + "(6)" + ")", formatter.Format(expression));
+
+            expression = "5 + 6 " + OperatorLookup.Factorial + " " + OperatorLookup.SineDEG + " " + OperatorLookup.Log;
+
+            Assert.AreEqual("5 + " + OperatorLookup.Log + "(" + OperatorLookup.SineDEG + "(" + OperatorLookup.Factorial + "(6)" + "))", formatter.Format(expression));
         }
     }
 }

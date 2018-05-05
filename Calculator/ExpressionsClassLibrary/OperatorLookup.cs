@@ -82,7 +82,7 @@ namespace ExpressionsClassLibrary {
             }
         }
 
-        public static HashSet<string> UnaryOperator {
+        public static HashSet<string> Unary {
 
             get {
 
