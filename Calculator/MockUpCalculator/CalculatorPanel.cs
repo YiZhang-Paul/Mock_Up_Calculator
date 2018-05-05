@@ -22,6 +22,7 @@ namespace MockUpCalculator {
         protected bool MemoryPanelDeactivated { get; set; }
         protected IKeyChecker Checker { get; set; }
         protected IFormatter NumberFormatter { get; set; }
+        protected IFormatter ExpressionFormatter { get; set; }
         protected IStandardCalculator Calculator { get; set; }
         protected IKeypad Keypad { get; set; }
         protected ICalculatorDisplay Display { get; set; }
@@ -37,6 +38,7 @@ namespace MockUpCalculator {
 
             IKeyChecker checker,
             IFormatter numberFormatter,
+            IFormatter expressionFormatter,
             IStandardCalculator calculator
 
         ) {
@@ -44,6 +46,7 @@ namespace MockUpCalculator {
             InitializeComponent();
             Checker = checker;
             NumberFormatter = numberFormatter;
+            ExpressionFormatter = expressionFormatter;
             Calculator = calculator;
         }
 
@@ -115,7 +118,7 @@ namespace MockUpCalculator {
             }
 
             DisplayValue(Calculator.Input);
-            Display.DisplayExpression(Calculator.Expression);
+            Display.DisplayExpression(Calculator.Expression, ExpressionFormatter);
         }
 
         protected virtual void HandleOperator(string key) {
@@ -164,7 +167,7 @@ namespace MockUpCalculator {
                 HandleOperator(key);
             }
 
-            Display.DisplayExpression(Calculator.Expression);
+            Display.DisplayExpression(Calculator.Expression, ExpressionFormatter);
         }
 
         protected virtual void KeypadButtonMouseClick(object sender, EventArgs e) {

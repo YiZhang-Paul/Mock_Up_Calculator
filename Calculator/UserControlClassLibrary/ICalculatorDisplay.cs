@@ -14,7 +14,7 @@ namespace UserControlClassLibrary {
         void Clear();
         void RefreshDisplay(IFormatter formatter);
         void DisplayResult(string result, IFormatter formatter);
-        void DisplayExpression(string expression);
+        void DisplayExpression(string expression, IFormatter formatter);
         void DisplayError(string error);
     }
 }

@@ -73,6 +73,7 @@ namespace MockUpCalculator {
 
                 new KeyChecker(),
                 new NumberFormatter(),
+                new ExpressionFormatter(),
                 new StandardCalculator()
             );
 
@@ -93,6 +94,7 @@ namespace MockUpCalculator {
 
                 new KeyChecker(),
                 new NumberFormatter(),
+                new ExpressionFormatter(),
                 new EngineeringFormatter(),
                 new ScientificCalculator()
             );

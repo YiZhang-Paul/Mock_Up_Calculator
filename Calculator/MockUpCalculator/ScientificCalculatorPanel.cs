@@ -35,10 +35,11 @@ namespace MockUpCalculator {
 
             IKeyChecker checker,
             IFormatter numberFormatter,
+            IFormatter expressionFormatter,
             IFormatter engineeringFormatter,
             IScientificCalculator calculator
 
-        ) : base(checker, numberFormatter, calculator) {
+        ) : base(checker, numberFormatter, expressionFormatter, calculator) {
 
             InitializeComponent();
             Display = standardDisplay;

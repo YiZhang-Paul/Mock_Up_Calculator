@@ -18,9 +18,10 @@ namespace MockUpCalculator {
 
             IKeyChecker checker,
             IFormatter numberFormatter,
+            IFormatter expressionFormatter,
             IStandardCalculator calculator
 
-        ) : base(checker, numberFormatter, calculator) {
+        ) : base(checker, numberFormatter, expressionFormatter, calculator) {
 
             InitializeComponent();
             Display = standardDisplay;

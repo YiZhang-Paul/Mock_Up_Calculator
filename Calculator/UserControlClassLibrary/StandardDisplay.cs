@@ -71,9 +71,9 @@ namespace UserControlClassLibrary {
             ResizeLabelText(resultLabel);
         }
 
-        public void DisplayExpression(string expression) {
+        public void DisplayExpression(string expression, IFormatter formatter) {
 
-            expressionLabel.Text = expression;
+            expressionLabel.Text = formatter.Format(expression);
             scrollPanel.Width = expressionLabel.Width;
             scrollPanel.Left = MinScrollX();
             ShowArrows();
