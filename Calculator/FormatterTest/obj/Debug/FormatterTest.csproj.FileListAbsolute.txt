@@ -5,3 +5,9 @@ D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\FormatterClassLibrary.p
 D:\mock_up_calculator\Calculator\FormatterTest\obj\Debug\FormatterTest.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\FormatterTest\obj\Debug\FormatterTest.dll
 D:\mock_up_calculator\Calculator\FormatterTest\obj\Debug\FormatterTest.pdb
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\Deque.xml

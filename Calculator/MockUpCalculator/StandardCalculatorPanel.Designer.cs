@@ -26,8 +26,8 @@
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
             this.keypadPanel = new System.Windows.Forms.Panel();
-            this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.standardKeypad = new UserControlClassLibrary.StandardKeypad();
+            this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.mainLayout.SuspendLayout();
             this.keypadPanel.SuspendLayout();
             this.SuspendLayout();
@@ -72,19 +72,6 @@
             this.keypadPanel.Size = new System.Drawing.Size(337, 405);
             this.keypadPanel.TabIndex = 1;
             // 
-            // memoryPanel
-            // 
-            this.memoryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.memoryPanel.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.memoryPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memoryPanel.Location = new System.Drawing.Point(0, 323);
-            this.memoryPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.memoryPanel.Name = "memoryPanel";
-            this.memoryPanel.Size = new System.Drawing.Size(337, 82);
-            this.memoryPanel.TabIndex = 1;
-            // 
             // standardKeypad
             // 
             this.standardKeypad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -98,6 +85,19 @@
             this.standardKeypad.Name = "standardKeypad";
             this.standardKeypad.Size = new System.Drawing.Size(337, 405);
             this.standardKeypad.TabIndex = 0;
+            // 
+            // memoryPanel
+            // 
+            this.memoryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.memoryPanel.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.memoryPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.memoryPanel.Location = new System.Drawing.Point(0, 323);
+            this.memoryPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.memoryPanel.Name = "memoryPanel";
+            this.memoryPanel.Size = new System.Drawing.Size(337, 82);
+            this.memoryPanel.TabIndex = 1;
             // 
             // StandardCalculatorPanel
             // 

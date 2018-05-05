@@ -40,9 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EngineeringFormatter.cs" />
+    <Compile Include="ExpressionFormatter.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="NumberFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">
+      <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
+      <Name>ExpressionsClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

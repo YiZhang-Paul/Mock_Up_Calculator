@@ -3,3 +3,9 @@ D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\FormatterClassL
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.dll
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\obj\Debug\FormatterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\Deque.xml

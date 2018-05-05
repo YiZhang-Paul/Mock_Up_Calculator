@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace FormatterClassLibrary {
     public interface IFormatter {
 
-        string Format(string number);
+        string Format(string input);
     }
 }

@@ -81,5 +81,13 @@ namespace ExpressionsClassLibrary {
                 };
             }
         }
+
+        public static HashSet<string> UnaryOperator {
+
+            get {
+
+                return new HashSet<string>(Operators.First());
+            }
+        }
     }
 }

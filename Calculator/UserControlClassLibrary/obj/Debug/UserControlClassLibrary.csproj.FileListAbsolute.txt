@@ -16,3 +16,9 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.Keypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.StandardKeypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.SidePanel.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ExpressionsClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\Deque.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ExpressionsClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\Deque.xml

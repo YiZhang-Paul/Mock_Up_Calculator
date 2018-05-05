@@ -77,6 +77,7 @@ namespace MockUpCalculator {
             );
 
             CalculatorPanel.Parent = uiLayout;
+            CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
             calculatorLabel.Text = "Standard";
         }
