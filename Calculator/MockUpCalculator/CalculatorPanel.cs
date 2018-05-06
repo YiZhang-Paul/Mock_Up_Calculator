@@ -388,11 +388,6 @@ namespace MockUpCalculator {
             ClosePanel(MemoryPanel);
         }
 
-        protected virtual void HistoryPanelSelect(object sender, EventArgs e) {
-            //TODO: select history
-            ClosePanel(HistoryPanel);
-        }
-
         protected virtual void MemoryPanelPlus(object sender, EventArgs e) {
 
             int key = GetMemoryItemKey(sender);
@@ -420,17 +415,34 @@ namespace MockUpCalculator {
             ((Control)Keypad).BringToFront();
         }
 
-        protected virtual void HistoryPanelExtended(object sender, EventArgs e) {
+        protected virtual void RestoreHistory(string expression) {
 
-            BackPanelActivated = true;
-            ActiveBackPanel = HistoryPanel;
-            HistoryPanel.ShowItems(History.ToArray());
+            Calculator.Clear();
+            var tokens = expression.Split(' ');
+
+            for(int i = 0; i < tokens.Length; i++) {
+
+                HandleCalculation(tokens[i]);
+            }
+        }
+
+        protected virtual void HistoryPanelSelect(object sender, EventArgs e) {
+
+            RestoreHistory(((IHistoryItem)sender).Expression);
+            ClosePanel(HistoryPanel);
         }
 
         protected virtual void HistoryPanelClear(object sender, EventArgs e) {
 
             History.Clear();
             ClosePanel(HistoryPanel);
+        }
+
+        protected virtual void HistoryPanelExtended(object sender, EventArgs e) {
+
+            BackPanelActivated = true;
+            ActiveBackPanel = HistoryPanel;
+            HistoryPanel.ShowItems(History.ToArray());
         }
 
         public void DeactivateBackPanel() {
