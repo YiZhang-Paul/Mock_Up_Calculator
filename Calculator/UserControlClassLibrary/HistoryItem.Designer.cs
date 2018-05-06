@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.expressionLabel = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
+            this.expressionLabel = new System.Windows.Forms.Label();
             this.mainLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,39 +37,49 @@
             this.mainLayout.Controls.Add(this.resultLabel, 0, 1);
             this.mainLayout.Controls.Add(this.expressionLabel, 0, 0);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayout.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.mainLayout.Name = "mainLayout";
             this.mainLayout.RowCount = 2;
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.mainLayout.Size = new System.Drawing.Size(337, 80);
             this.mainLayout.TabIndex = 1;
-            // 
-            // expressionLabel
-            // 
-            this.expressionLabel.AutoSize = true;
-            this.expressionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expressionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
-            this.expressionLabel.Location = new System.Drawing.Point(0, 3);
-            this.expressionLabel.Margin = new System.Windows.Forms.Padding(0, 3, 15, 0);
-            this.expressionLabel.Name = "expressionLabel";
-            this.expressionLabel.Size = new System.Drawing.Size(322, 37);
-            this.expressionLabel.TabIndex = 0;
-            this.expressionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mainLayout.Click += new System.EventHandler(this.PanelClick);
+            this.mainLayout.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
+            this.mainLayout.MouseLeave += new System.EventHandler(this.PanelMouseLeave);
             // 
             // resultLabel
             // 
             this.resultLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.resultLabel.AutoSize = true;
-            this.resultLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
-            this.resultLabel.Location = new System.Drawing.Point(322, 43);
-            this.resultLabel.Margin = new System.Windows.Forms.Padding(0, 3, 15, 0);
+            this.resultLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 25F, System.Drawing.FontStyle.Bold);
+            this.resultLabel.Location = new System.Drawing.Point(327, 31);
+            this.resultLabel.Margin = new System.Windows.Forms.Padding(0, 3, 10, 0);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 37);
+            this.resultLabel.Size = new System.Drawing.Size(0, 49);
             this.resultLabel.TabIndex = 1;
             this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.resultLabel.Click += new System.EventHandler(this.PanelClick);
+            this.resultLabel.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
+            this.resultLabel.MouseLeave += new System.EventHandler(this.PanelMouseLeave);
+            // 
+            // expressionLabel
+            // 
+            this.expressionLabel.AutoSize = true;
+            this.expressionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expressionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.expressionLabel.Location = new System.Drawing.Point(0, 3);
+            this.expressionLabel.Margin = new System.Windows.Forms.Padding(0, 3, 15, 0);
+            this.expressionLabel.Name = "expressionLabel";
+            this.expressionLabel.Size = new System.Drawing.Size(322, 25);
+            this.expressionLabel.TabIndex = 0;
+            this.expressionLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.expressionLabel.Click += new System.EventHandler(this.PanelClick);
+            this.expressionLabel.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
+            this.expressionLabel.MouseLeave += new System.EventHandler(this.PanelMouseLeave);
             // 
             // HistoryItem
             // 

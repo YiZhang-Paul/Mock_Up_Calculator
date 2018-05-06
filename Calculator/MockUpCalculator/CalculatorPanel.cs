@@ -80,7 +80,7 @@ namespace MockUpCalculator {
 
             HistoryPanel = new HistoryPanel(ExpressionFormatter, NumberFormatter);
             HistoryPanel.OnClear += HistoryPanelClear;
-            //HistoryPanel.OnHistorySelect += ;
+            HistoryPanel.OnHistorySelect += HistoryPanelSelect;
             HistoryPanel.OnExtended += HistoryPanelExtended;
             HistoryPanel.OnShrunken += BackPanelShrunken;
             PlaceBackPanel((Control)HistoryPanel, parent);
@@ -112,11 +112,18 @@ namespace MockUpCalculator {
             UIHelper.ButtonMouseLeave(sender, e);
         }
 
+        protected virtual void AddHistory(string expression, decimal result) {
+
+            History.Add(new Tuple<string, decimal>(expression, result));
+        }
+
         protected virtual void HandleEvaluation() {
 
             try {
 
-                DisplayValue(Calculator.Evaluate().ToString());
+                decimal result = Calculator.Evaluate();
+                DisplayValue(result.ToString());
+                AddHistory(Calculator.Expression, result);
                 Calculator.Clear();
             }
             catch(DivideByZeroException) {
@@ -379,6 +386,11 @@ namespace MockUpCalculator {
             Calculator.MemoryRetrieve(key);
             DisplayValue(Calculator.Input);
             ClosePanel(MemoryPanel);
+        }
+
+        protected virtual void HistoryPanelSelect(object sender, EventArgs e) {
+            //TODO: select history
+            ClosePanel(HistoryPanel);
         }
 
         protected virtual void MemoryPanelPlus(object sender, EventArgs e) {

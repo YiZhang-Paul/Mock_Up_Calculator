@@ -43,7 +43,7 @@ namespace UserControlClassLibrary {
 
         public void DisplayExpression() {
 
-            expressionLabel.Text = ExpressionFormatter.Format(Expression);
+            expressionLabel.Text = ExpressionFormatter.Format(Expression) + " =";
             resultLabel.Text = NumberFormatter.Format(Result.ToString());
         }
 
@@ -52,6 +52,28 @@ namespace UserControlClassLibrary {
             BackColor = color;
             expressionLabel.BackColor = color;
             resultLabel.BackColor = color;
+        }
+
+        private void PanelClick(object sender, EventArgs e) {
+
+            OnSelect(this, e);
+        }
+
+        private void PanelMouseEnter(object sender, EventArgs e) {
+
+            if(Visible) {
+
+                SetBackColor(Color.FromArgb(58, 58, 58));
+                UIHelper.ReceiveFocus(Parent);
+            }
+        }
+
+        private void PanelMouseLeave(object sender, EventArgs e) {
+
+            if(Visible && !UIHelper.ContainsPointer(mainLayout)) {
+
+                SetBackColor(Color.FromArgb(39, 39, 39));
+            }
         }
     }
 }
