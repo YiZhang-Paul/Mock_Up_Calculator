@@ -120,9 +120,10 @@ namespace MockUpCalculator {
             };
         }
 
-        private void RemoveFocus(object sender, EventArgs e) {
+        private void ToggleHistoryPanel(object sender, EventArgs e) {
 
             calculatorLabel.Focus();
+            CalculatorPanel.ToggleHistoryPanel(sender, e);
         }
 
         private void SavePointerLocation(object sender, MouseEventArgs e) {
@@ -142,7 +143,7 @@ namespace MockUpCalculator {
 
         private void btnChangeCalculator_Click(object sender, EventArgs e) {
 
-            RemoveFocus(sender, e);
+            ToggleHistoryPanel(sender, e);
             calculatorLabel.Visible = false;
             sidePanel.Extend(Math.Min(280, Width / 4 * 3));
         }

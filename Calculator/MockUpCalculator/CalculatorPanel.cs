@@ -18,8 +18,10 @@ namespace MockUpCalculator {
         protected const string _divideByZeroMessage = "Cannot divide by zero";
         protected const string _invalidInputMessage = "Invalid input";
 
-        protected bool MemoryPanelActivated { get; set; }
-        protected bool MemoryPanelDeactivated { get; set; }
+        protected bool BackPanelActivated { get; set; }
+        protected bool BackPanelDeactivated { get; set; }
+        protected IExpandable ActiveBackPanel { get; set; }
+        protected List<Tuple<string, decimal>> History { get; set; }
         protected IKeyChecker Checker { get; set; }
         protected IFormatter NumberFormatter { get; set; }
         protected IFormatter ExpressionFormatter { get; set; }
@@ -27,6 +29,7 @@ namespace MockUpCalculator {
         protected IKeypad Keypad { get; set; }
         protected ICalculatorDisplay Display { get; set; }
         protected IMemoryItemDisplay MemoryPanel { get; set; }
+        protected IHistoryItemDisplay HistoryPanel { get; set; }
         protected virtual IFormatter ActiveFormatter { get { return NumberFormatter; } }
 
         public CalculatorPanel() {
@@ -45,6 +48,7 @@ namespace MockUpCalculator {
 
             InitializeComponent();
             Checker = checker;
+            History = new List<Tuple<string, decimal>>();
             NumberFormatter = numberFormatter;
             ExpressionFormatter = expressionFormatter;
             Calculator = calculator;
@@ -68,8 +72,18 @@ namespace MockUpCalculator {
             MemoryPanel.OnMemoryPlus += MemoryPanelPlus;
             MemoryPanel.OnMemoryMinus += MemoryPanelMinus;
             MemoryPanel.OnExtended += MemoryPanelExtended;
-            MemoryPanel.OnShrunken += MemoryPanelShrunken;
+            MemoryPanel.OnShrunken += BackPanelShrunken;
             PlaceBackPanel((Control)MemoryPanel, parent);
+        }
+
+        protected virtual void SetupHistoryPanel(Control parent) {
+
+            HistoryPanel = new HistoryPanel(ExpressionFormatter, NumberFormatter);
+            HistoryPanel.OnClear += HistoryPanelClear;
+            //HistoryPanel.OnHistorySelect += ;
+            HistoryPanel.OnExtended += HistoryPanelExtended;
+            HistoryPanel.OnShrunken += BackPanelShrunken;
+            PlaceBackPanel((Control)HistoryPanel, parent);
         }
 
         protected virtual void DisplayValue(string value) {
@@ -229,29 +243,54 @@ namespace MockUpCalculator {
             Keypad.LeaveMemoryKeyOn();
         }
 
-        protected virtual void CloseMemoryPanel() {
+        protected virtual void ClosePanel(IExpandable panel) {
 
-            MemoryPanel.Shrink();
+            panel.Shrink();
             EnableKeypad();
         }
 
         protected virtual void ToggleMemoryPanel(object sender, EventArgs e) {
 
-            if(MemoryPanelDeactivated) {
+            if(BackPanelDeactivated) {
 
-                MemoryPanelDeactivated = false;
+                BackPanelDeactivated = false;
 
                 return;
             }
 
-            if(!MemoryPanelActivated) {
+            if(!BackPanelActivated) {
 
                 OpenMemoryPanel();
 
                 return;
             }
 
-            CloseMemoryPanel();
+            ClosePanel(MemoryPanel);
+        }
+
+        protected virtual void OpenHistoryPanel() {
+
+            HistoryPanel.Extend(Keypad.MainAreaHeight);
+            Keypad.DisableAllKeys();
+        }
+
+        public void ToggleHistoryPanel(object sender, EventArgs e) {
+
+            if(BackPanelDeactivated) {
+
+                BackPanelDeactivated = false;
+
+                return;
+            }
+
+            if(!BackPanelActivated) {
+
+                OpenHistoryPanel();
+
+                return;
+            }
+
+            ClosePanel(HistoryPanel);
         }
 
         protected virtual void CalculatorMemoryStore(object sender, EventArgs e) {
@@ -331,7 +370,7 @@ namespace MockUpCalculator {
         protected virtual void MemoryPanelClear(object sender, EventArgs e) {
 
             CalculatorMemoryClear(sender, e);
-            CloseMemoryPanel();
+            ClosePanel(MemoryPanel);
         }
 
         protected virtual void MemoryPanelSelect(object sender, EventArgs e) {
@@ -339,7 +378,7 @@ namespace MockUpCalculator {
             int key = GetMemoryItemKey(sender);
             Calculator.MemoryRetrieve(key);
             DisplayValue(Calculator.Input);
-            CloseMemoryPanel();
+            ClosePanel(MemoryPanel);
         }
 
         protected virtual void MemoryPanelPlus(object sender, EventArgs e) {
@@ -358,26 +397,38 @@ namespace MockUpCalculator {
 
         protected virtual void MemoryPanelExtended(object sender, EventArgs e) {
 
-            MemoryPanelActivated = true;
+            BackPanelActivated = true;
             MemoryPanel.ShowItems(Calculator.MemoryValues);
         }
 
-        protected virtual void MemoryPanelShrunken(object sender, EventArgs e) {
+        protected virtual void BackPanelShrunken(object sender, EventArgs e) {
 
-            MemoryPanelActivated = false;
+            BackPanelActivated = false;
             ((Control)Keypad).BringToFront();
+        }
+
+        protected virtual void HistoryPanelExtended(object sender, EventArgs e) {
+
+            BackPanelActivated = true;
+            HistoryPanel.ShowItems(History.ToArray());
+        }
+
+        protected virtual void HistoryPanelClear(object sender, EventArgs e) {
+
+            History.Clear();
+            ClosePanel(HistoryPanel);
         }
 
         public void DeactivateMemoryPanel() {
 
-            bool deselected = MemoryPanelActivated && !UIHelper.ContainsPointer((Control)MemoryPanel);
+            bool deselected = BackPanelActivated && !UIHelper.ContainsPointer((Control)MemoryPanel);
 
             if(deselected) {
 
-                CloseMemoryPanel();
+                ClosePanel(MemoryPanel);
             }
 
-            MemoryPanelDeactivated = deselected;
+            BackPanelDeactivated = deselected;
             Keypad.ExtraKeysSuspended = deselected;
         }
     }

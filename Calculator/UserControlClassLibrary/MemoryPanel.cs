@@ -35,9 +35,9 @@ namespace UserControlClassLibrary {
             ItemPointer = 0;
         }
 
-        private MemoryItem CreateItem(int key, decimal value, IFormatter formatter) {
+        private MemoryItem CreateItem(int key, decimal value) {
 
-            var item = new MemoryItem(key, value, formatter);
+            var item = new MemoryItem(key, value, Formatter);
             item.Parent = MainPanel;
             item.OnDelete += MemoryClear;
             item.OnSelect += MemorySelect;
@@ -78,7 +78,7 @@ namespace UserControlClassLibrary {
                     break;
                 }
 
-                var item = CreateItem(j, Items[j], Formatter);
+                var item = CreateItem(j, Items[j]);
                 item.Width = Width;
                 item.Height = ItemHeight - ItemMargin;
                 item.Top = ItemHeight * i + ItemMargin;

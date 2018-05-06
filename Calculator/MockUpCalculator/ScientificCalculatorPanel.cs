@@ -47,6 +47,7 @@ namespace MockUpCalculator {
             Calculator = calculator;
             SetupKeypad();
             SetupMemoryPanel(keypadPanel);
+            SetupHistoryPanel(keypadPanel);
             DisplayValue(Calculator.Input);
         }
 

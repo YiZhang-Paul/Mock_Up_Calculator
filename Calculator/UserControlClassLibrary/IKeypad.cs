@@ -17,6 +17,7 @@ namespace UserControlClassLibrary {
 
         void EnableAllKeys();
         void EnableValidKeys();
+        void DisableAllKeys();
         void LeaveBasicKeysOn();
         void LeaveMemoryKeyOn();
     }

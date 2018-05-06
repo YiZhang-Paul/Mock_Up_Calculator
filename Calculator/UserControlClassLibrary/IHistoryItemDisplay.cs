@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UserControlClassLibrary {
-    public interface IHistoryItemDisplay : IExpandable, IDisplayPanel, IItemDisplay<string> {
+    public interface IHistoryItemDisplay : IExpandable, IDisplayPanel, IItemDisplay<Tuple<string, decimal>> {
 
         event EventHandler OnHistorySelect;
     }

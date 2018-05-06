@@ -139,7 +139,7 @@
             this.btnHistory.TabIndex = 2;
             this.btnHistory.Text = "⏲";
             this.btnHistory.UseVisualStyleBackColor = true;
-            this.btnHistory.Click += new System.EventHandler(this.RemoveFocus);
+            this.btnHistory.Click += new System.EventHandler(this.ToggleHistoryPanel);
             this.btnHistory.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnHistory.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 

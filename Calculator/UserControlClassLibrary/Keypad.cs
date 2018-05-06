@@ -89,6 +89,11 @@ namespace UserControlClassLibrary {
             IsDisabled = false;
         }
 
+        public void DisableAllKeys() {
+
+            UIHelper.DisableKeys(AllKeys, Tracker);
+        }
+
         public void LeaveBasicKeysOn() {
 
             UIHelper.DisableKeys(AllKeys, Tracker);

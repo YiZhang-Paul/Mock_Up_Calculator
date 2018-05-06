@@ -28,6 +28,7 @@ namespace MockUpCalculator {
             Display = standardDisplay;
             SetupKeypad();
             SetupMemoryPanel(keypadPanel);
+            SetupHistoryPanel(keypadPanel);
             DisplayValue(Calculator.Input);
         }
 
