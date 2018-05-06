@@ -38,7 +38,7 @@ namespace CalculatorClassLibrary {
                 return input;
             }
 
-            return Regex.Replace(input, "(sin|cos|tan)(?!h)", match => {
+            return Regex.Replace(input, "(sin|cos|tan)(?!₀|ᵣ|₉|h)", match => {
 
                 return match.Value + GetAngularNotation();
             });

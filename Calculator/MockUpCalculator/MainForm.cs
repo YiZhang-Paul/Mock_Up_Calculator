@@ -143,7 +143,7 @@ namespace MockUpCalculator {
 
         private void btnChangeCalculator_Click(object sender, EventArgs e) {
 
-            ToggleHistoryPanel(sender, e);
+            calculatorLabel.Focus();
             calculatorLabel.Visible = false;
             sidePanel.Extend(Math.Min(280, Width / 4 * 3));
         }
