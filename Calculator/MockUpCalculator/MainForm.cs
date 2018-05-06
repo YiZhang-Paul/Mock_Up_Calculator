@@ -191,7 +191,7 @@ namespace MockUpCalculator {
 
         private void MainCalculator_Deactivate(object sender, EventArgs e) {
 
-            CalculatorPanel.DeactivateMemoryPanel();
+            CalculatorPanel.DeactivateBackPanel();
         }
 
         private void DragWindow(object sender, MouseEventArgs e) {
@@ -341,7 +341,7 @@ namespace MockUpCalculator {
 
                 if(!UIHelper.ContainsPointer(topPanel)) {
 
-                    CalculatorPanel.DeactivateMemoryPanel();
+                    CalculatorPanel.DeactivateBackPanel();
                 }
             }
         }

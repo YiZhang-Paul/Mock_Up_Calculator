@@ -398,6 +398,7 @@ namespace MockUpCalculator {
         protected virtual void MemoryPanelExtended(object sender, EventArgs e) {
 
             BackPanelActivated = true;
+            ActiveBackPanel = MemoryPanel;
             MemoryPanel.ShowItems(Calculator.MemoryValues);
         }
 
@@ -410,6 +411,7 @@ namespace MockUpCalculator {
         protected virtual void HistoryPanelExtended(object sender, EventArgs e) {
 
             BackPanelActivated = true;
+            ActiveBackPanel = HistoryPanel;
             HistoryPanel.ShowItems(History.ToArray());
         }
 
@@ -419,13 +421,19 @@ namespace MockUpCalculator {
             ClosePanel(HistoryPanel);
         }
 
-        public void DeactivateMemoryPanel() {
+        public void DeactivateBackPanel() {
 
-            bool deselected = BackPanelActivated && !UIHelper.ContainsPointer((Control)MemoryPanel);
+            if(ActiveBackPanel == null) {
+
+                return;
+            }
+
+            bool mouseOver = UIHelper.ContainsPointer((Control)ActiveBackPanel);
+            bool deselected = BackPanelActivated && !mouseOver;
 
             if(deselected) {
 
-                ClosePanel(MemoryPanel);
+                ClosePanel(ActiveBackPanel);
             }
 
             BackPanelDeactivated = deselected;
