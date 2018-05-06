@@ -47,9 +47,23 @@
     <Compile Include="ExpandablePanel.Designer.cs">
       <DependentUpon>ExpandablePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryItem.Designer.cs">
+      <DependentUpon>HistoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryPanel.Designer.cs">
+      <DependentUpon>HistoryPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ICalculatorDisplay.cs" />
     <Compile Include="IDisplayPanel.cs" />
     <Compile Include="IExpandable.cs" />
+    <Compile Include="IHistoryItem.cs" />
+    <Compile Include="IHistoryItemDisplay.cs" />
     <Compile Include="IItemDisplay.cs" />
     <Compile Include="IKeypad.cs" />
     <Compile Include="IMemoryItem.cs" />
@@ -57,6 +71,12 @@
     <Compile Include="IMenu.cs" />
     <Compile Include="IResize.cs" />
     <Compile Include="IScientificKeypad.cs" />
+    <Compile Include="ItemDisplayPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemDisplayPanel.Designer.cs">
+      <DependentUpon>ItemDisplayPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemoryItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +132,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ExpandablePanel.resx">
       <DependentUpon>ExpandablePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryItem.resx">
+      <DependentUpon>HistoryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemoryItem.resx">
       <DependentUpon>MemoryItem.cs</DependentUpon>

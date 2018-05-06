@@ -46,7 +46,7 @@ namespace MockUpCalculator {
             EngineeringFormatter = engineeringFormatter;
             Calculator = calculator;
             SetupKeypad();
-            SetupMemoryPanel();
+            SetupMemoryPanel(keypadPanel);
             DisplayValue(Calculator.Input);
         }
 
@@ -65,18 +65,6 @@ namespace MockUpCalculator {
             scientificKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             scientificKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             scientificKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
-        }
-
-        private void SetupMemoryPanel() {
-
-            MemoryPanel = memoryPanel;
-            MemoryPanel.OnMemoryDelete += MemoryPanelRemove;
-            MemoryPanel.OnClear += MemoryPanelClear;
-            MemoryPanel.OnMemorySelect += MemoryPanelSelect;
-            MemoryPanel.OnMemoryPlus += MemoryPanelPlus;
-            MemoryPanel.OnMemoryMinus += MemoryPanelMinus;
-            MemoryPanel.OnExtended += MemoryPanelExtended;
-            MemoryPanel.OnShrunken += MemoryPanelShrunken;
         }
 
         protected override void HandleOperator(string key) {

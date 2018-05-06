@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ExpressionsClassLibrary;
 using FormatterClassLibrary;
 
 namespace FormatterTest {
@@ -8,47 +8,55 @@ namespace FormatterTest {
     public class ExpressionFormatterTest {
 
         ExpressionFormatter formatter;
+        string factorial = "fact";
+        string sine = "sin";
+        string log = "log";
 
         [TestInitialize]
         public void Setup() {
 
-            formatter = new ExpressionFormatter();
+            var unarys = new HashSet<string>() { factorial, sine, log };
+            formatter = new ExpressionFormatter(unarys);
         }
 
         [TestMethod]
         public void ExpressionWithoutUnaryOperator() {
 
-            string expression = "5 + 6 " + OperatorLookup.Multiply + " 6";
+            string expression = "5 + 6 % 6";
 
             Assert.AreEqual(expression, formatter.Format(expression));
+        }
 
-            expression = "( 5 + 6 ) " + OperatorLookup.Multiply + " 6";
+        [TestMethod]
+        public void RemoveSpacingBetweenParentheses() {
 
-            Assert.AreEqual("(5 + 6) " + OperatorLookup.Multiply + " 6", formatter.Format(expression));
+            string expression = "( 5 + 6 ) % 6";
+
+            Assert.AreEqual("(5 + 6) % 6", formatter.Format(expression));
         }
 
         [TestMethod]
         public void ExpressionWithoutNestedUnaryOperator() {
 
-            string expression = "5 + 6 " + OperatorLookup.Factorial;
+            string expression = "5 + 6 " + factorial;
 
-            Assert.AreEqual("5 + " + OperatorLookup.Factorial + "(6)", formatter.Format(expression));
+            Assert.AreEqual("5 + " + factorial + "(6)", formatter.Format(expression));
         }
 
         [TestMethod]
         public void ExpressionWithNestedUnaryOperator() {
 
-            string expression = "5 + 6 " + OperatorLookup.Factorial + " " + OperatorLookup.Factorial;
+            string expression = "5 + 6 " + factorial + " " + factorial;
 
-            Assert.AreEqual("5 + " + OperatorLookup.Factorial + "(" + OperatorLookup.Factorial + "(6)" + ")", formatter.Format(expression));
+            Assert.AreEqual("5 + " + factorial + "(" + factorial + "(6)" + ")", formatter.Format(expression));
 
-            expression = "5 + 6 " + OperatorLookup.Factorial + " " + OperatorLookup.SineDEG;
+            expression = "5 + 6 " + factorial + " " + sine;
 
-            Assert.AreEqual("5 + " + OperatorLookup.SineDEG + "(" + OperatorLookup.Factorial + "(6)" + ")", formatter.Format(expression));
+            Assert.AreEqual("5 + " + sine + "(" + factorial + "(6)" + ")", formatter.Format(expression));
 
-            expression = "5 + 6 " + OperatorLookup.Factorial + " " + OperatorLookup.SineDEG + " " + OperatorLookup.Log;
+            expression = "5 + 6 " + factorial + " " + sine + " " + log;
 
-            Assert.AreEqual("5 + " + OperatorLookup.Log + "(" + OperatorLookup.SineDEG + "(" + OperatorLookup.Factorial + "(6)" + "))", formatter.Format(expression));
+            Assert.AreEqual("5 + " + log + "(" + sine + "(" + factorial + "(6)" + "))", formatter.Format(expression));
         }
     }
 }

@@ -18,9 +18,9 @@ namespace UserControlClassLibrary {
         public decimal Value { get; private set; }
 
         public event EventHandler OnDelete;
-        public event EventHandler OnMemorySelect;
-        public event EventHandler OnMemoryPlus;
-        public event EventHandler OnMemoryMinus;
+        public event EventHandler OnSelect;
+        public event EventHandler OnPlus;
+        public event EventHandler OnMinus;
 
         public MemoryItem() {
 
@@ -59,7 +59,7 @@ namespace UserControlClassLibrary {
 
         private void PanelClick(object sender, EventArgs e) {
 
-            OnMemorySelect(this, e);
+            OnSelect(this, e);
         }
 
         private void btnClear_Click(object sender, EventArgs e) {
@@ -71,13 +71,13 @@ namespace UserControlClassLibrary {
         private void btnPlus_Click(object sender, EventArgs e) {
 
             RemoveFocus();
-            OnMemoryPlus(this, e);
+            OnPlus(this, e);
         }
 
         private void btnMinus_Click(object sender, EventArgs e) {
 
             RemoveFocus();
-            OnMemoryMinus(this, e);
+            OnMinus(this, e);
         }
 
         private void ButtonMouseEnter(object sender, EventArgs e) {

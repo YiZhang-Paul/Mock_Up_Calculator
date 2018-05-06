@@ -9,6 +9,13 @@ using ExpressionsClassLibrary;
 namespace FormatterClassLibrary {
     public class ExpressionFormatter : IFormatter {
 
+        private HashSet<string> Unarys { get; set; }
+
+        public ExpressionFormatter(HashSet<string> unarys) {
+
+            Unarys = unarys;
+        }
+
         private string[] Tokenize(string expression) {
 
             return expression.Split(' ');
@@ -17,9 +24,8 @@ namespace FormatterClassLibrary {
         private HashSet<string> UnaryOperatorUsed(string expression) {
 
             var tokens = Tokenize(expression);
-            var unarys = OperatorLookup.Unary;
 
-            return new HashSet<string>(tokens.Where(token => unarys.Contains(token)));
+            return new HashSet<string>(tokens.Where(token => Unarys.Contains(token)));
         }
 
         private bool HasUnformattedUnary(string expression, HashSet<string> unarys) {
@@ -76,11 +82,11 @@ namespace FormatterClassLibrary {
 
         private string FormatOperators(string expression) {
 
-            var unarys = UnaryOperatorUsed(expression);
+            var unarysUsed = UnaryOperatorUsed(expression);
 
-            while(HasUnformattedUnary(expression, unarys)) {
+            while(HasUnformattedUnary(expression, unarysUsed)) {
 
-                expression = FormatUnary(expression, unarys);
+                expression = FormatUnary(expression, unarysUsed);
             }
 
             return expression;

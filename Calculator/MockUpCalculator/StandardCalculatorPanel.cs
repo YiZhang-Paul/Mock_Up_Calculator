@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculatorClassLibrary;
 using FormatterClassLibrary;
+using UserControlClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {
@@ -26,7 +27,7 @@ namespace MockUpCalculator {
             InitializeComponent();
             Display = standardDisplay;
             SetupKeypad();
-            SetupMemoryPanel();
+            SetupMemoryPanel(keypadPanel);
             DisplayValue(Calculator.Input);
         }
 
@@ -43,18 +44,6 @@ namespace MockUpCalculator {
             standardKeypad.OnButtonMouseClick += KeypadButtonMouseClick;
             standardKeypad.OnButtonMouseEnter += KeypadButtonMouseEnter;
             standardKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
-        }
-
-        private void SetupMemoryPanel() {
-
-            MemoryPanel = memoryPanel;
-            MemoryPanel.OnMemoryDelete += MemoryPanelRemove;
-            MemoryPanel.OnClear += MemoryPanelClear;
-            MemoryPanel.OnMemorySelect += MemoryPanelSelect;
-            MemoryPanel.OnMemoryPlus += MemoryPanelPlus;
-            MemoryPanel.OnMemoryMinus += MemoryPanelMinus;
-            MemoryPanel.OnExtended += MemoryPanelExtended;
-            MemoryPanel.OnShrunken += MemoryPanelShrunken;
         }
     }
 }

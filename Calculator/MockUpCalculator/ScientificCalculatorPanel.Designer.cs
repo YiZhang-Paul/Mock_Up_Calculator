@@ -27,7 +27,6 @@
             this.standardDisplay = new UserControlClassLibrary.StandardDisplay();
             this.keypadPanel = new System.Windows.Forms.Panel();
             this.scientificKeypad = new UserControlClassLibrary.ScientificKeypad();
-            this.memoryPanel = new UserControlClassLibrary.MemoryPanel();
             this.mainLayout.SuspendLayout();
             this.keypadPanel.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +66,6 @@
             // keypadPanel
             // 
             this.keypadPanel.Controls.Add(this.scientificKeypad);
-            this.keypadPanel.Controls.Add(this.memoryPanel);
             this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.keypadPanel.Location = new System.Drawing.Point(0, 102);
             this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -89,19 +87,6 @@
             this.scientificKeypad.Size = new System.Drawing.Size(337, 405);
             this.scientificKeypad.TabIndex = 0;
             // 
-            // memoryPanel
-            // 
-            this.memoryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoryPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.memoryPanel.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.memoryPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.memoryPanel.Location = new System.Drawing.Point(0, 297);
-            this.memoryPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.memoryPanel.Name = "memoryPanel";
-            this.memoryPanel.Size = new System.Drawing.Size(337, 107);
-            this.memoryPanel.TabIndex = 1;
-            // 
             // ScientificCalculatorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -120,6 +105,5 @@
         private UserControlClassLibrary.StandardDisplay standardDisplay;
         private System.Windows.Forms.Panel keypadPanel;
         private UserControlClassLibrary.ScientificKeypad scientificKeypad;
-        private UserControlClassLibrary.MemoryPanel memoryPanel;
     }
 }

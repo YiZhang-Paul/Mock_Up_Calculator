@@ -50,6 +50,28 @@ namespace MockUpCalculator {
             Calculator = calculator;
         }
 
+        private void PlaceBackPanel(Control panel, Control parent) {
+
+            panel.Parent = parent;
+            panel.Height = 50;
+            panel.Width = Width;
+            panel.Anchor = AnchorStyles.Bottom;
+            panel.Top = parent.Height - panel.Height;
+        }
+
+        protected virtual void SetupMemoryPanel(Control parent) {
+
+            MemoryPanel = new MemoryPanel(NumberFormatter);
+            MemoryPanel.OnMemoryDelete += MemoryPanelRemove;
+            MemoryPanel.OnClear += MemoryPanelClear;
+            MemoryPanel.OnMemorySelect += MemoryPanelSelect;
+            MemoryPanel.OnMemoryPlus += MemoryPanelPlus;
+            MemoryPanel.OnMemoryMinus += MemoryPanelMinus;
+            MemoryPanel.OnExtended += MemoryPanelExtended;
+            MemoryPanel.OnShrunken += MemoryPanelShrunken;
+            PlaceBackPanel((Control)MemoryPanel, parent);
+        }
+
         protected virtual void DisplayValue(string value) {
 
             Display.DisplayResult(value, ActiveFormatter);
@@ -288,14 +310,19 @@ namespace MockUpCalculator {
             Calculator.ClearInput();
         }
 
+        protected virtual int GetMemoryItemKey(object sender) {
+
+            return ((IMemoryItem)sender).Key;
+        }
+
         protected virtual void RefreshMemoryPanel() {
 
-            MemoryPanel.RefreshItems(Calculator.MemoryValues, NumberFormatter);
+            MemoryPanel.RefreshItems(Calculator.MemoryValues);
         }
 
         protected virtual void MemoryPanelRemove(object sender, EventArgs e) {
 
-            int key = MemoryPanel.TryGetKey(sender);
+            int key = GetMemoryItemKey(sender);
             Calculator.MemoryRemove(key);
             RefreshMemoryPanel();
         }
@@ -308,7 +335,7 @@ namespace MockUpCalculator {
 
         protected virtual void MemoryPanelSelect(object sender, EventArgs e) {
 
-            int key = MemoryPanel.TryGetKey(sender);
+            int key = GetMemoryItemKey(sender);
             Calculator.MemoryRetrieve(key);
             DisplayValue(Calculator.Input);
             CloseMemoryPanel();
@@ -316,14 +343,14 @@ namespace MockUpCalculator {
 
         protected virtual void MemoryPanelPlus(object sender, EventArgs e) {
 
-            int key = MemoryPanel.TryGetKey(sender);
+            int key = GetMemoryItemKey(sender);
             Calculator.MemoryPlus(key, Display.RecentValue);
             RefreshMemoryPanel();
         }
 
         protected virtual void MemoryPanelMinus(object sender, EventArgs e) {
 
-            int key = MemoryPanel.TryGetKey(sender);
+            int key = GetMemoryItemKey(sender);
             Calculator.MemoryMinus(key, Display.RecentValue);
             RefreshMemoryPanel();
         }
@@ -331,7 +358,7 @@ namespace MockUpCalculator {
         protected virtual void MemoryPanelExtended(object sender, EventArgs e) {
 
             MemoryPanelActivated = true;
-            MemoryPanel.ShowItems(Calculator.MemoryValues, NumberFormatter);
+            MemoryPanel.ShowItems(Calculator.MemoryValues);
         }
 
         protected virtual void MemoryPanelShrunken(object sender, EventArgs e) {
