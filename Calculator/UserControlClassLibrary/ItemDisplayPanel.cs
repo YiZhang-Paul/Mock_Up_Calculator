@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public abstract partial class ItemDisplayPanel<T> : ExpandableDisplayPanel {
+    public abstract partial class ItemDisplayPanel<T> : ExpandablePanel {
 
         protected virtual int VisibleItems { get { return Math.Max(3, TargetHeight / 108); } }
         protected virtual int ItemHeight { get { return TargetHeight / VisibleItems; } }

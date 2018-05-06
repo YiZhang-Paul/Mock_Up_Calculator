@@ -12,8 +12,8 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.dll
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\FormatterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.MemoryItem.resources
-D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ExpandableDisplayPanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.Keypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.StandardKeypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.SidePanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.HistoryItem.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ExpandablePanel.resources

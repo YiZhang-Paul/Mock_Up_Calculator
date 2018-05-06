@@ -30,6 +30,11 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
+        public void ResetPointer() {
+
+            ItemPointer = 0;
+        }
+
         private MemoryItem CreateItem(int key, decimal value, IFormatter formatter) {
 
             var item = new MemoryItem(key, value, formatter);

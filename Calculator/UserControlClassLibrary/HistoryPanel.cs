@@ -19,6 +19,11 @@ namespace UserControlClassLibrary {
             InitializeComponent();
         }
 
+        public void ResetPointer() {
+
+            ItemPointer = 0;
+        }
+
         public void ClearItems() {}
 
         public void ShowItems(string[] values) {}

@@ -270,6 +270,7 @@ namespace MockUpCalculator {
         protected virtual void CalculatorMemoryClear(object sender, EventArgs e) {
 
             Calculator.MemoryClear();
+            MemoryPanel.ResetPointer();
         }
 
         protected virtual void CalculatorMemoryRecall(object sender, EventArgs e) {

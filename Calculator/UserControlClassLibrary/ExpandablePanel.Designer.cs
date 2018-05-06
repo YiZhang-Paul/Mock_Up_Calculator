@@ -1,5 +1,5 @@
 ﻿namespace UserControlClassLibrary {
-    partial class ExpandableDisplayPanel {
+    partial class ExpandablePanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

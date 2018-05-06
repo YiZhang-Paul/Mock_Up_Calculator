@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public partial class ExpandableDisplayPanel : UserControl, IExpandable, IDisplayPanel {
+    public partial class ExpandablePanel : UserControl, IExpandable, IDisplayPanel {
 
         protected int TargetHeight { get; set; }
         protected Panel MainPanel { get; set; }
@@ -21,7 +21,7 @@ namespace UserControlClassLibrary {
         public event EventHandler OnShrunken;
         public event EventHandler OnClear;
 
-        public ExpandableDisplayPanel() {
+        public ExpandablePanel() {
 
             InitializeComponent();
         }
