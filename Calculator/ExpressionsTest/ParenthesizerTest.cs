@@ -7,20 +7,28 @@ namespace ExpressionsTest {
     [TestClass]
     public class ParenthesizerTest {
 
-        string plus = OperatorLookup.Plus;
-        string minus = OperatorLookup.Minus;
-        string multiply = OperatorLookup.Multiply;
-        string divide = OperatorLookup.Divide;
-        string factorial = OperatorLookup.Factorial;
-        string power = OperatorLookup.Power;
-        string log = OperatorLookup.Log;
-        string exp = OperatorLookup.Exp;
         Parenthesizer parenthesizer;
+        string plus = "+";
+        string minus = "-";
+        string multiply = "*";
+        string divide = "/";
+        string factorial = "fact";
+        string power = "^";
+        string log = "log";
+        string exp = "exp";
 
         [TestInitialize]
         public void Setup() {
 
-            parenthesizer = new Parenthesizer(OperatorLookup.Operators);
+            var precedence = new List<string[]>() {
+
+                new string[] { factorial, log },
+                new string[] { power, exp },
+                new string[] { multiply, divide },
+                new string[] { plus, minus }
+            };
+
+            parenthesizer = new Parenthesizer(precedence);
         }
 
         [TestMethod]

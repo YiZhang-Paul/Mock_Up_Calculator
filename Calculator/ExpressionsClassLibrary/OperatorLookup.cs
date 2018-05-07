@@ -5,55 +5,55 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpressionsClassLibrary {
-    public class OperatorLookup {
+    public class OperatorLookup : IOperatorLookup {
 
-        public static string SquareRoot { get { return "√"; } }
-        public static string Square { get { return "sqr"; } }
-        public static string Cube { get { return "cube"; } }
-        public static string Exponential { get { return "eˣ"; } }
-        public static string Factorial { get { return "fact"; } }
-        public static string Log { get { return "log"; } }
-        public static string Ln { get { return "ln"; } }
-        public static string Dms { get { return "dms"; } }
-        public static string Degrees { get { return "degrees"; } }
-        public static string Negate { get { return "negate"; } }
-        public static string Reciprocal { get { return "¹⁄x"; } }
-        public static string PowerOfTen { get { return "10ˣ"; } }
-        public static string SineDEG { get { return "sin₀"; } }
-        public static string SineRAD { get { return "sinᵣ"; } }
-        public static string SineGRAD { get { return "sin₉"; } }
-        public static string CosineDEG { get { return "cos₀"; } }
-        public static string CosineRAD { get { return "cosᵣ"; } }
-        public static string CosineGRAD { get { return "cos₉"; } }
-        public static string TangentDEG { get { return "tan₀"; } }
-        public static string TangentRAD { get { return "tanᵣ"; } }
-        public static string TangentGRAD { get { return "tan₉"; } }
-        public static string ArcSinDEG { get { return "sin₀⁻¹"; } }
-        public static string ArcSinRAD { get { return "sinᵣ⁻¹"; } }
-        public static string ArcSinGRAD { get { return "sin₉⁻¹"; } }
-        public static string ArcCosDEG { get { return "cos₀⁻¹"; } }
-        public static string ArcCosRAD { get { return "cosᵣ⁻¹"; } }
-        public static string ArcCosGRAD { get { return "cos₉⁻¹"; } }
-        public static string ArcTanDEG { get { return "tan₀⁻¹"; } }
-        public static string ArcTanRAD { get { return "tanᵣ⁻¹"; } }
-        public static string ArcTanGRAD { get { return "tan₉⁻¹"; } }
-        public static string Sinh { get { return "sinh"; } }
-        public static string Cosh { get { return "cosh"; } }
-        public static string Tanh { get { return "tanh"; } }
-        public static string ArcSinh { get { return "sinh⁻¹"; } }
-        public static string ArcCosh { get { return "cosh⁻¹"; } }
-        public static string ArcTanh { get { return "tanh⁻¹"; } }
-        public static string Power { get { return "^"; } }
-        public static string Exp { get { return "Exp"; } }
-        public static string NthRoot { get { return "yroot"; } }
-        public static string Multiply { get { return "×"; } }
-        public static string Divide { get { return "÷"; } }
-        public static string Modulus { get { return "Mod"; } }
-        public static string Plus { get { return "+"; } }
-        public static string Minus { get { return "−"; } }
-        public static string PI { get { return "π"; } }
+        public string SquareRoot { get { return "√"; } }
+        public string Square { get { return "sqr"; } }
+        public string Cube { get { return "cube"; } }
+        public string Exponential { get { return "eˣ"; } }
+        public string Factorial { get { return "fact"; } }
+        public string Log { get { return "log"; } }
+        public string Ln { get { return "ln"; } }
+        public string Dms { get { return "dms"; } }
+        public string Degrees { get { return "degrees"; } }
+        public string Negate { get { return "negate"; } }
+        public string Reciprocal { get { return "¹⁄x"; } }
+        public string PowerOfTen { get { return "10ˣ"; } }
+        public string SineDEG { get { return "sin₀"; } }
+        public string SineRAD { get { return "sinᵣ"; } }
+        public string SineGRAD { get { return "sin₉"; } }
+        public string CosineDEG { get { return "cos₀"; } }
+        public string CosineRAD { get { return "cosᵣ"; } }
+        public string CosineGRAD { get { return "cos₉"; } }
+        public string TangentDEG { get { return "tan₀"; } }
+        public string TangentRAD { get { return "tanᵣ"; } }
+        public string TangentGRAD { get { return "tan₉"; } }
+        public string ArcSinDEG { get { return "sin₀⁻¹"; } }
+        public string ArcSinRAD { get { return "sinᵣ⁻¹"; } }
+        public string ArcSinGRAD { get { return "sin₉⁻¹"; } }
+        public string ArcCosDEG { get { return "cos₀⁻¹"; } }
+        public string ArcCosRAD { get { return "cosᵣ⁻¹"; } }
+        public string ArcCosGRAD { get { return "cos₉⁻¹"; } }
+        public string ArcTanDEG { get { return "tan₀⁻¹"; } }
+        public string ArcTanRAD { get { return "tanᵣ⁻¹"; } }
+        public string ArcTanGRAD { get { return "tan₉⁻¹"; } }
+        public string Sinh { get { return "sinh"; } }
+        public string Cosh { get { return "cosh"; } }
+        public string Tanh { get { return "tanh"; } }
+        public string ArcSinh { get { return "sinh⁻¹"; } }
+        public string ArcCosh { get { return "cosh⁻¹"; } }
+        public string ArcTanh { get { return "tanh⁻¹"; } }
+        public string Power { get { return "^"; } }
+        public string Exp { get { return "Exp"; } }
+        public string NthRoot { get { return "yroot"; } }
+        public string Multiply { get { return "×"; } }
+        public string Divide { get { return "÷"; } }
+        public string Modulus { get { return "Mod"; } }
+        public string Plus { get { return "+"; } }
+        public string Minus { get { return "−"; } }
+        public string PI { get { return "π"; } }
 
-        public static List<string[]> Operators {
+        public List<string[]> Precedence {
 
             get {
 
@@ -82,11 +82,25 @@ namespace ExpressionsClassLibrary {
             }
         }
 
-        public static HashSet<string> Unary {
+        public string[] Operators {
 
             get {
 
-                return new HashSet<string>(Operators.First());
+                return Precedence.Aggregate(new List<string>(), (all, group) => {
+
+                    all.AddRange(group);
+
+                    return all;
+
+                }).ToArray();
+            }
+        }
+
+        public HashSet<string> Unary {
+
+            get {
+
+                return new HashSet<string>(Precedence.First());
             }
         }
     }

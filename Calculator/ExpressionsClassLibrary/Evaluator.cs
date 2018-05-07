@@ -10,12 +10,20 @@ namespace ExpressionsClassLibrary {
 
         private IUnitConverter UnitConverter { get; set; }
         private IOperatorConverter OperatorConverter { get; set; }
+        private IOperatorLookup Lookup { get; set; }
         private Dictionary<string, Func<decimal, decimal, decimal>> Calculation { get; set; }
 
-        public Evaluator(IUnitConverter unitConverter, IOperatorConverter operatorConverter) {
+        public Evaluator(
+
+            IUnitConverter unitConverter,
+            IOperatorConverter operatorConverter,
+            IOperatorLookup operatorLookup
+
+        ) {
 
             UnitConverter = unitConverter;
             OperatorConverter = operatorConverter;
+            Lookup = operatorLookup;
             Initialize();
         }
 
@@ -23,50 +31,50 @@ namespace ExpressionsClassLibrary {
 
             Calculation = new Dictionary<string, Func<decimal, decimal, decimal>>() {
 
-                { OperatorLookup.SquareRoot, (op1, op2) => NthRoot(op1, 2) },
-                { OperatorLookup.Square, (op1, op2) => AsDecimal(op1, 2, Math.Pow) },
-                { OperatorLookup.Cube, (op1, op2) => AsDecimal(op1, 3, Math.Pow) },
-                { OperatorLookup.Exponential, (op1, op2) => AsDecimal(op1, Math.Exp) },
-                { OperatorLookup.Factorial, (op1, op2) => Factorial(op1) },
-                { OperatorLookup.Log, (op1, op2) => AsDecimal(op1, Math.Log10) },
-                { OperatorLookup.Ln, (op1, op2) => NaturalLogarithm(op1) },
-                { OperatorLookup.Dms, (op1, op2) => UnitConverter.DegreeToDms(op1) },
-                { OperatorLookup.Degrees, (op1, op2) => UnitConverter.DmsToDegree(op1) },
-                { OperatorLookup.Negate, (op1, op2) => decimal.Negate(op1) },
-                { OperatorLookup.Reciprocal, (op1, op2) => decimal.Divide(1, op1) },
-                { OperatorLookup.PowerOfTen, (op1, op2) => AsDecimal(10, op1, Math.Pow) },
-                { OperatorLookup.SineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Sin) },
-                { OperatorLookup.SineRAD, (op1, op2) => AsDecimal(op1, Math.Sin) },
-                { OperatorLookup.SineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Sin) },
-                { OperatorLookup.CosineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Cos) },
-                { OperatorLookup.CosineRAD, (op1, op2) => AsDecimal(op1, Math.Cos) },
-                { OperatorLookup.CosineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Cos) },
-                { OperatorLookup.TangentDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Tan) },
-                { OperatorLookup.TangentRAD, (op1, op2) => AsDecimal(op1, Math.Tan) },
-                { OperatorLookup.TangentGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Tan) },
-                { OperatorLookup.ArcSinDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Asin)) },
-                { OperatorLookup.ArcSinRAD, (op1, op2) => AsDecimal(op1, Math.Asin) },
-                { OperatorLookup.ArcSinGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Asin)) },
-                { OperatorLookup.ArcCosDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Acos)) },
-                { OperatorLookup.ArcCosRAD, (op1, op2) => AsDecimal(op1, Math.Acos) },
-                { OperatorLookup.ArcCosGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Acos)) },
-                { OperatorLookup.ArcTanDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Atan)) },
-                { OperatorLookup.ArcTanRAD, (op1, op2) => AsDecimal(op1, Math.Atan) },
-                { OperatorLookup.ArcTanGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Atan)) },
-                { OperatorLookup.Sinh, (op1, op2) => AsDecimal(op1, Math.Sinh) },
-                { OperatorLookup.Cosh, (op1, op2) => AsDecimal(op1, Math.Cosh) },
-                { OperatorLookup.Tanh, (op1, op2) => AsDecimal(op1, Math.Tanh) },
-                { OperatorLookup.ArcSinh, (op1, op2) => ArcSinh(op1) },
-                { OperatorLookup.ArcCosh, (op1, op2) => ArcCosh(op1) },
-                { OperatorLookup.ArcTanh, (op1, op2) => ArcTanh(op1) },
-                { OperatorLookup.Power, (op1, op2) => AsDecimal(op1, op2, Math.Pow) },
-                { OperatorLookup.Exp, ToPowerOfTen },
-                { OperatorLookup.NthRoot, NthRoot },
-                { OperatorLookup.Multiply, decimal.Multiply },
-                { OperatorLookup.Divide, decimal.Divide },
-                { OperatorLookup.Modulus, decimal.Remainder },
-                { OperatorLookup.Plus, decimal.Add },
-                { OperatorLookup.Minus, decimal.Subtract }
+                { Lookup.SquareRoot, (op1, op2) => NthRoot(op1, 2) },
+                { Lookup.Square, (op1, op2) => AsDecimal(op1, 2, Math.Pow) },
+                { Lookup.Cube, (op1, op2) => AsDecimal(op1, 3, Math.Pow) },
+                { Lookup.Exponential, (op1, op2) => AsDecimal(op1, Math.Exp) },
+                { Lookup.Factorial, (op1, op2) => Factorial(op1) },
+                { Lookup.Log, (op1, op2) => AsDecimal(op1, Math.Log10) },
+                { Lookup.Ln, (op1, op2) => NaturalLogarithm(op1) },
+                { Lookup.Dms, (op1, op2) => UnitConverter.DegreeToDms(op1) },
+                { Lookup.Degrees, (op1, op2) => UnitConverter.DmsToDegree(op1) },
+                { Lookup.Negate, (op1, op2) => decimal.Negate(op1) },
+                { Lookup.Reciprocal, (op1, op2) => decimal.Divide(1, op1) },
+                { Lookup.PowerOfTen, (op1, op2) => AsDecimal(10, op1, Math.Pow) },
+                { Lookup.SineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Sin) },
+                { Lookup.SineRAD, (op1, op2) => AsDecimal(op1, Math.Sin) },
+                { Lookup.SineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Sin) },
+                { Lookup.CosineDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Cos) },
+                { Lookup.CosineRAD, (op1, op2) => AsDecimal(op1, Math.Cos) },
+                { Lookup.CosineGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Cos) },
+                { Lookup.TangentDEG, (op1, op2) => AsDecimal(ToRadian(op1), Math.Tan) },
+                { Lookup.TangentRAD, (op1, op2) => AsDecimal(op1, Math.Tan) },
+                { Lookup.TangentGRAD, (op1, op2) => AsDecimal(ToRadian(op1, false), Math.Tan) },
+                { Lookup.ArcSinDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Asin)) },
+                { Lookup.ArcSinRAD, (op1, op2) => AsDecimal(op1, Math.Asin) },
+                { Lookup.ArcSinGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Asin)) },
+                { Lookup.ArcCosDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Acos)) },
+                { Lookup.ArcCosRAD, (op1, op2) => AsDecimal(op1, Math.Acos) },
+                { Lookup.ArcCosGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Acos)) },
+                { Lookup.ArcTanDEG, (op1, op2) => ToDegree(AsDecimal(op1, Math.Atan)) },
+                { Lookup.ArcTanRAD, (op1, op2) => AsDecimal(op1, Math.Atan) },
+                { Lookup.ArcTanGRAD, (op1, op2) => ToGradian(AsDecimal(op1, Math.Atan)) },
+                { Lookup.Sinh, (op1, op2) => AsDecimal(op1, Math.Sinh) },
+                { Lookup.Cosh, (op1, op2) => AsDecimal(op1, Math.Cosh) },
+                { Lookup.Tanh, (op1, op2) => AsDecimal(op1, Math.Tanh) },
+                { Lookup.ArcSinh, (op1, op2) => ArcSinh(op1) },
+                { Lookup.ArcCosh, (op1, op2) => ArcCosh(op1) },
+                { Lookup.ArcTanh, (op1, op2) => ArcTanh(op1) },
+                { Lookup.Power, (op1, op2) => AsDecimal(op1, op2, Math.Pow) },
+                { Lookup.Exp, ToPowerOfTen },
+                { Lookup.NthRoot, NthRoot },
+                { Lookup.Multiply, decimal.Multiply },
+                { Lookup.Divide, decimal.Divide },
+                { Lookup.Modulus, decimal.Remainder },
+                { Lookup.Plus, decimal.Add },
+                { Lookup.Minus, decimal.Subtract }
             };
         }
 

@@ -9,26 +9,23 @@ namespace ConverterClassLibrary {
 
         private Dictionary<string, int> Values { get; set; }
         private Dictionary<int, string> Operators { get; set; }
-        private HashSet<string> UnaryOperators { get; set; }
+        private HashSet<string> Unary { get; set; }
 
-        public OperatorConverter(List<string[]> operators) {
+        public OperatorConverter(string[] operators, HashSet<string> unarys) {
 
-            Initialize(operators);
+            Initialize(operators, unarys);
         }
 
-        private void Initialize(List<string[]> operators) {
+        private void Initialize(string[] operators, HashSet<string> unarys) {
 
             Values = new Dictionary<string, int>();
             Operators = new Dictionary<int, string>();
-            UnaryOperators = new HashSet<string>(operators.First());
+            Unary = unarys;
 
-            for(int i = 0, counter = 0; i < operators.Count; i++) {
+            for(int i = 0; i < operators.Length; i++) {
 
-                for(int j = 0; j < operators[i].Length; j++, counter++) {
-
-                    Values[operators[i][j]] = counter;
-                    Operators[counter] = operators[i][j];
-                }
+                Values[operators[i]] = i;
+                Operators[i] = operators[i];
             }
         }
 
@@ -39,7 +36,7 @@ namespace ConverterClassLibrary {
 
         public bool IsUnary(string token) {
 
-            return UnaryOperators.Contains(token);
+            return Unary.Contains(token);
         }
 
         public bool IsBinary(string token) {

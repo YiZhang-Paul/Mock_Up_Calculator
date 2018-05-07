@@ -44,19 +44,21 @@ namespace CalculatorTest {
         [TestMethod]
         public void CheckTrigonometricKey() {
 
-            Assert.AreEqual(OperatorLookup.SineDEG, calculator.CheckTrigonometricKey("sin"));
+            var lookup = new OperatorLookup();
+
+            Assert.AreEqual(lookup.SineDEG, calculator.CheckTrigonometricKey("sin"));
 
             calculator.ChangeAngularUnit();
 
-            Assert.AreEqual(OperatorLookup.SineRAD, calculator.CheckTrigonometricKey("sin"));
+            Assert.AreEqual(lookup.SineRAD, calculator.CheckTrigonometricKey("sin"));
 
             calculator.ChangeAngularUnit();
 
-            Assert.AreEqual(OperatorLookup.SineGRAD, calculator.CheckTrigonometricKey("sin"));
+            Assert.AreEqual(lookup.SineGRAD, calculator.CheckTrigonometricKey("sin"));
 
             calculator.ChangeAngularUnit();
 
-            Assert.AreEqual(OperatorLookup.SineDEG, calculator.CheckTrigonometricKey("sin"));
+            Assert.AreEqual(lookup.SineDEG, calculator.CheckTrigonometricKey("sin"));
         }
     }
 }

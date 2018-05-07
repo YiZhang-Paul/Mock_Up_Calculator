@@ -22,7 +22,13 @@ namespace ExpressionsClassLibrary {
             Parenthesizer = parenthesizer;
         }
 
-        public ExpressionBuilder(IParenthesize parenthesizer, string expression, int type) : this(parenthesizer) {
+        public ExpressionBuilder(
+
+            IParenthesize parenthesizer,
+            string expression,
+            int type
+
+        ) : this(parenthesizer) {
 
             if(type < 0 || type > 5) {
 

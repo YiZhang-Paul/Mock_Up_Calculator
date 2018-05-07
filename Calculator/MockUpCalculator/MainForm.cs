@@ -73,7 +73,7 @@ namespace MockUpCalculator {
 
                 new KeyChecker(),
                 new NumberFormatter(),
-                new ExpressionFormatter(OperatorLookup.Unary),
+                new ExpressionFormatter(new OperatorLookup().Unary),
                 new StandardCalculator()
             );
 
@@ -94,7 +94,7 @@ namespace MockUpCalculator {
 
                 new KeyChecker(),
                 new NumberFormatter(),
-                new ExpressionFormatter(OperatorLookup.Unary),
+                new ExpressionFormatter(new OperatorLookup().Unary),
                 new EngineeringFormatter(),
                 new ScientificCalculator()
             );

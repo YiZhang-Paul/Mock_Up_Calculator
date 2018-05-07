@@ -50,6 +50,7 @@
     <Compile Include="IExpressionBuilder.cs" />
     <Compile Include="IExpressionParser.cs" />
     <Compile Include="INode.cs" />
+    <Compile Include="IOperatorLookup.cs" />
     <Compile Include="IParenthesize.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="OperatorLookup.cs" />

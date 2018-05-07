@@ -12,6 +12,7 @@ namespace CalculatorClassLibrary {
 
         protected IUnitConverter UnitConverter { get; set; }
         protected IOperatorConverter OperatorConverter { get; set; }
+        protected IOperatorLookup Lookup { get; set; }
         protected IExpressionBuilder Builder { get; set; }
         protected IExpressionParser Parser { get; set; }
         protected IEvaluate Evaluator { get; set; }
@@ -23,12 +24,13 @@ namespace CalculatorClassLibrary {
 
         public StandardCalculator() {
 
-            var parenthesizer = new Parenthesizer(OperatorLookup.Operators);
+            Lookup = new OperatorLookup();
+            var parenthesizer = new Parenthesizer(Lookup.Precedence);
             UnitConverter = new UnitConverter();
-            OperatorConverter = new OperatorConverter(OperatorLookup.Operators);
+            OperatorConverter = new OperatorConverter(Lookup.Operators, Lookup.Unary);
             Builder = new ExpressionBuilder(parenthesizer);
             Parser = new ExpressionParser(OperatorConverter);
-            Evaluator = new Evaluator(UnitConverter, OperatorConverter);
+            Evaluator = new Evaluator(UnitConverter, OperatorConverter, Lookup);
             Memory = new MemoryStorage();
         }
 
@@ -137,12 +139,12 @@ namespace CalculatorClassLibrary {
 
         public virtual bool IsSpecialKey(string input) {
 
-            if(input == "." || input == OperatorLookup.PI) {
+            if(input == "." || input == Lookup.PI) {
 
                 return true;
             }
 
-            return input == OperatorLookup.Negate && !Buffer.IsEmpty;
+            return input == Lookup.Negate && !Buffer.IsEmpty;
         }
 
         protected virtual void HandleSpecialKey(string input) {
@@ -151,7 +153,7 @@ namespace CalculatorClassLibrary {
 
                 Buffer.Add(input);
             }
-            else if(input == OperatorLookup.PI) {
+            else if(input == Lookup.PI) {
 
                 Buffer.Set(Math.PI.ToString());
             }

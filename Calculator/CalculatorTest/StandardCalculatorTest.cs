@@ -8,11 +8,13 @@ namespace CalculatorTest {
     public class StandardCalculatorTest {
 
         StandardCalculator calculator;
+        OperatorLookup lookup;
 
         [TestInitialize]
         public void Setup() {
 
             calculator = new StandardCalculator();
+            lookup = new OperatorLookup();
         }
 
         [TestMethod]
@@ -345,15 +347,15 @@ namespace CalculatorTest {
 
             Assert.AreEqual("5.5 + (", calculator.Expression);
 
-            calculator.Add(OperatorLookup.Factorial);
+            calculator.Add(lookup.Factorial);
 
-            Assert.AreEqual("5.5 + ( 5 " + OperatorLookup.Factorial, calculator.Expression);
+            Assert.AreEqual("5.5 + ( 5 " + lookup.Factorial, calculator.Expression);
         }
 
         [TestMethod]
         public void AddPI() {
 
-            calculator.Add(OperatorLookup.PI);
+            calculator.Add(lookup.PI);
 
             Assert.AreEqual(Math.PI.ToString(), calculator.Input);
             Assert.AreEqual(string.Empty, calculator.Expression);
@@ -367,12 +369,12 @@ namespace CalculatorTest {
             Assert.AreEqual("5", calculator.Input);
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Negate);
+            calculator.Add(lookup.Negate);
 
             Assert.AreEqual("-5", calculator.Input);
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Negate);
+            calculator.Add(lookup.Negate);
 
             Assert.AreEqual("5", calculator.Input);
             Assert.AreEqual(string.Empty, calculator.Expression);
@@ -389,17 +391,17 @@ namespace CalculatorTest {
 
             Assert.AreEqual("(", calculator.Expression);
 
-            calculator.Add(OperatorLookup.Plus);
+            calculator.Add(lookup.Plus);
 
-            Assert.AreEqual("( 5 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("( 5 " + lookup.Plus, calculator.Expression);
 
             calculator.Add(5);
 
-            Assert.AreEqual("( 5 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("( 5 " + lookup.Plus, calculator.Expression);
 
             calculator.Add(")");
 
-            Assert.AreEqual("( 5 " + OperatorLookup.Plus + " 5 )", calculator.Expression);
+            Assert.AreEqual("( 5 " + lookup.Plus + " 5 )", calculator.Expression);
 
             calculator.Add(8);
 
@@ -414,9 +416,9 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Factorial);
+            calculator.Add(lookup.Factorial);
 
-            Assert.AreEqual("5 " + OperatorLookup.Factorial, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Factorial, calculator.Expression);
 
             calculator.Add(9);
 
@@ -435,9 +437,9 @@ namespace CalculatorTest {
 
             Assert.AreEqual("5 +", calculator.Expression);
 
-            calculator.Add(OperatorLookup.Factorial);
+            calculator.Add(lookup.Factorial);
 
-            Assert.AreEqual("5 + 5 " + OperatorLookup.Factorial, calculator.Expression);
+            Assert.AreEqual("5 + 5 " + lookup.Factorial, calculator.Expression);
         }
 
         [TestMethod]
@@ -471,9 +473,9 @@ namespace CalculatorTest {
 
             Assert.AreEqual("5 +", calculator.Expression);
 
-            calculator.Add(OperatorLookup.Modulus);
+            calculator.Add(lookup.Modulus);
 
-            Assert.AreEqual("5 " + OperatorLookup.Modulus, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Modulus, calculator.Expression);
         }
 
         [TestMethod]
@@ -491,9 +493,9 @@ namespace CalculatorTest {
 
             Assert.AreEqual("5 +", calculator.Expression);
 
-            calculator.Add(OperatorLookup.Factorial);
+            calculator.Add(lookup.Factorial);
 
-            Assert.AreEqual("5 + 5 " + OperatorLookup.Factorial, calculator.Expression);
+            Assert.AreEqual("5 + 5 " + lookup.Factorial, calculator.Expression);
 
             Assert.AreEqual(125, calculator.Evaluate());
 
@@ -539,15 +541,15 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Divide);
+            calculator.Add(lookup.Divide);
 
-            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Divide, calculator.Expression);
 
             calculator.Add(0);
 
-            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Divide, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Plus);
+            calculator.Add(lookup.Plus);
         }
 
         [TestMethod]
@@ -559,23 +561,23 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Plus);
+            calculator.Add(lookup.Plus);
 
-            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
-
-            calculator.Add(35000000000000000000000000000m);
-
-            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
-
-            calculator.Add(OperatorLookup.Plus);
-
-            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus + " 35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("35000000000000000000000000000 " + lookup.Plus, calculator.Expression);
 
             calculator.Add(35000000000000000000000000000m);
 
-            Assert.AreEqual("35000000000000000000000000000 " + OperatorLookup.Plus + " 35000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("35000000000000000000000000000 " + lookup.Plus, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Plus);
+            calculator.Add(lookup.Plus);
+
+            Assert.AreEqual("35000000000000000000000000000 " + lookup.Plus + " 35000000000000000000000000000 " + lookup.Plus, calculator.Expression);
+
+            calculator.Add(35000000000000000000000000000m);
+
+            Assert.AreEqual("35000000000000000000000000000 " + lookup.Plus + " 35000000000000000000000000000 " + lookup.Plus, calculator.Expression);
+
+            calculator.Add(lookup.Plus);
         }
 
         [TestMethod]
@@ -587,9 +589,9 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.ArcTanh);
+            calculator.Add(lookup.ArcTanh);
 
-            Assert.AreEqual("8 " + OperatorLookup.ArcTanh, calculator.Expression);
+            Assert.AreEqual("8 " + lookup.ArcTanh, calculator.Expression);
             calculator.Evaluate();
         }
 
@@ -602,13 +604,13 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Divide);
+            calculator.Add(lookup.Divide);
 
-            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Divide, calculator.Expression);
 
             calculator.Add(0);
 
-            Assert.AreEqual("5 " + OperatorLookup.Divide, calculator.Expression);
+            Assert.AreEqual("5 " + lookup.Divide, calculator.Expression);
             calculator.Evaluate();
         }
 
@@ -621,13 +623,13 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.Plus);
+            calculator.Add(lookup.Plus);
 
-            Assert.AreEqual("50000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("50000000000000000000000000000 " + lookup.Plus, calculator.Expression);
 
             calculator.Add(50000000000000000000000000000m);
 
-            Assert.AreEqual("50000000000000000000000000000 " + OperatorLookup.Plus, calculator.Expression);
+            Assert.AreEqual("50000000000000000000000000000 " + lookup.Plus, calculator.Expression);
 
             calculator.Evaluate();
         }
@@ -641,11 +643,11 @@ namespace CalculatorTest {
 
             Assert.AreEqual(string.Empty, calculator.Expression);
 
-            calculator.Add(OperatorLookup.ArcTanh);
+            calculator.Add(lookup.ArcTanh);
 
             try {
 
-                Assert.AreEqual("8 " + OperatorLookup.ArcTanh, calculator.Expression);
+                Assert.AreEqual("8 " + lookup.ArcTanh, calculator.Expression);
             }
             catch(Exception) { }
 

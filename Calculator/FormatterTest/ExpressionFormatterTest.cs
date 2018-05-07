@@ -8,9 +8,9 @@ namespace FormatterTest {
     public class ExpressionFormatterTest {
 
         ExpressionFormatter formatter;
-        string factorial = "fact";
-        string sine = "sin";
-        string log = "log";
+        const string factorial = "fact";
+        const string sine = "sin";
+        const string log = "log";
 
         [TestInitialize]
         public void Setup() {
