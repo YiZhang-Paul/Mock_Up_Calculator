@@ -84,14 +84,14 @@ namespace UtilityTest {
         [TestMethod]
         public void AddMaxLengthInteger() {
 
-            for(int i = 0; i < 29; i++) {
+            for(int i = 0; i < 28; i++) {
 
                 buffer.Add("1");
             }
 
             decimal value = buffer.Value;
 
-            for(int i = 0; i < 5; i++) {
+            for(int i = 0; i < 10; i++) {
 
                 buffer.Add("1");
             }

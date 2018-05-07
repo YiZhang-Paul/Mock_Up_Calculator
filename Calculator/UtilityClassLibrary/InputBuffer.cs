@@ -28,9 +28,19 @@ namespace UtilityClassLibrary {
             IsEmpty = true;
         }
 
+        private bool CanAdd(string input) {
+
+            if(!IsDecimal) {
+
+                return input == "." || Content.Length < 28;
+            }
+
+            return Content.Split('.')[1].Length < 28;
+        }
+
         public void Add(string input) {
 
-            if(Content.Length >= (IsDecimal ? 30 : 29)) {
+            if(!CanAdd(input)) {
 
                 return;
             }
