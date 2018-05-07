@@ -64,6 +64,7 @@
     <Compile Include="ScientificCalculatorPanel.Designer.cs">
       <DependentUpon>ScientificCalculatorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceLookup.cs" />
     <Compile Include="StandardCalculatorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

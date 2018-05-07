@@ -20,6 +20,22 @@ namespace FormatterTest {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+         "Invalid Expression.")]
+        public void InvalidExpression() {
+
+            formatter.Format(") " + factorial);
+        }
+
+        [TestMethod]
+        public void ExpressionWithoutOperator() {
+
+            string expression = "5";
+
+            Assert.AreEqual(expression, formatter.Format(expression));
+        }
+
+        [TestMethod]
         public void ExpressionWithoutUnaryOperator() {
 
             string expression = "5 + 6 % 6";

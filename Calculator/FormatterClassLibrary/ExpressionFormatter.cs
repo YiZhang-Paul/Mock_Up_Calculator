@@ -53,7 +53,7 @@ namespace FormatterClassLibrary {
                 }
             }
 
-            return string.Empty;
+            throw new ArgumentException("Invalid Expression.");
         }
 
         private string EscapeParentheses(string pattern) {
@@ -64,20 +64,25 @@ namespace FormatterClassLibrary {
         private string FormatUnary(string expression, HashSet<string> unarys) {
 
             var tokens = Tokenize(expression);
+            string pattern = string.Empty;
+            string replace = string.Empty;
+            int counter = 0;
 
-            for(int i = 0; i < tokens.Length; i++) {
+            foreach(string token in tokens) {
 
-                if(unarys.Contains(tokens[i])) {
+                if(unarys.Contains(token)) {
 
-                    string operand = GetOperand(tokens, i - 1);
-                    string pattern = EscapeParentheses(operand + " " + tokens[i]);
-                    string replace = tokens[i] + "( " + operand + " )";
+                    string operand = GetOperand(tokens, counter - 1);
+                    pattern = EscapeParentheses(operand + " " + token);
+                    replace = token + "( " + operand + " )";
 
-                    return Regex.Replace(expression, pattern, replace);
+                    break;
                 }
+
+                counter++;
             }
 
-            return expression;
+            return Regex.Replace(expression, pattern, replace);
         }
 
         private string FormatOperators(string expression) {

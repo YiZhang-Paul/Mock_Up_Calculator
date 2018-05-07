@@ -24,6 +24,7 @@ namespace MockUpCalculator {
         private Point Pointer { get; set; }
         private Rectangle Viewport { get { return UIHelper.GetViewport(this); } }
         private List<string[]> MenuItems { get; set; }
+        private ServiceLookup ServiceLookup { get; set; }
         private CalculatorPanel CalculatorPanel { get; set; }
         private IResize Resizer { get; set; }
 
@@ -71,34 +72,7 @@ namespace MockUpCalculator {
                 CalculatorPanel.Dispose();
             }
 
-            var buffer = new InputBuffer();
-            var lookup = new OperatorLookup();
-            var unitConverter = new UnitConverter();
-            var operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
-            var parenthesizer = new Parenthesizer(lookup.Precedence);
-            var builder = new ExpressionBuilder(parenthesizer);
-            var parser = new ExpressionParser(operatorConverter);
-            var evaluator = new Evaluator(unitConverter, operatorConverter, lookup);
-            var memory = new MemoryStorage();
-
-            CalculatorPanel = new StandardCalculatorPanel(
-
-                new KeyChecker(),
-                new NumberFormatter(),
-                new ExpressionFormatter(new OperatorLookup().Unary),
-                new StandardCalculator(
-
-                    buffer,
-                    lookup,
-                    unitConverter,
-                    operatorConverter,
-                    builder,
-                    parser,
-                    evaluator,
-                    memory
-                )
-            );
-
+            CalculatorPanel = ServiceLookup.GetStandardCalculatorPanel();
             CalculatorPanel.Parent = uiLayout;
             CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
@@ -112,35 +86,7 @@ namespace MockUpCalculator {
                 CalculatorPanel.Dispose();
             }
 
-            var buffer = new InputBuffer();
-            var lookup = new OperatorLookup();
-            var unitConverter = new UnitConverter();
-            var operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
-            var parenthesizer = new Parenthesizer(lookup.Precedence);
-            var builder = new ExpressionBuilder(parenthesizer);
-            var parser = new ExpressionParser(operatorConverter);
-            var evaluator = new Evaluator(unitConverter, operatorConverter, lookup);
-            var memory = new MemoryStorage();
-
-            CalculatorPanel = new ScientificCalculatorPanel(
-
-                new KeyChecker(),
-                new NumberFormatter(),
-                new ExpressionFormatter(new OperatorLookup().Unary),
-                new EngineeringFormatter(),
-                new ScientificCalculator(
-
-                    buffer,
-                    lookup,
-                    unitConverter,
-                    operatorConverter,
-                    builder,
-                    parser,
-                    evaluator,
-                    memory
-                )
-            );
-
+            CalculatorPanel = ServiceLookup.GetScientificCalculatorPanel();
             CalculatorPanel.Parent = uiLayout;
             CalculatorPanel.Dock = DockStyle.Fill;
             CalculatorPanel.Show();
@@ -150,6 +96,7 @@ namespace MockUpCalculator {
         private void Initialize() {
 
             Resizer = new Resizer(this);
+            ServiceLookup = new ServiceLookup();
             SaveDimension();
             SaveClientCenter();
             SetupTopPanel();
