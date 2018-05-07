@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using ExpressionsClassLibrary;
 using ConverterClassLibrary;
 using StorageClassLibrary;
+using UtilityClassLibrary;
 
 namespace CalculatorClassLibrary {
     public class StandardCalculator : Calculator, IStandardCalculator {
 
+        protected IOperatorLookup Lookup { get; set; }
         protected IUnitConverter UnitConverter { get; set; }
         protected IOperatorConverter OperatorConverter { get; set; }
-        protected IOperatorLookup Lookup { get; set; }
         protected IExpressionBuilder Builder { get; set; }
         protected IExpressionParser Parser { get; set; }
         protected IEvaluate Evaluator { get; set; }
@@ -22,16 +23,26 @@ namespace CalculatorClassLibrary {
         public string Expression { get { return Builder.Expression; } }
         public decimal[] MemoryValues { get { return Memory.Values; } }
 
-        public StandardCalculator() {
+        public StandardCalculator(
 
-            Lookup = new OperatorLookup();
-            var parenthesizer = new Parenthesizer(Lookup.Precedence);
-            UnitConverter = new UnitConverter();
-            OperatorConverter = new OperatorConverter(Lookup.Operators, Lookup.Unary);
-            Builder = new ExpressionBuilder(parenthesizer);
-            Parser = new ExpressionParser(OperatorConverter);
-            Evaluator = new Evaluator(UnitConverter, OperatorConverter, Lookup);
-            Memory = new MemoryStorage();
+            IInputBuffer buffer,
+            IOperatorLookup lookup,
+            IUnitConverter unitConverter,
+            IOperatorConverter operatorConverter,
+            IExpressionBuilder builder,
+            IExpressionParser parser,
+            IEvaluate evaluator,
+            IMemoryStorage memory
+
+        ) : base(buffer) {
+
+            Lookup = lookup;
+            UnitConverter = unitConverter;
+            OperatorConverter = operatorConverter;
+            Builder = builder;
+            Parser = parser;
+            Evaluator = evaluator;
+            Memory = memory;
         }
 
         public override void Clear() {

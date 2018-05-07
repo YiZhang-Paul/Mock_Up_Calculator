@@ -1,10 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CalculatorClassLibrary;
+using UtilityClassLibrary;
 
 namespace CalculatorTest {
 
     public class TestCalculator : Calculator {
+
+        public TestCalculator(IInputBuffer buffer) : base(buffer) {}
 
         public override decimal Evaluate() {
 
@@ -13,14 +16,14 @@ namespace CalculatorTest {
     }
 
     [TestClass]
-    public class CalculatorTest {
+    public class CalculatorIntegrationTest {
 
         TestCalculator calculator;
 
         [TestInitialize]
         public void Setup() {
 
-            calculator = new TestCalculator();
+            calculator = new TestCalculator(new InputBuffer());
         }
 
         [TestMethod]

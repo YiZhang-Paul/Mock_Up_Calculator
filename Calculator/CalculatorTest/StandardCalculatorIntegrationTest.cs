@@ -2,19 +2,49 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CalculatorClassLibrary;
 using ExpressionsClassLibrary;
+using ConverterClassLibrary;
+using StorageClassLibrary;
+using UtilityClassLibrary;
 
 namespace CalculatorTest {
     [TestClass]
-    public class StandardCalculatorTest {
+    public class StandardCalculatorIntegrationTest {
 
+        IInputBuffer buffer;
+        IOperatorLookup lookup;
+        IUnitConverter unitConverter;
+        IOperatorConverter operatorConverter;
+        IParenthesize parenthesizer;
+        IExpressionBuilder builder;
+        IExpressionParser parser;
+        IEvaluate evaluator;
+        IMemoryStorage memory;
         StandardCalculator calculator;
-        OperatorLookup lookup;
 
         [TestInitialize]
         public void Setup() {
 
-            calculator = new StandardCalculator();
+            buffer = new InputBuffer();
             lookup = new OperatorLookup();
+            unitConverter = new UnitConverter();
+            operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
+            parenthesizer = new Parenthesizer(lookup.Precedence);
+            builder = new ExpressionBuilder(parenthesizer);
+            parser = new ExpressionParser(operatorConverter);
+            evaluator = new Evaluator(unitConverter, operatorConverter, lookup);
+            memory = new MemoryStorage();
+
+            calculator = new StandardCalculator(
+
+                buffer,
+                lookup,
+                unitConverter,
+                operatorConverter,
+                builder,
+                parser,
+                evaluator,
+                memory
+            );
         }
 
         [TestMethod]

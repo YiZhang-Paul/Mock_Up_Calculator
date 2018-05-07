@@ -5,11 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using ExpressionsClassLibrary;
+using ConverterClassLibrary;
+using StorageClassLibrary;
+using UtilityClassLibrary;
 
 namespace CalculatorClassLibrary {
     public class ScientificCalculator : StandardCalculator, IScientificCalculator {
 
         public int AngularUnit { get; private set; }
+
+        public ScientificCalculator(
+
+            IInputBuffer buffer,
+            IOperatorLookup lookup,
+            IUnitConverter unitConverter,
+            IOperatorConverter operatorConverter,
+            IExpressionBuilder builder,
+            IExpressionParser parser,
+            IEvaluate evaluator,
+            IMemoryStorage memory
+
+        ) : base(
+
+            buffer,
+            lookup,
+            unitConverter,
+            operatorConverter,
+            builder,
+            parser,
+            evaluator,
+            memory
+
+        ) { }
 
         public void ChangeAngularUnit() {
 

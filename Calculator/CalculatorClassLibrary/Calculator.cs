@@ -12,9 +12,9 @@ namespace CalculatorClassLibrary {
 
         public string Input { get { return Buffer.Content; } }
 
-        public Calculator() {
+        public Calculator(IInputBuffer buffer) {
 
-            Buffer = new InputBuffer();
+            Buffer = buffer;
         }
 
         public virtual void Clear() {

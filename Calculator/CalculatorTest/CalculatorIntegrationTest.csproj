@@ -50,19 +50,31 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CalculatorTest.cs" />
+    <Compile Include="CalculatorIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StandardCalculatorTest.cs" />
-    <Compile Include="ScientificCalculatorTest.cs" />
+    <Compile Include="StandardCalculatorIntegrationTest.cs" />
+    <Compile Include="ScientificCalculatorIntegrationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorClassLibrary\CalculatorClassLibrary.csproj">
       <Project>{cc7a4186-27d9-4f12-b624-8c25bc36fd9e}</Project>
       <Name>CalculatorClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">
+      <Project>{0956361e-6fb8-4b37-a86d-c648e3822ec4}</Project>
+      <Name>ConverterClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExpressionsClassLibrary\ExpressionsClassLibrary.csproj">
       <Project>{e18f9f83-0306-468c-89fd-b24b54acc7c4}</Project>
       <Name>ExpressionsClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StorageClassLibrary\StorageClassLibrary.csproj">
+      <Project>{0d93dada-de8f-44a1-88bb-d4d14219a64e}</Project>
+      <Name>StorageClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
+      <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
+      <Name>UtilityClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

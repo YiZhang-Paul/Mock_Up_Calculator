@@ -11,6 +11,8 @@ using UserControlClassLibrary;
 using ExpressionsClassLibrary;
 using CalculatorClassLibrary;
 using FormatterClassLibrary;
+using ConverterClassLibrary;
+using StorageClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {
@@ -69,12 +71,32 @@ namespace MockUpCalculator {
                 CalculatorPanel.Dispose();
             }
 
+            var buffer = new InputBuffer();
+            var lookup = new OperatorLookup();
+            var unitConverter = new UnitConverter();
+            var operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
+            var parenthesizer = new Parenthesizer(lookup.Precedence);
+            var builder = new ExpressionBuilder(parenthesizer);
+            var parser = new ExpressionParser(operatorConverter);
+            var evaluator = new Evaluator(unitConverter, operatorConverter, lookup);
+            var memory = new MemoryStorage();
+
             CalculatorPanel = new StandardCalculatorPanel(
 
                 new KeyChecker(),
                 new NumberFormatter(),
                 new ExpressionFormatter(new OperatorLookup().Unary),
-                new StandardCalculator()
+                new StandardCalculator(
+
+                    buffer,
+                    lookup,
+                    unitConverter,
+                    operatorConverter,
+                    builder,
+                    parser,
+                    evaluator,
+                    memory
+                )
             );
 
             CalculatorPanel.Parent = uiLayout;
@@ -90,13 +112,33 @@ namespace MockUpCalculator {
                 CalculatorPanel.Dispose();
             }
 
+            var buffer = new InputBuffer();
+            var lookup = new OperatorLookup();
+            var unitConverter = new UnitConverter();
+            var operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
+            var parenthesizer = new Parenthesizer(lookup.Precedence);
+            var builder = new ExpressionBuilder(parenthesizer);
+            var parser = new ExpressionParser(operatorConverter);
+            var evaluator = new Evaluator(unitConverter, operatorConverter, lookup);
+            var memory = new MemoryStorage();
+
             CalculatorPanel = new ScientificCalculatorPanel(
 
                 new KeyChecker(),
                 new NumberFormatter(),
                 new ExpressionFormatter(new OperatorLookup().Unary),
                 new EngineeringFormatter(),
-                new ScientificCalculator()
+                new ScientificCalculator(
+
+                    buffer,
+                    lookup,
+                    unitConverter,
+                    operatorConverter,
+                    builder,
+                    parser,
+                    evaluator,
+                    memory
+                )
             );
 
             CalculatorPanel.Parent = uiLayout;

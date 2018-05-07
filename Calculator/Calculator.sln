@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionsTest", "Expressi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorClassLibrary", "CalculatorClassLibrary\CalculatorClassLibrary.csproj", "{CC7A4186-27D9-4F12-B624-8C25BC36FD9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTest", "CalculatorTest\CalculatorTest.csproj", "{A041727D-7D71-4106-BF53-9219A4B08C31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorIntegrationTest", "CalculatorTest\CalculatorIntegrationTest.csproj", "{A041727D-7D71-4106-BF53-9219A4B08C31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatterClassLibrary", "FormatterClassLibrary\FormatterClassLibrary.csproj", "{080EF227-2736-4B89-B517-7C34B000F155}"
 EndProject
