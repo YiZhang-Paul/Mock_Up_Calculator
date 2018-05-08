@@ -92,6 +92,14 @@ namespace MockUpCalculator {
 
             control.Width = control.Parent.Width;
             control.Left = 0;
+
+            foreach(Control child in control.Controls) {
+
+                if(child.GetType() != typeof(Button)) {
+
+                    FitToParent(child);
+                }
+            }
         }
 
         public virtual void AdjustSize() {
