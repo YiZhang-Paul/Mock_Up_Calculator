@@ -106,6 +106,8 @@ namespace UserControlClassLibrary {
 
         public virtual void Extend(int height) {
 
+            Width = Parent.Width;
+            Left = 0;
             TargetHeight = height;
             expandTimer.Tick -= ShrinkPanel;
             expandTimer.Tick += ExtendPanel;

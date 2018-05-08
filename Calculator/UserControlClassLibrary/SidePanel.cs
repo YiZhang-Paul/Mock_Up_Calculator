@@ -208,6 +208,7 @@ namespace UserControlClassLibrary {
 
             Width = 1;
             TargetWidth = width;
+            Height = Parent.Height;
             expandTimer.Tick -= ShrinkPanel;
             expandTimer.Tick += ExtendPanel;
             expandTimer.Start();
