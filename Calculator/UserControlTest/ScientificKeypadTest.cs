@@ -123,6 +123,13 @@ namespace UserControlTest {
         }
 
         [TestMethod]
+        public void MainAreaHeight() {
+
+            Assert.IsTrue(keypad.MainAreaHeight > 0);
+            Assert.IsTrue(keypad.MainAreaHeight < keypad.Height);
+        }
+
+        [TestMethod]
         public void LeaveMemoryKeyOn() {
 
             keypad.LeaveMemoryKeyOn();

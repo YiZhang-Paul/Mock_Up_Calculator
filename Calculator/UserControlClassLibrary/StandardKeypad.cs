@@ -19,6 +19,11 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
+        public StandardKeypad(IHelper helper) : this() {
+
+            Helper = helper;
+        }
+
         public override void LeaveMemoryKeyOn() {
 
             base.LeaveMemoryKeyOn();

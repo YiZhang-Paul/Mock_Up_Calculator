@@ -42,6 +42,13 @@ namespace UserControlClassLibrary {
             Helper = new UIHelper();
         }
 
+        public Keypad(IButtonTracker tracker, IHelper helper, bool disabled) : this() {
+
+            Tracker = tracker;
+            Helper = helper;
+            IsDisabled = disabled;
+        }
+
         private Button[] GetAllKeys() {
 
             var keys = new List<Button>();
@@ -233,7 +240,7 @@ namespace UserControlClassLibrary {
             Left = ClientCenter.X - Width / 2;
         }
 
-        private void ShowKeys(object sender, EventArgs e) {
+        protected void ShowKeys(object sender, EventArgs e) {
 
             float scale = 1.015f;
             ScaleTo(scale);
