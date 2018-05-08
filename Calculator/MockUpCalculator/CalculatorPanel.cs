@@ -13,7 +13,7 @@ using FormatterClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {
-    public partial class CalculatorPanel : UserControl {
+    public partial class CalculatorPanel : UserControl, IResizable {
 
         protected const string _divideByZeroMessage = "Cannot divide by zero";
         protected const string _invalidInputMessage = "Invalid input";
@@ -86,6 +86,21 @@ namespace MockUpCalculator {
             HistoryPanel.OnExtended += HistoryPanelExtended;
             HistoryPanel.OnShrunken += BackPanelShrunken;
             PlaceBackPanel((Control)HistoryPanel, parent);
+        }
+
+        protected virtual void FitToParent(Control control) {
+
+            control.Width = control.Parent.Width;
+            control.Left = 0;
+        }
+
+        public virtual void AdjustSize() {
+
+            if(ActiveBackPanel != null) {
+
+                Helper.SetHeight((Control)ActiveBackPanel, Keypad.MainAreaHeight);
+                FitToParent((Control)ActiveBackPanel);
+            }
         }
 
         protected virtual void DisplayValue(string value) {

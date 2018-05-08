@@ -70,6 +70,7 @@
     <Compile Include="IMemoryItem.cs" />
     <Compile Include="IMemoryItemDisplay.cs" />
     <Compile Include="IMenu.cs" />
+    <Compile Include="IResizable.cs" />
     <Compile Include="IResize.cs" />
     <Compile Include="IScientificKeypad.cs" />
     <Compile Include="ItemDisplayPanel.cs">

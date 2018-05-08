@@ -178,6 +178,8 @@ namespace MockUpCalculator {
 
             SaveDimension();
             mainLayout.Visible = true;
+            CalculatorPanel.AdjustSize();
+            sidePanel.AdjustSize();
         }
 
         private void MainCalculator_Deactivate(object sender, EventArgs e) {
@@ -203,11 +205,15 @@ namespace MockUpCalculator {
         private void ZoomToMax(object sender, EventArgs e) {
 
             Helper.ScaleTo(this, Width + 20, Height + 20);
+            CalculatorPanel.AdjustSize();
+            sidePanel.AdjustSize();
 
             if(Width >= Viewport.Width && Height >= Viewport.Height) {
 
                 bottomPanel.Visible = true;
                 WindowState = FormWindowState.Maximized;
+                CalculatorPanel.AdjustSize();
+                sidePanel.AdjustSize();
                 zoomTimer.Tick -= ZoomToMax;
                 zoomTimer.Stop();
             }
@@ -219,6 +225,8 @@ namespace MockUpCalculator {
             Visible = false;
             Helper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
             Helper.CenterToPoint(this, ClientCenter);
+            CalculatorPanel.AdjustSize();
+            sidePanel.AdjustSize();
             Visible = true;
         }
 

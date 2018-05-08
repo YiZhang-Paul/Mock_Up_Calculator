@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public partial class SidePanel : UserControl, IExpandable, IMenu {
+    public partial class SidePanel : UserControl, IExpandable, IResizable, IMenu {
 
         private int TargetWidth { get; set; }
         private IHelper Helper { get; set; }
@@ -29,6 +29,11 @@ namespace UserControlClassLibrary {
         public SidePanel(IHelper helper) : this() {
 
             Helper = helper;
+        }
+
+        public virtual void AdjustSize() {
+
+            Height = Parent.Height;
         }
 
         protected void ClearMenu() {
@@ -208,7 +213,7 @@ namespace UserControlClassLibrary {
 
             Width = 1;
             TargetWidth = width;
-            Height = Parent.Height;
+            AdjustSize();
             expandTimer.Tick -= ShrinkPanel;
             expandTimer.Tick += ExtendPanel;
             expandTimer.Start();
