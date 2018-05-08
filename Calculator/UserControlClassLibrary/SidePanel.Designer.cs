@@ -73,7 +73,7 @@
             this.btnChange.Text = "≡";
             this.btnChange.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChange.UseVisualStyleBackColor = true;
-            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
+            this.btnChange.Click += new System.EventHandler(this.ToggleMenu);
             this.btnChange.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnChange.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 

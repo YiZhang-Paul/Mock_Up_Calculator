@@ -6,13 +6,13 @@ using Moq;
 
 namespace UserControlTest {
 
-    public class TestItemDisplayPanel : ItemDisplayPanel<string> {
-
-        public TestItemDisplayPanel(IHelper helper) : base(helper) {}
-    }
-
     [TestClass]
     public class ItemDisplayPanelTest {
+
+        class TestItemDisplayPanel : ItemDisplayPanel<string> {
+
+            public TestItemDisplayPanel(IHelper helper) : base(helper) { }
+        }
 
         Mock<IHelper> helper;
         TestItemDisplayPanel itemDisplayPanel;

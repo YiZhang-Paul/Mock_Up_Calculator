@@ -9,7 +9,8 @@ namespace UserControlClassLibrary {
     public interface ICalculatorDisplay {
 
         decimal RecentValue { get; }
-        string Content { get; }
+        string Expression { get; }
+        string Input { get; }
 
         void Clear();
         void RefreshDisplay(IFormatter formatter);

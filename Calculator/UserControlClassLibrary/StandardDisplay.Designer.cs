@@ -119,7 +119,7 @@
             this.scrollPanel.Name = "scrollPanel";
             this.scrollPanel.Size = new System.Drawing.Size(287, 36);
             this.scrollPanel.TabIndex = 8;
-            this.scrollPanel.MouseHover += new System.EventHandler(this.scrollPanel_MouseHover);
+            this.scrollPanel.MouseHover += new System.EventHandler(this.ScrollPanelMouseHover);
             // 
             // expressionLabel
             // 
@@ -133,7 +133,7 @@
             this.expressionLabel.Padding = new System.Windows.Forms.Padding(0, 5, 25, 0);
             this.expressionLabel.Size = new System.Drawing.Size(25, 24);
             this.expressionLabel.TabIndex = 13;
-            this.expressionLabel.MouseHover += new System.EventHandler(this.expressionLabel_MouseHover);
+            this.expressionLabel.MouseHover += new System.EventHandler(this.ExpressionMouseHover);
             // 
             // rightArrowPanel
             // 

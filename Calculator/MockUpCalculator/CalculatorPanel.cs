@@ -306,7 +306,7 @@ namespace MockUpCalculator {
 
             decimal value = 0;
 
-            if(!decimal.TryParse(Display.Content, out value)) {
+            if(!decimal.TryParse(Display.Input, out value)) {
 
                 return;
             }

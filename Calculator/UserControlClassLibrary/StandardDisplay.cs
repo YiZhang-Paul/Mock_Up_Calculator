@@ -14,7 +14,9 @@ namespace UserControlClassLibrary {
     public partial class StandardDisplay : UserControl, ICalculatorDisplay {
 
         public decimal RecentValue { get; private set; }
-        public string Content { get { return resultLabel.Text; } }
+        public string Expression { get { return expressionLabel.Text; } }
+        public string Input { get { return resultLabel.Text; } }
+        public Panel ScrollPanel { get { return scrollPanel; } }
 
         public StandardDisplay() {
 
@@ -40,7 +42,7 @@ namespace UserControlClassLibrary {
             float size = label.Parent.Height * limit;
             float width = label.Parent.Width * 0.95f;
 
-            while(size > 0) {
+            while(size > 1) {
 
                 if(GetTextSize(label, size).Width <= width) {
 
@@ -120,7 +122,7 @@ namespace UserControlClassLibrary {
             scrollPanel.Left = Math.Max(scrollPanel.Left - speed, minX);
         }
 
-        private void ScrollExpression(object sender, MouseEventArgs e) {
+        public void ScrollExpression(object sender, MouseEventArgs e) {
 
             if(!CanScroll()) {
 
@@ -141,12 +143,12 @@ namespace UserControlClassLibrary {
             ShowArrows();
         }
 
-        private void expressionLabel_MouseHover(object sender, EventArgs e) {
+        public void ExpressionMouseHover(object sender, EventArgs e) {
 
             ((Label)sender).Focus();
         }
 
-        private void scrollPanel_MouseHover(object sender, EventArgs e) {
+        public void ScrollPanelMouseHover(object sender, EventArgs e) {
 
             ((Panel)sender).Focus();
         }

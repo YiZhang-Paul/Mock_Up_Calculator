@@ -81,6 +81,8 @@
     <Compile Include="ItemDisplayPanelTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="StandardDisplayTest.cs" />
+    <Compile Include="SidePanelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">

@@ -12,8 +12,9 @@ namespace UserControlClassLibrary {
     public partial class SidePanel : UserControl, IExpandable, IMenu {
 
         private int TargetWidth { get; set; }
-        private string Selected { get; set; }
         private IHelper Helper { get; set; }
+
+        public string Selected { get; private set; }
 
         public event EventHandler OnExtended;
         public event EventHandler OnShrunken;
@@ -25,7 +26,12 @@ namespace UserControlClassLibrary {
             Helper = new UIHelper();
         }
 
-        private void ClearMenu() {
+        public SidePanel(IHelper helper) : this() {
+
+            Helper = helper;
+        }
+
+        public void ClearMenu() {
 
             var items = mainPanel.Controls.OfType<Panel>().ToArray();
 
@@ -104,37 +110,37 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void ControlMouseEnter(object sender, EventArgs e) {
+        public void ControlMouseEnter(object sender, EventArgs e) {
 
             ((Control)sender).BackColor = Color.FromArgb(67, 67, 67);
         }
 
-        private void ControlMouseLeave(object sender, EventArgs e) {
+        public void ControlMouseLeave(object sender, EventArgs e) {
 
             var control = (Control)sender;
             int rgb = control.Tag.ToString() == Selected ? 53 : 40;
             control.BackColor = Color.FromArgb(rgb, rgb, rgb);
         }
 
-        private void ControlMouseClick(object sender, EventArgs e) {
+        public void ControlMouseClick(object sender, EventArgs e) {
 
             OnSelect(sender, e);
             Shrink();
         }
 
-        private void LabelMouseEnter(object sender, EventArgs e) {
+        public void LabelMouseEnter(object sender, EventArgs e) {
 
             ControlMouseEnter(sender, e);
             ControlMouseEnter(((Control)sender).Parent, e);
         }
 
-        private void LabelMouseLeave(object sender, EventArgs e) {
+        public void LabelMouseLeave(object sender, EventArgs e) {
 
             ControlMouseLeave(sender, e);
             ControlMouseLeave(((Control)sender).Parent, e);
         }
 
-        private void PanelMouseEnter(object sender, EventArgs e) {
+        public void PanelMouseEnter(object sender, EventArgs e) {
 
             ControlMouseEnter(sender, e);
 
@@ -144,7 +150,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void PanelMouseLeave(object sender, EventArgs e) {
+        public void PanelMouseLeave(object sender, EventArgs e) {
 
             ControlMouseLeave(sender, e);
 
@@ -154,22 +160,22 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
+        public void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
             Helper.ButtonMouseEnter(sender, e);
         }
 
-        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
+        public void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
             Helper.ButtonMouseLeave(sender, e);
         }
 
-        private void btnChange_Click(object sender, EventArgs e) {
+        public void ToggleMenu(object sender, EventArgs e) {
 
             Shrink();
         }
 
-        private void ExtendPanel(object sender, EventArgs e) {
+        public void ExtendPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(40, TargetWidth - Width);
             Width += speed;
@@ -183,7 +189,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void ShrinkPanel(object sender, EventArgs e) {
+        public void ShrinkPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(85, Width - 1);
             Width -= speed;
