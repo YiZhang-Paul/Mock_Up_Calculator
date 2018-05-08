@@ -66,12 +66,12 @@ namespace UserControlClassLibrary {
             resultLabel.BackColor = color;
         }
 
-        public void PanelClick(object sender, EventArgs e) {
+        protected void PanelClick(object sender, EventArgs e) {
 
             OnSelect(this, e);
         }
 
-        public void PanelMouseEnter(object sender, EventArgs e) {
+        protected void PanelMouseEnter(object sender, EventArgs e) {
 
             if(Visible) {
 
@@ -80,7 +80,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void PanelMouseLeave(object sender, EventArgs e) {
+        protected void PanelMouseLeave(object sender, EventArgs e) {
 
             if(Visible && !Helper.ContainsPointer(mainLayout, Cursor.Position)) {
 

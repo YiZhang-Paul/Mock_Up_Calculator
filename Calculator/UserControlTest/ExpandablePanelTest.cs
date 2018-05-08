@@ -10,38 +10,63 @@ namespace UserControlTest {
     [TestClass]
     public class ExpandablePanelTest {
 
-        bool onExtendedFired = false;
-        bool onShrunkenFired = false;
-        bool onClearFired = false;
+        class TestExpandablePanel : ExpandablePanel {
 
-        Mock<IHelper> helper;
+            public TestExpandablePanel(IHelper helper) : base(helper) {}
+
+            public void TestExtendPanel(object sender, EventArgs e) {
+
+                ExtendPanel(sender, e);
+            }
+
+            public void TestShrinkPanel(object sender, EventArgs e) {
+
+                ShrinkPanel(sender, e);
+            }
+
+            public void TestButtonMouseEnter(object sender, EventArgs e) {
+
+                ButtonMouseEnter(sender, e);
+            }
+
+            public void TestButtonMouseLeave(object sender, EventArgs e) {
+
+                ButtonMouseLeave(sender, e);
+            }
+
+            public void TestPanelMouseEnter(object sender, EventArgs e) {
+
+                PanelMouseEnter(sender, e);
+            }
+
+            public void TestItemClear(object sender, EventArgs e) {
+
+                ItemClear(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
+
         Button button;
-        ExpandablePanel expandablePanel;
+        Mock<IHelper> helper;
+        TestExpandablePanel expandablePanel;
 
-        private void CheckExtendedFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onExtendedFired = true;
-        }
-
-        private void CheckShrunkenFiring(object sender, EventArgs e) {
-
-            onShrunkenFired = true;
-        }
-
-        private void CheckClearFiring(object sender, EventArgs e) {
-
-            onClearFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
 
-            helper = new Mock<IHelper>();
+            eventCounter = 0;
+
             button = new Button();
-            expandablePanel = new ExpandablePanel(null);
-            expandablePanel.OnExtended += CheckExtendedFiring;
-            expandablePanel.OnShrunken += CheckShrunkenFiring;
-            expandablePanel.OnClear += CheckClearFiring;
+            helper = new Mock<IHelper>();
+            expandablePanel = new TestExpandablePanel(null);
+            expandablePanel.OnExtended += CheckEventFiring;
+            expandablePanel.OnShrunken += CheckEventFiring;
+            expandablePanel.OnClear += CheckEventFiring;
         }
 
         [TestMethod]
@@ -84,7 +109,7 @@ namespace UserControlTest {
         [TestMethod]
         public void Extend() {
 
-            expandablePanel = new ExpandablePanel(helper.Object);
+            expandablePanel = new TestExpandablePanel(helper.Object);
 
             expandablePanel.Extend(500);
 
@@ -102,7 +127,7 @@ namespace UserControlTest {
 
             button.FlatAppearance.BorderColor = Color.Red;
 
-            expandablePanel.ButtonMouseEnter(button, null);
+            expandablePanel.TestButtonMouseEnter(button, null);
 
             Assert.AreNotEqual(Color.Red, button.FlatAppearance.BorderColor);
         }
@@ -110,9 +135,9 @@ namespace UserControlTest {
         [TestMethod]
         public void ButtonMouseLeave() {
 
-            expandablePanel = new ExpandablePanel(helper.Object);
+            expandablePanel = new TestExpandablePanel(helper.Object);
 
-            expandablePanel.ButtonMouseLeave(button, null);
+            expandablePanel.TestButtonMouseLeave(button, null);
 
             helper.Verify(x => x.ButtonMouseLeave(button, null), Times.Once);
         }
@@ -120,49 +145,49 @@ namespace UserControlTest {
         [TestMethod]
         public void PanelMouseEnter() {
 
-            expandablePanel.PanelMouseEnter(button, null);
+            expandablePanel.TestPanelMouseEnter(button, null);
         }
 
         [TestMethod]
         public void OnExtendedFired() {
 
-            Assert.IsFalse(onExtendedFired);
+            eventCounter = 0;
 
             expandablePanel.Extend(500);
             expandablePanel.Height = 434;
 
-            expandablePanel.ExtendPanel(null, null);
+            expandablePanel.TestExtendPanel(null, null);
 
-            Assert.IsFalse(onExtendedFired);
+            Assert.AreEqual(0, eventCounter);
 
-            expandablePanel.ExtendPanel(null, null);
+            expandablePanel.TestExtendPanel(null, null);
 
-            Assert.IsTrue(onExtendedFired);
+            Assert.AreEqual(1, eventCounter);
         }
 
         [TestMethod]
         public void OnShrunkenFired() {
 
-            Assert.IsFalse(onShrunkenFired);
+            eventCounter = 0;
 
             expandablePanel.BackColor = Color.FromArgb(76, 1, 1, 1);
-            expandablePanel.ShrinkPanel(null, null);
+            expandablePanel.TestShrinkPanel(null, null);
 
-            Assert.IsFalse(onShrunkenFired);
+            Assert.AreEqual(0, eventCounter);
 
-            expandablePanel.ShrinkPanel(null, null);
+            expandablePanel.TestShrinkPanel(null, null);
 
-            Assert.IsTrue(onShrunkenFired);
+            Assert.AreEqual(1, eventCounter);
         }
 
         [TestMethod]
         public void OnClearFired() {
 
-            Assert.IsFalse(onClearFired);
+            eventCounter = 0;
 
-            expandablePanel.ItemClear(null, null);
+            expandablePanel.TestItemClear(null, null);
 
-            Assert.IsTrue(onClearFired);
+            Assert.AreEqual(1, eventCounter);
         }
     }
 }

@@ -9,7 +9,23 @@ namespace UserControlTest {
     [TestClass]
     public class HistoryPanelTest {
 
-        bool onHistorySelectFired = false;
+        class TestHistoryPanel : HistoryPanel {
+
+            public TestHistoryPanel(
+
+                IFormatter expressionFormatter,
+                IFormatter numberFormatter
+
+            ) : base(expressionFormatter, numberFormatter) {}
+
+            public void TestHistorySelect(object sender, EventArgs e) {
+
+                HistorySelect(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
+
         Tuple<string, decimal>[] expressions = new Tuple<string, decimal>[] {
 
             new Tuple<string, decimal>("5 + 6", 11),
@@ -21,23 +37,25 @@ namespace UserControlTest {
 
         Mock<IFormatter> expressionFormatter;
         Mock<IFormatter> numberFormatter;
-        HistoryPanel historyPanel;
+        TestHistoryPanel historyPanel;
 
-        private void CheckHistorySelectFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onHistorySelectFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
 
+            eventCounter = 0;
+
             var panel = new Panel();
             panel.Height = 200;
             expressionFormatter = new Mock<IFormatter>();
             numberFormatter = new Mock<IFormatter>();
-            historyPanel = new HistoryPanel(expressionFormatter.Object, numberFormatter.Object);
+            historyPanel = new TestHistoryPanel(expressionFormatter.Object, numberFormatter.Object);
             historyPanel.Parent = panel;
-            historyPanel.OnHistorySelect += CheckHistorySelectFiring;
+            historyPanel.OnHistorySelect += CheckEventFiring;
         }
 
         [TestMethod]
@@ -171,11 +189,11 @@ namespace UserControlTest {
         [TestMethod]
         public void OnHistorySelectFired() {
 
-            Assert.IsFalse(onHistorySelectFired);
+            eventCounter = 0;
 
-            historyPanel.HistorySelect(null, null);
+            historyPanel.TestHistorySelect(null, null);
 
-            Assert.IsTrue(onHistorySelectFired);
+            Assert.AreEqual(1, eventCounter);
         }
     }
 }

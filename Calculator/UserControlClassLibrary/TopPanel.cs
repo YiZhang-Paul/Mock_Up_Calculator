@@ -22,27 +22,27 @@ namespace UserControlClassLibrary {
             InitializeComponent();
         }
 
-        public void GetPointerLocation(object sender, MouseEventArgs e) {
+        protected void GetPointerLocation(object sender, MouseEventArgs e) {
 
             OnMouseHold(sender, e);
         }
 
-        public void Drag(object sender, MouseEventArgs e) {
+        protected void Drag(object sender, MouseEventArgs e) {
 
             OnMouseDrag(sender, e);
         }
 
-        public void Minimize(object sender, EventArgs e) {
+        protected void Minimize(object sender, EventArgs e) {
 
             OnMinimize(sender, e);
         }
 
-        public void ToggleSize(object sender, EventArgs e) {
+        protected void ToggleSize(object sender, EventArgs e) {
 
             OnSizeToggle(sender, e);
         }
 
-        public void ExitApplication(object sender, EventArgs e) {
+        protected void ExitApplication(object sender, EventArgs e) {
 
             OnExit(sender, e);
         }

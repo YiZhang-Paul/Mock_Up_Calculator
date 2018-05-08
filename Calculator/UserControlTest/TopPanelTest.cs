@@ -7,98 +7,68 @@ namespace UserControlTest {
     [TestClass]
     public class TopPanelTest {
 
-        bool onMouseHoldFired = false;
-        bool onMouseDragFired = false;
-        bool onMinimizeFired = false;
-        bool onSizeToggleFired = false;
-        bool onExitFired = false;
+        class TestTopPanel : TopPanel {
 
-        TopPanel topPanel;
+            public void TestGetPointerLocation(object sender, MouseEventArgs e) {
 
-        private void CheckMouseHoldFiring(object sender, EventArgs e) {
+                GetPointerLocation(sender, e);
+            }
 
-            onMouseHoldFired = true;
+            public void TestDrag(object sender, MouseEventArgs e) {
+
+                Drag(sender, e);
+            }
+
+            public void TestMinimize(object sender, MouseEventArgs e) {
+
+                Minimize(sender, e);
+            }
+
+            public void TestToggleSize(object sender, MouseEventArgs e) {
+
+                ToggleSize(sender, e);
+            }
+
+            public void TestExitApplication(object sender, MouseEventArgs e) {
+
+                ExitApplication(sender, e);
+            }
         }
 
-        private void CheckMouseDragFiring(object sender, EventArgs e) {
+        int eventCounter = 0;
 
-            onMouseDragFired = true;
-        }
+        TestTopPanel topPanel;
 
-        private void CheckMinimizeFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onMinimizeFired = true;
-        }
-
-        private void CheckSizeToggleFiring(object sender, EventArgs e) {
-
-            onSizeToggleFired = true;
-        }
-
-        private void CheckExitFiring(object sender, EventArgs e) {
-
-            onExitFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
 
-            topPanel = new TopPanel();
-            topPanel.OnMouseHold += CheckMouseHoldFiring;
-            topPanel.OnMouseDrag += CheckMouseDragFiring;
-            topPanel.OnMinimize += CheckMinimizeFiring;
-            topPanel.OnSizeToggle += CheckSizeToggleFiring;
-            topPanel.OnExit += CheckExitFiring;
+            eventCounter = 0;
+
+            topPanel = new TestTopPanel();
+            topPanel.OnMouseHold += CheckEventFiring;
+            topPanel.OnMouseDrag += CheckEventFiring;
+            topPanel.OnMinimize += CheckEventFiring;
+            topPanel.OnSizeToggle += CheckEventFiring;
+            topPanel.OnExit += CheckEventFiring;
         }
 
         [TestMethod]
-        public void OnMouseHoldFired() {
+        public void TestEventFired() {
 
-            Assert.IsFalse(onMouseHoldFired);
+            eventCounter = 0;
 
-            topPanel.GetPointerLocation(null, null);
+            topPanel.TestGetPointerLocation(null, null);
+            topPanel.TestDrag(null, null);
+            topPanel.TestMinimize(null, null);
+            topPanel.TestToggleSize(null, null);
+            topPanel.TestExitApplication(null, null);
 
-            Assert.IsTrue(onMouseHoldFired);
-        }
-
-        [TestMethod]
-        public void OnMouseDragFired() {
-
-            Assert.IsFalse(onMouseDragFired);
-
-            topPanel.Drag(null, null);
-
-            Assert.IsTrue(onMouseDragFired);
-        }
-
-        [TestMethod]
-        public void OnMinimizeFired() {
-
-            Assert.IsFalse(onMinimizeFired);
-
-            topPanel.Minimize(null, null);
-
-            Assert.IsTrue(onMinimizeFired);
-        }
-
-        [TestMethod]
-        public void OnSizeToggleFired() {
-
-            Assert.IsFalse(onSizeToggleFired);
-
-            topPanel.ToggleSize(null, null);
-
-            Assert.IsTrue(onSizeToggleFired);
-        }
-
-        [TestMethod]
-        public void OnExitFired() {
-
-            Assert.IsFalse(onExitFired);
-
-            topPanel.ExitApplication(null, null);
-
-            Assert.IsTrue(onExitFired);
+            Assert.AreEqual(5, eventCounter);
         }
     }
 }

@@ -10,38 +10,74 @@ namespace UserControlTest {
     [TestClass]
     public class MemoryItemTest {
 
-        bool onSelectFired = false;
-        bool onDeleteFired = false;
-        bool onPlusFired = false;
-        bool onMinusFired = false;
+        class TestMemoryItemEvents : MemoryItem {
+
+            public TestMemoryItemEvents(
+
+                int key,
+                decimal value,
+                IFormatter formatter,
+                IHelper helper
+
+            ) : base(key, value, formatter, helper) {}
+
+            public void TestPanelClick(object sender, EventArgs e) {
+
+                PanelClick(sender, e);
+            }
+
+            public void TestItemDelete(object sender, EventArgs e) {
+
+                ItemDelete(sender, e);
+            }
+
+            public void TestItemPlus(object sender, EventArgs e) {
+
+                ItemPlus(sender, e);
+            }
+
+            public void TestItemMinus(object sender, EventArgs e) {
+
+                ItemMinus(sender, e);
+            }
+
+            public void TestButtonMouseEnter(object sender, EventArgs e) {
+
+                ButtonMouseEnter(sender, e);
+            }
+
+            public void TestButtonMouseLeave(object sender, EventArgs e) {
+
+                ButtonMouseLeave(sender, e);
+            }
+
+            public void TestPanelMouseEnter(object sender, EventArgs e) {
+
+                PanelMouseEnter(sender, e);
+            }
+
+            public void TestPanelMouseLeave(object sender, EventArgs e) {
+
+                PanelMouseLeave(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
 
         Mock<IFormatter> formatter;
         Mock<IHelper> helper;
         Button button;
-        MemoryItem item;
+        TestMemoryItemEvents item;
 
-        private void CheckSelectFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onSelectFired = true;
-        }
-
-        private void CheckDeleteFiring(object sender, EventArgs e) {
-
-            onDeleteFired = true;
-        }
-
-        private void CheckPlusFiring(object sender, EventArgs e) {
-
-            onPlusFired = true;
-        }
-
-        private void CheckMinusFiring(object sender, EventArgs e) {
-
-            onMinusFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
+
+            eventCounter = 0;
 
             formatter = new Mock<IFormatter>();
             formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,999,999");
@@ -49,12 +85,12 @@ namespace UserControlTest {
             helper = new Mock<IHelper>();
             button = new Button();
 
-            item = new MemoryItem(1, 5999999, formatter.Object, helper.Object);
+            item = new TestMemoryItemEvents(1, 5999999, formatter.Object, helper.Object);
             item.Parent = new Panel();
-            item.OnSelect += CheckSelectFiring;
-            item.OnDelete += CheckDeleteFiring;
-            item.OnPlus += CheckPlusFiring;
-            item.OnMinus += CheckMinusFiring;
+            item.OnSelect += CheckEventFiring;
+            item.OnDelete += CheckEventFiring;
+            item.OnPlus += CheckEventFiring;
+            item.OnMinus += CheckEventFiring;
         }
 
         [TestMethod]
@@ -66,43 +102,16 @@ namespace UserControlTest {
         }
 
         [TestMethod]
-        public void OnSelectFired() {
+        public void TestEventFired() {
 
-            Assert.IsFalse(onSelectFired);
+            eventCounter = 0;
 
-            item.PanelClick(null, null);
+            item.TestItemDelete(null, null);
+            item.TestPanelClick(null, null);
+            item.TestItemPlus(null, null);
+            item.TestItemMinus(null, null);
 
-            Assert.IsTrue(onSelectFired);
-        }
-
-        [TestMethod]
-        public void OnDeleteFired() {
-
-            Assert.IsFalse(onDeleteFired);
-
-            item.ItemDelete(null, null);
-
-            Assert.IsTrue(onDeleteFired);
-        }
-
-        [TestMethod]
-        public void OnPlusFired() {
-
-            Assert.IsFalse(onPlusFired);
-
-            item.ItemPlus(null, null);
-
-            Assert.IsTrue(onPlusFired);
-        }
-
-        [TestMethod]
-        public void OnMinusFired() {
-
-            Assert.IsFalse(onMinusFired);
-
-            item.ItemMinus(null, null);
-
-            Assert.IsTrue(onMinusFired);
+            Assert.AreEqual(4, eventCounter);
         }
 
         [TestMethod]
@@ -110,7 +119,7 @@ namespace UserControlTest {
 
             button.FlatAppearance.BorderColor = Color.BlanchedAlmond;
 
-            item.ButtonMouseEnter(button, null);
+            item.TestButtonMouseEnter(button, null);
 
             Assert.AreNotEqual(Color.BlanchedAlmond, button.FlatAppearance.BorderColor);
         }
@@ -118,7 +127,7 @@ namespace UserControlTest {
         [TestMethod]
         public void ButtonMouseLeave() {
 
-            item.ButtonMouseLeave(button, null);
+            item.TestButtonMouseLeave(button, null);
 
             helper.Verify(x => x.ButtonMouseLeave(button, null), Times.Once);
         }
@@ -129,7 +138,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseEnter(null, null);
+            item.TestPanelMouseEnter(null, null);
 
             Assert.AreNotEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -140,7 +149,7 @@ namespace UserControlTest {
             item.Visible = false;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseEnter(null, null);
+            item.TestPanelMouseEnter(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -154,7 +163,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreNotEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -165,7 +174,7 @@ namespace UserControlTest {
             item.Visible = false;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -179,7 +188,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }

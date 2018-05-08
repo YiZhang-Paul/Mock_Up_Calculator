@@ -11,7 +11,7 @@ namespace UserControlTest {
 
         class TestItemDisplayPanel : ItemDisplayPanel<string> {
 
-            public TestItemDisplayPanel(IHelper helper) : base(helper) { }
+            public TestItemDisplayPanel(IHelper helper) : base(helper) {}
         }
 
         Mock<IHelper> helper;

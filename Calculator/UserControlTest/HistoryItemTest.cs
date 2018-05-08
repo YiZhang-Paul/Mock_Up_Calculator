@@ -10,23 +10,52 @@ namespace UserControlTest {
     [TestClass]
     public class HistoryItemTest {
 
-        bool onSelectFired = false;
+        class TestHistoryItem : HistoryItem {
 
+            public TestHistoryItem(
+
+                string expression,
+                decimal result,
+                IFormatter expressionFormatter,
+                IFormatter numberFormatter,
+                IHelper helper
+
+            ) : base(expression, result, expressionFormatter, numberFormatter, helper) {}
+
+            public void TestPanelClick(object sender, EventArgs e) {
+
+                PanelClick(sender, e);
+            }
+
+            public void TestPanelMouseEnter(object sender, EventArgs e) {
+
+                PanelMouseEnter(sender, e);
+            }
+
+            public void TestPanelMouseLeave(object sender, EventArgs e) {
+
+                PanelMouseLeave(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
         const string expression = "5 + 6 fact";
         const decimal result = 70025;
 
         Mock<IFormatter> expressionFormatter;
         Mock<IFormatter> numberFormatter;
         Mock<IHelper> helper;
-        HistoryItem item;
+        TestHistoryItem item;
 
-        private void CheckSelectFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onSelectFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
+
+            eventCounter = 0;
 
             expressionFormatter = new Mock<IFormatter>();
             expressionFormatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5 + fact(6)");
@@ -36,7 +65,7 @@ namespace UserControlTest {
 
             helper = new Mock<IHelper>();
 
-            item = new HistoryItem(
+            item = new TestHistoryItem(
 
                 expression,
                 result,
@@ -46,7 +75,7 @@ namespace UserControlTest {
             );
 
             item.Parent = new Panel();
-            item.OnSelect += CheckSelectFiring;
+            item.OnSelect += CheckEventFiring;
         }
 
         [TestMethod]
@@ -61,11 +90,11 @@ namespace UserControlTest {
         [TestMethod]
         public void OnSelectFired() {
 
-            Assert.IsFalse(onSelectFired);
+            eventCounter = 0;
 
-            item.PanelClick(null, null);
+            item.TestPanelClick(null, null);
 
-            Assert.IsTrue(onSelectFired);
+            Assert.AreEqual(1, eventCounter);
         }
 
         [TestMethod]
@@ -74,7 +103,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseEnter(null, null);
+            item.TestPanelMouseEnter(null, null);
 
             Assert.AreNotEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -85,7 +114,7 @@ namespace UserControlTest {
             item.Visible = false;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseEnter(null, null);
+            item.TestPanelMouseEnter(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -99,7 +128,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreNotEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -110,7 +139,7 @@ namespace UserControlTest {
             item.Visible = false;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }
@@ -124,7 +153,7 @@ namespace UserControlTest {
             item.Visible = true;
             item.BackColor = Color.BlanchedAlmond;
 
-            item.PanelMouseLeave(null, null);
+            item.TestPanelMouseLeave(null, null);
 
             Assert.AreEqual(Color.BlanchedAlmond, item.BackColor);
         }

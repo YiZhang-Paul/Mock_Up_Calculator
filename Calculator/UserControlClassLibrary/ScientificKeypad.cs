@@ -14,12 +14,12 @@ namespace UserControlClassLibrary {
     public partial class ScientificKeypad : Keypad, IScientificKeypad {
 
         private HashSet<Button> TrigonometricKeys { get; set; }
-        private bool ExtensionToggled { get; set; }
-        private bool TrigonometricToggled { get; set; }
         private float UnitKeyFontSize { get; set; }
 
         public int AngularUnit { get; private set; }
         public bool EngineeringMode { get; private set; }
+        public bool ExtensionToggled { get; private set; }
+        public bool TrigonometricToggled { get; private set; }
         public override int MainAreaHeight { get { return Height - extraKeysLayout.Height; } }
 
         public event EventHandler OnAngularUnitToggle;
@@ -30,6 +30,12 @@ namespace UserControlClassLibrary {
             InitializeComponent();
             Initialize();
             UnitKeyFontSize = btnDegRadGrad.Font.SizeInPoints;
+        }
+
+        public ScientificKeypad(IHelper helper, IButtonTracker tracker) : this() {
+
+            Helper = helper;
+            Tracker = tracker;
         }
 
         private bool IsTrigonometricKey(Button button) {
@@ -70,7 +76,7 @@ namespace UserControlClassLibrary {
             base.ButtonMouseClick(sender, e);
         }
 
-        private void btnExtend_Click(object sender, EventArgs e) {
+        protected void ToggleExtension(object sender, EventArgs e) {
 
             var button = (Button)sender;
 
@@ -104,7 +110,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void btnHypotenuse_Click(object sender, EventArgs e) {
+        protected void ToggleHypotenuse(object sender, EventArgs e) {
 
             var button = (Button)sender;
 
@@ -127,7 +133,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void btnEngineeringFormat_Click(object sender, EventArgs e) {
+        protected void ToggleEngineeringFormat(object sender, EventArgs e) {
 
             var button = (Button)sender;
 
@@ -150,7 +156,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void btnDegRadGrad_Click(object sender, EventArgs e) {
+        protected void ToggleAngularUnit(object sender, EventArgs e) {
 
             var button = (Button)sender;
 
@@ -173,7 +179,7 @@ namespace UserControlClassLibrary {
             button.Text = AngularUnit == 1 ? "RAD" : "GRAD";
         }
 
-        private void ResizeUnitKeyText(object sender, EventArgs e) {
+        protected void ResizeUnitKeyText(object sender, EventArgs e) {
 
             var button = (Button)sender;
             float size = UnitKeyFontSize;

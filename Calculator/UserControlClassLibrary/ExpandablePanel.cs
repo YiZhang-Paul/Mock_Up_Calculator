@@ -71,7 +71,7 @@ namespace UserControlClassLibrary {
             ClearButton.Left = Width - ClearButton.Width - 4;
         }
 
-        public void ExtendPanel(object sender, EventArgs e) {
+        protected void ExtendPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(65, TargetHeight - Height);
             Top -= speed;
@@ -85,7 +85,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void ShrinkPanel(object sender, EventArgs e) {
+        protected void ShrinkPanel(object sender, EventArgs e) {
 
             int alpha = Math.Max(0, BackColor.A - 75);
             int red = BackColor.R;
@@ -121,22 +121,22 @@ namespace UserControlClassLibrary {
             expandTimer.Start();
         }
 
-        public void ButtonMouseEnter(object sender, EventArgs e) {
+        protected void ButtonMouseEnter(object sender, EventArgs e) {
 
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
         }
 
-        public void ButtonMouseLeave(object sender, EventArgs e) {
+        protected void ButtonMouseLeave(object sender, EventArgs e) {
 
             Helper.ButtonMouseLeave((Button)sender, e);
         }
 
-        public void PanelMouseEnter(object sender, EventArgs e) {
+        protected void PanelMouseEnter(object sender, EventArgs e) {
 
             ((Control)sender).Focus();
         }
 
-        public void ItemClear(object sender, EventArgs e) {
+        protected void ItemClear(object sender, EventArgs e) {
 
             OnClear(sender, e);
         }

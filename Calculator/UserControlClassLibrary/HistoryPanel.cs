@@ -92,7 +92,7 @@ namespace UserControlClassLibrary {
             ShowItems(expressions);
         }
 
-        public void HistorySelect(object sender, EventArgs e) {
+        protected void HistorySelect(object sender, EventArgs e) {
 
             OnHistorySelect(sender, e);
         }

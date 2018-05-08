@@ -9,47 +9,56 @@ namespace UserControlTest {
     [TestClass]
     public class MemoryPanelTest {
 
-        bool onMemoryDeleteFired = false;
-        bool onMemorySelectFired = false;
-        bool onMemoryPlusFired = false;
-        bool onMemoryMinusFired = false;
+        class TestMemoryPanel : MemoryPanel {
+
+            public TestMemoryPanel(IFormatter formatter) : base(formatter) {}
+
+            public void TestMemoryClear(object sender, EventArgs e) {
+
+                MemoryClear(sender, e);
+            }
+
+            public void TestMemorySelect(object sender, EventArgs e) {
+
+                MemorySelect(sender, e);
+            }
+
+            public void TestMemoryPlus(object sender, EventArgs e) {
+
+                MemoryPlus(sender, e);
+            }
+
+            public void TestMemoryMinus(object sender, EventArgs e) {
+
+                MemoryMinus(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
         decimal[] values = new decimal[] { 1, 2, 3, 4, 5 };
 
         Mock<IFormatter> formatter;
-        MemoryPanel memoryPanel;
+        TestMemoryPanel memoryPanel;
 
-        private void CheckMemoryDeleteFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onMemoryDeleteFired = true;
-        }
-
-        private void CheckMemorySelectFiring(object sender, EventArgs e) {
-
-            onMemorySelectFired = true;
-        }
-
-        private void CheckMemoryPlusFiring(object sender, EventArgs e) {
-
-            onMemoryPlusFired = true;
-        }
-
-        private void CheckMemoryMinusFiring(object sender, EventArgs e) {
-
-            onMemoryMinusFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
 
+            eventCounter = 0;
+
             var panel = new Panel();
             panel.Height = 200;
             formatter = new Mock<IFormatter>();
-            memoryPanel = new MemoryPanel(formatter.Object);
+            memoryPanel = new TestMemoryPanel(formatter.Object);
             memoryPanel.Parent = panel;
-            memoryPanel.OnMemoryDelete += CheckMemoryDeleteFiring;
-            memoryPanel.OnMemorySelect += CheckMemorySelectFiring;
-            memoryPanel.OnMemoryPlus += CheckMemoryPlusFiring;
-            memoryPanel.OnMemoryMinus += CheckMemoryMinusFiring;
+            memoryPanel.OnMemoryDelete += CheckEventFiring;
+            memoryPanel.OnMemorySelect += CheckEventFiring;
+            memoryPanel.OnMemoryPlus += CheckEventFiring;
+            memoryPanel.OnMemoryMinus += CheckEventFiring;
         }
 
         [TestMethod]
@@ -161,11 +170,11 @@ namespace UserControlTest {
 
             Assert.AreEqual(1, memoryPanel.ItemPointer);
 
-            memoryPanel.MemoryClear(null, null);
+            memoryPanel.TestMemoryClear(null, null);
 
             Assert.AreEqual(1, memoryPanel.ItemPointer);
 
-            memoryPanel.MemoryClear(null, null);
+            memoryPanel.TestMemoryClear(null, null);
 
             Assert.AreEqual(1, memoryPanel.ItemPointer);
         }
@@ -181,7 +190,7 @@ namespace UserControlTest {
 
             Assert.AreEqual(3, memoryPanel.ItemPointer);
 
-            memoryPanel.MemoryClear(null, null);
+            memoryPanel.TestMemoryClear(null, null);
 
             Assert.AreEqual(2, memoryPanel.ItemPointer);
         }
@@ -216,43 +225,16 @@ namespace UserControlTest {
         }
 
         [TestMethod]
-        public void OnMemoryDeleteFired() {
+        public void TestEventFired() {
 
-            Assert.IsFalse(onMemoryDeleteFired);
+            eventCounter = 0;
 
-            memoryPanel.MemoryClear(null, null);
+            memoryPanel.TestMemoryClear(null, null);
+            memoryPanel.TestMemorySelect(null, null);
+            memoryPanel.TestMemoryPlus(null, null);
+            memoryPanel.TestMemoryMinus(null, null);
 
-            Assert.IsTrue(onMemoryDeleteFired);
-        }
-
-        [TestMethod]
-        public void OnMemorySelectFired() {
-
-            Assert.IsFalse(onMemorySelectFired);
-
-            memoryPanel.MemorySelect(null, null);
-
-            Assert.IsTrue(onMemorySelectFired);
-        }
-
-        [TestMethod]
-        public void OnMemoryPlusFired() {
-
-            Assert.IsFalse(onMemoryPlusFired);
-
-            memoryPanel.MemoryPlus(null, null);
-
-            Assert.IsTrue(onMemoryPlusFired);
-        }
-
-        [TestMethod]
-        public void OnMemoryMinusFired() {
-
-            Assert.IsFalse(onMemoryMinusFired);
-
-            memoryPanel.MemoryMinus(null, null);
-
-            Assert.IsTrue(onMemoryMinusFired);
+            Assert.AreEqual(4, eventCounter);
         }
     }
 }

@@ -8,9 +8,10 @@ namespace UserControlTest {
     [TestClass]
     public class ResizerTest {
 
+        const int thickness = 15;
+
         Form form;
         Resizer resizer;
-        const int thickness = 15;
 
         [TestInitialize]
         public void Setup() {

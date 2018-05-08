@@ -78,11 +78,10 @@
     <Compile Include="MemoryPanelTest.cs" />
     <Compile Include="HistoryPanelTest.cs" />
     <Compile Include="ExpandablePanelTest.cs" />
-    <Compile Include="ItemDisplayPanelTest.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ItemDisplayPanelTest.cs" />
     <Compile Include="StandardDisplayTest.cs" />
     <Compile Include="SidePanelTest.cs" />
+    <Compile Include="ScientificKeypadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">

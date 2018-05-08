@@ -31,7 +31,7 @@ namespace UserControlClassLibrary {
             Helper = helper;
         }
 
-        public void ClearMenu() {
+        protected void ClearMenu() {
 
             var items = mainPanel.Controls.OfType<Panel>().ToArray();
 
@@ -110,37 +110,37 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void ControlMouseEnter(object sender, EventArgs e) {
+        protected void ControlMouseEnter(object sender, EventArgs e) {
 
             ((Control)sender).BackColor = Color.FromArgb(67, 67, 67);
         }
 
-        public void ControlMouseLeave(object sender, EventArgs e) {
+        protected void ControlMouseLeave(object sender, EventArgs e) {
 
             var control = (Control)sender;
             int rgb = control.Tag.ToString() == Selected ? 53 : 40;
             control.BackColor = Color.FromArgb(rgb, rgb, rgb);
         }
 
-        public void ControlMouseClick(object sender, EventArgs e) {
+        protected void ControlMouseClick(object sender, EventArgs e) {
 
             OnSelect(sender, e);
             Shrink();
         }
 
-        public void LabelMouseEnter(object sender, EventArgs e) {
+        protected void LabelMouseEnter(object sender, EventArgs e) {
 
             ControlMouseEnter(sender, e);
             ControlMouseEnter(((Control)sender).Parent, e);
         }
 
-        public void LabelMouseLeave(object sender, EventArgs e) {
+        protected void LabelMouseLeave(object sender, EventArgs e) {
 
             ControlMouseLeave(sender, e);
             ControlMouseLeave(((Control)sender).Parent, e);
         }
 
-        public void PanelMouseEnter(object sender, EventArgs e) {
+        protected void PanelMouseEnter(object sender, EventArgs e) {
 
             ControlMouseEnter(sender, e);
 
@@ -150,7 +150,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void PanelMouseLeave(object sender, EventArgs e) {
+        protected void PanelMouseLeave(object sender, EventArgs e) {
 
             ControlMouseLeave(sender, e);
 
@@ -160,22 +160,22 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void KeypadButtonMouseEnter(object sender, EventArgs e) {
+        protected void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
             Helper.ButtonMouseEnter(sender, e);
         }
 
-        public void KeypadButtonMouseLeave(object sender, EventArgs e) {
+        protected void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
             Helper.ButtonMouseLeave(sender, e);
         }
 
-        public void ToggleMenu(object sender, EventArgs e) {
+        protected void ToggleMenu(object sender, EventArgs e) {
 
             Shrink();
         }
 
-        public void ExtendPanel(object sender, EventArgs e) {
+        protected void ExtendPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(40, TargetWidth - Width);
             Width += speed;
@@ -189,7 +189,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void ShrinkPanel(object sender, EventArgs e) {
+        protected void ShrinkPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(85, Width - 1);
             Width -= speed;

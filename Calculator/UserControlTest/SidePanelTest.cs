@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UserControlClassLibrary;
@@ -8,43 +10,101 @@ namespace UserControlTest {
     [TestClass]
     public class SidePanelTest {
 
-        bool onExtendedFired = false;
-        bool onShrunkenFired = false;
-        bool onSelectFired = false;
+        class TestSidePanel : SidePanel {
+
+            public TestSidePanel(IHelper helper) : base(helper) {}
+
+            public void TestClearMenu() {
+
+                ClearMenu();
+            }
+
+            public void TestControlMouseClick(object sender, EventArgs e) {
+
+                ControlMouseClick(sender, e);
+            }
+
+            public void TestLabelMouseEnter(object sender, EventArgs e) {
+
+                LabelMouseEnter(sender, e);
+            }
+
+            public void TestLabelMouseLeave(object sender, EventArgs e) {
+
+                LabelMouseLeave(sender, e);
+            }
+
+            public void TestPanelMouseEnter(object sender, EventArgs e) {
+
+                PanelMouseEnter(sender, e);
+            }
+
+            public void TestPanelMouseLeave(object sender, EventArgs e) {
+
+                PanelMouseLeave(sender, e);
+            }
+
+            public void TestKeypadButtonMouseEnter(object sender, EventArgs e) {
+
+                KeypadButtonMouseEnter(sender, e);
+            }
+
+            public void TestKeypadButtonMouseLeave(object sender, EventArgs e) {
+
+                KeypadButtonMouseLeave(sender, e);
+            }
+
+            public void TestToggleMenu(object sender, EventArgs e) {
+
+                ToggleMenu(sender, e);
+            }
+
+            public void TestExtendPanel(object sender, EventArgs e) {
+
+                ExtendPanel(sender, e);
+            }
+
+            public void TestShrinkPanel(object sender, EventArgs e) {
+
+                ShrinkPanel(sender, e);
+            }
+        }
+
+        int eventCounter = 0;
 
         List<string[]> items = new List<string[]>() {
 
             new string[] { "Calculator", "Standard", "Scientific" },
             new string[] { "Converter", "Currency" }
-
         };
 
+        Panel panel;
+        Label label1;
+        Label label2;
         Mock<IHelper> helper;
-        SidePanel sidePanel;
+        TestSidePanel sidePanel;
 
-        private void CheckExtendedFiring(object sender, EventArgs e) {
+        private void CheckEventFiring(object sender, EventArgs e) {
 
-            onExtendedFired = true;
-        }
-
-        private void CheckShrunkenFiring(object sender, EventArgs e) {
-
-            onShrunkenFired = true;
-        }
-
-        private void CheckSelectFiring(object sender, EventArgs e) {
-
-            onSelectFired = true;
+            eventCounter++;
         }
 
         [TestInitialize]
         public void Setup() {
 
+            eventCounter = 0;
+
+            panel = new Panel();
+            label1 = new Label();
+            label2 = new Label();
+            label1.Parent = panel;
+            label2.Parent = panel;
+
             helper = new Mock<IHelper>();
-            sidePanel = new SidePanel(helper.Object);
-            sidePanel.OnExtended += CheckExtendedFiring;
-            sidePanel.OnShrunken += CheckShrunkenFiring;
-            sidePanel.OnSelect += CheckSelectFiring;
+            sidePanel = new TestSidePanel(helper.Object);
+            sidePanel.OnExtended += CheckEventFiring;
+            sidePanel.OnShrunken += CheckEventFiring;
+            sidePanel.OnSelect += CheckEventFiring;
         }
 
         [TestMethod]
@@ -64,7 +124,7 @@ namespace UserControlTest {
         [TestMethod]
         public void KeypadButtonMouseEnter() {
 
-            sidePanel.KeypadButtonMouseEnter(null, null);
+            sidePanel.TestKeypadButtonMouseEnter(null, null);
 
             helper.Verify(x => x.ButtonMouseEnter(null, null), Times.Once);
         }
@@ -72,7 +132,7 @@ namespace UserControlTest {
         [TestMethod]
         public void KeypadButtonMouseLeave() {
 
-            sidePanel.KeypadButtonMouseLeave(null, null);
+            sidePanel.TestKeypadButtonMouseLeave(null, null);
 
             helper.Verify(x => x.ButtonMouseLeave(null, null), Times.Once);
         }
@@ -80,7 +140,7 @@ namespace UserControlTest {
         [TestMethod]
         public void ToggleMenu() {
 
-            sidePanel.ToggleMenu(null, null);
+            sidePanel.TestToggleMenu(null, null);
         }
 
         [TestMethod]
@@ -98,52 +158,116 @@ namespace UserControlTest {
 
             Assert.AreEqual("Scientific", sidePanel.Selected);
 
-            sidePanel.ClearMenu();
+            sidePanel.TestClearMenu();
 
             Assert.AreEqual("Scientific", sidePanel.Selected);
         }
 
         [TestMethod]
+        public void LabelMouseEnter() {
+
+            panel.BackColor = Color.BlanchedAlmond;
+            label1.BackColor = Color.BlanchedAlmond;
+            label2.BackColor = Color.BlanchedAlmond;
+
+            sidePanel.TestLabelMouseEnter(label1, null);
+
+            Assert.AreNotEqual(Color.BlanchedAlmond, panel.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label1.BackColor);
+            Assert.AreEqual(Color.BlanchedAlmond, label2.BackColor);
+        }
+
+        [TestMethod]
+        public void LabelMouseLeave() {
+
+            sidePanel.ShowMenu(items, "Scientific");
+            panel.BackColor = Color.BlanchedAlmond;
+            panel.Tag = string.Empty;
+            label1.BackColor = Color.BlanchedAlmond;
+            label1.Tag = "Scientific";
+            label2.BackColor = Color.BlanchedAlmond;
+            label2.Tag = string.Empty;
+
+            sidePanel.TestLabelMouseLeave(label1, null);
+
+            Assert.AreNotEqual(Color.BlanchedAlmond, panel.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label1.BackColor);
+            Assert.AreEqual(Color.BlanchedAlmond, label2.BackColor);
+        }
+
+        [TestMethod]
+        public void PanelMouseEnter() {
+
+            panel.BackColor = Color.BlanchedAlmond;
+            label1.BackColor = Color.BlanchedAlmond;
+            label2.BackColor = Color.BlanchedAlmond;
+
+            sidePanel.TestPanelMouseEnter(panel, null);
+
+            Assert.AreNotEqual(Color.BlanchedAlmond, panel.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label1.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label2.BackColor);
+        }
+
+        [TestMethod]
+        public void PanelMouseLeave() {
+
+            sidePanel.ShowMenu(items, "Scientific");
+            panel.BackColor = Color.BlanchedAlmond;
+            panel.Tag = string.Empty;
+            label1.BackColor = Color.BlanchedAlmond;
+            label1.Tag = "Scientific";
+            label2.BackColor = Color.BlanchedAlmond;
+            label2.Tag = string.Empty;
+
+            sidePanel.TestPanelMouseLeave(panel, null);
+
+            Assert.AreNotEqual(Color.BlanchedAlmond, panel.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label1.BackColor);
+            Assert.AreNotEqual(Color.BlanchedAlmond, label2.BackColor);
+        }
+
+        [TestMethod]
         public void OnExtendedFired() {
 
-            Assert.IsFalse(onExtendedFired);
+            eventCounter = 0;
 
             sidePanel.Extend(500);
             sidePanel.Width = 459;
 
-            sidePanel.ExtendPanel(null, null);
+            sidePanel.TestExtendPanel(null, null);
 
-            Assert.IsFalse(onExtendedFired);
+            Assert.AreEqual(0, eventCounter);
 
-            sidePanel.ExtendPanel(null, null);
+            sidePanel.TestExtendPanel(null, null);
 
-            Assert.IsTrue(onExtendedFired);
+            Assert.AreEqual(1, eventCounter);
         }
 
         [TestMethod]
         public void OnShrunkenFired() {
 
-            Assert.IsFalse(onShrunkenFired);
+            eventCounter = 0;
 
             sidePanel.Width = 87;
 
-            sidePanel.ShrinkPanel(null, null);
+            sidePanel.TestShrinkPanel(null, null);
 
-            Assert.IsFalse(onShrunkenFired);
+            Assert.AreEqual(0, eventCounter);
 
-            sidePanel.ShrinkPanel(null, null);
+            sidePanel.TestShrinkPanel(null, null);
 
-            Assert.IsTrue(onShrunkenFired);
+            Assert.AreEqual(1, eventCounter);
         }
 
         [TestMethod]
         public void OnSelectFired() {
 
-            Assert.IsFalse(onSelectFired);
+            eventCounter = 0;
 
-            sidePanel.ControlMouseClick(null, null);
+            sidePanel.TestControlMouseClick(null, null);
 
-            Assert.IsTrue(onSelectFired);
+            Assert.AreEqual(1, eventCounter);
         }
     }
 }

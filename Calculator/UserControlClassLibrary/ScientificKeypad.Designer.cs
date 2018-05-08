@@ -94,9 +94,9 @@
             this.baseKeyLayout.SuspendLayout();
             this.mainLayout.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // extensionKeyBackPanel
-            // 
+            //
             this.extensionKeyBackPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.extensionKeyBackPanel.Controls.Add(this.extensionOnePanel);
             this.extensionKeyBackPanel.Controls.Add(this.extensionTwoPanel);
@@ -106,9 +106,9 @@
             this.extensionKeyBackPanel.Name = "extensionKeyBackPanel";
             this.extensionKeyBackPanel.Size = new System.Drawing.Size(331, 94);
             this.extensionKeyBackPanel.TabIndex = 2;
-            // 
+            //
             // extensionTwoPanel
-            // 
+            //
             this.extensionTwoPanel.Controls.Add(this.extensionTwoLayout);
             this.extensionTwoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extensionTwoPanel.Location = new System.Drawing.Point(0, 0);
@@ -116,9 +116,9 @@
             this.extensionTwoPanel.Name = "extensionTwoPanel";
             this.extensionTwoPanel.Size = new System.Drawing.Size(331, 94);
             this.extensionTwoPanel.TabIndex = 4;
-            // 
+            //
             // extensionTwoLayout
-            // 
+            //
             this.extensionTwoLayout.ColumnCount = 5;
             this.extensionTwoLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.extensionTwoLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -144,9 +144,9 @@
             this.extensionTwoLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extensionTwoLayout.Size = new System.Drawing.Size(331, 94);
             this.extensionTwoLayout.TabIndex = 0;
-            // 
+            //
             // btnReciprocal
-            // 
+            //
             this.btnReciprocal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnReciprocal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnReciprocal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,9 +167,9 @@
             this.btnReciprocal.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnReciprocal.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnReciprocal.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnLn
-            // 
+            //
             this.btnLn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnLn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,9 +190,9 @@
             this.btnLn.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnLn.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnLn.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnExponential
-            // 
+            //
             this.btnExponential.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExponential.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnExponential.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -213,9 +213,9 @@
             this.btnExponential.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnExponential.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnExponential.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDegrees
-            // 
+            //
             this.btnDegrees.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDegrees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnDegrees.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -236,9 +236,9 @@
             this.btnDegrees.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnDegrees.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDegrees.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDms
-            // 
+            //
             this.btnDms.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnDms.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -259,9 +259,9 @@
             this.btnDms.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnDms.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDms.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnXCube
-            // 
+            //
             this.btnXCube.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnXCube.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnXCube.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -282,9 +282,9 @@
             this.btnXCube.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnXCube.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnXCube.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnYthRoot
-            // 
+            //
             this.btnYthRoot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnYthRoot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnYthRoot.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -305,9 +305,9 @@
             this.btnYthRoot.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnYthRoot.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnYthRoot.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnArcSine
-            // 
+            //
             this.btnArcSine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnArcSine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnArcSine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -328,9 +328,9 @@
             this.btnArcSine.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnArcSine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnArcSine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnArcCosine
-            // 
+            //
             this.btnArcCosine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnArcCosine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnArcCosine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -351,9 +351,9 @@
             this.btnArcCosine.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnArcCosine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnArcCosine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnArcTangent
-            // 
+            //
             this.btnArcTangent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnArcTangent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnArcTangent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -374,9 +374,9 @@
             this.btnArcTangent.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnArcTangent.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnArcTangent.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // extensionOnePanel
-            // 
+            //
             this.extensionOnePanel.Controls.Add(this.extensionOneLayout);
             this.extensionOnePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extensionOnePanel.Location = new System.Drawing.Point(0, 0);
@@ -384,9 +384,9 @@
             this.extensionOnePanel.Name = "extensionOnePanel";
             this.extensionOnePanel.Size = new System.Drawing.Size(331, 94);
             this.extensionOnePanel.TabIndex = 3;
-            // 
+            //
             // extensionOneLayout
-            // 
+            //
             this.extensionOneLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.extensionOneLayout.ColumnCount = 5;
             this.extensionOneLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -413,9 +413,9 @@
             this.extensionOneLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extensionOneLayout.Size = new System.Drawing.Size(331, 94);
             this.extensionOneLayout.TabIndex = 0;
-            // 
+            //
             // btnSquareRoot
-            // 
+            //
             this.btnSquareRoot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSquareRoot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnSquareRoot.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -436,9 +436,9 @@
             this.btnSquareRoot.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnSquareRoot.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnSquareRoot.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnLog
-            // 
+            //
             this.btnLog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnLog.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -459,9 +459,9 @@
             this.btnLog.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnLog.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnLog.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnTenPowerX
-            // 
+            //
             this.btnTenPowerX.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTenPowerX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnTenPowerX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -482,9 +482,9 @@
             this.btnTenPowerX.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnTenPowerX.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnTenPowerX.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnModulos
-            // 
+            //
             this.btnModulos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnModulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnModulos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -505,9 +505,9 @@
             this.btnModulos.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnModulos.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnModulos.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnExp
-            // 
+            //
             this.btnExp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnExp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -528,9 +528,9 @@
             this.btnExp.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnExp.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnExp.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnXSquare
-            // 
+            //
             this.btnXSquare.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnXSquare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnXSquare.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -551,9 +551,9 @@
             this.btnXSquare.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnXSquare.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnXSquare.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnXPowerY
-            // 
+            //
             this.btnXPowerY.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnXPowerY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnXPowerY.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -574,9 +574,9 @@
             this.btnXPowerY.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnXPowerY.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnXPowerY.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnSine
-            // 
+            //
             this.btnSine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnSine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -597,9 +597,9 @@
             this.btnSine.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnSine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnSine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnCosine
-            // 
+            //
             this.btnCosine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCosine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnCosine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -620,9 +620,9 @@
             this.btnCosine.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnCosine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnCosine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnTangent
-            // 
+            //
             this.btnTangent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTangent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnTangent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -643,9 +643,9 @@
             this.btnTangent.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnTangent.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnTangent.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // extraKeysLayout
-            // 
+            //
             this.extraKeysLayout.ColumnCount = 6;
             this.extraKeysLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.extraKeysLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -672,9 +672,9 @@
             this.extraKeysLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.extraKeysLayout.Size = new System.Drawing.Size(331, 81);
             this.extraKeysLayout.TabIndex = 1;
-            // 
+            //
             // btnMemoryRecall
-            // 
+            //
             this.btnMemoryRecall.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemoryRecall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemoryRecall.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -694,9 +694,9 @@
             this.btnMemoryRecall.Click += new System.EventHandler(this.MemoryRecallClick);
             this.btnMemoryRecall.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryRecall.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMemoryMinus
-            // 
+            //
             this.btnMemoryMinus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemoryMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemoryMinus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -716,9 +716,9 @@
             this.btnMemoryMinus.Click += new System.EventHandler(this.MemorySubtractClick);
             this.btnMemoryMinus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryMinus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMemoryPlus
-            // 
+            //
             this.btnMemoryPlus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemoryPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemoryPlus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -738,9 +738,9 @@
             this.btnMemoryPlus.Click += new System.EventHandler(this.MemoryAddClick);
             this.btnMemoryPlus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryPlus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMemory
-            // 
+            //
             this.btnMemory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemory.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -760,9 +760,9 @@
             this.btnMemory.Click += new System.EventHandler(this.MemoryToggleClick);
             this.btnMemory.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemory.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMemorySave
-            // 
+            //
             this.btnMemorySave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemorySave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemorySave.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -782,9 +782,9 @@
             this.btnMemorySave.Click += new System.EventHandler(this.MemoryStoreClick);
             this.btnMemorySave.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemorySave.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMemoryClear
-            // 
+            //
             this.btnMemoryClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMemoryClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnMemoryClear.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -804,9 +804,9 @@
             this.btnMemoryClear.Click += new System.EventHandler(this.MemoryClearClick);
             this.btnMemoryClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMemoryClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnHypotenuse
-            // 
+            //
             this.btnHypotenuse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnHypotenuse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnHypotenuse.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -823,12 +823,12 @@
             this.btnHypotenuse.TabIndex = 3;
             this.btnHypotenuse.Text = "HYP";
             this.btnHypotenuse.UseVisualStyleBackColor = false;
-            this.btnHypotenuse.Click += new System.EventHandler(this.btnHypotenuse_Click);
+            this.btnHypotenuse.Click += new System.EventHandler(this.ToggleHypotenuse);
             this.btnHypotenuse.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnHypotenuse.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDegRadGrad
-            // 
+            //
             this.btnDegRadGrad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDegRadGrad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnDegRadGrad.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -846,12 +846,12 @@
             this.btnDegRadGrad.Text = "DEG";
             this.btnDegRadGrad.UseVisualStyleBackColor = false;
             this.btnDegRadGrad.TextChanged += new System.EventHandler(this.ResizeUnitKeyText);
-            this.btnDegRadGrad.Click += new System.EventHandler(this.btnDegRadGrad_Click);
+            this.btnDegRadGrad.Click += new System.EventHandler(this.ToggleAngularUnit);
             this.btnDegRadGrad.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDegRadGrad.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnEngineeringFormat
-            // 
+            //
             this.btnEngineeringFormat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEngineeringFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnEngineeringFormat.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -868,12 +868,12 @@
             this.btnEngineeringFormat.TabIndex = 4;
             this.btnEngineeringFormat.Text = "F-E";
             this.btnEngineeringFormat.UseVisualStyleBackColor = false;
-            this.btnEngineeringFormat.Click += new System.EventHandler(this.btnEngineeringFormat_Click);
+            this.btnEngineeringFormat.Click += new System.EventHandler(this.ToggleEngineeringFormat);
             this.btnEngineeringFormat.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnEngineeringFormat.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // baseKeyLayout
-            // 
+            //
             this.baseKeyLayout.ColumnCount = 5;
             this.baseKeyLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.baseKeyLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -919,9 +919,9 @@
             this.baseKeyLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.baseKeyLayout.Size = new System.Drawing.Size(331, 225);
             this.baseKeyLayout.TabIndex = 0;
-            // 
+            //
             // btnLeftParentheses
-            // 
+            //
             this.btnLeftParentheses.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLeftParentheses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnLeftParentheses.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -942,9 +942,9 @@
             this.btnLeftParentheses.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnLeftParentheses.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnLeftParentheses.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDot
-            // 
+            //
             this.btnDot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnDot.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -965,9 +965,9 @@
             this.btnDot.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnDot.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDot.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnEqual
-            // 
+            //
             this.btnEqual.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEqual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnEqual.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -988,9 +988,9 @@
             this.btnEqual.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnEqual.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnEqual.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnRightParentheses
-            // 
+            //
             this.btnRightParentheses.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRightParentheses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnRightParentheses.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1011,9 +1011,9 @@
             this.btnRightParentheses.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnRightParentheses.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnRightParentheses.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnZero
-            // 
+            //
             this.btnZero.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnZero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnZero.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1035,9 +1035,9 @@
             this.btnZero.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnZero.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnZero.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnExtend
-            // 
+            //
             this.btnExtend.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnExtend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnExtend.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1054,12 +1054,12 @@
             this.btnExtend.TabIndex = 1;
             this.btnExtend.Text = "⬆";
             this.btnExtend.UseVisualStyleBackColor = false;
-            this.btnExtend.Click += new System.EventHandler(this.btnExtend_Click);
+            this.btnExtend.Click += new System.EventHandler(this.ToggleExtension);
             this.btnExtend.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnExtend.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnUndo
-            // 
+            //
             this.btnUndo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnUndo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnUndo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1080,9 +1080,9 @@
             this.btnUndo.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnUndo.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnUndo.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnClearAll
-            // 
+            //
             this.btnClearAll.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnClearAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnClearAll.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1103,9 +1103,9 @@
             this.btnClearAll.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnClearAll.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClearAll.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDelete
-            // 
+            //
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1126,9 +1126,9 @@
             this.btnDelete.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnDelete.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDelete.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnPI
-            // 
+            //
             this.btnPI.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnPI.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1149,9 +1149,9 @@
             this.btnPI.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnPI.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnPI.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnSeven
-            // 
+            //
             this.btnSeven.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSeven.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnSeven.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1173,9 +1173,9 @@
             this.btnSeven.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnSeven.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnSeven.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnFactorial
-            // 
+            //
             this.btnFactorial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFactorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnFactorial.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1196,9 +1196,9 @@
             this.btnFactorial.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnFactorial.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnFactorial.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnOne
-            // 
+            //
             this.btnOne.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnOne.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1220,9 +1220,9 @@
             this.btnOne.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnOne.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnOne.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnFive
-            // 
+            //
             this.btnFive.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnFive.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1244,9 +1244,9 @@
             this.btnFive.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnFive.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnFive.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnEight
-            // 
+            //
             this.btnEight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnEight.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1268,9 +1268,9 @@
             this.btnEight.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnEight.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnEight.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnFour
-            // 
+            //
             this.btnFour.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnFour.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1292,9 +1292,9 @@
             this.btnFour.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnFour.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnFour.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnNegate
-            // 
+            //
             this.btnNegate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNegate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnNegate.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1315,9 +1315,9 @@
             this.btnNegate.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnNegate.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnNegate.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnDivide
-            // 
+            //
             this.btnDivide.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDivide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnDivide.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1338,9 +1338,9 @@
             this.btnDivide.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnDivide.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnDivide.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMultiply
-            // 
+            //
             this.btnMultiply.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMultiply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnMultiply.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1361,9 +1361,9 @@
             this.btnMultiply.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnMultiply.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMultiply.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnSix
-            // 
+            //
             this.btnSix.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnSix.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1385,9 +1385,9 @@
             this.btnSix.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnSix.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnSix.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnNine
-            // 
+            //
             this.btnNine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnNine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1409,9 +1409,9 @@
             this.btnNine.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnNine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnNine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnTwo
-            // 
+            //
             this.btnTwo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnTwo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1433,9 +1433,9 @@
             this.btnTwo.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnTwo.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnTwo.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnThree
-            // 
+            //
             this.btnThree.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnThree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.btnThree.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1457,9 +1457,9 @@
             this.btnThree.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnThree.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnThree.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnPlus
-            // 
+            //
             this.btnPlus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnPlus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1480,9 +1480,9 @@
             this.btnPlus.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnPlus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnPlus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // btnMinus
-            // 
+            //
             this.btnMinus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnMinus.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1503,9 +1503,9 @@
             this.btnMinus.Click += new System.EventHandler(this.ButtonMouseClick);
             this.btnMinus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMinus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // mainLayout
-            // 
+            //
             this.mainLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1523,9 +1523,9 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayout.Size = new System.Drawing.Size(337, 406);
             this.mainLayout.TabIndex = 0;
-            // 
+            //
             // ScientificKeypad
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));

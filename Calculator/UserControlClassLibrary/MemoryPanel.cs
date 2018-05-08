@@ -88,7 +88,7 @@ namespace UserControlClassLibrary {
             ShowItems(values);
         }
 
-        public void MemoryClear(object sender, EventArgs e) {
+        protected void MemoryClear(object sender, EventArgs e) {
 
             if(ItemPointer > 0 && ItemPointer == Items.Length - 2) {
 
@@ -98,17 +98,17 @@ namespace UserControlClassLibrary {
             OnMemoryDelete(sender, e);
         }
 
-        public void MemorySelect(object sender, EventArgs e) {
+        protected void MemorySelect(object sender, EventArgs e) {
 
             OnMemorySelect(sender, e);
         }
 
-        public void MemoryPlus(object sender, EventArgs e) {
+        protected void MemoryPlus(object sender, EventArgs e) {
 
             OnMemoryPlus(sender, e);
         }
 
-        public void MemoryMinus(object sender, EventArgs e) {
+        protected void MemoryMinus(object sender, EventArgs e) {
 
             OnMemoryMinus(sender, e);
         }

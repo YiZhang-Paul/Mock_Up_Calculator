@@ -12,9 +12,9 @@ namespace UserControlTest {
     [TestClass]
     public class UIHelperTest {
 
-        event EventHandler OnTest;
+        event EventHandler OnTestEventFired;
 
-        bool eventFired = false;
+        bool testEventFired = false;
 
         Form form;
         Panel panel1;
@@ -28,7 +28,7 @@ namespace UserControlTest {
 
         private void CheckEventFiring(object sender, EventArgs e) {
 
-            eventFired = true;
+            testEventFired = true;
         }
 
         [TestInitialize]
@@ -43,7 +43,7 @@ namespace UserControlTest {
             button3 = new Button();
             tracker = new Mock<IButtonTracker>();
             helper = new UIHelper();
-            OnTest += CheckEventFiring;
+            OnTestEventFired += CheckEventFiring;
         }
 
         [TestMethod]
@@ -288,22 +288,24 @@ namespace UserControlTest {
         public void RaiseButtonEventWhenEnabled() {
 
             tracker.Setup(x => x.IsDisabled(It.IsAny<Button>())).Returns(false);
-            eventFired = false;
 
-            helper.RaiseButtonEvent(button1, null, OnTest, tracker.Object);
+            Assert.IsFalse(testEventFired);
 
-            Assert.IsTrue(eventFired);
+            helper.RaiseButtonEvent(button1, null, OnTestEventFired, tracker.Object);
+
+            Assert.IsTrue(testEventFired);
         }
 
         [TestMethod]
         public void RaiseButtonEventWhenDisabled() {
 
             tracker.Setup(x => x.IsDisabled(It.IsAny<Button>())).Returns(true);
-            eventFired = false;
 
-            helper.RaiseButtonEvent(button1, null, OnTest, tracker.Object);
+            Assert.IsFalse(testEventFired);
 
-            Assert.IsFalse(eventFired);
+            helper.RaiseButtonEvent(button1, null, OnTestEventFired, tracker.Object);
+
+            Assert.IsFalse(testEventFired);
         }
     }
 }

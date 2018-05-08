@@ -73,41 +73,41 @@ namespace UserControlClassLibrary {
             displayLabel.Focus();
         }
 
-        public void PanelClick(object sender, EventArgs e) {
+        protected void PanelClick(object sender, EventArgs e) {
 
             OnSelect(this, e);
         }
 
-        public void ItemDelete(object sender, EventArgs e) {
+        protected void ItemDelete(object sender, EventArgs e) {
 
             RemoveFocus();
             OnDelete(this, e);
         }
 
-        public void ItemPlus(object sender, EventArgs e) {
+        protected void ItemPlus(object sender, EventArgs e) {
 
             RemoveFocus();
             OnPlus(this, e);
         }
 
-        public void ItemMinus(object sender, EventArgs e) {
+        protected void ItemMinus(object sender, EventArgs e) {
 
             RemoveFocus();
             OnMinus(this, e);
         }
 
-        public void ButtonMouseEnter(object sender, EventArgs e) {
+        protected void ButtonMouseEnter(object sender, EventArgs e) {
 
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
             Parent.Focus();
         }
 
-        public void ButtonMouseLeave(object sender, EventArgs e) {
+        protected void ButtonMouseLeave(object sender, EventArgs e) {
 
             Helper.ButtonMouseLeave((Button)sender, e);
         }
 
-        public void PanelMouseEnter(object sender, EventArgs e) {
+        protected void PanelMouseEnter(object sender, EventArgs e) {
 
             if(Visible) {
 
@@ -116,7 +116,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public void PanelMouseLeave(object sender, EventArgs e) {
+        protected void PanelMouseLeave(object sender, EventArgs e) {
 
             if(Visible && !Helper.ContainsPointer(mainLayout, Cursor.Position)) {
 
