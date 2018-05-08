@@ -48,7 +48,7 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Size = new System.Drawing.Size(353, 32);
             this.mainLayout.TabIndex = 0;
-            this.mainLayout.DoubleClick += new System.EventHandler(this.btnSizeToggle_Click);
+            this.mainLayout.DoubleClick += new System.EventHandler(this.ToggleSize);
             this.mainLayout.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GetPointerLocation);
             this.mainLayout.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
             // 
@@ -86,7 +86,7 @@
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "✕";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.ExitApplication);
             // 
             // btnSizeToggle
             // 
@@ -104,7 +104,7 @@
             this.btnSizeToggle.TabIndex = 1;
             this.btnSizeToggle.Text = "⬜";
             this.btnSizeToggle.UseVisualStyleBackColor = true;
-            this.btnSizeToggle.Click += new System.EventHandler(this.btnSizeToggle_Click);
+            this.btnSizeToggle.Click += new System.EventHandler(this.ToggleSize);
             // 
             // btnMinimize
             // 
@@ -122,7 +122,7 @@
             this.btnMinimize.TabIndex = 0;
             this.btnMinimize.Text = "➖";
             this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.Click += new System.EventHandler(this.Minimize);
             // 
             // nameLabel
             // 
@@ -136,7 +136,7 @@
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Calculator";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.nameLabel.DoubleClick += new System.EventHandler(this.btnSizeToggle_Click);
+            this.nameLabel.DoubleClick += new System.EventHandler(this.ToggleSize);
             this.nameLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GetPointerLocation);
             this.nameLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
             // 

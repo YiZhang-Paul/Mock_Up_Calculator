@@ -14,8 +14,9 @@ namespace UserControlClassLibrary {
         protected virtual int VisibleItems { get { return Math.Max(3, TargetHeight / 108); } }
         protected virtual int ItemHeight { get { return TargetHeight / VisibleItems; } }
         protected virtual int ItemMargin { get; set; }
-        protected virtual int ItemPointer { get; set; }
-        protected virtual T[] Items { get; set; }
+
+        public virtual int ItemPointer { get; protected set; }
+        public virtual T[] Items { get; protected set; }
 
         public ItemDisplayPanel() {
 
@@ -23,24 +24,35 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
+        public ItemDisplayPanel(IHelper helper) : this() {
+
+            Helper = helper;
+        }
+
         protected override void Initialize() {
 
             base.Initialize();
             ItemMargin = 15;
+            Items = new T[0];
             MainPanel.MouseWheel += ScrollPanel;
             OnClear += ClearPanel;
         }
 
+        public void ResetPointer() {
+
+            ItemPointer = 0;
+        }
+
         protected override void ResizeBottomPanel() {
 
-            UIHelper.SetHeight(BottomPanel, ItemHeight);
+            Helper.SetHeight(BottomPanel, ItemHeight);
             BottomPanel.Width = Width;
-            UIHelper.SetHeight(ClearButton, BottomPanel.Height / 2);
+            Helper.SetHeight(ClearButton, BottomPanel.Height / 2);
             ClearButton.Width = ClearButton.Height;
             ClearButton.Left = Width - ClearButton.Width - 4;
         }
 
-        protected virtual void ClearPanel(object sender, EventArgs e) {
+        public virtual void ClearPanel(object sender, EventArgs e) {
 
             ItemPointer = 0;
         }
@@ -88,7 +100,7 @@ namespace UserControlClassLibrary {
             ItemPointer--;
         }
 
-        protected void ScrollPanel(object sender, MouseEventArgs e) {
+        public void ScrollPanel(object sender, MouseEventArgs e) {
 
             if(!CanScroll()) {
 

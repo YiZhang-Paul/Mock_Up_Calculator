@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageClassLibrary", "Stor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageTest", "StorageTest\StorageTest.csproj", "{D03E12BE-C39D-40DF-B7C7-8F2E6B2ACDB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlTest", "UserControlTest\UserControlTest.csproj", "{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{D03E12BE-C39D-40DF-B7C7-8F2E6B2ACDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D03E12BE-C39D-40DF-B7C7-8F2E6B2ACDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D03E12BE-C39D-40DF-B7C7-8F2E6B2ACDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

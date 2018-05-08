@@ -22,7 +22,7 @@ namespace UserControlClassLibrary {
         public override void LeaveMemoryKeyOn() {
 
             base.LeaveMemoryKeyOn();
-            UIHelper.EnableKeys(new Button[] { btnMemory }, Tracker);
+            Helper.EnableKeys(new Button[] { btnMemory }, Tracker);
         }
 
         private void RemoveFocus() {

@@ -12,10 +12,12 @@ namespace UserControlClassLibrary {
     public partial class ExpandablePanel : UserControl, IExpandable, IDisplayPanel {
 
         protected int TargetHeight { get; set; }
-        protected Panel MainPanel { get; set; }
         protected Panel BottomPanel { get; set; }
         protected Panel ScrollBar { get; set; }
         protected Button ClearButton { get; set; }
+        protected IHelper Helper { get; set; }
+
+        public Panel MainPanel { get; set; }
 
         public event EventHandler OnExtended;
         public event EventHandler OnShrunken;
@@ -26,39 +28,50 @@ namespace UserControlClassLibrary {
             InitializeComponent();
         }
 
+        public ExpandablePanel(IHelper helper) : this() {
+
+            Initialize();
+
+            if(helper != null) {
+
+                Helper = helper;
+            }
+        }
+
         protected virtual void Initialize() {
 
             MainPanel = mainPanel;
             BottomPanel = bottomPanel;
             ScrollBar = scrollBar;
             ClearButton = btnClear;
+            Helper = new UIHelper();
         }
 
         public void ShowMessage(string message) {
 
-            UIHelper.AddLabel(MainPanel, message, 11, 10, 15);
+            Helper.AddLabel(MainPanel, message, 11, 10, 15);
         }
 
         public void ClearMessage() {
 
             var labels = MainPanel.Controls.OfType<Label>().ToArray();
 
-            for(int i = 0; i < labels.Length; i++) {
+            if(labels.Length > 0) {
 
-                labels[i].Dispose();
+                labels[0].Dispose();
             }
         }
 
         protected virtual void ResizeBottomPanel() {
 
-            UIHelper.SetHeight(BottomPanel, TargetHeight / 3);
+            Helper.SetHeight(BottomPanel, TargetHeight / 3);
             BottomPanel.Width = Width;
-            UIHelper.SetHeight(ClearButton, BottomPanel.Height / 2);
+            Helper.SetHeight(ClearButton, BottomPanel.Height / 2);
             ClearButton.Width = ClearButton.Height;
             ClearButton.Left = Width - ClearButton.Width - 4;
         }
 
-        private void ExtendPanel(object sender, EventArgs e) {
+        public void ExtendPanel(object sender, EventArgs e) {
 
             int speed = Math.Min(65, TargetHeight - Height);
             Top -= speed;
@@ -72,7 +85,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        private void ShrinkPanel(object sender, EventArgs e) {
+        public void ShrinkPanel(object sender, EventArgs e) {
 
             int alpha = Math.Max(0, BackColor.A - 75);
             int red = BackColor.R;
@@ -108,22 +121,22 @@ namespace UserControlClassLibrary {
             expandTimer.Start();
         }
 
-        private void ButtonMouseEnter(object sender, EventArgs e) {
+        public void ButtonMouseEnter(object sender, EventArgs e) {
 
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
         }
 
-        private void ButtonMouseLeave(object sender, EventArgs e) {
+        public void ButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseLeave((Button)sender, e);
+            Helper.ButtonMouseLeave((Button)sender, e);
         }
 
-        private void mainPanel_MouseEnter(object sender, EventArgs e) {
+        public void PanelMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.ReceiveFocus(sender);
+            ((Control)sender).Focus();
         }
 
-        private void btnClear_Click(object sender, EventArgs e) {
+        public void ItemClear(object sender, EventArgs e) {
 
             OnClear(sender, e);
         }

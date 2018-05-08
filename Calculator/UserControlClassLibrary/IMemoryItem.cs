@@ -9,7 +9,8 @@ namespace UserControlClassLibrary {
     public interface IMemoryItem {
 
         int Key { get; }
-        decimal Value { get; }
+        decimal RawValue { get; }
+        string FormattedValue { get; }
 
         event EventHandler OnDelete;
         event EventHandler OnSelect;

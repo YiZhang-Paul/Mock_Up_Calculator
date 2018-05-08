@@ -106,7 +106,7 @@
             this.btnClear.TabIndex = 2;
             this.btnClear.Text = "MC";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.ItemDelete);
             this.btnClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -128,7 +128,7 @@
             this.btnPlus.TabIndex = 3;
             this.btnPlus.Text = "M+";
             this.btnPlus.UseVisualStyleBackColor = true;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            this.btnPlus.Click += new System.EventHandler(this.ItemPlus);
             this.btnPlus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnPlus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
@@ -150,7 +150,7 @@
             this.btnMinus.TabIndex = 4;
             this.btnMinus.Text = "M-";
             this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            this.btnMinus.Click += new System.EventHandler(this.ItemMinus);
             this.btnMinus.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnMinus.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 

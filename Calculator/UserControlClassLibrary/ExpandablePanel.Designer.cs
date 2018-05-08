@@ -44,7 +44,7 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(288, 82);
             this.mainPanel.TabIndex = 1;
-            this.mainPanel.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
+            this.mainPanel.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
             // 
             // scrollBar
             // 
@@ -87,7 +87,7 @@
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.ItemClear);
             this.btnClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 

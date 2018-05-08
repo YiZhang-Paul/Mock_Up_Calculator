@@ -22,10 +22,11 @@ namespace MockUpCalculator {
         private int DefaultHeight { get; set; }
         private Point ClientCenter { get; set; }
         private Point Pointer { get; set; }
-        private Rectangle Viewport { get { return UIHelper.GetViewport(this); } }
+        private Rectangle Viewport { get { return Helper.GetViewport(this); } }
         private List<string[]> MenuItems { get; set; }
         private ServiceLookup ServiceLookup { get; set; }
         private CalculatorPanel CalculatorPanel { get; set; }
+        private IHelper Helper { get; set; }
         private IResize Resizer { get; set; }
 
         public MainForm() {
@@ -97,6 +98,7 @@ namespace MockUpCalculator {
 
             Resizer = new Resizer(this);
             ServiceLookup = new ServiceLookup();
+            Helper = new UIHelper();
             SaveDimension();
             SaveClientCenter();
             SetupTopPanel();
@@ -117,17 +119,17 @@ namespace MockUpCalculator {
 
         private void SavePointerLocation(object sender, MouseEventArgs e) {
 
-            Pointer = UIHelper.GetPointerLocation(e);
+            Pointer = Helper.GetPointerLocation(e);
         }
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseEnter(sender, e);
+            Helper.ButtonMouseEnter(sender, e);
         }
 
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseLeave(sender, e);
+            Helper.ButtonMouseLeave(sender, e);
         }
 
         private void btnChangeCalculator_Click(object sender, EventArgs e) {
@@ -190,7 +192,7 @@ namespace MockUpCalculator {
                 return;
             }
 
-            UIHelper.DragWindow(e, this, Pointer);
+            Helper.DragWindow(e, this, Pointer);
         }
 
         private void Minimize(object sender, EventArgs e) {
@@ -200,7 +202,7 @@ namespace MockUpCalculator {
 
         private void ZoomToMax(object sender, EventArgs e) {
 
-            UIHelper.ScaleTo(this, Width + 20, Height + 20);
+            Helper.ScaleTo(this, Width + 20, Height + 20);
 
             if(Width >= Viewport.Width && Height >= Viewport.Height) {
 
@@ -215,8 +217,8 @@ namespace MockUpCalculator {
 
             WindowState = FormWindowState.Normal;
             Visible = false;
-            UIHelper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
-            UIHelper.CenterToPoint(this, ClientCenter);
+            Helper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
+            Helper.CenterToPoint(this, ClientCenter);
             Visible = true;
         }
 
@@ -225,7 +227,7 @@ namespace MockUpCalculator {
             SaveClientCenter();
             int width = (int)(Viewport.Width * 0.95);
             int height = (int)(Viewport.Height * 0.95);
-            UIHelper.ScaleTo(this, width, height);
+            Helper.ScaleTo(this, width, height);
             bottomPanel.Visible = false;
             zoomTimer.Tick += ZoomToMax;
             zoomTimer.Start();
@@ -258,12 +260,12 @@ namespace MockUpCalculator {
         private void ZoomUI(object sender, EventArgs e) {
 
             float scale = 1.025f;
-            UIHelper.ScaleTo(this, (int)(Width * scale), (int)(Height * scale));
+            Helper.ScaleTo(this, (int)(Width * scale), (int)(Height * scale));
 
             if(Width * scale >= DefaultWidth || Height * scale >= DefaultHeight) {
 
                 Opacity = 0.9;
-                UIHelper.ScaleTo(this, DefaultWidth, DefaultHeight);
+                Helper.ScaleTo(this, DefaultWidth, DefaultHeight);
                 openTimer.Tick -= ZoomUI;
                 openTimer.Tick += FinishLoadUI;
                 ToScientificCalculatorPanel();
@@ -276,7 +278,7 @@ namespace MockUpCalculator {
             SaveDimension();
             int width = (int)(DefaultWidth * 0.97);
             int height = (int)(DefaultHeight * 0.97);
-            UIHelper.ScaleTo(this, width, height);
+            Helper.ScaleTo(this, width, height);
             openTimer.Tick += ZoomUI;
             openTimer.Start();
         }
@@ -328,7 +330,7 @@ namespace MockUpCalculator {
             }
             else if(message.Msg == click || (message.Msg == notify && (int)message.WParam == click)) {
 
-                if(!UIHelper.ContainsPointer(topPanel)) {
+                if(!Helper.ContainsPointer(topPanel, Cursor.Position)) {
 
                     CalculatorPanel.DeactivateBackPanel();
                 }

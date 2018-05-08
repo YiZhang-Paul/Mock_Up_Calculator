@@ -29,14 +29,17 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
-        public void ResetPointer() {
-
-            ItemPointer = 0;
-        }
-
         private HistoryItem CreateItem(string expression, decimal result) {
 
-            var item = new HistoryItem(expression, result, ExpressionFormatter, NumberFormatter);
+            var item = new HistoryItem(
+
+                expression,
+                result,
+                ExpressionFormatter,
+                NumberFormatter,
+                new UIHelper()
+            );
+
             item.Parent = MainPanel;
             item.OnSelect += HistorySelect;
 
@@ -89,7 +92,7 @@ namespace UserControlClassLibrary {
             ShowItems(expressions);
         }
 
-        private void HistorySelect(object sender, EventArgs e) {
+        public void HistorySelect(object sender, EventArgs e) {
 
             OnHistorySelect(sender, e);
         }

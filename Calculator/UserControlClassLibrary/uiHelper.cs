@@ -9,22 +9,19 @@ using System.Text.RegularExpressions;
 using UtilityClassLibrary;
 
 namespace UserControlClassLibrary {
-    public class UIHelper {
+    public class UIHelper : IHelper {
 
-        public static void ControlsOfType<T>(Control parent, List<T> found) {
+        public void ControlsOfType<T>(Control parent, List<T> found) {
 
             found.AddRange(parent.Controls.OfType<T>());
 
             foreach(Control child in parent.Controls) {
 
-                if(child.GetType() != typeof(T)) {
-
-                    ControlsOfType<T>(child, found);
-                }
+                ControlsOfType<T>(child, found);
             }
         }
 
-        public static void UpdateKeyText(Button button, string pattern, string replace, bool append) {
+        public void UpdateKeyText(Button button, string pattern, string replace, bool append) {
 
             button.Text = Regex.Replace(button.Text, pattern, match => {
 
@@ -34,7 +31,7 @@ namespace UserControlClassLibrary {
             button.Tag = button.Text;
         }
 
-        public static void DisableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {
+        public void DisableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {
 
             foreach(var key in keys) {
 
@@ -45,7 +42,7 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void EnableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {
+        public void EnableKeys(IEnumerable<Button> keys, IButtonTracker tracker) {
 
             foreach(var key in keys) {
 
@@ -56,19 +53,19 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void CenterToPoint(Control parent, Point point) {
+        public void CenterToPoint(Control parent, Point point) {
 
             parent.Top = point.Y - parent.Height / 2;
             parent.Left = point.X - parent.Width / 2;
         }
 
-        public static void CenterToScreen(Control parent) {
+        public void CenterToScreen(Control parent) {
 
             var screen = Screen.FromControl(parent).WorkingArea;
             CenterToPoint(parent, new Point(screen.Width / 2, screen.Height / 2));
         }
 
-        public static void ScaleTo(Control parent, int width, int height, bool center = true) {
+        public void ScaleTo(Control parent, int width, int height, bool center = true) {
 
             var screen = Screen.FromControl(parent).WorkingArea;
             parent.Width = Math.Min(width, screen.Width);
@@ -80,13 +77,13 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void SetHeight(Control control, int height) {
+        public void SetHeight(Control control, int height) {
 
             control.Top -= height - control.Height;
             control.Height = height;
         }
 
-        public static void AddLabel(Panel panel, string text, int fontSize, int leftMargin, int topMargin) {
+        public void AddLabel(Panel panel, string text, int fontSize, int leftMargin, int topMargin) {
 
             var label = new Label();
             label.Parent = panel;
@@ -99,29 +96,24 @@ namespace UserControlClassLibrary {
             label.Top = topMargin;
         }
 
-        public static Rectangle GetViewport(Form form) {
+        public Rectangle GetViewport(Form form) {
 
             return Screen.FromControl(form).WorkingArea;
         }
 
-        public static Point GetPointerLocation(MouseEventArgs e) {
+        public Point GetPointerLocation(MouseEventArgs e) {
 
             return e.Location;
         }
 
-        public static bool ContainsPointer(Control control) {
+        public bool ContainsPointer(Control control, Point cursor) {
 
-            var pointer = control.PointToClient(Cursor.Position);
+            var pointer = control.PointToClient(cursor);
 
             return control.ClientRectangle.Contains(pointer);
         }
 
-        public static void ReceiveFocus(object sender) {
-
-            ((Control)sender).Focus();
-        }
-
-        public static void DragWindow(MouseEventArgs e, Form parent, Point pointer) {
+        public void DragWindow(MouseEventArgs e, Form parent, Point pointer) {
 
             if(e.Button == MouseButtons.Left) {
 
@@ -130,19 +122,19 @@ namespace UserControlClassLibrary {
             }
         }
 
-        public static void ButtonMouseEnter(object sender, EventArgs e) {
+        public void ButtonMouseEnter(object sender, EventArgs e) {
 
             var button = (Button)sender;
             button.FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
         }
 
-        public static void ButtonMouseLeave(object sender, EventArgs e) {
+        public void ButtonMouseLeave(object sender, EventArgs e) {
 
             var button = (Button)sender;
             button.FlatAppearance.BorderColor = button.BackColor;
         }
 
-        public static void DrawUnderline(object sender, PaintEventArgs e) {
+        public void DrawUnderline(object sender, PaintEventArgs e) {
 
             var button = (Button)sender;
             int lineHeight = button.FlatAppearance.BorderSize * 2;
@@ -157,7 +149,7 @@ namespace UserControlClassLibrary {
             );
         }
 
-        public static void RaiseButtonEvent(object sender, EventArgs e, EventHandler handler, IButtonTracker tracker) {
+        public void RaiseButtonEvent(object sender, EventArgs e, EventHandler handler, IButtonTracker tracker) {
 
             if(tracker.IsDisabled((Button)sender)) {
 

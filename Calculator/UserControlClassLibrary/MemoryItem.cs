@@ -13,9 +13,11 @@ namespace UserControlClassLibrary {
     public partial class MemoryItem : UserControl, IMemoryItem {
 
         private IFormatter Formatter { get; set; }
+        private IHelper Helper { get; set; }
 
         public int Key { get; private set; }
-        public decimal Value { get; private set; }
+        public decimal RawValue { get; private set; }
+        public string FormattedValue { get; private set; }
 
         public event EventHandler OnDelete;
         public event EventHandler OnSelect;
@@ -27,17 +29,31 @@ namespace UserControlClassLibrary {
             InitializeComponent();
         }
 
-        public MemoryItem(int key, decimal value, IFormatter formatter) : this() {
+        public MemoryItem(
+
+            int key,
+            decimal value,
+            IFormatter formatter,
+            IHelper helper
+
+        ) : this() {
 
             Key = key;
-            Value = value;
+            RawValue = value;
             Formatter = formatter;
+            Helper = helper;
+            FormatValue();
             DisplayValue();
+        }
+
+        private void FormatValue() {
+
+            FormattedValue = Formatter.Format(RawValue.ToString());
         }
 
         public void DisplayValue() {
 
-            displayLabel.Text = Formatter.Format(Value.ToString());
+            displayLabel.Text = FormattedValue;
         }
 
         private void SetBackColor(Color color) {
@@ -57,52 +73,52 @@ namespace UserControlClassLibrary {
             displayLabel.Focus();
         }
 
-        private void PanelClick(object sender, EventArgs e) {
+        public void PanelClick(object sender, EventArgs e) {
 
             OnSelect(this, e);
         }
 
-        private void btnClear_Click(object sender, EventArgs e) {
+        public void ItemDelete(object sender, EventArgs e) {
 
             RemoveFocus();
             OnDelete(this, e);
         }
 
-        private void btnPlus_Click(object sender, EventArgs e) {
+        public void ItemPlus(object sender, EventArgs e) {
 
             RemoveFocus();
             OnPlus(this, e);
         }
 
-        private void btnMinus_Click(object sender, EventArgs e) {
+        public void ItemMinus(object sender, EventArgs e) {
 
             RemoveFocus();
             OnMinus(this, e);
         }
 
-        private void ButtonMouseEnter(object sender, EventArgs e) {
+        public void ButtonMouseEnter(object sender, EventArgs e) {
 
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(90, 90, 90);
-            UIHelper.ReceiveFocus(Parent);
+            Parent.Focus();
         }
 
-        private void ButtonMouseLeave(object sender, EventArgs e) {
+        public void ButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseLeave((Button)sender, e);
+            Helper.ButtonMouseLeave((Button)sender, e);
         }
 
-        private void PanelMouseEnter(object sender, EventArgs e) {
+        public void PanelMouseEnter(object sender, EventArgs e) {
 
             if(Visible) {
 
                 SetBackColor(Color.FromArgb(58, 58, 58));
-                UIHelper.ReceiveFocus(Parent);
+                Parent.Focus();
             }
         }
 
-        private void PanelMouseLeave(object sender, EventArgs e) {
+        public void PanelMouseLeave(object sender, EventArgs e) {
 
-            if(Visible && !UIHelper.ContainsPointer(mainLayout)) {
+            if(Visible && !Helper.ContainsPointer(mainLayout, Cursor.Position)) {
 
                 SetBackColor(Color.FromArgb(39, 39, 39));
             }

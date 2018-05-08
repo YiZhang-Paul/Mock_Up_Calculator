@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace UserControlClassLibrary {
     public interface IHistoryItem {
 
-        string Expression { get; }
-        decimal Result { get; }
+        string RawExpression { get; }
+        string FormattedExpression { get; }
+        decimal RawResult { get; }
+        string FormattedResult { get; }
 
         event EventHandler OnSelect;
 

@@ -13,6 +13,7 @@ namespace UserControlClassLibrary {
 
         private int TargetWidth { get; set; }
         private string Selected { get; set; }
+        private IHelper Helper { get; set; }
 
         public event EventHandler OnExtended;
         public event EventHandler OnShrunken;
@@ -21,6 +22,7 @@ namespace UserControlClassLibrary {
         public SidePanel() {
 
             InitializeComponent();
+            Helper = new UIHelper();
         }
 
         private void ClearMenu() {
@@ -154,12 +156,12 @@ namespace UserControlClassLibrary {
 
         private void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseEnter(sender, e);
+            Helper.ButtonMouseEnter(sender, e);
         }
 
         private void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseLeave(sender, e);
+            Helper.ButtonMouseLeave(sender, e);
         }
 
         private void btnChange_Click(object sender, EventArgs e) {

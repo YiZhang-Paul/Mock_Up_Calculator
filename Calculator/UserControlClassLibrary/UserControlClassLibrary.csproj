@@ -62,6 +62,7 @@
     <Compile Include="ICalculatorDisplay.cs" />
     <Compile Include="IDisplayPanel.cs" />
     <Compile Include="IExpandable.cs" />
+    <Compile Include="IHelper.cs" />
     <Compile Include="IHistoryItem.cs" />
     <Compile Include="IHistoryItemDisplay.cs" />
     <Compile Include="IItemDisplay.cs" />

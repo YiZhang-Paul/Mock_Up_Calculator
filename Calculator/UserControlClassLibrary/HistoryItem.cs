@@ -14,9 +14,12 @@ namespace UserControlClassLibrary {
 
         private IFormatter ExpressionFormatter { get; set; }
         private IFormatter NumberFormatter { get; set; }
+        private IHelper Helper { get; set; }
 
-        public string Expression { get; private set; }
-        public decimal Result { get; private set; }
+        public string RawExpression { get; private set; }
+        public string FormattedExpression { get; private set; }
+        public decimal RawResult { get; private set; }
+        public string FormattedResult { get; private set; }
 
         public event EventHandler OnSelect;
 
@@ -30,21 +33,30 @@ namespace UserControlClassLibrary {
             string expression,
             decimal result,
             IFormatter expressionFormatter,
-            IFormatter numberFormatter
+            IFormatter numberFormatter,
+            IHelper helper
 
         ) : this() {
 
-            Expression = expression;
-            Result = result;
+            RawExpression = expression;
+            RawResult = result;
             ExpressionFormatter = expressionFormatter;
             NumberFormatter = numberFormatter;
+            Helper = helper;
+            FormatInput();
             DisplayExpression();
+        }
+
+        private void FormatInput() {
+
+            FormattedExpression = ExpressionFormatter.Format(RawExpression) + " =";
+            FormattedResult = NumberFormatter.Format(RawResult.ToString());
         }
 
         public void DisplayExpression() {
 
-            expressionLabel.Text = ExpressionFormatter.Format(Expression) + " =";
-            resultLabel.Text = NumberFormatter.Format(Result.ToString());
+            expressionLabel.Text = FormattedExpression;
+            resultLabel.Text = FormattedResult;
         }
 
         private void SetBackColor(Color color) {
@@ -54,23 +66,23 @@ namespace UserControlClassLibrary {
             resultLabel.BackColor = color;
         }
 
-        private void PanelClick(object sender, EventArgs e) {
+        public void PanelClick(object sender, EventArgs e) {
 
             OnSelect(this, e);
         }
 
-        private void PanelMouseEnter(object sender, EventArgs e) {
+        public void PanelMouseEnter(object sender, EventArgs e) {
 
             if(Visible) {
 
                 SetBackColor(Color.FromArgb(58, 58, 58));
-                UIHelper.ReceiveFocus(Parent);
+                Parent.Focus();
             }
         }
 
-        private void PanelMouseLeave(object sender, EventArgs e) {
+        public void PanelMouseLeave(object sender, EventArgs e) {
 
-            if(Visible && !UIHelper.ContainsPointer(mainLayout)) {
+            if(Visible && !Helper.ContainsPointer(mainLayout, Cursor.Position)) {
 
                 SetBackColor(Color.FromArgb(39, 39, 39));
             }

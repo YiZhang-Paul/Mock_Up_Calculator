@@ -46,7 +46,7 @@ namespace UserControlClassLibrary {
         public override void LeaveMemoryKeyOn() {
 
             base.LeaveMemoryKeyOn();
-            UIHelper.EnableKeys(new Button[] { btnMemory }, Tracker);
+            Helper.EnableKeys(new Button[] { btnMemory }, Tracker);
         }
 
         private void RemoveFocus() {
@@ -84,12 +84,12 @@ namespace UserControlClassLibrary {
 
             if(ExtensionToggled) {
 
-                button.Paint += UIHelper.DrawUnderline;
+                button.Paint += Helper.DrawUnderline;
                 extensionTwoPanel.BringToFront();
             }
             else {
 
-                button.Paint -= UIHelper.DrawUnderline;
+                button.Paint -= Helper.DrawUnderline;
                 extensionOnePanel.BringToFront();
             }
         }
@@ -100,7 +100,7 @@ namespace UserControlClassLibrary {
 
                 string pattern = TrigonometricToggled ? "sin|cos|tan" : "h";
                 string replace = TrigonometricToggled ? "h" : string.Empty;
-                UIHelper.UpdateKeyText(key, pattern, replace, TrigonometricToggled);
+                Helper.UpdateKeyText(key, pattern, replace, TrigonometricToggled);
             }
         }
 
@@ -119,11 +119,11 @@ namespace UserControlClassLibrary {
 
             if(TrigonometricToggled) {
 
-                button.Paint += UIHelper.DrawUnderline;
+                button.Paint += Helper.DrawUnderline;
             }
             else {
 
-                button.Paint -= UIHelper.DrawUnderline;
+                button.Paint -= Helper.DrawUnderline;
             }
         }
 
@@ -142,11 +142,11 @@ namespace UserControlClassLibrary {
 
             if(EngineeringMode) {
 
-                button.Paint += UIHelper.DrawUnderline;
+                button.Paint += Helper.DrawUnderline;
             }
             else {
 
-                button.Paint -= UIHelper.DrawUnderline;
+                button.Paint -= Helper.DrawUnderline;
             }
         }
 

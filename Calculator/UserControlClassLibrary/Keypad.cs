@@ -18,6 +18,7 @@ namespace UserControlClassLibrary {
         protected HashSet<Button> MemoryKeys { get; set; }
         protected HashSet<Button> BasicKeys { get; set; }
         protected Point ClientCenter { get; set; }
+        protected IHelper Helper { get; set; }
 
         public bool HasMemory { get; set; }
         public bool IsDisabled { get; private set; }
@@ -38,12 +39,13 @@ namespace UserControlClassLibrary {
         public Keypad() {
 
             InitializeComponent();
+            Helper = new UIHelper();
         }
 
         private Button[] GetAllKeys() {
 
             var keys = new List<Button>();
-            UIHelper.ControlsOfType<Button>(this, keys);
+            Helper.ControlsOfType<Button>(this, keys);
 
             return keys.ToArray();
         }
@@ -74,12 +76,12 @@ namespace UserControlClassLibrary {
 
         public void EnableAllKeys() {
 
-            UIHelper.EnableKeys(AllKeys, Tracker);
+            Helper.EnableKeys(AllKeys, Tracker);
         }
 
         public void EnableValidKeys() {
 
-            UIHelper.EnableKeys(AllKeys, Tracker);
+            Helper.EnableKeys(AllKeys, Tracker);
 
             if(!HasMemory) {
 
@@ -91,19 +93,19 @@ namespace UserControlClassLibrary {
 
         public void DisableAllKeys() {
 
-            UIHelper.DisableKeys(AllKeys, Tracker);
+            Helper.DisableKeys(AllKeys, Tracker);
         }
 
         public void LeaveBasicKeysOn() {
 
-            UIHelper.DisableKeys(AllKeys, Tracker);
-            UIHelper.EnableKeys(BasicKeys, Tracker);
+            Helper.DisableKeys(AllKeys, Tracker);
+            Helper.EnableKeys(BasicKeys, Tracker);
             IsDisabled = true;
         }
 
         public virtual void LeaveMemoryKeyOn() {
 
-            UIHelper.DisableKeys(AllKeys, Tracker);
+            Helper.DisableKeys(AllKeys, Tracker);
         }
 
         private void CheckMemory() {
@@ -117,17 +119,17 @@ namespace UserControlClassLibrary {
 
         protected void EnableMemoryKeys() {
 
-            UIHelper.EnableKeys(MemoryKeys, Tracker);
+            Helper.EnableKeys(MemoryKeys, Tracker);
         }
 
         protected void DisableMemoryKeys() {
 
-            UIHelper.DisableKeys(MemoryKeys, Tracker);
+            Helper.DisableKeys(MemoryKeys, Tracker);
         }
 
         protected virtual void ButtonMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
+            Helper.RaiseButtonEvent(sender, e, OnButtonMouseEnter, Tracker);
         }
 
         protected virtual void ButtonMouseLeave(object sender, EventArgs e) {
@@ -145,7 +147,7 @@ namespace UserControlClassLibrary {
                 return;
             }
 
-            UIHelper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
+            Helper.RaiseButtonEvent(sender, e, OnButtonMouseClick, Tracker);
         }
 
         protected bool CanUseExtraKey(Button button) {

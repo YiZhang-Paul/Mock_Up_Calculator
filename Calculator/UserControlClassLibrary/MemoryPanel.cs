@@ -30,14 +30,9 @@ namespace UserControlClassLibrary {
             Initialize();
         }
 
-        public void ResetPointer() {
-
-            ItemPointer = 0;
-        }
-
         private MemoryItem CreateItem(int key, decimal value) {
 
-            var item = new MemoryItem(key, value, Formatter);
+            var item = new MemoryItem(key, value, Formatter, new UIHelper());
             item.Parent = MainPanel;
             item.OnDelete += MemoryClear;
             item.OnSelect += MemorySelect;
@@ -93,9 +88,9 @@ namespace UserControlClassLibrary {
             ShowItems(values);
         }
 
-        private void MemoryClear(object sender, EventArgs e) {
+        public void MemoryClear(object sender, EventArgs e) {
 
-            if(ItemPointer == Items.Length - 2 && ItemPointer > 0) {
+            if(ItemPointer > 0 && ItemPointer == Items.Length - 2) {
 
                 ItemPointer--;
             }
@@ -103,17 +98,17 @@ namespace UserControlClassLibrary {
             OnMemoryDelete(sender, e);
         }
 
-        private void MemorySelect(object sender, EventArgs e) {
+        public void MemorySelect(object sender, EventArgs e) {
 
             OnMemorySelect(sender, e);
         }
 
-        private void MemoryPlus(object sender, EventArgs e) {
+        public void MemoryPlus(object sender, EventArgs e) {
 
             OnMemoryPlus(sender, e);
         }
 
-        private void MemoryMinus(object sender, EventArgs e) {
+        public void MemoryMinus(object sender, EventArgs e) {
 
             OnMemoryMinus(sender, e);
         }

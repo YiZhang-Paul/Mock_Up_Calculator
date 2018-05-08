@@ -20,8 +20,9 @@ namespace MockUpCalculator {
 
         protected bool BackPanelActivated { get; set; }
         protected bool BackPanelDeactivated { get; set; }
-        protected IExpandable ActiveBackPanel { get; set; }
         protected List<Tuple<string, decimal>> History { get; set; }
+        protected IHelper Helper { get; set; }
+        protected IExpandable ActiveBackPanel { get; set; }
         protected IKeyChecker Checker { get; set; }
         protected IFormatter NumberFormatter { get; set; }
         protected IFormatter ExpressionFormatter { get; set; }
@@ -52,6 +53,7 @@ namespace MockUpCalculator {
             NumberFormatter = numberFormatter;
             ExpressionFormatter = expressionFormatter;
             Calculator = calculator;
+            Helper = new UIHelper();
         }
 
         private void PlaceBackPanel(Control panel, Control parent) {
@@ -104,12 +106,12 @@ namespace MockUpCalculator {
 
         protected virtual void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseEnter(sender, e);
+            Helper.ButtonMouseEnter(sender, e);
         }
 
         protected virtual void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
-            UIHelper.ButtonMouseLeave(sender, e);
+            Helper.ButtonMouseLeave(sender, e);
         }
 
         protected virtual void AddHistory(string expression, decimal result) {
@@ -428,7 +430,7 @@ namespace MockUpCalculator {
 
         protected virtual void HistoryPanelSelect(object sender, EventArgs e) {
 
-            RestoreHistory(((IHistoryItem)sender).Expression);
+            RestoreHistory(((IHistoryItem)sender).RawExpression);
             ClosePanel(HistoryPanel);
         }
 
@@ -452,7 +454,7 @@ namespace MockUpCalculator {
                 return;
             }
 
-            bool mouseOver = UIHelper.ContainsPointer((Control)ActiveBackPanel);
+            bool mouseOver = Helper.ContainsPointer((Control)ActiveBackPanel, Cursor.Position);
             bool deselected = BackPanelActivated && !mouseOver;
 
             if(deselected) {
