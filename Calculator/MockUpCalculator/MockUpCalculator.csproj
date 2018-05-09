@@ -50,6 +50,7 @@
     <Compile Include="CalculatorPanel.Designer.cs">
       <DependentUpon>CalculatorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ICalculatorPanel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

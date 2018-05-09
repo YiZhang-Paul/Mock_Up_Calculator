@@ -13,7 +13,7 @@ using FormatterClassLibrary;
 using UtilityClassLibrary;
 
 namespace MockUpCalculator {
-    public partial class CalculatorPanel : UserControl, IResizable {
+    public partial class CalculatorPanel : UserControl, ICalculatorPanel {
 
         protected const string _divideByZeroMessage = "Cannot divide by zero";
         protected const string _invalidInputMessage = "Invalid input";
@@ -281,7 +281,7 @@ namespace MockUpCalculator {
             EnableKeypad();
         }
 
-        protected virtual void ToggleMemoryPanel(object sender, EventArgs e) {
+        public void ToggleMemoryPanel(object sender, EventArgs e) {
 
             if(BackPanelDeactivated) {
 

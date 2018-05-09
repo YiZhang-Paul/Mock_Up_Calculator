@@ -75,7 +75,7 @@ namespace MockUpCalculator {
             base.HandleOperator(Calculator.CheckTrigonometricKey(key));
         }
 
-        public void ChangeAngularUnit(object sender, EventArgs e) {
+        protected void ChangeAngularUnit(object sender, EventArgs e) {
 
             Calculator.ChangeAngularUnit();
         }

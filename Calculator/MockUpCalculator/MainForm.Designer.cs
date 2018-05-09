@@ -184,7 +184,7 @@
             this.btnChangeCalculator.Text = "≡";
             this.btnChangeCalculator.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChangeCalculator.UseVisualStyleBackColor = true;
-            this.btnChangeCalculator.Click += new System.EventHandler(this.btnChangeCalculator_Click);
+            this.btnChangeCalculator.Click += new System.EventHandler(this.ChangeMenuClick);
             this.btnChangeCalculator.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnChangeCalculator.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
             // 
@@ -228,7 +228,7 @@
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
-            this.Deactivate += new System.EventHandler(this.MainCalculator_Deactivate);
+            this.Deactivate += new System.EventHandler(this.DeactivateBackPanel);
             this.Load += new System.EventHandler(this.LoadUI);
             this.ResizeBegin += new System.EventHandler(this.FormResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.FormResizeEnd);

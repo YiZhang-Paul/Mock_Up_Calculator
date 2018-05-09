@@ -18,16 +18,18 @@ using UtilityClassLibrary;
 namespace MockUpCalculator {
     public partial class MainForm : Form {
 
-        private int DefaultWidth { get; set; }
-        private int DefaultHeight { get; set; }
-        private Point ClientCenter { get; set; }
-        private Point Pointer { get; set; }
-        private Rectangle Viewport { get { return Helper.GetViewport(this); } }
-        private List<string[]> MenuItems { get; set; }
-        private ServiceLookup ServiceLookup { get; set; }
-        private CalculatorPanel CalculatorPanel { get; set; }
-        private IHelper Helper { get; set; }
-        private IResize Resizer { get; set; }
+        protected int DefaultWidth { get; set; }
+        protected int DefaultHeight { get; set; }
+        protected Point ClientCenter { get; set; }
+        protected Point Pointer { get; set; }
+        protected Rectangle Viewport { get { return Helper.GetViewport(this); } }
+        protected List<string[]> MenuItems { get; set; }
+        protected TableLayoutPanel MainLayout { get { return mainLayout; } }
+        protected ServiceLookup ServiceLookup { get; set; }
+        protected ISidePanel SidePanel { get; set; }
+        protected ICalculatorPanel CalculatorPanel { get; set; }
+        protected IHelper Helper { get; set; }
+        protected IResize Resizer { get; set; }
 
         public MainForm() {
 
@@ -50,51 +52,52 @@ namespace MockUpCalculator {
 
         private void SetupSidePanel() {
 
+            SidePanel = sidePanel;
             sidePanel.OnExtended += ShowSidePanel;
             sidePanel.OnShrunken += HideSidePanel;
             sidePanel.OnSelect += SelectCalculator;
         }
 
-        private void SaveDimension() {
+        protected void SaveDimension() {
 
             DefaultWidth = Width;
             DefaultHeight = Height;
         }
 
-        private void SaveClientCenter() {
+        protected void SaveClientCenter() {
 
             ClientCenter = PointToScreen(new Point(Width / 2, Height / 2));
         }
 
-        private void ToStandardCalculator() {
+        protected void ToStandardCalculator() {
 
             if(CalculatorPanel != null) {
 
-                CalculatorPanel.Dispose();
+                ((Control)CalculatorPanel).Dispose();
             }
 
             CalculatorPanel = ServiceLookup.GetStandardCalculatorPanel();
-            CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
-            CalculatorPanel.Show();
+            ((Control)CalculatorPanel).Parent = uiLayout;
+            ((Control)CalculatorPanel).Dock = DockStyle.Fill;
+            ((Control)CalculatorPanel).Show();
             calculatorLabel.Text = "Standard";
         }
 
-        private void ToScientificCalculatorPanel() {
+        protected void ToScientificCalculatorPanel() {
 
             if(CalculatorPanel != null) {
 
-                CalculatorPanel.Dispose();
+                ((Control)CalculatorPanel).Dispose();
             }
 
             CalculatorPanel = ServiceLookup.GetScientificCalculatorPanel();
-            CalculatorPanel.Parent = uiLayout;
-            CalculatorPanel.Dock = DockStyle.Fill;
-            CalculatorPanel.Show();
+            ((Control)CalculatorPanel).Parent = uiLayout;
+            ((Control)CalculatorPanel).Dock = DockStyle.Fill;
+            ((Control)CalculatorPanel).Show();
             calculatorLabel.Text = "Scientific";
         }
 
-        private void Initialize() {
+        protected virtual void Initialize() {
 
             Resizer = new Resizer(this);
             ServiceLookup = new ServiceLookup();
@@ -111,46 +114,46 @@ namespace MockUpCalculator {
             };
         }
 
-        private void ToggleHistoryPanel(object sender, EventArgs e) {
+        protected void ToggleHistoryPanel(object sender, EventArgs e) {
 
             calculatorLabel.Focus();
             CalculatorPanel.ToggleHistoryPanel(sender, e);
         }
 
-        private void SavePointerLocation(object sender, MouseEventArgs e) {
+        protected void SavePointerLocation(object sender, MouseEventArgs e) {
 
             Pointer = Helper.GetPointerLocation(e);
         }
 
-        private void KeypadButtonMouseEnter(object sender, EventArgs e) {
+        protected void KeypadButtonMouseEnter(object sender, EventArgs e) {
 
             Helper.ButtonMouseEnter(sender, e);
         }
 
-        private void KeypadButtonMouseLeave(object sender, EventArgs e) {
+        protected void KeypadButtonMouseLeave(object sender, EventArgs e) {
 
             Helper.ButtonMouseLeave(sender, e);
         }
 
-        private void btnChangeCalculator_Click(object sender, EventArgs e) {
+        protected void ChangeMenuClick(object sender, EventArgs e) {
 
             calculatorLabel.Focus();
             calculatorLabel.Visible = false;
-            sidePanel.Extend(Math.Min(280, Width / 4 * 3));
+            SidePanel.Extend(Math.Min(280, Width / 4 * 3));
         }
 
-        private void ShowSidePanel(object sender, EventArgs e) {
+        protected void ShowSidePanel(object sender, EventArgs e) {
 
-            sidePanel.ShowMenu(MenuItems, calculatorLabel.Text);
+            SidePanel.ShowMenu(MenuItems, calculatorLabel.Text);
         }
 
-        private void HideSidePanel(object sender, EventArgs e) {
+        protected void HideSidePanel(object sender, EventArgs e) {
 
             calculatorLabel.Visible = true;
             sidePanel.SendToBack();
         }
 
-        private void SelectCalculator(object sender, EventArgs e) {
+        protected virtual void SelectCalculator(object sender, EventArgs e) {
 
             string selection = ((Control)sender).Tag.ToString();
 
@@ -169,25 +172,25 @@ namespace MockUpCalculator {
             ToStandardCalculator();
         }
 
-        private void FormResizeBegin(object sender, EventArgs e) {
+        protected virtual void FormResizeBegin(object sender, EventArgs e) {
 
-            mainLayout.Visible = false;
+            MainLayout.Visible = false;
         }
 
-        private void FormResizeEnd(object sender, EventArgs e) {
+        protected virtual void FormResizeEnd(object sender, EventArgs e) {
 
             SaveDimension();
-            mainLayout.Visible = true;
+            MainLayout.Visible = true;
             CalculatorPanel.AdjustSize();
-            sidePanel.AdjustSize();
+            SidePanel.AdjustSize();
         }
 
-        private void MainCalculator_Deactivate(object sender, EventArgs e) {
+        protected virtual void DeactivateBackPanel(object sender, EventArgs e) {
 
             CalculatorPanel.DeactivateBackPanel();
         }
 
-        private void DragWindow(object sender, MouseEventArgs e) {
+        protected void DragWindow(object sender, MouseEventArgs e) {
 
             if(WindowState == FormWindowState.Maximized) {
 
@@ -197,40 +200,40 @@ namespace MockUpCalculator {
             Helper.DragWindow(e, this, Pointer);
         }
 
-        private void Minimize(object sender, EventArgs e) {
+        protected void Minimize(object sender, EventArgs e) {
 
             WindowState = FormWindowState.Minimized;
         }
 
-        private void ZoomToMax(object sender, EventArgs e) {
+        protected void ZoomToMax(object sender, EventArgs e) {
 
             Helper.ScaleTo(this, Width + 20, Height + 20);
             CalculatorPanel.AdjustSize();
-            sidePanel.AdjustSize();
+            SidePanel.AdjustSize();
 
             if(Width >= Viewport.Width && Height >= Viewport.Height) {
 
                 bottomPanel.Visible = true;
                 WindowState = FormWindowState.Maximized;
                 CalculatorPanel.AdjustSize();
-                sidePanel.AdjustSize();
+                SidePanel.AdjustSize();
                 zoomTimer.Tick -= ZoomToMax;
                 zoomTimer.Stop();
             }
         }
 
-        private void MaximizeToNormal() {
+        protected void MaximizeToNormal() {
 
             WindowState = FormWindowState.Normal;
-            Visible = false;
+            Opacity = 0;
             Helper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
             Helper.CenterToPoint(this, ClientCenter);
             CalculatorPanel.AdjustSize();
-            sidePanel.AdjustSize();
-            Visible = true;
+            SidePanel.AdjustSize();
+            Opacity = 1;
         }
 
-        private void NormalToMaximize() {
+        protected void NormalToMaximize() {
 
             SaveClientCenter();
             int width = (int)(Viewport.Width * 0.95);
@@ -241,7 +244,7 @@ namespace MockUpCalculator {
             zoomTimer.Start();
         }
 
-        private void ToggleWindowSize(object sender, EventArgs e) {
+        protected virtual void ToggleWindowSize(object sender, EventArgs e) {
 
             if(WindowState == FormWindowState.Maximized) {
 
@@ -253,7 +256,7 @@ namespace MockUpCalculator {
             NormalToMaximize();
         }
 
-        private void FinishLoadUI(object sender, EventArgs e) {
+        protected void FinishLoadUI(object sender, EventArgs e) {
 
             Opacity += 0.02;
 
@@ -265,7 +268,7 @@ namespace MockUpCalculator {
             }
         }
 
-        private void ZoomUI(object sender, EventArgs e) {
+        protected void ZoomUI(object sender, EventArgs e) {
 
             float scale = 1.025f;
             Helper.ScaleTo(this, (int)(Width * scale), (int)(Height * scale));
@@ -280,7 +283,7 @@ namespace MockUpCalculator {
             }
         }
 
-        private void LoadUI(object sender, EventArgs e) {
+        protected void LoadUI(object sender, EventArgs e) {
 
             SaveClientCenter();
             SaveDimension();
@@ -291,7 +294,7 @@ namespace MockUpCalculator {
             openTimer.Start();
         }
 
-        private void CloseUI(object sender, EventArgs e) {
+        protected void CloseUI(object sender, EventArgs e) {
 
             Opacity -= 0.05;
 
@@ -303,15 +306,13 @@ namespace MockUpCalculator {
             }
         }
 
-        private void Exit(object sender, EventArgs e) {
+        protected virtual void Exit(object sender, EventArgs e) {
 
             closeTimer.Tick += CloseUI;
             closeTimer.Start();
         }
 
-        private void ResizeWindow(ref Message message) {
-
-            var cursor = PointToClient(Cursor.Position);
+        protected void ResizeWindow(ref Message message, Point cursor) {
 
             foreach(int key in Resizer.Keys) {
 
@@ -334,7 +335,7 @@ namespace MockUpCalculator {
 
             if(message.Msg == resize) {
 
-                ResizeWindow(ref message);
+                ResizeWindow(ref message, PointToClient(Cursor.Position));
             }
             else if(message.Msg == click || (message.Msg == notify && (int)message.WParam == click)) {
 

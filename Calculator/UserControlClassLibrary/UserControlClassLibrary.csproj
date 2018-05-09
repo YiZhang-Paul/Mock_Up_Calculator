@@ -73,6 +73,7 @@
     <Compile Include="IResizable.cs" />
     <Compile Include="IResize.cs" />
     <Compile Include="IScientificKeypad.cs" />
+    <Compile Include="ISidePanel.cs" />
     <Compile Include="ItemDisplayPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

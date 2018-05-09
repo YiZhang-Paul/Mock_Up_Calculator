@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlClassLibrary {
-    public partial class SidePanel : UserControl, IExpandable, IResizable, IMenu {
+    public partial class SidePanel : UserControl, ISidePanel {
 
         private int TargetWidth { get; set; }
         private IHelper Helper { get; set; }
