@@ -102,6 +102,7 @@ namespace UserControlTest {
 
             helper = new Mock<IHelper>();
             sidePanel = new TestSidePanel(helper.Object);
+            sidePanel.Parent = new Panel();
             sidePanel.OnExtended += CheckEventFiring;
             sidePanel.OnShrunken += CheckEventFiring;
             sidePanel.OnSelect += CheckEventFiring;

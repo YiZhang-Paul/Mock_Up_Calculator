@@ -1,11 +1,11 @@
 ﻿namespace UserControlClassLibrary {
     partial class ExpandablePanel {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -18,8 +18,8 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
@@ -32,9 +32,9 @@
             this.mainPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // mainPanel
-            // 
+            //
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.mainPanel.Controls.Add(this.scrollBar);
             this.mainPanel.Controls.Add(this.bottomPanel);
@@ -45,9 +45,9 @@
             this.mainPanel.Size = new System.Drawing.Size(288, 82);
             this.mainPanel.TabIndex = 1;
             this.mainPanel.MouseEnter += new System.EventHandler(this.PanelMouseEnter);
-            // 
+            //
             // scrollBar
-            // 
+            //
             this.scrollBar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.scrollBar.BackColor = System.Drawing.Color.Gray;
             this.scrollBar.Location = new System.Drawing.Point(286, 0);
@@ -56,10 +56,10 @@
             this.scrollBar.Size = new System.Drawing.Size(2, 18);
             this.scrollBar.TabIndex = 6;
             this.scrollBar.Visible = false;
-            // 
+            //
             // bottomPanel
-            // 
-            this.bottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            //
+            this.bottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bottomPanel.Controls.Add(this.btnClear);
             this.bottomPanel.Location = new System.Drawing.Point(0, 38);
@@ -67,9 +67,9 @@
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(288, 44);
             this.bottomPanel.TabIndex = 0;
-            // 
+            //
             // btnClear
-            // 
+            //
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
@@ -90,13 +90,13 @@
             this.btnClear.Click += new System.EventHandler(this.ItemClear);
             this.btnClear.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
             this.btnClear.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            // 
+            //
             // expandTimer
-            // 
+            //
             this.expandTimer.Interval = 1;
-            // 
+            //
             // ExpandableDisplayPanel
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));

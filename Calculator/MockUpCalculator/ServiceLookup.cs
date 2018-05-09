@@ -14,22 +14,22 @@ using UtilityClassLibrary;
 namespace MockUpCalculator {
     public class ServiceLookup {
 
-        private IInputBuffer InputBuffer { get; set; }
-        private IOperatorLookup Operators { get; set; }
-        private IUnitConverter UnitConverter { get; set; }
-        private IOperatorConverter OperatorConverter { get; set; }
-        private IParenthesize Parenthesizer { get; set; }
-        private IExpressionBuilder ExpressionBuilder { get; set; }
-        private IExpressionParser ExpressionParser { get; set; }
-        private IEvaluate Evaluator { get; set; }
-        private IMemoryStorage MemoryStorage { get; set; }
+        public IInputBuffer InputBuffer { get; private set; }
+        public IOperatorLookup Operators { get; private set; }
+        public IUnitConverter UnitConverter { get; private set; }
+        public IOperatorConverter OperatorConverter { get; private set; }
+        public IParenthesize Parenthesizer { get; private set; }
+        public IExpressionBuilder ExpressionBuilder { get; private set; }
+        public IExpressionParser ExpressionParser { get; private set; }
+        public IEvaluate Evaluator { get; private set; }
+        public IMemoryStorage MemoryStorage { get; private set; }
 
-        private IKeyChecker KeyChecker { get; set; }
-        private IFormatter NumberFormatter { get; set; }
-        private IFormatter ExpressionFormatter { get; set; }
-        private IFormatter EngineeringFormatter { get; set; }
+        public IKeyChecker KeyChecker { get; private set; }
+        public IFormatter NumberFormatter { get; private set; }
+        public IFormatter ExpressionFormatter { get; private set; }
+        public IFormatter EngineeringFormatter { get; private set; }
 
-        private void LoadCalculatorAsset() {
+        public void LoadCalculatorAsset() {
 
             InputBuffer = new InputBuffer();
             Operators = new OperatorLookup();
@@ -42,8 +42,9 @@ namespace MockUpCalculator {
             MemoryStorage = new MemoryStorage();
         }
 
-        private void LoadCalculatorPanelAsset() {
+        public void LoadCalculatorPanelAsset() {
 
+            LoadCalculatorAsset();
             KeyChecker = new KeyChecker();
             NumberFormatter = new NumberFormatter();
             ExpressionFormatter = new ExpressionFormatter(Operators.Unary);
@@ -52,7 +53,6 @@ namespace MockUpCalculator {
 
         public StandardCalculatorPanel GetStandardCalculatorPanel() {
 
-            LoadCalculatorAsset();
             LoadCalculatorPanelAsset();
 
             return new StandardCalculatorPanel(
@@ -77,7 +77,6 @@ namespace MockUpCalculator {
 
         public ScientificCalculatorPanel GetScientificCalculatorPanel() {
 
-            LoadCalculatorAsset();
             LoadCalculatorPanelAsset();
 
             return new ScientificCalculatorPanel(

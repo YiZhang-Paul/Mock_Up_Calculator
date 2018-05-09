@@ -22,6 +22,7 @@ namespace UserControlTest {
 
             helper = new Mock<IHelper>();
             itemDisplayPanel = new TestItemDisplayPanel(helper.Object);
+            itemDisplayPanel.Parent = new Panel();
         }
 
         [TestMethod]

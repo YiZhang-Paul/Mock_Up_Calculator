@@ -18,11 +18,13 @@ namespace MockUpCalculator {
         private IFormatter EngineeringFormatter { get; set; }
         private new IScientificCalculator Calculator { get; set; }
 
+        public virtual bool EngineeringModeOn { get { return scientificKeypad.EngineeringMode; } }
+
         protected override IFormatter ActiveFormatter {
 
             get {
 
-                if(scientificKeypad.EngineeringMode) {
+                if(EngineeringModeOn) {
 
                     return EngineeringFormatter;
                 }
@@ -73,7 +75,7 @@ namespace MockUpCalculator {
             base.HandleOperator(Calculator.CheckTrigonometricKey(key));
         }
 
-        private void ChangeAngularUnit(object sender, EventArgs e) {
+        public void ChangeAngularUnit(object sender, EventArgs e) {
 
             Calculator.ChangeAngularUnit();
         }

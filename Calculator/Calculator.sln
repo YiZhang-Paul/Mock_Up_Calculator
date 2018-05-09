@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageTest", "StorageTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlTest", "UserControlTest\UserControlTest.csproj", "{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockUpCalculatorIntegrationTest", "MockUpCalculatorIntegrationTest\MockUpCalculatorIntegrationTest.csproj", "{D4DCF091-41FF-4A50-B7F4-2C0F49B0600E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67DCA47D-7EFD-42B8-AA6C-C83E8543ECF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4DCF091-41FF-4A50-B7F4-2C0F49B0600E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DCF091-41FF-4A50-B7F4-2C0F49B0600E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DCF091-41FF-4A50-B7F4-2C0F49B0600E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DCF091-41FF-4A50-B7F4-2C0F49B0600E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -64,6 +64,7 @@ namespace UserControlTest {
             button = new Button();
             helper = new Mock<IHelper>();
             expandablePanel = new TestExpandablePanel(null);
+            expandablePanel.Parent = new Panel();
             expandablePanel.OnExtended += CheckEventFiring;
             expandablePanel.OnShrunken += CheckEventFiring;
             expandablePanel.OnClear += CheckEventFiring;
@@ -110,6 +111,7 @@ namespace UserControlTest {
         public void Extend() {
 
             expandablePanel = new TestExpandablePanel(helper.Object);
+            expandablePanel.Parent = new Panel();
 
             expandablePanel.Extend(500);
 
