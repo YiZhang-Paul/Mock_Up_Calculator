@@ -10,22 +10,26 @@ The project currently supports:
   
 The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested.
 
-### Why replicate a Calculator?
+## Why replicate a Calculator?
 
 The main purpose of this project is to enhance the author's overall skill of:
 
   * software design (not UX design)
   * applying design patterns (if applicable)
-  * applying of **SOLID** principles (when applicable)
+  * applying **SOLID** principles (when applicable)
   * software testing
   * software documentation
   
 Through replicating, the author can fully concentrate on overall requirement, design and implementation of a practical software. 
 
-### What are some planned improvements?
+## What are some planned improvements?
 
 The application lacks the ability to handle big numbers. The author will seek to add big number support and deal with related performance issues due to big number handling.
 
-[microsoft calculator support]: https://support.microsoft.com/en-ca/help/4026389/windows-calculator-in-windows-10
+## License
+
+The project is intended for personal use only and therefore a license is not provided. Should the owner of original software ([windows 10 built-in calculator][microsoft calculator support]) request author to take down the project due to replicated UI, please contact the author at scaccterran@gmail.com or open an issue in this repository, and the author will take down the replicated portions immediately.
+
+[microsoft calculator support]: https://support.microsoft.com/en-ca/help/4026389/windows-calculator-in-windows-10 "Link to official page"
 [fixer.io]: https://fixer.io/ "fixer"
 [Moq]: https://github.com/moq/moq4
