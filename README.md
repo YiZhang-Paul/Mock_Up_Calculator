@@ -4,11 +4,11 @@ A personal project in an attempt to replicate Microsoft Windows 10 [_built-in ca
 
 The project currently supports:
 
-  1. Standard Calculator (supports nested expressions)
-  2. Scientific Calculator (advanced arithmetic operations)
-  3. Currency Converter (**_pulling live exchange rate_** from web APIs such as [fixer.io])
+  * Standard Calculator (supports nested expressions)
+  * Scientific Calculator (advanced arithmetic operations)
+  * Currency Converter (**_pulling live exchange rate_** from web APIs such as [fixer.io])
   
-The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested.
+The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested. For more information on the overall design and technical details of the project, please refer to the [wiki][wiki page] page for better clarification.
 
 ## Why replicate a Calculator?
 
@@ -31,6 +31,7 @@ The application lacks the ability to handle big numbers. The author will seek to
 The project is intended for personal use only and therefore a license is not provided. Should the owner of original software ([windows 10 built-in calculator][microsoft calculator support]) request author to take down the project due to replicated UI, please [open an issue][issue page] in this repository or contact the author at scaccterran@gmail.com, and the author will take down the replicated portions immediately.
 
 [microsoft calculator support]: https://support.microsoft.com/en-ca/help/4026389/windows-calculator-in-windows-10 "Link to official page"
+[wiki page]: https://github.com/YiZhang-Paul/Mock_Up_Calculator/wiki "Wiki"
 [issue page]: https://github.com/YiZhang-Paul/Mock_Up_Calculator/issues "Open Issue"
 [fixer.io]: https://fixer.io/ "fixer"
 [Moq]: https://github.com/moq/moq4
