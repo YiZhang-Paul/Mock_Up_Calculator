@@ -28,8 +28,9 @@ The application lacks the ability to handle big numbers. The author will seek to
 
 ## License
 
-The project is intended for personal use only and therefore a license is not provided. Should the owner of original software ([windows 10 built-in calculator][microsoft calculator support]) request author to take down the project due to replicated UI, please contact the author at scaccterran@gmail.com or open an issue in this repository, and the author will take down the replicated portions immediately.
+The project is intended for personal use only and therefore a license is not provided. Should the owner of original software ([windows 10 built-in calculator][microsoft calculator support]) request author to take down the project due to replicated UI, please [open an issue][issue page] in this repository or contact the author at scaccterran@gmail.com, and the author will take down the replicated portions immediately.
 
 [microsoft calculator support]: https://support.microsoft.com/en-ca/help/4026389/windows-calculator-in-windows-10 "Link to official page"
+[issue page]: https://github.com/YiZhang-Paul/Mock_Up_Calculator/issues "Open Issue"
 [fixer.io]: https://fixer.io/ "fixer"
 [Moq]: https://github.com/moq/moq4
