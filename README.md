@@ -1,2 +1,2 @@
-# Mock_Up_Calculator
-A mock up calculator implemented using parse tree and following test-driven development practices
+### Mock_Up_Calculator
+*A __mock up__ calculator implemented using parse tree and following test-driven development practices*
