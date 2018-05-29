@@ -20,6 +20,14 @@ namespace FormatterTest {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+         "Invalid Expression.")]
+        public void NullInput() {
+
+            formatter.Format(null);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException),
          "Invalid Expression.")]
         public void InvalidExpression() {

@@ -622,7 +622,6 @@ namespace CalculatorTest {
             calculator.Add(lookup.ArcTanh);
 
             Assert.AreEqual("8 " + lookup.ArcTanh, calculator.Expression);
-            calculator.Evaluate();
         }
 
         [TestMethod]

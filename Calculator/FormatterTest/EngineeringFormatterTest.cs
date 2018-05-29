@@ -15,11 +15,35 @@ namespace FormatterTest {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException),
+         "Invalid Number.")]
+        public void FormatNullInput() {
+
+            formatter.Format(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException),
+         "Invalid Number.")]
+        public void FormatEmptyInput() {
+
+            formatter.Format(string.Empty);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(FormatException),
          "Invalid Number.")]
         public void FormatInvalidNumber() {
 
             formatter.Format("100a012");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverflowException),
+         "Invalid Number.")]
+        public void FormatLargeNumber() {
+
+            formatter.Format(decimal.MaxValue.ToString() + "9");
         }
 
         [TestMethod]

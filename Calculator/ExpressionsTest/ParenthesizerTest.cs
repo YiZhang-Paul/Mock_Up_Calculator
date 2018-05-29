@@ -8,14 +8,14 @@ namespace ExpressionsTest {
     public class ParenthesizerTest {
 
         Parenthesizer parenthesizer;
-        string plus = "+";
-        string minus = "-";
-        string multiply = "*";
-        string divide = "/";
-        string factorial = "fact";
-        string power = "^";
-        string log = "log";
-        string exp = "exp";
+        const string plus = "+";
+        const string minus = "-";
+        const string multiply = "*";
+        const string divide = "/";
+        const string factorial = "fact";
+        const string power = "^";
+        const string log = "log";
+        const string exp = "exp";
 
         [TestInitialize]
         public void Setup() {
