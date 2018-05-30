@@ -8,7 +8,11 @@ The project currently supports:
   * Scientific Calculator (advanced arithmetic operations)
   * Currency Converter (**_pulling live exchange rate_** from web APIs such as [fixer.io])
   
-The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested. For more information on the overall design and technical details of the project, please refer to the [wiki][wiki page] page for better clarification.
+The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested. 
+
+## Documentation
+
+For more information on the overall design and technical details of the project, please refer to the [wiki][wiki page] page for better clarification.
 
 ## Why replicate a Calculator?
 
