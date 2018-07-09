@@ -207,7 +207,10 @@ namespace CalculatorClassLibrary {
 
         protected decimal GetResult() {
 
-            return Evaluator.Evaluate(Parser.Parse(Builder.Build()));
+            string expression = Builder.Build();
+            var parseTree = Parser.Parse(expression);
+
+            return Evaluator.Evaluate(parseTree);
         }
 
         protected decimal TryEvaluate() {

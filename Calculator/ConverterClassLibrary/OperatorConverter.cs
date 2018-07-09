@@ -41,12 +41,7 @@ namespace ConverterClassLibrary {
 
         public bool IsBinary(string token) {
 
-            if(!IsOperator(token)) {
-
-                return false;
-            }
-
-            return !IsUnary(token);
+            return IsOperator(token) && !IsUnary(token);
         }
 
         public int ToValue(string token) {

@@ -12,6 +12,10 @@ using UtilityClassLibrary;
 namespace CalculatorClassLibrary {
     public class ScientificCalculator : StandardCalculator, IScientificCalculator {
 
+        private const string _degreeNotation = "₀";
+        private const string _radianNotation = "ᵣ";
+        private const string _gradianNotation = "₉";
+
         public int AngularUnit { get; private set; }
 
         public ScientificCalculator(
@@ -52,10 +56,10 @@ namespace CalculatorClassLibrary {
 
             if(AngularUnit == 0) {
 
-                return "₀";
+                return _degreeNotation;
             }
 
-            return AngularUnit == 1 ? "ᵣ" : "₉";
+            return AngularUnit == 1 ? _radianNotation : _gradianNotation;
         }
 
         public string CheckTrigonometricKey(string input) {
@@ -65,7 +69,9 @@ namespace CalculatorClassLibrary {
                 return input;
             }
 
-            return Regex.Replace(input, "(sin|cos|tan)(?!₀|ᵣ|₉|h)", match => {
+            string notation = _degreeNotation + "|" + _radianNotation + "|" + _gradianNotation;
+
+            return Regex.Replace(input, "(sin|cos|tan)(?!" + notation + "|h)", match => {
 
                 return match.Value + GetAngularNotation();
             });

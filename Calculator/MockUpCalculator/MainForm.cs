@@ -69,34 +69,6 @@ namespace MockUpCalculator {
             ClientCenter = PointToScreen(new Point(Width / 2, Height / 2));
         }
 
-        protected void ToStandardCalculator() {
-
-            if(CalculatorPanel != null) {
-
-                ((Control)CalculatorPanel).Dispose();
-            }
-
-            CalculatorPanel = ServiceLookup.GetStandardCalculatorPanel();
-            ((Control)CalculatorPanel).Parent = uiLayout;
-            ((Control)CalculatorPanel).Dock = DockStyle.Fill;
-            ((Control)CalculatorPanel).Show();
-            calculatorLabel.Text = "Standard";
-        }
-
-        protected void ToScientificCalculatorPanel() {
-
-            if(CalculatorPanel != null) {
-
-                ((Control)CalculatorPanel).Dispose();
-            }
-
-            CalculatorPanel = ServiceLookup.GetScientificCalculatorPanel();
-            ((Control)CalculatorPanel).Parent = uiLayout;
-            ((Control)CalculatorPanel).Dock = DockStyle.Fill;
-            ((Control)CalculatorPanel).Show();
-            calculatorLabel.Text = "Scientific";
-        }
-
         protected virtual void Initialize() {
 
             Resizer = new Resizer(this);
@@ -112,6 +84,31 @@ namespace MockUpCalculator {
                 new string[] { "Calculator", "Standard", "Scientific" },
                 new string[] { "Converter", "Currency" }
             };
+        }
+
+        protected void ToCalculator(string label, Func<ICalculatorPanel> factoryMethod) {
+
+            if(CalculatorPanel != null) {
+
+                ((Control)CalculatorPanel).Dispose();
+            }
+
+            CalculatorPanel = factoryMethod();
+            calculatorLabel.Text = label;
+            var panel = (Control)CalculatorPanel;
+            panel.Parent = uiLayout;
+            panel.Dock = DockStyle.Fill;
+            panel.Show();
+        }
+
+        protected void ToStandardCalculator() {
+
+            ToCalculator("Standard", ServiceLookup.GetStandardCalculatorPanel);
+        }
+
+        protected void ToScientificCalculatorPanel() {
+
+            ToCalculator("Scientific", ServiceLookup.GetScientificCalculatorPanel);
         }
 
         protected void ToggleHistoryPanel(object sender, EventArgs e) {
