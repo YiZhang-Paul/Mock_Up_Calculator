@@ -29,6 +29,7 @@ namespace ExpressionsClassLibrary {
 
         private void Initialize() {
 
+            #region List of Supported Arithmetic Operations
             Calculation = new Dictionary<string, Func<decimal, decimal, decimal>>() {
 
                 { Lookup.SquareRoot, (op1, op2) => NthRoot(op1, 2) },
@@ -76,16 +77,17 @@ namespace ExpressionsClassLibrary {
                 { Lookup.Plus, decimal.Add },
                 { Lookup.Minus, decimal.Subtract }
             };
+            #endregion
         }
 
-        private decimal AsDecimal(decimal operand, Func<double, double> callback) {
+        private decimal AsDecimal(decimal operand, Func<double, double> unaryOperation) {
 
-            return (decimal)callback((double)operand);
+            return (decimal)unaryOperation((double)operand);
         }
 
-        private decimal AsDecimal(decimal operand1, decimal operand2, Func<double, double, double> callback) {
+        private decimal AsDecimal(decimal operand1, decimal operand2, Func<double, double, double> binaryOperation) {
 
-            return (decimal)callback((double)operand1, (double)operand2);
+            return (decimal)binaryOperation((double)operand1, (double)operand2);
         }
 
         private decimal ToRadian(decimal angle, bool isDegree = true) {

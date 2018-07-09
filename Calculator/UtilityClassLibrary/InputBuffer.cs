@@ -31,7 +31,7 @@ namespace UtilityClassLibrary {
         private bool CanAdd(string input) {
 
             if(!IsDecimal) {
-
+                //decimal type supports numbers up to 28 digits in length
                 return input == "." || Content.Length < 28;
             }
 
@@ -44,7 +44,7 @@ namespace UtilityClassLibrary {
 
                 return;
             }
-
+            //value input will overwrite empty buffer
             if(Content == "0") {
 
                 Set(input == "." ? "0." : input);
@@ -65,7 +65,7 @@ namespace UtilityClassLibrary {
         }
 
         public void Undo() {
-
+            //when buffer has only one digit, undo operation will restore buffer to initial state
             if(!IsDecimal && Math.Abs(Value).ToString().Length == 1) {
 
                 Clear();

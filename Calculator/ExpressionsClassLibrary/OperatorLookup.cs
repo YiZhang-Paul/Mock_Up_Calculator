@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ExpressionsClassLibrary {
     public class OperatorLookup : IOperatorLookup {
 
+        #region List of Supported Operators
         public string SquareRoot { get { return "√"; } }
         public string Square { get { return "sqr"; } }
         public string Cube { get { return "cube"; } }
@@ -52,11 +53,12 @@ namespace ExpressionsClassLibrary {
         public string Plus { get { return "+"; } }
         public string Minus { get { return "−"; } }
         public string PI { get { return "π"; } }
+        #endregion
 
         public List<string[]> Precedence {
 
             get {
-
+                //operator precedence from highest to lowest
                 return new List<string[]>() {
 
                     new string[] {

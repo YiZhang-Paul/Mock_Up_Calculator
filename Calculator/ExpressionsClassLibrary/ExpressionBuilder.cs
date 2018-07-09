@@ -10,7 +10,7 @@ namespace ExpressionsClassLibrary {
         private enum KeyType { Value, Unary, Binary, Left, Right, Empty };
 
         private Deque<string> Buffer { get; set; }
-        private Deque<KeyType> LastKey { get; set; }
+        private Deque<KeyType> KeyHistory { get; set; }
         private IParenthesize Parenthesizer { get; set; }
 
         public string Expression { get { return string.Join(" ", Buffer); } }
@@ -18,10 +18,11 @@ namespace ExpressionsClassLibrary {
         public ExpressionBuilder(IParenthesize parenthesizer) {
 
             Buffer = new Deque<string>();
-            LastKey = new Deque<KeyType>() { KeyType.Empty };
+            KeyHistory = new Deque<KeyType>() { KeyType.Empty };
             Parenthesizer = parenthesizer;
         }
 
+        //constructor used for testing purpose only
         public ExpressionBuilder(
 
             IParenthesize parenthesizer,
@@ -50,19 +51,19 @@ namespace ExpressionsClassLibrary {
                 Buffer.Add(expression);
             }
 
-            LastKey.Add(typeTable[type]);
+            KeyHistory.Add(typeTable[type]);
         }
 
         public void Clear() {
 
             Buffer.Clear();
-            LastKey = new Deque<KeyType>() { KeyType.Empty };
+            KeyHistory = new Deque<KeyType>() { KeyType.Empty };
         }
 
         public void Undo() {
 
             Buffer.RemoveBack();
-            LastKey.RemoveBack();
+            KeyHistory.RemoveBack();
         }
 
         private int MissingParentheses(string expression) {
@@ -81,7 +82,7 @@ namespace ExpressionsClassLibrary {
         }
 
         public bool CanAddValue() {
-
+            //value input after another value, unary operators or right parenthesis is not allowed
             var invalidTypes = new HashSet<KeyType>() {
 
                 KeyType.Value,
@@ -89,7 +90,7 @@ namespace ExpressionsClassLibrary {
                 KeyType.Right
             };
 
-            return !invalidTypes.Contains(LastKey.Last());
+            return !invalidTypes.Contains(KeyHistory.Last());
         }
 
         public void AddValue(decimal input) {
@@ -100,76 +101,82 @@ namespace ExpressionsClassLibrary {
             }
 
             Buffer.Add(input.ToString());
-            LastKey.Add(KeyType.Value);
+            KeyHistory.Add(KeyType.Value);
         }
 
         public void AddUnary(string input) {
-
-            if(LastKey.Last() == KeyType.Binary) {
+            //unary operator input cannot follow binary operators
+            if(KeyHistory.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
-
-            if(LastKey.Last() == KeyType.Left || LastKey.Last() == KeyType.Empty) {
+            /*
+             * when unary operator input follows left parenthesis or nothing,
+             * a value of zero will be added as default operand
+             */
+            if(KeyHistory.Last() == KeyType.Left || KeyHistory.Last() == KeyType.Empty) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey.Add(KeyType.Unary);
+            KeyHistory.Add(KeyType.Unary);
         }
 
         public void AddBinary(string input) {
-
-            if(LastKey.Last() == KeyType.Binary) {
+            //consecutive binary operator input is not allowed
+            if(KeyHistory.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
-
-            if(LastKey.Last() == KeyType.Left || LastKey.Last() == KeyType.Empty) {
+            /*
+             * when binary operator input follows left parenthesis or nothing,
+             * a value of zero will be added as default operand
+             */
+            if(KeyHistory.Last() == KeyType.Left || KeyHistory.Last() == KeyType.Empty) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey.Add(KeyType.Binary);
+            KeyHistory.Add(KeyType.Binary);
         }
 
         private void AddLeftParenthesis(string input) {
-
-            if(LastKey.Last() == KeyType.Value || LastKey.Last() == KeyType.Unary) {
+            //left parenthesis cannot immediately follow a value or unary operator
+            if(KeyHistory.Last() == KeyType.Value || KeyHistory.Last() == KeyType.Unary) {
 
                 throw new InvalidOperationException("Missing Operators.");
             }
-
-            if(LastKey.Last() == KeyType.Right) {
+            //left parenthesis cannot immediately follow right parenthesis
+            if(KeyHistory.Last() == KeyType.Right) {
 
                 throw new InvalidOperationException("Mismatched Parentheses.");
             }
 
             Buffer.Add(input);
-            LastKey.Add(KeyType.Left);
+            KeyHistory.Add(KeyType.Left);
         }
 
         private void AddRightParenthesis(string input) {
-
-            if(LastKey.Last() == KeyType.Binary) {
+            //right parenthesis cannot immediately follow binary operator
+            if(KeyHistory.Last() == KeyType.Binary) {
 
                 throw new InvalidOperationException("Missing Operand.");
             }
-
+            //parentheses must match
             if(MissingParentheses(Expression) < 1) {
 
                 throw new InvalidOperationException("Mismatched Parentheses.");
             }
 
-            if(LastKey.Last() == KeyType.Left) {
+            if(KeyHistory.Last() == KeyType.Left) {
 
                 AddValue(0);
             }
 
             Buffer.Add(input);
-            LastKey.Add(KeyType.Right);
+            KeyHistory.Add(KeyType.Right);
         }
 
         public void AddParentheses(string input) {

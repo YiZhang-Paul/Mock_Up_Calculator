@@ -21,7 +21,7 @@ namespace ConverterClassLibrary {
             Values = new Dictionary<string, int>();
             Operators = new Dictionary<int, string>();
             Unary = unarys;
-
+            //allows bi-directional conversion between operators and numerical values
             for(int i = 0; i < operators.Length; i++) {
 
                 Values[operators[i]] = i;
@@ -45,7 +45,7 @@ namespace ConverterClassLibrary {
         }
 
         public int ToValue(string token) {
-
+            //use -1 to indicate invalid operator
             if(!IsOperator(token)) {
 
                 return -1;

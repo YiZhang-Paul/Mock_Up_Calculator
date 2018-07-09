@@ -47,7 +47,7 @@ namespace ExpressionsClassLibrary {
                 if(items[index] == "(" || items[index] == ")") {
 
                     counter += items[index] == "(" ? 1 : -1;
-
+                    //when matching parentheses is found
                     if(counter == 0) {
 
                         nested.Append(")");
@@ -66,7 +66,7 @@ namespace ExpressionsClassLibrary {
             var tokens = new List<string>();
 
             for(int i = 0; i < items.Length; i++) {
-
+                //nested expression is considered as one token
                 if(items[i] == "(") {
 
                     tokens.Add(GetNested(items, ref i));
@@ -81,11 +81,12 @@ namespace ExpressionsClassLibrary {
         }
 
         private void Nest(List<string> nested, string[] tokens, bool isUnary, ref int index) {
-
-            string head = "[ " + nested.Last() + " ";
-            string tail = (isUnary ? "" : " " + tokens[index + 1]) + " ]";
-            nested[nested.Count - 1] = head + tokens[index] + tail;
-
+            //first operand is temporarily stored as last item in nested list
+            string operand1 = nested.Last() + " ";
+            string operand2 = isUnary ? "" : " " + tokens[index + 1];
+            //use square brackets to differentiate from unprocessed tokens
+            nested[nested.Count - 1] = "[ " + operand1 + tokens[index] + operand2 + " ]";
+            //skip second operand when handling binary operators
             if(!isUnary) {
 
                 index++;
@@ -114,27 +115,27 @@ namespace ExpressionsClassLibrary {
                 var nested = new List<string>();
 
                 for(int j = 0; j < tokens.Length; j++) {
-
+                    //when current token is operator
                     if(Precedence[i].Contains(tokens[j])) {
 
                         Nest(nested, tokens, i == 0, ref j);
 
                         continue;
                     }
-
+                    //when current token is nested expression
                     if(IsNested(tokens[j])) {
 
                         nested.Add(TryParenthesize(UnNest(tokens[j]), false));
 
                         continue;
                     }
-
+                    //when current token is operand
                     nested.Add(tokens[j]);
                 }
 
                 tokens = nested.ToArray();
             }
-
+            //all tokens will be combined together when parenthesized
             return topLevel ? ChangeParentheses(tokens[0]) : tokens[0];
         }
 

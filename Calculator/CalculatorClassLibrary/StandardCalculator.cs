@@ -99,7 +99,7 @@ namespace CalculatorClassLibrary {
         }
 
         public override void Add(decimal input) {
-
+            //clear entire calculator on invalid value input
             if(!Builder.CanAddValue()) {
 
                 Clear();
@@ -114,7 +114,7 @@ namespace CalculatorClassLibrary {
         }
 
         private void AddParentheses(string input) {
-
+            //invalid parentheses input has no impact
             try {
 
                 Builder.AddParentheses(input);
@@ -129,7 +129,7 @@ namespace CalculatorClassLibrary {
                 Builder.AddUnary(input);
             }
             catch(InvalidOperationException) {
-
+                //use last evaluation result when operand is absent
                 Builder.AddValue(LastResult);
                 Builder.AddUnary(input);
             }
@@ -142,7 +142,7 @@ namespace CalculatorClassLibrary {
                 Builder.AddBinary(input);
             }
             catch(InvalidOperationException) {
-
+                //on consecutive binary operator input, only the last one counts as valid input
                 Builder.Undo();
                 Builder.AddBinary(input);
             }
@@ -154,7 +154,7 @@ namespace CalculatorClassLibrary {
 
                 return true;
             }
-
+            //negating when buffer is not empty will not push buffer content to builder
             return input == Lookup.Negate && !Buffer.IsEmpty;
         }
 
@@ -259,7 +259,10 @@ namespace CalculatorClassLibrary {
                 throw exception;
             }
             catch(Exception) {
-
+                /*
+                 * push last evaluation result into builder and try evaluating again
+                 * e.g. when evaluating "5 + ", try evaluating "5 + 5" instead
+                 */
                 AddValue(LastResult);
 
                 return TryEvaluate();

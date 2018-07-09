@@ -33,14 +33,21 @@ namespace ExpressionsClassLibrary {
         }
 
         private INode ParseUnary(INode node, string token) {
-
+            /*
+             * when current token is unary operator,
+             * save the operator in current node and stay in current node
+             */
             SaveOperator(node, Converter.ToValue(token));
 
             return node;
         }
 
         private INode ParseBinary(INode node, string token) {
-
+            /*
+             * when current token is binary operator,
+             * save the operator in current node,
+             * create a right child node and descend to right child node
+             */
             SaveOperator(node, Converter.ToValue(token));
             node.AddRight(new Node());
 
@@ -58,21 +65,28 @@ namespace ExpressionsClassLibrary {
         }
 
         private INode ParseOperand(INode node, decimal value) {
-
+            /*
+             * when current token is an operand,
+             * save the operand in current node and return to parent node
+             */
             SaveOperand(node, value);
 
             return node.Parent;
         }
 
         private INode ParseParenthesis(INode node, string token) {
-
+            /*
+             * when current token is left parenthesis,
+             * save the parenthesis in current node,
+             * create a left child node and descend to left child node
+             */
             if(token == "(") {
 
                 node.AddLeft(new Node());
 
                 return node.Left;
             }
-
+            //return to parent node when current token is right parenthesis
             return node.Parent;
         }
 
