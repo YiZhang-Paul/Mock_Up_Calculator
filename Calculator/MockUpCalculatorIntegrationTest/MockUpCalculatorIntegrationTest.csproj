@@ -73,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardCalculatorPanelIntegrationTest.cs" />
     <Compile Include="MainFormlIntegrationTest.cs" />
+    <Compile Include="ConverterPanelIntegrationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorClassLibrary\CalculatorClassLibrary.csproj">
