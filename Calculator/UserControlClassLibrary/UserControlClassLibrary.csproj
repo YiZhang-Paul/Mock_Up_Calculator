@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicKeypad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BasicKeypad.Designer.cs">
+      <DependentUpon>BasicKeypad.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExpandablePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <Compile Include="UIHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BasicKeypad.resx">
+      <DependentUpon>BasicKeypad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExpandablePanel.resx">
       <DependentUpon>ExpandablePanel.cs</DependentUpon>
     </EmbeddedResource>

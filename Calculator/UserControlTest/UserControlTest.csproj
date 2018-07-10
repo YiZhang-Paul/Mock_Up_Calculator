@@ -84,6 +84,7 @@
     <Compile Include="ScientificKeypadTest.cs" />
     <Compile Include="StandardKeypadTest.cs" />
     <Compile Include="KeypadTest.cs" />
+    <Compile Include="BasicKeypadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">

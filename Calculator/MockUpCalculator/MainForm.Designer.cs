@@ -30,7 +30,7 @@
             this.uiLayout = new System.Windows.Forms.TableLayoutPanel();
             this.menuBarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnHistory = new System.Windows.Forms.Button();
-            this.calculatorLabel = new System.Windows.Forms.Label();
+            this.currentLabel = new System.Windows.Forms.Label();
             this.switchPanel = new System.Windows.Forms.Panel();
             this.btnChangeCalculator = new System.Windows.Forms.Button();
             this.sidePanel = new UserControlClassLibrary.SidePanel();
@@ -43,9 +43,9 @@
             this.menuBarLayout.SuspendLayout();
             this.switchPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // mainLayout
-            // 
+            //
             this.mainLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.mainLayout.ColumnCount = 1;
@@ -62,9 +62,9 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayout.Size = new System.Drawing.Size(337, 589);
             this.mainLayout.TabIndex = 1;
-            // 
+            //
             // topPanel
-            // 
+            //
             this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.topPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -74,9 +74,9 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(337, 32);
             this.topPanel.TabIndex = 0;
-            // 
+            //
             // bottomPanel
-            // 
+            //
             this.bottomPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bottomPanel.Controls.Add(this.uiLayout);
             this.bottomPanel.Controls.Add(this.sidePanel);
@@ -86,9 +86,9 @@
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(337, 557);
             this.bottomPanel.TabIndex = 1;
-            // 
+            //
             // uiLayout
-            // 
+            //
             this.uiLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.uiLayout.ColumnCount = 1;
             this.uiLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -102,15 +102,15 @@
             this.uiLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uiLayout.Size = new System.Drawing.Size(337, 557);
             this.uiLayout.TabIndex = 1;
-            // 
+            //
             // menuBarLayout
-            // 
+            //
             this.menuBarLayout.ColumnCount = 3;
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.menuBarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.menuBarLayout.Controls.Add(this.btnHistory, 2, 0);
-            this.menuBarLayout.Controls.Add(this.calculatorLabel, 1, 0);
+            this.menuBarLayout.Controls.Add(this.currentLabel, 1, 0);
             this.menuBarLayout.Controls.Add(this.switchPanel, 0, 0);
             this.menuBarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuBarLayout.Location = new System.Drawing.Point(0, 0);
@@ -120,9 +120,9 @@
             this.menuBarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.menuBarLayout.Size = new System.Drawing.Size(337, 50);
             this.menuBarLayout.TabIndex = 0;
-            // 
+            //
             // btnHistory
-            // 
+            //
             this.btnHistory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHistory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -142,30 +142,30 @@
             this.btnHistory.Click += new System.EventHandler(this.ToggleHistoryPanel);
             this.btnHistory.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnHistory.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
-            // 
+            //
             // calculatorLabel
-            // 
-            this.calculatorLabel.AutoSize = true;
-            this.calculatorLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.calculatorLabel.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.calculatorLabel.Location = new System.Drawing.Point(50, 0);
-            this.calculatorLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.calculatorLabel.Name = "calculatorLabel";
-            this.calculatorLabel.Size = new System.Drawing.Size(0, 50);
-            this.calculatorLabel.TabIndex = 3;
-            this.calculatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
+            this.currentLabel.AutoSize = true;
+            this.currentLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.currentLabel.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.currentLabel.Location = new System.Drawing.Point(50, 0);
+            this.currentLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.currentLabel.Name = "calculatorLabel";
+            this.currentLabel.Size = new System.Drawing.Size(0, 50);
+            this.currentLabel.TabIndex = 3;
+            this.currentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
             // switchPanel
-            // 
+            //
             this.switchPanel.Controls.Add(this.btnChangeCalculator);
             this.switchPanel.Location = new System.Drawing.Point(0, 0);
             this.switchPanel.Margin = new System.Windows.Forms.Padding(0);
             this.switchPanel.Name = "switchPanel";
             this.switchPanel.Size = new System.Drawing.Size(50, 50);
             this.switchPanel.TabIndex = 4;
-            // 
+            //
             // btnChangeCalculator
-            // 
+            //
             this.btnChangeCalculator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnChangeCalculator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnChangeCalculator.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -187,9 +187,9 @@
             this.btnChangeCalculator.Click += new System.EventHandler(this.ChangeMenuClick);
             this.btnChangeCalculator.MouseEnter += new System.EventHandler(this.KeypadButtonMouseEnter);
             this.btnChangeCalculator.MouseLeave += new System.EventHandler(this.KeypadButtonMouseLeave);
-            // 
+            //
             // sidePanel
-            // 
+            //
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.sidePanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.sidePanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -198,21 +198,21 @@
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(240, 557);
             this.sidePanel.TabIndex = 0;
-            // 
+            //
             // zoomTimer
-            // 
+            //
             this.zoomTimer.Interval = 16;
-            // 
+            //
             // closeTimer
-            // 
+            //
             this.closeTimer.Interval = 1;
-            // 
+            //
             // openTimer
-            // 
+            //
             this.openTimer.Interval = 1;
-            // 
+            //
             // MainForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -252,7 +252,7 @@
         private System.Windows.Forms.TableLayoutPanel uiLayout;
         private System.Windows.Forms.TableLayoutPanel menuBarLayout;
         private System.Windows.Forms.Button btnHistory;
-        private System.Windows.Forms.Label calculatorLabel;
+        private System.Windows.Forms.Label currentLabel;
         private System.Windows.Forms.Panel switchPanel;
         private System.Windows.Forms.Button btnChangeCalculator;
         private UserControlClassLibrary.SidePanel sidePanel;

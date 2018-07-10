@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace UserControlClassLibrary {
+    public partial class BasicKeypad : Keypad {
+
+        public BasicKeypad() {
+
+            InitializeComponent();
+            Initialize();
+        }
+
+        public BasicKeypad(IHelper helper) : this() {
+
+            Helper = helper;
+        }
+
+        private void RemoveFocus() {
+
+            mainLayout.Focus();
+        }
+
+        protected override void ButtonMouseClick(object sender, EventArgs e) {
+
+            RemoveFocus();
+            base.ButtonMouseClick(sender, e);
+        }
+    }
+}

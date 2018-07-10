@@ -8,14 +8,14 @@ using ConverterClassLibrary;
 namespace ExpressionsClassLibrary {
     public class Evaluator : IEvaluate {
 
-        private IUnitConverter UnitConverter { get; set; }
+        private ITempUnitConverter UnitConverter { get; set; }
         private IOperatorConverter OperatorConverter { get; set; }
         private IOperatorLookup Lookup { get; set; }
         private Dictionary<string, Func<decimal, decimal, decimal>> Calculation { get; set; }
 
         public Evaluator(
 
-            IUnitConverter unitConverter,
+            ITempUnitConverter unitConverter,
             IOperatorConverter operatorConverter,
             IOperatorLookup operatorLookup
 

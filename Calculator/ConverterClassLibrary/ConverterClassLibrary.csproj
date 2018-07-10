@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngleConverter.cs" />
     <Compile Include="IOperatorConverter.cs" />
+    <Compile Include="ITempUnitConverter.cs" />
     <Compile Include="IUnitConverter.cs" />
     <Compile Include="OperatorConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

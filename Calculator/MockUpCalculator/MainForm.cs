@@ -28,6 +28,7 @@ namespace MockUpCalculator {
         protected ServiceLookup ServiceLookup { get; set; }
         protected ISidePanel SidePanel { get; set; }
         protected ICalculatorPanel CalculatorPanel { get; set; }
+        protected UserControl ConverterPanel { get; set; }
         protected IHelper Helper { get; set; }
         protected IResize Resizer { get; set; }
 
@@ -86,19 +87,48 @@ namespace MockUpCalculator {
             };
         }
 
-        protected void ToCalculator(string label, Func<ICalculatorPanel> factoryMethod) {
+        protected void ClearMainPanel() {
+
+            if(ConverterPanel != null) {
+
+                ConverterPanel.Dispose();
+            }
 
             if(CalculatorPanel != null) {
 
                 ((Control)CalculatorPanel).Dispose();
             }
+        }
 
-            CalculatorPanel = factoryMethod();
-            calculatorLabel.Text = label;
-            var panel = (Control)CalculatorPanel;
+        protected void LoadMainPanel(Control panel) {
+
             panel.Parent = uiLayout;
             panel.Dock = DockStyle.Fill;
             panel.Show();
+        }
+
+        protected void ResizeMainPanel() {
+
+            if(CalculatorPanel != null) {
+
+                CalculatorPanel.AdjustSize();
+            }
+        }
+
+        protected void ToCalculator(string label, Func<ICalculatorPanel> factoryMethod) {
+
+            currentLabel.Text = label;
+            ClearMainPanel();
+            CalculatorPanel = factoryMethod();
+            LoadMainPanel((Control)CalculatorPanel);
+        }
+
+        protected void ToConverter(string label, Func<UserControl> factoryMethod) {
+
+            currentLabel.Text = label;
+            ClearMainPanel();
+            ConverterPanel = factoryMethod();
+            LoadMainPanel(ConverterPanel);
         }
 
         protected void ToStandardCalculator() {
@@ -113,8 +143,12 @@ namespace MockUpCalculator {
 
         protected void ToggleHistoryPanel(object sender, EventArgs e) {
 
-            calculatorLabel.Focus();
-            CalculatorPanel.ToggleHistoryPanel(sender, e);
+            currentLabel.Focus();
+
+            if(CalculatorPanel != null) {
+
+                CalculatorPanel.ToggleHistoryPanel(sender, e);
+            }
         }
 
         protected void SavePointerLocation(object sender, MouseEventArgs e) {
@@ -134,19 +168,19 @@ namespace MockUpCalculator {
 
         protected void ChangeMenuClick(object sender, EventArgs e) {
 
-            calculatorLabel.Focus();
-            calculatorLabel.Visible = false;
+            currentLabel.Focus();
+            currentLabel.Visible = false;
             SidePanel.Extend(Math.Min(280, Width / 4 * 3));
         }
 
         protected void ShowSidePanel(object sender, EventArgs e) {
 
-            SidePanel.ShowMenu(MenuItems, calculatorLabel.Text);
+            SidePanel.ShowMenu(MenuItems, currentLabel.Text);
         }
 
         protected void HideSidePanel(object sender, EventArgs e) {
 
-            calculatorLabel.Visible = true;
+            currentLabel.Visible = true;
             sidePanel.SendToBack();
         }
 
@@ -154,7 +188,7 @@ namespace MockUpCalculator {
 
             string selection = ((Control)sender).Tag.ToString();
 
-            if(selection == calculatorLabel.Text) {
+            if(selection == currentLabel.Text) {
 
                 return;
             }
@@ -178,13 +212,16 @@ namespace MockUpCalculator {
 
             SaveDimension();
             MainLayout.Visible = true;
-            CalculatorPanel.AdjustSize();
+            ResizeMainPanel();
             SidePanel.AdjustSize();
         }
 
         protected virtual void DeactivateBackPanel(object sender, EventArgs e) {
 
-            CalculatorPanel.DeactivateBackPanel();
+            if(CalculatorPanel != null) {
+
+                CalculatorPanel.DeactivateBackPanel();
+            }
         }
 
         protected void DragWindow(object sender, MouseEventArgs e) {
@@ -205,14 +242,14 @@ namespace MockUpCalculator {
         protected void ZoomToMax(object sender, EventArgs e) {
 
             Helper.ScaleTo(this, Width + 20, Height + 20);
-            CalculatorPanel.AdjustSize();
+            ResizeMainPanel();
             SidePanel.AdjustSize();
 
             if(Width >= Viewport.Width && Height >= Viewport.Height) {
 
                 bottomPanel.Visible = true;
                 WindowState = FormWindowState.Maximized;
-                CalculatorPanel.AdjustSize();
+                ResizeMainPanel();
                 SidePanel.AdjustSize();
                 zoomTimer.Tick -= ZoomToMax;
                 zoomTimer.Stop();
@@ -225,7 +262,7 @@ namespace MockUpCalculator {
             Opacity = 0;
             Helper.ScaleTo(this, DefaultWidth, DefaultHeight, false);
             Helper.CenterToPoint(this, ClientCenter);
-            CalculatorPanel.AdjustSize();
+            ResizeMainPanel();
             SidePanel.AdjustSize();
             Opacity = 1;
         }
@@ -338,7 +375,7 @@ namespace MockUpCalculator {
 
                 if(!Helper.ContainsPointer(topPanel, Cursor.Position)) {
 
-                    CalculatorPanel.DeactivateBackPanel();
+                    DeactivateBackPanel(null, null);
                 }
             }
         }

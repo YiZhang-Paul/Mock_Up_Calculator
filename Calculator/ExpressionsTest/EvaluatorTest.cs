@@ -8,7 +8,7 @@ namespace ExpressionsTest {
     [TestClass]
     public class EvaluatorTest {
 
-        Mock<IUnitConverter> unitConverter;
+        Mock<ITempUnitConverter> unitConverter;
         Mock<IOperatorConverter> operatorConverter;
         Mock<IOperatorLookup> lookup;
         Evaluator evaluator;
@@ -95,7 +95,7 @@ namespace ExpressionsTest {
         [TestInitialize]
         public void Setup() {
 
-            unitConverter = new Mock<IUnitConverter>();
+            unitConverter = new Mock<ITempUnitConverter>();
             operatorConverter = new Mock<IOperatorConverter>();
             lookup = new Mock<IOperatorLookup>();
             SetupLookup();

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConverterClassLibrary {
-    public class UnitConverter : IUnitConverter {
+    public class UnitConverter : ITempUnitConverter {
 
         public decimal RadianToDegree(decimal radian) {
 

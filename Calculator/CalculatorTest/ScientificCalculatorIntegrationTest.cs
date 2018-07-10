@@ -12,7 +12,7 @@ namespace CalculatorTest {
 
         IInputBuffer buffer;
         IOperatorLookup lookup;
-        IUnitConverter unitConverter;
+        ITempUnitConverter unitConverter;
         IOperatorConverter operatorConverter;
         IParenthesize parenthesizer;
         IExpressionBuilder builder;

@@ -35,16 +35,6 @@ namespace UserControlClassLibrary {
             mainLayout.Focus();
         }
 
-        protected override void ButtonMouseEnter(object sender, EventArgs e) {
-
-            base.ButtonMouseEnter(sender, e);
-        }
-
-        protected override void ButtonMouseLeave(object sender, EventArgs e) {
-
-            base.ButtonMouseLeave(sender, e);
-        }
-
         protected override void ButtonMouseClick(object sender, EventArgs e) {
 
             RemoveFocus();

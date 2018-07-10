@@ -50,6 +50,12 @@
     <Compile Include="CalculatorPanel.Designer.cs">
       <DependentUpon>CalculatorPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConverterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConverterPanel.Designer.cs">
+      <DependentUpon>ConverterPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ICalculatorPanel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="CalculatorPanel.resx">
       <DependentUpon>CalculatorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConverterPanel.resx">
+      <DependentUpon>ConverterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
