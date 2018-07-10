@@ -92,11 +92,13 @@ namespace MockUpCalculator {
             if(ConverterPanel != null) {
 
                 ConverterPanel.Dispose();
+                ConverterPanel = null;
             }
 
             if(CalculatorPanel != null) {
 
                 ((Control)CalculatorPanel).Dispose();
+                CalculatorPanel = null;
             }
         }
 
