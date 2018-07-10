@@ -20,6 +20,22 @@ namespace ConverterTest {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+         "Invalid Units.")]
+        public void InvalidCurrentUnit() {
+
+            converter.Convert("radian", 5, "degrees");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+         "Invalid Units.")]
+        public void InvalidTargetUnit() {
+
+            converter.Convert("radians", 5, "degree");
+        }
+
+        [TestMethod]
         public void RadianToDegree() {
 
             Assert.IsTrue(IsAccurate(45, converter.Convert("radians", (decimal)(Math.PI * 0.25), "degrees")));

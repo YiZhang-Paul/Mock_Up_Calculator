@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 using ConverterClassLibrary;
 
 namespace ConverterClassLibrary {
-    public class AngleConverter : IUnitConverter {
+    public class AngleConverter : UnitConverter {
 
         private Dictionary<string, decimal> Rates { get; set; }
 
-        public AngleConverter() {
-
-            Initialize();
-        }
-
-        private void Initialize() {
+        protected override void Initialize() {
 
             Rates = new Dictionary<string, decimal>() {
 
@@ -25,11 +20,14 @@ namespace ConverterClassLibrary {
             };
         }
 
-        private bool IsSpecialConversion(string current, string target) {
+        private bool IsSpecialUnit(string unit) {
 
-            var units = new HashSet<string>() { "dms", "degrees" };
+            return unit.ToLower() == "dms" || unit.ToLower() == "degrees";
+        }
 
-            return units.Contains(current.ToLower()) && units.Contains(target.ToLower());
+        protected override bool IsValidUnit(string unit) {
+
+            return Rates.ContainsKey(unit.ToLower()) || IsSpecialUnit(unit.ToLower());
         }
 
         private string GetDecimal(decimal decimals, int padding) {
@@ -68,9 +66,14 @@ namespace ConverterClassLibrary {
             }));
         }
 
-        public decimal Convert(string current, decimal value, string target) {
+        public override decimal Convert(string current, decimal value, string target) {
 
-            if(IsSpecialConversion(current, target)) {
+            if(!IsValidUnit(current) || !IsValidUnit(target)) {
+
+                throw new InvalidOperationException("Invalid Unit.");
+            }
+
+            if(IsSpecialUnit(current) && IsSpecialUnit(target)) {
 
                 return current.ToLower() == "dms" ? DmsToDegree(value) : DegreeToDms(value);
             }
