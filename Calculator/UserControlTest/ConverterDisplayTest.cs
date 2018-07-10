@@ -16,47 +16,102 @@ namespace UserControlTest {
 
             display = new ConverterDisplay();
             formatter = new Mock<IFormatter>();
+            formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,512");
+        }
+
+        [TestMethod]
+        public void PopulateOptions() {
+
+            display.PopulateOptions(new string[] { "Bar", "Foo" });
+
+            Assert.AreEqual("Bar", display.InputUnit);
+            Assert.AreEqual("Foo", display.MainOutputUnit);
+
+            display.PopulateOptions(new string[] { "Doe", "Jane", "John" });
+
+            Assert.AreEqual("Doe", display.InputUnit);
+            Assert.AreEqual("Jane", display.MainOutputUnit);
         }
 
         [TestMethod]
         public void DisplayInput() {
 
-            formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,512");
-
-            Assert.AreEqual("0", display.Input);
+            Assert.AreEqual("0", display.InputValue);
 
             display.DisplayInput("5512", formatter.Object);
 
-            Assert.AreEqual("5,512", display.Input);
+            Assert.AreEqual("5,512", display.InputValue);
         }
 
         [TestMethod]
-        public void DisplayOutput() {
+        public void DisplayMainOutput() {
 
-            formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,512");
+            Assert.AreEqual("0", display.MainOutputValue);
 
-            Assert.AreEqual("0", display.Output);
+            display.DisplayMainOutput("5512", formatter.Object);
 
-            display.DisplayOutput("5512", formatter.Object);
+            Assert.AreEqual("5,512", display.MainOutputValue);
+        }
 
-            Assert.AreEqual("5,512", display.Output);
+        [TestMethod]
+        public void DisplayMaximumNumberOfExtraOutputs() {
+
+            var outputs = new Tuple<string, string>[] {
+
+                new Tuple<string, string>("5512", "Gradians"),
+                new Tuple<string, string>("5512", "Radians")
+            };
+
+            display.DisplayExtraOutputs(outputs, formatter.Object);
+
+            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
+            Assert.AreEqual(display.ExtraOutputLabels[1].Text, "5,512 radians");
+        }
+
+        [TestMethod]
+        public void DisplayFewerExtraOutputs() {
+
+            var outputs = new Tuple<string, string>[] {
+
+                new Tuple<string, string>("5512", "Gradians"),
+                null
+            };
+
+            display.DisplayExtraOutputs(outputs, formatter.Object);
+
+            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
+            Assert.AreEqual(display.ExtraOutputLabels[1].Text, string.Empty);
+        }
+
+        [TestMethod]
+        public void DisplayMoreExtraOutputs() {
+
+            var outputs = new Tuple<string, string>[] {
+
+                new Tuple<string, string>("5512", "Gradians"),
+                new Tuple<string, string>("5512", "Radians"),
+                new Tuple<string, string>("5512", "Degrees")
+            };
+
+            display.DisplayExtraOutputs(outputs, formatter.Object);
+
+            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
+            Assert.AreEqual(display.ExtraOutputLabels[1].Text, "5,512 radians");
         }
 
         [TestMethod]
         public void Clear() {
 
-            formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,512");
-
             display.DisplayInput("5512", formatter.Object);
-            display.DisplayOutput("5512", formatter.Object);
+            display.DisplayMainOutput("5512", formatter.Object);
 
-            Assert.AreEqual("5,512", display.Input);
-            Assert.AreEqual("5,512", display.Output);
+            Assert.AreEqual("5,512", display.InputValue);
+            Assert.AreEqual("5,512", display.MainOutputValue);
 
             display.Clear();
 
-            Assert.AreEqual(string.Empty, display.Input);
-            Assert.AreEqual(string.Empty, display.Output);
+            Assert.AreEqual(string.Empty, display.InputValue);
+            Assert.AreEqual(string.Empty, display.MainOutputValue);
         }
     }
 }

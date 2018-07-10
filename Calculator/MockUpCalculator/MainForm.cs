@@ -117,6 +117,7 @@ namespace MockUpCalculator {
 
         protected void ToCalculator(string label, Func<ICalculatorPanel> factoryMethod) {
 
+            btnHistory.Visible = true;
             currentLabel.Text = label;
             ClearMainPanel();
             CalculatorPanel = factoryMethod();
@@ -125,6 +126,7 @@ namespace MockUpCalculator {
 
         protected void ToConverter(string label, Func<ConverterPanel> factoryMethod) {
 
+            btnHistory.Visible = false;
             currentLabel.Text = label;
             ClearMainPanel();
             ConverterPanel = factoryMethod();

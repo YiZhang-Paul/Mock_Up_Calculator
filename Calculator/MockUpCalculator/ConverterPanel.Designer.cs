@@ -42,8 +42,8 @@
             this.mainLayout.Margin = new System.Windows.Forms.Padding(0);
             this.mainLayout.Name = "mainLayout";
             this.mainLayout.RowCount = 2;
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.60355F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.39645F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.56213F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.43787F));
             this.mainLayout.Size = new System.Drawing.Size(337, 507);
             this.mainLayout.TabIndex = 1;
             // 
@@ -51,10 +51,10 @@
             // 
             this.keypadPanel.Controls.Add(this.basicKeypad);
             this.keypadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keypadPanel.Location = new System.Drawing.Point(0, 215);
+            this.keypadPanel.Location = new System.Drawing.Point(0, 230);
             this.keypadPanel.Margin = new System.Windows.Forms.Padding(0);
             this.keypadPanel.Name = "keypadPanel";
-            this.keypadPanel.Size = new System.Drawing.Size(337, 292);
+            this.keypadPanel.Size = new System.Drawing.Size(337, 277);
             this.keypadPanel.TabIndex = 1;
             // 
             // basicKeypad
@@ -68,19 +68,18 @@
             this.basicKeypad.Location = new System.Drawing.Point(0, 0);
             this.basicKeypad.Margin = new System.Windows.Forms.Padding(0);
             this.basicKeypad.Name = "basicKeypad";
-            this.basicKeypad.Size = new System.Drawing.Size(337, 292);
+            this.basicKeypad.Size = new System.Drawing.Size(337, 277);
             this.basicKeypad.TabIndex = 0;
             // 
             // converterDisplay
             // 
             this.converterDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.converterDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.converterDisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.converterDisplay.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.converterDisplay.Location = new System.Drawing.Point(0, 0);
             this.converterDisplay.Margin = new System.Windows.Forms.Padding(0);
             this.converterDisplay.Name = "converterDisplay";
-            this.converterDisplay.Size = new System.Drawing.Size(337, 215);
+            this.converterDisplay.Size = new System.Drawing.Size(337, 230);
             this.converterDisplay.TabIndex = 2;
             // 
             // ConverterPanel
