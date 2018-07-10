@@ -28,7 +28,7 @@ namespace MockUpCalculator {
         protected ServiceLookup ServiceLookup { get; set; }
         protected ISidePanel SidePanel { get; set; }
         protected ICalculatorPanel CalculatorPanel { get; set; }
-        protected UserControl ConverterPanel { get; set; }
+        protected ConverterPanel ConverterPanel { get; set; }
         protected IHelper Helper { get; set; }
         protected IResize Resizer { get; set; }
 
@@ -83,7 +83,7 @@ namespace MockUpCalculator {
             MenuItems = new List<string[]>() {
 
                 new string[] { "Calculator", "Standard", "Scientific" },
-                new string[] { "Converter", "Currency" }
+                new string[] { "Converter", "Currency", "Angle" }
             };
         }
 
@@ -123,7 +123,7 @@ namespace MockUpCalculator {
             LoadMainPanel((Control)CalculatorPanel);
         }
 
-        protected void ToConverter(string label, Func<UserControl> factoryMethod) {
+        protected void ToConverter(string label, Func<ConverterPanel> factoryMethod) {
 
             currentLabel.Text = label;
             ClearMainPanel();
@@ -139,6 +139,11 @@ namespace MockUpCalculator {
         protected void ToScientificCalculatorPanel() {
 
             ToCalculator("Scientific", ServiceLookup.GetScientificCalculatorPanel);
+        }
+
+        protected void ToAngleConverterPanel() {
+
+            ToConverter("Angle", ServiceLookup.GetAngleConverterPanel);
         }
 
         protected void ToggleHistoryPanel(object sender, EventArgs e) {
@@ -193,14 +198,26 @@ namespace MockUpCalculator {
                 return;
             }
 
-            if(selection == "Scientific") {
+            switch(selection) {
 
-                ToScientificCalculatorPanel();
+                case "Standard" :
 
-                return;
+                    ToStandardCalculator();
+
+                    break;
+
+                case "Scientific" :
+
+                    ToScientificCalculatorPanel();
+
+                    break;
+
+                case "Angle" :
+
+                    ToAngleConverterPanel();
+
+                    break;
             }
-
-            ToStandardCalculator();
         }
 
         protected virtual void FormResizeBegin(object sender, EventArgs e) {
@@ -313,7 +330,7 @@ namespace MockUpCalculator {
                 Helper.ScaleTo(this, DefaultWidth, DefaultHeight);
                 openTimer.Tick -= ZoomUI;
                 openTimer.Tick += FinishLoadUI;
-                ToScientificCalculatorPanel();
+                ToAngleConverterPanel();
             }
         }
 

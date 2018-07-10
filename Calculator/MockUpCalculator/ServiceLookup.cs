@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UserControlClassLibrary;
 using CalculatorClassLibrary;
 using ConverterClassLibrary;
@@ -51,6 +52,13 @@ namespace MockUpCalculator {
             EngineeringFormatter = new EngineeringFormatter();
         }
 
+        public void LoadConverterPanelAsset() {
+
+            InputBuffer = new InputBuffer();
+            KeyChecker = new KeyChecker();
+            NumberFormatter = new NumberFormatter();
+        }
+
         public StandardCalculatorPanel GetStandardCalculatorPanel() {
 
             LoadCalculatorPanelAsset();
@@ -97,6 +105,20 @@ namespace MockUpCalculator {
                     Evaluator,
                     MemoryStorage
                 )
+            );
+        }
+
+        public ConverterPanel GetAngleConverterPanel() {
+
+            LoadConverterPanelAsset();
+
+            return new ConverterPanel(
+
+                InputBuffer,
+                KeyChecker,
+                NumberFormatter,
+                new AngleConverter(),
+                new string[] { "Degrees", "Radians", "Gradians" }
             );
         }
     }

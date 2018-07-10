@@ -104,7 +104,7 @@
             this.extensionKeyBackPanel.Location = new System.Drawing.Point(3, 142);
             this.extensionKeyBackPanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.extensionKeyBackPanel.Name = "extensionKeyBackPanel";
-            this.extensionKeyBackPanel.Size = new System.Drawing.Size(1056, 159);
+            this.extensionKeyBackPanel.Size = new System.Drawing.Size(888, 159);
             this.extensionKeyBackPanel.TabIndex = 2;
             // 
             // extensionOnePanel
@@ -114,7 +114,7 @@
             this.extensionOnePanel.Location = new System.Drawing.Point(0, 0);
             this.extensionOnePanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.extensionOnePanel.Name = "extensionOnePanel";
-            this.extensionOnePanel.Size = new System.Drawing.Size(1056, 159);
+            this.extensionOnePanel.Size = new System.Drawing.Size(888, 159);
             this.extensionOnePanel.TabIndex = 3;
             // 
             // extensionOneLayout
@@ -143,7 +143,7 @@
             this.extensionOneLayout.RowCount = 2;
             this.extensionOneLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extensionOneLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.extensionOneLayout.Size = new System.Drawing.Size(1056, 159);
+            this.extensionOneLayout.Size = new System.Drawing.Size(888, 159);
             this.extensionOneLayout.TabIndex = 0;
             // 
             // btnSquareRoot
@@ -160,7 +160,7 @@
             this.btnSquareRoot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSquareRoot.Location = new System.Drawing.Point(3, 82);
             this.btnSquareRoot.Name = "btnSquareRoot";
-            this.btnSquareRoot.Size = new System.Drawing.Size(205, 74);
+            this.btnSquareRoot.Size = new System.Drawing.Size(171, 74);
             this.btnSquareRoot.TabIndex = 11;
             this.btnSquareRoot.Tag = "√";
             this.btnSquareRoot.Text = "√";
@@ -181,9 +181,9 @@
             this.btnLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLog.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnLog.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLog.Location = new System.Drawing.Point(425, 82);
+            this.btnLog.Location = new System.Drawing.Point(357, 82);
             this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(205, 74);
+            this.btnLog.Size = new System.Drawing.Size(171, 74);
             this.btnLog.TabIndex = 10;
             this.btnLog.Tag = "log";
             this.btnLog.Text = "log";
@@ -204,9 +204,9 @@
             this.btnTenPowerX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTenPowerX.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnTenPowerX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnTenPowerX.Location = new System.Drawing.Point(214, 82);
+            this.btnTenPowerX.Location = new System.Drawing.Point(180, 82);
             this.btnTenPowerX.Name = "btnTenPowerX";
-            this.btnTenPowerX.Size = new System.Drawing.Size(205, 74);
+            this.btnTenPowerX.Size = new System.Drawing.Size(171, 74);
             this.btnTenPowerX.TabIndex = 9;
             this.btnTenPowerX.Tag = "10ˣ";
             this.btnTenPowerX.Text = "10ˣ";
@@ -227,9 +227,9 @@
             this.btnModulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModulos.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnModulos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnModulos.Location = new System.Drawing.Point(847, 82);
+            this.btnModulos.Location = new System.Drawing.Point(711, 82);
             this.btnModulos.Name = "btnModulos";
-            this.btnModulos.Size = new System.Drawing.Size(206, 74);
+            this.btnModulos.Size = new System.Drawing.Size(174, 74);
             this.btnModulos.TabIndex = 8;
             this.btnModulos.Tag = "Mod";
             this.btnModulos.Text = "Mod";
@@ -250,9 +250,9 @@
             this.btnExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExp.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnExp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExp.Location = new System.Drawing.Point(636, 82);
+            this.btnExp.Location = new System.Drawing.Point(534, 82);
             this.btnExp.Name = "btnExp";
-            this.btnExp.Size = new System.Drawing.Size(205, 74);
+            this.btnExp.Size = new System.Drawing.Size(171, 74);
             this.btnExp.TabIndex = 7;
             this.btnExp.Tag = "Exp";
             this.btnExp.Text = "Exp";
@@ -275,7 +275,7 @@
             this.btnXSquare.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXSquare.Location = new System.Drawing.Point(3, 3);
             this.btnXSquare.Name = "btnXSquare";
-            this.btnXSquare.Size = new System.Drawing.Size(205, 73);
+            this.btnXSquare.Size = new System.Drawing.Size(171, 73);
             this.btnXSquare.TabIndex = 2;
             this.btnXSquare.Tag = "sqr";
             this.btnXSquare.Text = "x²";
@@ -296,9 +296,9 @@
             this.btnXPowerY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXPowerY.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnXPowerY.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnXPowerY.Location = new System.Drawing.Point(214, 3);
+            this.btnXPowerY.Location = new System.Drawing.Point(180, 3);
             this.btnXPowerY.Name = "btnXPowerY";
-            this.btnXPowerY.Size = new System.Drawing.Size(205, 73);
+            this.btnXPowerY.Size = new System.Drawing.Size(171, 73);
             this.btnXPowerY.TabIndex = 3;
             this.btnXPowerY.Tag = "^";
             this.btnXPowerY.Text = "xʸ";
@@ -319,9 +319,9 @@
             this.btnSine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSine.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSine.Location = new System.Drawing.Point(425, 3);
+            this.btnSine.Location = new System.Drawing.Point(357, 3);
             this.btnSine.Name = "btnSine";
-            this.btnSine.Size = new System.Drawing.Size(205, 73);
+            this.btnSine.Size = new System.Drawing.Size(171, 73);
             this.btnSine.TabIndex = 4;
             this.btnSine.Tag = "sin";
             this.btnSine.Text = "sin";
@@ -342,9 +342,9 @@
             this.btnCosine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCosine.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnCosine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCosine.Location = new System.Drawing.Point(636, 3);
+            this.btnCosine.Location = new System.Drawing.Point(534, 3);
             this.btnCosine.Name = "btnCosine";
-            this.btnCosine.Size = new System.Drawing.Size(205, 73);
+            this.btnCosine.Size = new System.Drawing.Size(171, 73);
             this.btnCosine.TabIndex = 5;
             this.btnCosine.Tag = "cos";
             this.btnCosine.Text = "cos";
@@ -365,9 +365,9 @@
             this.btnTangent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTangent.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnTangent.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnTangent.Location = new System.Drawing.Point(847, 3);
+            this.btnTangent.Location = new System.Drawing.Point(711, 3);
             this.btnTangent.Name = "btnTangent";
-            this.btnTangent.Size = new System.Drawing.Size(206, 73);
+            this.btnTangent.Size = new System.Drawing.Size(174, 73);
             this.btnTangent.TabIndex = 6;
             this.btnTangent.Tag = "tan";
             this.btnTangent.Text = "tan";
@@ -383,7 +383,7 @@
             this.extensionTwoPanel.Location = new System.Drawing.Point(0, 0);
             this.extensionTwoPanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.extensionTwoPanel.Name = "extensionTwoPanel";
-            this.extensionTwoPanel.Size = new System.Drawing.Size(1056, 159);
+            this.extensionTwoPanel.Size = new System.Drawing.Size(888, 159);
             this.extensionTwoPanel.TabIndex = 4;
             // 
             // extensionTwoLayout
@@ -411,7 +411,7 @@
             this.extensionTwoLayout.RowCount = 2;
             this.extensionTwoLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extensionTwoLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.extensionTwoLayout.Size = new System.Drawing.Size(1056, 159);
+            this.extensionTwoLayout.Size = new System.Drawing.Size(888, 159);
             this.extensionTwoLayout.TabIndex = 0;
             // 
             // btnReciprocal
@@ -428,7 +428,7 @@
             this.btnReciprocal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnReciprocal.Location = new System.Drawing.Point(3, 82);
             this.btnReciprocal.Name = "btnReciprocal";
-            this.btnReciprocal.Size = new System.Drawing.Size(205, 74);
+            this.btnReciprocal.Size = new System.Drawing.Size(171, 74);
             this.btnReciprocal.TabIndex = 11;
             this.btnReciprocal.Tag = "¹⁄x";
             this.btnReciprocal.Text = "¹⁄ x";
@@ -449,9 +449,9 @@
             this.btnLn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLn.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnLn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLn.Location = new System.Drawing.Point(425, 82);
+            this.btnLn.Location = new System.Drawing.Point(357, 82);
             this.btnLn.Name = "btnLn";
-            this.btnLn.Size = new System.Drawing.Size(205, 74);
+            this.btnLn.Size = new System.Drawing.Size(171, 74);
             this.btnLn.TabIndex = 10;
             this.btnLn.Tag = "ln";
             this.btnLn.Text = "ln";
@@ -472,9 +472,9 @@
             this.btnExponential.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExponential.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnExponential.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExponential.Location = new System.Drawing.Point(214, 82);
+            this.btnExponential.Location = new System.Drawing.Point(180, 82);
             this.btnExponential.Name = "btnExponential";
-            this.btnExponential.Size = new System.Drawing.Size(205, 74);
+            this.btnExponential.Size = new System.Drawing.Size(171, 74);
             this.btnExponential.TabIndex = 9;
             this.btnExponential.Tag = "eˣ";
             this.btnExponential.Text = "eˣ";
@@ -495,9 +495,9 @@
             this.btnDegrees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDegrees.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDegrees.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDegrees.Location = new System.Drawing.Point(847, 82);
+            this.btnDegrees.Location = new System.Drawing.Point(711, 82);
             this.btnDegrees.Name = "btnDegrees";
-            this.btnDegrees.Size = new System.Drawing.Size(206, 74);
+            this.btnDegrees.Size = new System.Drawing.Size(174, 74);
             this.btnDegrees.TabIndex = 8;
             this.btnDegrees.Tag = "degrees";
             this.btnDegrees.Text = "deg";
@@ -518,9 +518,9 @@
             this.btnDms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDms.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDms.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDms.Location = new System.Drawing.Point(636, 82);
+            this.btnDms.Location = new System.Drawing.Point(534, 82);
             this.btnDms.Name = "btnDms";
-            this.btnDms.Size = new System.Drawing.Size(205, 74);
+            this.btnDms.Size = new System.Drawing.Size(171, 74);
             this.btnDms.TabIndex = 7;
             this.btnDms.Tag = "dms";
             this.btnDms.Text = "dms";
@@ -543,7 +543,7 @@
             this.btnXCube.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXCube.Location = new System.Drawing.Point(3, 3);
             this.btnXCube.Name = "btnXCube";
-            this.btnXCube.Size = new System.Drawing.Size(205, 73);
+            this.btnXCube.Size = new System.Drawing.Size(171, 73);
             this.btnXCube.TabIndex = 2;
             this.btnXCube.Tag = "cube";
             this.btnXCube.Text = "x³";
@@ -564,9 +564,9 @@
             this.btnYthRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnYthRoot.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnYthRoot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnYthRoot.Location = new System.Drawing.Point(214, 3);
+            this.btnYthRoot.Location = new System.Drawing.Point(180, 3);
             this.btnYthRoot.Name = "btnYthRoot";
-            this.btnYthRoot.Size = new System.Drawing.Size(205, 73);
+            this.btnYthRoot.Size = new System.Drawing.Size(171, 73);
             this.btnYthRoot.TabIndex = 3;
             this.btnYthRoot.Tag = "yroot";
             this.btnYthRoot.Text = "ʸ√x";
@@ -587,9 +587,9 @@
             this.btnArcSine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArcSine.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnArcSine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnArcSine.Location = new System.Drawing.Point(425, 3);
+            this.btnArcSine.Location = new System.Drawing.Point(357, 3);
             this.btnArcSine.Name = "btnArcSine";
-            this.btnArcSine.Size = new System.Drawing.Size(205, 73);
+            this.btnArcSine.Size = new System.Drawing.Size(171, 73);
             this.btnArcSine.TabIndex = 4;
             this.btnArcSine.Tag = "sin⁻¹";
             this.btnArcSine.Text = "sin⁻¹";
@@ -610,9 +610,9 @@
             this.btnArcCosine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArcCosine.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnArcCosine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnArcCosine.Location = new System.Drawing.Point(636, 3);
+            this.btnArcCosine.Location = new System.Drawing.Point(534, 3);
             this.btnArcCosine.Name = "btnArcCosine";
-            this.btnArcCosine.Size = new System.Drawing.Size(205, 73);
+            this.btnArcCosine.Size = new System.Drawing.Size(171, 73);
             this.btnArcCosine.TabIndex = 6;
             this.btnArcCosine.Tag = "cos⁻¹";
             this.btnArcCosine.Text = "cos⁻¹";
@@ -633,9 +633,9 @@
             this.btnArcTangent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArcTangent.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnArcTangent.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnArcTangent.Location = new System.Drawing.Point(847, 3);
+            this.btnArcTangent.Location = new System.Drawing.Point(711, 3);
             this.btnArcTangent.Name = "btnArcTangent";
-            this.btnArcTangent.Size = new System.Drawing.Size(206, 73);
+            this.btnArcTangent.Size = new System.Drawing.Size(174, 73);
             this.btnArcTangent.TabIndex = 5;
             this.btnArcTangent.Tag = "tan⁻¹";
             this.btnArcTangent.Text = "tan⁻¹";
@@ -670,7 +670,7 @@
             this.extraKeysLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extraKeysLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.extraKeysLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.extraKeysLayout.Size = new System.Drawing.Size(1056, 139);
+            this.extraKeysLayout.Size = new System.Drawing.Size(888, 139);
             this.extraKeysLayout.TabIndex = 1;
             // 
             // btnMemoryRecall
@@ -685,9 +685,9 @@
             this.btnMemoryRecall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemoryRecall.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMemoryRecall.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMemoryRecall.Location = new System.Drawing.Point(178, 72);
+            this.btnMemoryRecall.Location = new System.Drawing.Point(150, 72);
             this.btnMemoryRecall.Name = "btnMemoryRecall";
-            this.btnMemoryRecall.Size = new System.Drawing.Size(169, 64);
+            this.btnMemoryRecall.Size = new System.Drawing.Size(141, 64);
             this.btnMemoryRecall.TabIndex = 10;
             this.btnMemoryRecall.Text = "MR";
             this.btnMemoryRecall.UseVisualStyleBackColor = false;
@@ -707,9 +707,9 @@
             this.btnMemoryMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemoryMinus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMemoryMinus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMemoryMinus.Location = new System.Drawing.Point(528, 72);
+            this.btnMemoryMinus.Location = new System.Drawing.Point(444, 72);
             this.btnMemoryMinus.Name = "btnMemoryMinus";
-            this.btnMemoryMinus.Size = new System.Drawing.Size(169, 64);
+            this.btnMemoryMinus.Size = new System.Drawing.Size(141, 64);
             this.btnMemoryMinus.TabIndex = 9;
             this.btnMemoryMinus.Text = "M-";
             this.btnMemoryMinus.UseVisualStyleBackColor = false;
@@ -729,9 +729,9 @@
             this.btnMemoryPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemoryPlus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMemoryPlus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMemoryPlus.Location = new System.Drawing.Point(353, 72);
+            this.btnMemoryPlus.Location = new System.Drawing.Point(297, 72);
             this.btnMemoryPlus.Name = "btnMemoryPlus";
-            this.btnMemoryPlus.Size = new System.Drawing.Size(169, 64);
+            this.btnMemoryPlus.Size = new System.Drawing.Size(141, 64);
             this.btnMemoryPlus.TabIndex = 8;
             this.btnMemoryPlus.Text = "M+";
             this.btnMemoryPlus.UseVisualStyleBackColor = false;
@@ -751,9 +751,9 @@
             this.btnMemory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemory.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMemory.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMemory.Location = new System.Drawing.Point(878, 72);
+            this.btnMemory.Location = new System.Drawing.Point(738, 72);
             this.btnMemory.Name = "btnMemory";
-            this.btnMemory.Size = new System.Drawing.Size(175, 64);
+            this.btnMemory.Size = new System.Drawing.Size(147, 64);
             this.btnMemory.TabIndex = 7;
             this.btnMemory.Text = "M▾";
             this.btnMemory.UseVisualStyleBackColor = false;
@@ -773,9 +773,9 @@
             this.btnMemorySave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemorySave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnMemorySave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMemorySave.Location = new System.Drawing.Point(703, 72);
+            this.btnMemorySave.Location = new System.Drawing.Point(591, 72);
             this.btnMemorySave.Name = "btnMemorySave";
-            this.btnMemorySave.Size = new System.Drawing.Size(169, 64);
+            this.btnMemorySave.Size = new System.Drawing.Size(141, 64);
             this.btnMemorySave.TabIndex = 6;
             this.btnMemorySave.Text = "MS";
             this.btnMemorySave.UseVisualStyleBackColor = false;
@@ -797,7 +797,7 @@
             this.btnMemoryClear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnMemoryClear.Location = new System.Drawing.Point(3, 72);
             this.btnMemoryClear.Name = "btnMemoryClear";
-            this.btnMemoryClear.Size = new System.Drawing.Size(169, 64);
+            this.btnMemoryClear.Size = new System.Drawing.Size(141, 64);
             this.btnMemoryClear.TabIndex = 5;
             this.btnMemoryClear.Text = "MC";
             this.btnMemoryClear.UseVisualStyleBackColor = false;
@@ -817,9 +817,9 @@
             this.btnHypotenuse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHypotenuse.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnHypotenuse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHypotenuse.Location = new System.Drawing.Point(178, 3);
+            this.btnHypotenuse.Location = new System.Drawing.Point(150, 3);
             this.btnHypotenuse.Name = "btnHypotenuse";
-            this.btnHypotenuse.Size = new System.Drawing.Size(169, 63);
+            this.btnHypotenuse.Size = new System.Drawing.Size(141, 63);
             this.btnHypotenuse.TabIndex = 3;
             this.btnHypotenuse.Text = "HYP";
             this.btnHypotenuse.UseVisualStyleBackColor = false;
@@ -841,7 +841,7 @@
             this.btnDegRadGrad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDegRadGrad.Location = new System.Drawing.Point(3, 3);
             this.btnDegRadGrad.Name = "btnDegRadGrad";
-            this.btnDegRadGrad.Size = new System.Drawing.Size(169, 63);
+            this.btnDegRadGrad.Size = new System.Drawing.Size(141, 63);
             this.btnDegRadGrad.TabIndex = 2;
             this.btnDegRadGrad.Text = "DEG";
             this.btnDegRadGrad.UseVisualStyleBackColor = false;
@@ -862,9 +862,9 @@
             this.btnEngineeringFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEngineeringFormat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnEngineeringFormat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEngineeringFormat.Location = new System.Drawing.Point(353, 3);
+            this.btnEngineeringFormat.Location = new System.Drawing.Point(297, 3);
             this.btnEngineeringFormat.Name = "btnEngineeringFormat";
-            this.btnEngineeringFormat.Size = new System.Drawing.Size(169, 63);
+            this.btnEngineeringFormat.Size = new System.Drawing.Size(141, 63);
             this.btnEngineeringFormat.TabIndex = 4;
             this.btnEngineeringFormat.Text = "F-E";
             this.btnEngineeringFormat.UseVisualStyleBackColor = false;
@@ -917,7 +917,7 @@
             this.baseKeyLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.baseKeyLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.baseKeyLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.baseKeyLayout.Size = new System.Drawing.Size(1056, 383);
+            this.baseKeyLayout.Size = new System.Drawing.Size(888, 383);
             this.baseKeyLayout.TabIndex = 0;
             // 
             // btnLeftParentheses
@@ -934,7 +934,7 @@
             this.btnLeftParentheses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLeftParentheses.Location = new System.Drawing.Point(3, 307);
             this.btnLeftParentheses.Name = "btnLeftParentheses";
-            this.btnLeftParentheses.Size = new System.Drawing.Size(205, 73);
+            this.btnLeftParentheses.Size = new System.Drawing.Size(171, 73);
             this.btnLeftParentheses.TabIndex = 25;
             this.btnLeftParentheses.Tag = "(";
             this.btnLeftParentheses.Text = "(";
@@ -955,9 +955,9 @@
             this.btnDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDot.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDot.Location = new System.Drawing.Point(636, 307);
+            this.btnDot.Location = new System.Drawing.Point(534, 307);
             this.btnDot.Name = "btnDot";
-            this.btnDot.Size = new System.Drawing.Size(205, 73);
+            this.btnDot.Size = new System.Drawing.Size(171, 73);
             this.btnDot.TabIndex = 24;
             this.btnDot.Tag = ".";
             this.btnDot.Text = "∙";
@@ -978,9 +978,9 @@
             this.btnEqual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEqual.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnEqual.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEqual.Location = new System.Drawing.Point(847, 307);
+            this.btnEqual.Location = new System.Drawing.Point(711, 307);
             this.btnEqual.Name = "btnEqual";
-            this.btnEqual.Size = new System.Drawing.Size(206, 73);
+            this.btnEqual.Size = new System.Drawing.Size(174, 73);
             this.btnEqual.TabIndex = 23;
             this.btnEqual.Tag = "=";
             this.btnEqual.Text = "=";
@@ -1001,9 +1001,9 @@
             this.btnRightParentheses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRightParentheses.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.btnRightParentheses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRightParentheses.Location = new System.Drawing.Point(214, 307);
+            this.btnRightParentheses.Location = new System.Drawing.Point(180, 307);
             this.btnRightParentheses.Name = "btnRightParentheses";
-            this.btnRightParentheses.Size = new System.Drawing.Size(205, 73);
+            this.btnRightParentheses.Size = new System.Drawing.Size(171, 73);
             this.btnRightParentheses.TabIndex = 22;
             this.btnRightParentheses.Tag = ")";
             this.btnRightParentheses.Text = ")";
@@ -1025,9 +1025,9 @@
             this.btnZero.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnZero.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnZero.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnZero.Location = new System.Drawing.Point(425, 307);
+            this.btnZero.Location = new System.Drawing.Point(357, 307);
             this.btnZero.Name = "btnZero";
-            this.btnZero.Size = new System.Drawing.Size(205, 73);
+            this.btnZero.Size = new System.Drawing.Size(171, 73);
             this.btnZero.TabIndex = 21;
             this.btnZero.Tag = "0";
             this.btnZero.Text = "0";
@@ -1050,7 +1050,7 @@
             this.btnExtend.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnExtend.Location = new System.Drawing.Point(3, 3);
             this.btnExtend.Name = "btnExtend";
-            this.btnExtend.Size = new System.Drawing.Size(205, 70);
+            this.btnExtend.Size = new System.Drawing.Size(171, 70);
             this.btnExtend.TabIndex = 1;
             this.btnExtend.Text = "⬆";
             this.btnExtend.UseVisualStyleBackColor = false;
@@ -1070,9 +1070,9 @@
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnUndo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUndo.Location = new System.Drawing.Point(214, 3);
+            this.btnUndo.Location = new System.Drawing.Point(180, 3);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(205, 70);
+            this.btnUndo.Size = new System.Drawing.Size(171, 70);
             this.btnUndo.TabIndex = 2;
             this.btnUndo.Tag = "CE";
             this.btnUndo.Text = "CE";
@@ -1093,9 +1093,9 @@
             this.btnClearAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearAll.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnClearAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClearAll.Location = new System.Drawing.Point(425, 3);
+            this.btnClearAll.Location = new System.Drawing.Point(357, 3);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(205, 70);
+            this.btnClearAll.Size = new System.Drawing.Size(171, 70);
             this.btnClearAll.TabIndex = 3;
             this.btnClearAll.Tag = "C";
             this.btnClearAll.Text = "C";
@@ -1116,9 +1116,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Location = new System.Drawing.Point(636, 3);
+            this.btnDelete.Location = new System.Drawing.Point(534, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(205, 70);
+            this.btnDelete.Size = new System.Drawing.Size(171, 70);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Tag = "⌫";
             this.btnDelete.Text = "⌫";
@@ -1141,7 +1141,7 @@
             this.btnPI.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnPI.Location = new System.Drawing.Point(3, 79);
             this.btnPI.Name = "btnPI";
-            this.btnPI.Size = new System.Drawing.Size(205, 70);
+            this.btnPI.Size = new System.Drawing.Size(171, 70);
             this.btnPI.TabIndex = 7;
             this.btnPI.Tag = "π";
             this.btnPI.Text = "π";
@@ -1163,9 +1163,9 @@
             this.btnSeven.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnSeven.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSeven.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSeven.Location = new System.Drawing.Point(214, 79);
+            this.btnSeven.Location = new System.Drawing.Point(180, 79);
             this.btnSeven.Name = "btnSeven";
-            this.btnSeven.Size = new System.Drawing.Size(205, 70);
+            this.btnSeven.Size = new System.Drawing.Size(171, 70);
             this.btnSeven.TabIndex = 5;
             this.btnSeven.Tag = "7";
             this.btnSeven.Text = "7";
@@ -1188,7 +1188,7 @@
             this.btnFactorial.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnFactorial.Location = new System.Drawing.Point(3, 155);
             this.btnFactorial.Name = "btnFactorial";
-            this.btnFactorial.Size = new System.Drawing.Size(205, 70);
+            this.btnFactorial.Size = new System.Drawing.Size(171, 70);
             this.btnFactorial.TabIndex = 6;
             this.btnFactorial.Tag = "fact";
             this.btnFactorial.Text = "n!";
@@ -1210,9 +1210,9 @@
             this.btnOne.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnOne.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnOne.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOne.Location = new System.Drawing.Point(214, 231);
+            this.btnOne.Location = new System.Drawing.Point(180, 231);
             this.btnOne.Name = "btnOne";
-            this.btnOne.Size = new System.Drawing.Size(205, 70);
+            this.btnOne.Size = new System.Drawing.Size(171, 70);
             this.btnOne.TabIndex = 12;
             this.btnOne.Tag = "1";
             this.btnOne.Text = "1";
@@ -1234,9 +1234,9 @@
             this.btnFive.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnFive.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnFive.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFive.Location = new System.Drawing.Point(425, 155);
+            this.btnFive.Location = new System.Drawing.Point(357, 155);
             this.btnFive.Name = "btnFive";
-            this.btnFive.Size = new System.Drawing.Size(205, 70);
+            this.btnFive.Size = new System.Drawing.Size(171, 70);
             this.btnFive.TabIndex = 8;
             this.btnFive.Tag = "5";
             this.btnFive.Text = "5";
@@ -1258,9 +1258,9 @@
             this.btnEight.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnEight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEight.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEight.Location = new System.Drawing.Point(425, 79);
+            this.btnEight.Location = new System.Drawing.Point(357, 79);
             this.btnEight.Name = "btnEight";
-            this.btnEight.Size = new System.Drawing.Size(205, 70);
+            this.btnEight.Size = new System.Drawing.Size(171, 70);
             this.btnEight.TabIndex = 10;
             this.btnEight.Tag = "8";
             this.btnEight.Text = "8";
@@ -1282,9 +1282,9 @@
             this.btnFour.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnFour.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnFour.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFour.Location = new System.Drawing.Point(214, 155);
+            this.btnFour.Location = new System.Drawing.Point(180, 155);
             this.btnFour.Name = "btnFour";
-            this.btnFour.Size = new System.Drawing.Size(205, 70);
+            this.btnFour.Size = new System.Drawing.Size(171, 70);
             this.btnFour.TabIndex = 9;
             this.btnFour.Tag = "4";
             this.btnFour.Text = "4";
@@ -1307,7 +1307,7 @@
             this.btnNegate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNegate.Location = new System.Drawing.Point(3, 231);
             this.btnNegate.Name = "btnNegate";
-            this.btnNegate.Size = new System.Drawing.Size(205, 70);
+            this.btnNegate.Size = new System.Drawing.Size(171, 70);
             this.btnNegate.TabIndex = 11;
             this.btnNegate.Tag = "negate";
             this.btnNegate.Text = "±";
@@ -1328,9 +1328,9 @@
             this.btnDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDivide.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnDivide.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDivide.Location = new System.Drawing.Point(847, 3);
+            this.btnDivide.Location = new System.Drawing.Point(711, 3);
             this.btnDivide.Name = "btnDivide";
-            this.btnDivide.Size = new System.Drawing.Size(206, 70);
+            this.btnDivide.Size = new System.Drawing.Size(174, 70);
             this.btnDivide.TabIndex = 16;
             this.btnDivide.Tag = "÷";
             this.btnDivide.Text = "÷";
@@ -1351,9 +1351,9 @@
             this.btnMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMultiply.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnMultiply.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMultiply.Location = new System.Drawing.Point(847, 79);
+            this.btnMultiply.Location = new System.Drawing.Point(711, 79);
             this.btnMultiply.Name = "btnMultiply";
-            this.btnMultiply.Size = new System.Drawing.Size(206, 70);
+            this.btnMultiply.Size = new System.Drawing.Size(174, 70);
             this.btnMultiply.TabIndex = 15;
             this.btnMultiply.Tag = "×";
             this.btnMultiply.Text = "×";
@@ -1375,9 +1375,9 @@
             this.btnSix.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnSix.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSix.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSix.Location = new System.Drawing.Point(636, 155);
+            this.btnSix.Location = new System.Drawing.Point(534, 155);
             this.btnSix.Name = "btnSix";
-            this.btnSix.Size = new System.Drawing.Size(205, 70);
+            this.btnSix.Size = new System.Drawing.Size(171, 70);
             this.btnSix.TabIndex = 13;
             this.btnSix.Tag = "6";
             this.btnSix.Text = "6";
@@ -1399,9 +1399,9 @@
             this.btnNine.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnNine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNine.Location = new System.Drawing.Point(636, 79);
+            this.btnNine.Location = new System.Drawing.Point(534, 79);
             this.btnNine.Name = "btnNine";
-            this.btnNine.Size = new System.Drawing.Size(205, 70);
+            this.btnNine.Size = new System.Drawing.Size(171, 70);
             this.btnNine.TabIndex = 14;
             this.btnNine.Tag = "9";
             this.btnNine.Text = "9";
@@ -1423,9 +1423,9 @@
             this.btnTwo.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnTwo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTwo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTwo.Location = new System.Drawing.Point(425, 231);
+            this.btnTwo.Location = new System.Drawing.Point(357, 231);
             this.btnTwo.Name = "btnTwo";
-            this.btnTwo.Size = new System.Drawing.Size(205, 70);
+            this.btnTwo.Size = new System.Drawing.Size(171, 70);
             this.btnTwo.TabIndex = 17;
             this.btnTwo.Tag = "2";
             this.btnTwo.Text = "2";
@@ -1447,9 +1447,9 @@
             this.btnThree.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnThree.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThree.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThree.Location = new System.Drawing.Point(636, 231);
+            this.btnThree.Location = new System.Drawing.Point(534, 231);
             this.btnThree.Name = "btnThree";
-            this.btnThree.Size = new System.Drawing.Size(205, 70);
+            this.btnThree.Size = new System.Drawing.Size(171, 70);
             this.btnThree.TabIndex = 19;
             this.btnThree.Tag = "3";
             this.btnThree.Text = "3";
@@ -1470,9 +1470,9 @@
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnPlus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPlus.Location = new System.Drawing.Point(847, 231);
+            this.btnPlus.Location = new System.Drawing.Point(711, 231);
             this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(206, 70);
+            this.btnPlus.Size = new System.Drawing.Size(174, 70);
             this.btnPlus.TabIndex = 18;
             this.btnPlus.Tag = "+";
             this.btnPlus.Text = "+";
@@ -1493,9 +1493,9 @@
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnMinus.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnMinus.Location = new System.Drawing.Point(847, 155);
+            this.btnMinus.Location = new System.Drawing.Point(711, 155);
             this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(206, 70);
+            this.btnMinus.Size = new System.Drawing.Size(174, 70);
             this.btnMinus.TabIndex = 20;
             this.btnMinus.Tag = "−";
             this.btnMinus.Text = "−";
@@ -1521,7 +1521,7 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.15271F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayout.Size = new System.Drawing.Size(1062, 687);
+            this.mainLayout.Size = new System.Drawing.Size(894, 687);
             this.mainLayout.TabIndex = 0;
             // 
             // ScientificKeypad
@@ -1532,7 +1532,7 @@
             this.Controls.Add(this.mainLayout);
             this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "ScientificKeypad";
-            this.Size = new System.Drawing.Size(1062, 687);
+            this.Size = new System.Drawing.Size(894, 687);
             this.extensionKeyBackPanel.ResumeLayout(false);
             this.extensionOnePanel.ResumeLayout(false);
             this.extensionOneLayout.ResumeLayout(false);

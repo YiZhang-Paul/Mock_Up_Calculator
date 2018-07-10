@@ -35,8 +35,8 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.btnTwo = new System.Windows.Forms.Button();
             this.btnThree = new System.Windows.Forms.Button();
-            this.btnZero = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
+            this.btnZero = new System.Windows.Forms.Button();
             this.mainLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayout.Size = new System.Drawing.Size(1062, 687);
+            this.mainLayout.Size = new System.Drawing.Size(682, 687);
             this.mainLayout.TabIndex = 0;
             // 
             // btnUndo
@@ -84,13 +84,16 @@
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnUndo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUndo.Location = new System.Drawing.Point(356, 3);
+            this.btnUndo.Location = new System.Drawing.Point(230, 3);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(347, 131);
+            this.btnUndo.Size = new System.Drawing.Size(221, 131);
             this.btnUndo.TabIndex = 17;
             this.btnUndo.Tag = "CE";
             this.btnUndo.Text = "CE";
             this.btnUndo.UseVisualStyleBackColor = false;
+            this.btnUndo.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnUndo.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnUndo.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnDelete
             // 
@@ -104,13 +107,16 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Location = new System.Drawing.Point(709, 3);
+            this.btnDelete.Location = new System.Drawing.Point(457, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(350, 131);
+            this.btnDelete.Size = new System.Drawing.Size(222, 131);
             this.btnDelete.TabIndex = 18;
             this.btnDelete.Tag = "⌫";
             this.btnDelete.Text = "⌫";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnSeven
             // 
@@ -127,11 +133,14 @@
             this.btnSeven.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSeven.Location = new System.Drawing.Point(3, 140);
             this.btnSeven.Name = "btnSeven";
-            this.btnSeven.Size = new System.Drawing.Size(347, 131);
+            this.btnSeven.Size = new System.Drawing.Size(221, 131);
             this.btnSeven.TabIndex = 20;
             this.btnSeven.Tag = "7";
             this.btnSeven.Text = "7";
             this.btnSeven.UseVisualStyleBackColor = false;
+            this.btnSeven.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnSeven.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnSeven.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnEight
             // 
@@ -146,13 +155,16 @@
             this.btnEight.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnEight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEight.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEight.Location = new System.Drawing.Point(356, 140);
+            this.btnEight.Location = new System.Drawing.Point(230, 140);
             this.btnEight.Name = "btnEight";
-            this.btnEight.Size = new System.Drawing.Size(347, 131);
+            this.btnEight.Size = new System.Drawing.Size(221, 131);
             this.btnEight.TabIndex = 21;
             this.btnEight.Tag = "8";
             this.btnEight.Text = "8";
             this.btnEight.UseVisualStyleBackColor = false;
+            this.btnEight.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnEight.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnEight.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnNine
             // 
@@ -167,13 +179,16 @@
             this.btnNine.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnNine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNine.Location = new System.Drawing.Point(709, 140);
+            this.btnNine.Location = new System.Drawing.Point(457, 140);
             this.btnNine.Name = "btnNine";
-            this.btnNine.Size = new System.Drawing.Size(350, 131);
+            this.btnNine.Size = new System.Drawing.Size(222, 131);
             this.btnNine.TabIndex = 22;
             this.btnNine.Tag = "9";
             this.btnNine.Text = "9";
             this.btnNine.UseVisualStyleBackColor = false;
+            this.btnNine.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnNine.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnNine.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnFour
             // 
@@ -190,11 +205,14 @@
             this.btnFour.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFour.Location = new System.Drawing.Point(3, 277);
             this.btnFour.Name = "btnFour";
-            this.btnFour.Size = new System.Drawing.Size(347, 131);
+            this.btnFour.Size = new System.Drawing.Size(221, 131);
             this.btnFour.TabIndex = 24;
             this.btnFour.Tag = "4";
             this.btnFour.Text = "4";
             this.btnFour.UseVisualStyleBackColor = false;
+            this.btnFour.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnFour.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnFour.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnFive
             // 
@@ -209,13 +227,16 @@
             this.btnFive.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnFive.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnFive.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFive.Location = new System.Drawing.Point(356, 277);
+            this.btnFive.Location = new System.Drawing.Point(230, 277);
             this.btnFive.Name = "btnFive";
-            this.btnFive.Size = new System.Drawing.Size(347, 131);
+            this.btnFive.Size = new System.Drawing.Size(221, 131);
             this.btnFive.TabIndex = 25;
             this.btnFive.Tag = "5";
             this.btnFive.Text = "5";
             this.btnFive.UseVisualStyleBackColor = false;
+            this.btnFive.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnFive.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnFive.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnSix
             // 
@@ -230,13 +251,16 @@
             this.btnSix.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnSix.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSix.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSix.Location = new System.Drawing.Point(709, 277);
+            this.btnSix.Location = new System.Drawing.Point(457, 277);
             this.btnSix.Name = "btnSix";
-            this.btnSix.Size = new System.Drawing.Size(350, 131);
+            this.btnSix.Size = new System.Drawing.Size(222, 131);
             this.btnSix.TabIndex = 26;
             this.btnSix.Tag = "6";
             this.btnSix.Text = "6";
             this.btnSix.UseVisualStyleBackColor = false;
+            this.btnSix.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnSix.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnSix.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnOne
             // 
@@ -253,11 +277,14 @@
             this.btnOne.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnOne.Location = new System.Drawing.Point(3, 414);
             this.btnOne.Name = "btnOne";
-            this.btnOne.Size = new System.Drawing.Size(347, 131);
+            this.btnOne.Size = new System.Drawing.Size(221, 131);
             this.btnOne.TabIndex = 28;
             this.btnOne.Tag = "1";
             this.btnOne.Text = "1";
             this.btnOne.UseVisualStyleBackColor = false;
+            this.btnOne.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnOne.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnOne.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnTwo
             // 
@@ -272,13 +299,16 @@
             this.btnTwo.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnTwo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTwo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTwo.Location = new System.Drawing.Point(356, 414);
+            this.btnTwo.Location = new System.Drawing.Point(230, 414);
             this.btnTwo.Name = "btnTwo";
-            this.btnTwo.Size = new System.Drawing.Size(347, 131);
+            this.btnTwo.Size = new System.Drawing.Size(221, 131);
             this.btnTwo.TabIndex = 29;
             this.btnTwo.Tag = "2";
             this.btnTwo.Text = "2";
             this.btnTwo.UseVisualStyleBackColor = false;
+            this.btnTwo.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnTwo.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnTwo.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnThree
             // 
@@ -293,13 +323,39 @@
             this.btnThree.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnThree.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThree.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThree.Location = new System.Drawing.Point(709, 414);
+            this.btnThree.Location = new System.Drawing.Point(457, 414);
             this.btnThree.Name = "btnThree";
-            this.btnThree.Size = new System.Drawing.Size(350, 131);
+            this.btnThree.Size = new System.Drawing.Size(222, 131);
             this.btnThree.TabIndex = 30;
             this.btnThree.Tag = "3";
             this.btnThree.Text = "3";
             this.btnThree.UseVisualStyleBackColor = false;
+            this.btnThree.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnThree.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnThree.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            // 
+            // btnDot
+            // 
+            this.btnDot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnDot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDot.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnDot.FlatAppearance.BorderSize = 2;
+            this.btnDot.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btnDot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.btnDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDot.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDot.Location = new System.Drawing.Point(457, 551);
+            this.btnDot.Name = "btnDot";
+            this.btnDot.Size = new System.Drawing.Size(222, 133);
+            this.btnDot.TabIndex = 34;
+            this.btnDot.Tag = ".";
+            this.btnDot.Text = "∙";
+            this.btnDot.UseVisualStyleBackColor = false;
+            this.btnDot.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnDot.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnDot.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // btnZero
             // 
@@ -314,33 +370,16 @@
             this.btnZero.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.btnZero.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnZero.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnZero.Location = new System.Drawing.Point(356, 551);
+            this.btnZero.Location = new System.Drawing.Point(230, 551);
             this.btnZero.Name = "btnZero";
-            this.btnZero.Size = new System.Drawing.Size(347, 133);
+            this.btnZero.Size = new System.Drawing.Size(221, 133);
             this.btnZero.TabIndex = 33;
             this.btnZero.Tag = "0";
             this.btnZero.Text = "0";
             this.btnZero.UseVisualStyleBackColor = false;
-            // 
-            // btnDot
-            // 
-            this.btnDot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnDot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDot.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnDot.FlatAppearance.BorderSize = 2;
-            this.btnDot.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btnDot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
-            this.btnDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDot.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDot.Location = new System.Drawing.Point(709, 551);
-            this.btnDot.Name = "btnDot";
-            this.btnDot.Size = new System.Drawing.Size(350, 133);
-            this.btnDot.TabIndex = 34;
-            this.btnDot.Tag = ".";
-            this.btnDot.Text = "∙";
-            this.btnDot.UseVisualStyleBackColor = false;
+            this.btnZero.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.btnZero.MouseEnter += new System.EventHandler(this.ButtonMouseEnter);
+            this.btnZero.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
             // 
             // BasicKeypad
             // 
@@ -348,7 +387,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainLayout);
             this.Name = "BasicKeypad";
-            this.Size = new System.Drawing.Size(1062, 687);
+            this.Size = new System.Drawing.Size(682, 687);
             this.mainLayout.ResumeLayout(false);
             this.ResumeLayout(false);
 

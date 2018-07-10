@@ -47,6 +47,12 @@
     <Compile Include="BasicKeypad.Designer.cs">
       <DependentUpon>BasicKeypad.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConverterDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConverterDisplay.Designer.cs">
+      <DependentUpon>ConverterDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExpandablePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +72,7 @@
       <DependentUpon>HistoryPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ICalculatorDisplay.cs" />
+    <Compile Include="IConverterDisplay.cs" />
     <Compile Include="IDisplayPanel.cs" />
     <Compile Include="IExpandable.cs" />
     <Compile Include="IHelper.cs" />
@@ -141,6 +148,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BasicKeypad.resx">
       <DependentUpon>BasicKeypad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConverterDisplay.resx">
+      <DependentUpon>ConverterDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExpandablePanel.resx">
       <DependentUpon>ExpandablePanel.cs</DependentUpon>
