@@ -16,7 +16,7 @@ namespace MockUpCalculator {
 
         public IInputBuffer InputBuffer { get; private set; }
         public IOperatorLookup Operators { get; private set; }
-        public ITempUnitConverter UnitConverter { get; private set; }
+        public IUnitConverter UnitConverter { get; private set; }
         public IOperatorConverter OperatorConverter { get; private set; }
         public IParenthesize Parenthesizer { get; private set; }
         public IExpressionBuilder ExpressionBuilder { get; private set; }
@@ -33,7 +33,7 @@ namespace MockUpCalculator {
 
             InputBuffer = new InputBuffer();
             Operators = new OperatorLookup();
-            UnitConverter = new UnitConverter();
+            UnitConverter = new AngleConverter();
             OperatorConverter = new OperatorConverter(Operators.Operators, Operators.Unary);
             Parenthesizer = new Parenthesizer(Operators.Precedence);
             ExpressionBuilder = new ExpressionBuilder(Parenthesizer);

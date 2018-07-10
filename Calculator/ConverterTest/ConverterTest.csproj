@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="OperatorConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitConverterTest.cs" />
     <Compile Include="AngleConverterTest.cs" />
   </ItemGroup>
   <ItemGroup>

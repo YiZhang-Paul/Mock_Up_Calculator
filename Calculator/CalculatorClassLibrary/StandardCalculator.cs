@@ -12,7 +12,7 @@ namespace CalculatorClassLibrary {
     public class StandardCalculator : Calculator, IStandardCalculator {
 
         protected IOperatorLookup Lookup { get; set; }
-        protected ITempUnitConverter UnitConverter { get; set; }
+        protected IUnitConverter UnitConverter { get; set; }
         protected IOperatorConverter OperatorConverter { get; set; }
         protected IExpressionBuilder Builder { get; set; }
         protected IExpressionParser Parser { get; set; }
@@ -27,7 +27,7 @@ namespace CalculatorClassLibrary {
 
             IInputBuffer buffer,
             IOperatorLookup lookup,
-            ITempUnitConverter unitConverter,
+            IUnitConverter unitConverter,
             IOperatorConverter operatorConverter,
             IExpressionBuilder builder,
             IExpressionParser parser,

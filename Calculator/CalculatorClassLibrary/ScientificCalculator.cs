@@ -22,7 +22,7 @@ namespace CalculatorClassLibrary {
 
             IInputBuffer buffer,
             IOperatorLookup lookup,
-            ITempUnitConverter unitConverter,
+            IUnitConverter unitConverter,
             IOperatorConverter operatorConverter,
             IExpressionBuilder builder,
             IExpressionParser parser,

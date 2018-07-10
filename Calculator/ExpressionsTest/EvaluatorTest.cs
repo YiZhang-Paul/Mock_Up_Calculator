@@ -8,7 +8,7 @@ namespace ExpressionsTest {
     [TestClass]
     public class EvaluatorTest {
 
-        Mock<ITempUnitConverter> unitConverter;
+        Mock<IUnitConverter> unitConverter;
         Mock<IOperatorConverter> operatorConverter;
         Mock<IOperatorLookup> lookup;
         Evaluator evaluator;
@@ -95,7 +95,7 @@ namespace ExpressionsTest {
         [TestInitialize]
         public void Setup() {
 
-            unitConverter = new Mock<ITempUnitConverter>();
+            unitConverter = new Mock<IUnitConverter>();
             operatorConverter = new Mock<IOperatorConverter>();
             lookup = new Mock<IOperatorLookup>();
             SetupLookup();
@@ -281,7 +281,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.SineDEG);
 
-            unitConverter.Setup(x => x.DegreeToRadian(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("degrees", It.IsAny<decimal>(), "radians"))
                          .Returns(0.08726646259971647884618453842443m);
 
             Assert.IsTrue(IsAccurate(0.087155742747m, evaluator.Evaluate(MockParseTree(5))));
@@ -301,7 +301,7 @@ namespace ExpressionsTest {
         public void SineGradian() {
 
             SetupOperatorConverter(lookup.Object.SineGRAD);
-            unitConverter.Setup(x => x.GradianToRadian(It.IsAny<decimal>())).Returns(0.0785375m);
+            unitConverter.Setup(x => x.Convert("gradians", It.IsAny<decimal>(), "radians")).Returns(0.0785375m);
 
             Assert.IsTrue(IsAccurate(0.078459095727m, evaluator.Evaluate(MockParseTree(5))));
         }
@@ -311,7 +311,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.CosineDEG);
 
-            unitConverter.Setup(x => x.DegreeToRadian(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("degrees", It.IsAny<decimal>(), "radians"))
                          .Returns(0.08726646259971647884618453842443m);
 
             Assert.IsTrue(IsAccurate(0.996194698091m, evaluator.Evaluate(MockParseTree(5))));
@@ -331,7 +331,7 @@ namespace ExpressionsTest {
         public void CosineGradian() {
 
             SetupOperatorConverter(lookup.Object.CosineGRAD);
-            unitConverter.Setup(x => x.GradianToRadian(It.IsAny<decimal>())).Returns(0.0785375m);
+            unitConverter.Setup(x => x.Convert("gradians", It.IsAny<decimal>(), "radians")).Returns(0.0785375m);
 
             Assert.IsTrue(IsAccurate(0.996917333733m, evaluator.Evaluate(MockParseTree(5))));
         }
@@ -341,7 +341,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.TangentDEG);
 
-            unitConverter.Setup(x => x.DegreeToRadian(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("degrees", It.IsAny<decimal>(), "radians"))
                          .Returns(0.08726646259971647884618453842443m);
 
             Assert.IsTrue(IsAccurate(0.087488663525m, evaluator.Evaluate(MockParseTree(5))));
@@ -361,7 +361,7 @@ namespace ExpressionsTest {
         public void TangentGradian() {
 
             SetupOperatorConverter(lookup.Object.TangentGRAD);
-            unitConverter.Setup(x => x.GradianToRadian(It.IsAny<decimal>())).Returns(0.0785375m);
+            unitConverter.Setup(x => x.Convert("gradians", It.IsAny<decimal>(), "radians")).Returns(0.0785375m);
 
             Assert.IsTrue(IsAccurate(0.0787017068246m, evaluator.Evaluate(MockParseTree(5))));
         }
@@ -400,7 +400,7 @@ namespace ExpressionsTest {
         public void ArcSineDegree() {
 
             SetupOperatorConverter(lookup.Object.ArcSinDEG);
-            unitConverter.Setup(x => x.RadianToDegree(It.IsAny<decimal>())).Returns(90);
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "degrees")).Returns(90);
 
             Assert.IsTrue(IsAccurate(90, evaluator.Evaluate(MockParseTree(1))));
         }
@@ -419,7 +419,7 @@ namespace ExpressionsTest {
         public void ArcSineGradian() {
 
             SetupOperatorConverter(lookup.Object.ArcSinGRAD);
-            unitConverter.Setup(x => x.RadianToGradian(It.IsAny<decimal>())).Returns(100);
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "gradians")).Returns(100);
 
             Assert.IsTrue(IsAccurate(100, evaluator.Evaluate(MockParseTree(1))));
         }
@@ -458,7 +458,7 @@ namespace ExpressionsTest {
         public void ArcCosineDegree() {
 
             SetupOperatorConverter(lookup.Object.ArcCosDEG);
-            unitConverter.Setup(x => x.RadianToDegree(It.IsAny<decimal>())).Returns(60);
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "degrees")).Returns(60);
 
             Assert.IsTrue(IsAccurate(60, evaluator.Evaluate(MockParseTree(0.5m))));
         }
@@ -478,7 +478,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.ArcCosGRAD);
 
-            unitConverter.Setup(x => x.RadianToGradian(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "gradians"))
                          .Returns(66.666666666666666666666666666667m);
 
             Assert.IsTrue(IsAccurate(66.6666666666m, evaluator.Evaluate(MockParseTree(0.5m))));
@@ -489,7 +489,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.ArcTanDEG);
 
-            unitConverter.Setup(x => x.RadianToDegree(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "degrees"))
                          .Returns(78.69006752597978691352549456166m);
 
             Assert.IsTrue(IsAccurate(78.6900675259m, evaluator.Evaluate(MockParseTree(5))));
@@ -510,7 +510,7 @@ namespace ExpressionsTest {
 
             SetupOperatorConverter(lookup.Object.ArcTanGRAD);
 
-            unitConverter.Setup(x => x.RadianToGradian(It.IsAny<decimal>()))
+            unitConverter.Setup(x => x.Convert("radians", It.IsAny<decimal>(), "gradians"))
                          .Returns(87.433408362199763237250549512956m);
 
             Assert.IsTrue(IsAccurate(87.4334083621m, evaluator.Evaluate(MockParseTree(5))));
@@ -658,7 +658,7 @@ namespace ExpressionsTest {
         public void DmsToDegrees() {
 
             SetupOperatorConverter(lookup.Object.Degrees);
-            unitConverter.Setup(x => x.DmsToDegree(It.IsAny<decimal>())).Returns(1);
+            unitConverter.Setup(x => x.Convert("dms", It.IsAny<decimal>(), "degrees")).Returns(1);
 
             Assert.IsTrue(IsAccurate(1, evaluator.Evaluate(MockParseTree(5))));
         }
@@ -667,7 +667,7 @@ namespace ExpressionsTest {
         public void DegreesToDms() {
 
             SetupOperatorConverter(lookup.Object.Dms);
-            unitConverter.Setup(x => x.DegreeToDms(It.IsAny<decimal>())).Returns(1);
+            unitConverter.Setup(x => x.Convert("degrees", It.IsAny<decimal>(), "dms")).Returns(1);
 
             Assert.IsTrue(IsAccurate(1, evaluator.Evaluate(MockParseTree(5))));
         }

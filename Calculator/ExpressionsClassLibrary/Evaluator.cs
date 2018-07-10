@@ -8,14 +8,14 @@ using ConverterClassLibrary;
 namespace ExpressionsClassLibrary {
     public class Evaluator : IEvaluate {
 
-        private ITempUnitConverter UnitConverter { get; set; }
+        private IUnitConverter UnitConverter { get; set; }
         private IOperatorConverter OperatorConverter { get; set; }
         private IOperatorLookup Lookup { get; set; }
         private Dictionary<string, Func<decimal, decimal, decimal>> Calculation { get; set; }
 
         public Evaluator(
 
-            ITempUnitConverter unitConverter,
+            IUnitConverter unitConverter,
             IOperatorConverter operatorConverter,
             IOperatorLookup operatorLookup
 
@@ -39,8 +39,8 @@ namespace ExpressionsClassLibrary {
                 { Lookup.Factorial, (op1, op2) => Factorial(op1) },
                 { Lookup.Log, (op1, op2) => AsDecimal(op1, Math.Log10) },
                 { Lookup.Ln, (op1, op2) => NaturalLogarithm(op1) },
-                { Lookup.Dms, (op1, op2) => UnitConverter.DegreeToDms(op1) },
-                { Lookup.Degrees, (op1, op2) => UnitConverter.DmsToDegree(op1) },
+                { Lookup.Dms, (op1, op2) => UnitConverter.Convert("degrees", op1, "dms") },
+                { Lookup.Degrees, (op1, op2) => UnitConverter.Convert("dms", op1, "degrees") },
                 { Lookup.Negate, (op1, op2) => decimal.Negate(op1) },
                 { Lookup.Reciprocal, (op1, op2) => decimal.Divide(1, op1) },
                 { Lookup.PowerOfTen, (op1, op2) => AsDecimal(10, op1, Math.Pow) },
@@ -94,20 +94,20 @@ namespace ExpressionsClassLibrary {
 
             if(isDegree) {
 
-                return UnitConverter.DegreeToRadian(angle);
+                return UnitConverter.Convert("degrees", angle, "radians");
             }
 
-            return UnitConverter.GradianToRadian(angle);
+            return UnitConverter.Convert("gradians", angle, "radians");
         }
 
         private decimal ToDegree(decimal radian) {
 
-            return UnitConverter.RadianToDegree(radian);
+            return UnitConverter.Convert("radians", radian, "degrees");
         }
 
         private decimal ToGradian(decimal radian) {
 
-            return UnitConverter.RadianToGradian(radian);
+            return UnitConverter.Convert("radians", radian, "gradians");
         }
 
         private decimal ToPowerOfTen(decimal number, decimal power) {

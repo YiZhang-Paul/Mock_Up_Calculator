@@ -41,11 +41,9 @@
   <ItemGroup>
     <Compile Include="AngleConverter.cs" />
     <Compile Include="IOperatorConverter.cs" />
-    <Compile Include="ITempUnitConverter.cs" />
     <Compile Include="IUnitConverter.cs" />
     <Compile Include="OperatorConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

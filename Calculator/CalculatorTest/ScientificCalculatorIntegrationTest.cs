@@ -12,7 +12,7 @@ namespace CalculatorTest {
 
         IInputBuffer buffer;
         IOperatorLookup lookup;
-        ITempUnitConverter unitConverter;
+        IUnitConverter unitConverter;
         IOperatorConverter operatorConverter;
         IParenthesize parenthesizer;
         IExpressionBuilder builder;
@@ -26,7 +26,7 @@ namespace CalculatorTest {
 
             buffer = new InputBuffer();
             lookup = new OperatorLookup();
-            unitConverter = new UnitConverter();
+            unitConverter = new AngleConverter();
             operatorConverter = new OperatorConverter(lookup.Operators, lookup.Unary);
             parenthesizer = new Parenthesizer(lookup.Precedence);
             builder = new ExpressionBuilder(parenthesizer);
