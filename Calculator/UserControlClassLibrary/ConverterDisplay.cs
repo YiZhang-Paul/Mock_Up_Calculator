@@ -20,6 +20,12 @@ namespace UserControlClassLibrary {
             InitializeComponent();
         }
 
+        public void Clear() {
+
+            inputLabel.Text = string.Empty;
+            outputLabel.Text = string.Empty;
+        }
+
         public void DisplayInput(string input, IFormatter formatter) {
 
             inputLabel.Text = formatter.Format(input);

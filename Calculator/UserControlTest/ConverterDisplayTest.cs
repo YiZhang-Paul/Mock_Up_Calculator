@@ -41,5 +41,22 @@ namespace UserControlTest {
 
             Assert.AreEqual("5,512", display.Output);
         }
+
+        [TestMethod]
+        public void Clear() {
+
+            formatter.Setup(x => x.Format(It.IsAny<string>())).Returns("5,512");
+
+            display.DisplayInput("5512", formatter.Object);
+            display.DisplayOutput("5512", formatter.Object);
+
+            Assert.AreEqual("5,512", display.Input);
+            Assert.AreEqual("5,512", display.Output);
+
+            display.Clear();
+
+            Assert.AreEqual(string.Empty, display.Input);
+            Assert.AreEqual(string.Empty, display.Output);
+        }
     }
 }

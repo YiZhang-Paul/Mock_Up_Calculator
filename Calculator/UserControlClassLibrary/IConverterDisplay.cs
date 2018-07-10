@@ -11,6 +11,7 @@ namespace UserControlClassLibrary {
         string Input { get; }
         string Output { get; }
 
+        void Clear();
         void DisplayInput(string input, IFormatter formatter);
         void DisplayOutput(string output, IFormatter formatter);
     }

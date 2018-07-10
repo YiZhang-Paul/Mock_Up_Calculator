@@ -56,8 +56,46 @@ namespace MockUpCalculator {
             basicKeypad.OnButtonMouseLeave += KeypadButtonMouseLeave;
         }
 
+        protected virtual void HandleActionKey(string key) {
+
+            if(key == "CE") {
+
+                Buffer.Clear();
+
+                return;
+            }
+
+            Buffer.Undo();
+        }
+
+        protected virtual decimal Convert() {
+
+            decimal input = decimal.Parse(Buffer.Content);
+
+            return UnitConverter.Convert("degrees", input, "radians");
+        }
+
+        protected virtual void RefreshDisplay(decimal output) {
+
+            Display.DisplayInput(Buffer.Content, NumberFormatter);
+            Display.DisplayOutput(output == 0 ? "0" : output.ToString("N4"), NumberFormatter);
+        }
+
         protected virtual void KeypadButtonMouseClick(object sender, EventArgs e) {
 
+            Display.Clear();
+            string key = ((Button)sender).Tag.ToString();
+
+            if(Checker.IsActionKey(key)) {
+
+                HandleActionKey(key);
+            }
+            else {
+
+                Buffer.Add(key);
+            }
+
+            RefreshDisplay(Convert());
         }
 
         protected virtual void KeypadButtonMouseEnter(object sender, EventArgs e) {
