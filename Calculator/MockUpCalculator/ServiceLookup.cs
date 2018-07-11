@@ -122,6 +122,24 @@ namespace MockUpCalculator {
             );
         }
 
+        public ConverterPanel GetTimeConverterPanel() {
+
+            LoadConverterPanelAsset();
+
+            return new ConverterPanel(
+
+                InputBuffer,
+                KeyChecker,
+                NumberFormatter,
+                new TimeConverter(),
+                new string[] {
+
+                    "Microseconds", "Milliseconds", "Seconds",
+                    "Minutes", "Hours", "Days", "Weeks", "Years"
+                }
+            );
+        }
+
         public ConverterPanel GetAngleConverterPanel() {
 
             LoadConverterPanelAsset();

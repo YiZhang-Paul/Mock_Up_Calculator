@@ -45,6 +45,7 @@
     <Compile Include="OperatorConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemperatureConverter.cs" />
+    <Compile Include="TimeConverter.cs" />
     <Compile Include="UnitConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
