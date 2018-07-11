@@ -53,6 +53,7 @@
     <Compile Include="OperatorConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AngleConverterTest.cs" />
+    <Compile Include="TemperatureConverterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">

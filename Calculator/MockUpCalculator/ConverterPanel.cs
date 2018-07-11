@@ -55,6 +55,7 @@ namespace MockUpCalculator {
             Display = converterDisplay;
             Display.OnUnitChange += ChangeSelectedUnit;
             Display.PopulateOptions(units);
+            RefreshDisplay();
         }
 
         private void SetupKeypad() {
@@ -126,7 +127,7 @@ namespace MockUpCalculator {
             Display.DisplayInput(Buffer.Content, NumberFormatter);
             ShowMainOutput();
 
-            if(Buffer.Content != "0") {
+            if(Buffer.Content != "0" || Display.MainOutputValue != "0") {
 
                 ShowOtherOutputs();
             }

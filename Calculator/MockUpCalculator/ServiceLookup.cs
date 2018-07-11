@@ -108,6 +108,20 @@ namespace MockUpCalculator {
             );
         }
 
+        public ConverterPanel GetTemperatureConverterPanel() {
+
+            LoadConverterPanelAsset();
+
+            return new ConverterPanel(
+
+                InputBuffer,
+                KeyChecker,
+                NumberFormatter,
+                new TemperatureConverter(),
+                new string[] { "Celsius", "Fahrenheit", "Kelvin" }
+            );
+        }
+
         public ConverterPanel GetAngleConverterPanel() {
 
             LoadConverterPanelAsset();

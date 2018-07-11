@@ -83,7 +83,7 @@ namespace MockUpCalculator {
             MenuItems = new List<string[]>() {
 
                 new string[] { "Calculator", "Standard", "Scientific" },
-                new string[] { "Converter", "Currency", "Angle" }
+                new string[] { "Converter", "Currency", "Temperature", "Angle" }
             };
         }
 
@@ -143,6 +143,11 @@ namespace MockUpCalculator {
         protected void ToScientificCalculatorPanel() {
 
             ToCalculator("Scientific", ServiceLookup.GetScientificCalculatorPanel);
+        }
+
+        protected void ToTemperatureConverterPanel() {
+
+            ToConverter("Temperature", ServiceLookup.GetTemperatureConverterPanel);
         }
 
         protected void ToAngleConverterPanel() {
@@ -213,6 +218,12 @@ namespace MockUpCalculator {
                 case "Scientific" :
 
                     ToScientificCalculatorPanel();
+
+                    break;
+
+                case "Temperature":
+
+                    ToTemperatureConverterPanel();
 
                     break;
 
