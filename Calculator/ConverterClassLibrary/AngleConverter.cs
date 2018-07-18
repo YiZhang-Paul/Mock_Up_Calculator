@@ -9,8 +9,8 @@ using UnitsNet;
 namespace ConverterClassLibrary {
     public class AngleConverter : UnitConverter {
 
-        private string Type { get; set; }
-        private Dictionary<string, string> Units { get; set; }
+        protected override string Type { get; set; }
+        protected override Dictionary<string, string> Units { get; set; }
 
         protected override void Initialize() {
 
@@ -24,14 +24,14 @@ namespace ConverterClassLibrary {
             };
         }
 
-        private bool IsSpecialUnit(string unit) {
-
-            return unit.ToLower() == "dms" || unit.ToLower() == "degrees";
-        }
-
         protected override bool IsValidUnit(string unit) {
 
-            return Units.ContainsKey(unit.ToLower()) || IsSpecialUnit(unit.ToLower());
+            return base.IsValidUnit(unit) || IsSpecialUnit(unit.ToLower());
+        }
+
+        protected override bool IsSpecialUnit(string unit) {
+
+            return unit.ToLower() == "dms" || unit.ToLower() == "degrees";
         }
 
         private string GetDecimal(decimal decimals, int padding) {
@@ -70,22 +70,9 @@ namespace ConverterClassLibrary {
             }));
         }
 
-        public override decimal Convert(string current, decimal value, string target) {
+        protected override decimal HandleSpecialUnit(string current, decimal value, string target) {
 
-            if(!IsValidUnit(current) || !IsValidUnit(target)) {
-
-                throw new InvalidOperationException("Invalid Unit.");
-            }
-
-            if(IsSpecialUnit(current) && IsSpecialUnit(target)) {
-
-                return current.ToLower() == "dms" ? DmsToDegree(value) : DegreeToDms(value);
-            }
-
-            current = Units[current.ToLower()];
-            target = Units[target.ToLower()];
-
-            return (decimal)UnitsNet.UnitConverter.ConvertByName(value, Type, current, target);
+            return current.ToLower() == "dms" ? DmsToDegree(value) : DegreeToDms(value);
         }
     }
 }
