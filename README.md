@@ -7,8 +7,7 @@ The project currently supports:
   * Standard Calculator (supports nested expressions)
   * Scientific Calculator (advanced arithmetic operations)
   * Currency Converter (**_pulling live exchange rate_** from web APIs such as [fixer.io])
-  * Unit Converters (e.g. Angle, Time and Temperature converter, etc. Unit conversion is implemented using [UnitsNet
-])
+  * Unit Converters (e.g. Angle, Time and Temperature converter, etc. Unit conversion is implemented using [UnitsNet])
   
 The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested. 
 
