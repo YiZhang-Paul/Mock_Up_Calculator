@@ -87,7 +87,7 @@ namespace MockUpCalculator {
                 new string[] {
 
                     "Converter", "Currency", "Temperature",
-                    "Time", "Power", "Pressure", "Angle"
+                    "Time", "Power", "Data", "Pressure", "Angle"
                 }
             };
         }
@@ -163,6 +163,11 @@ namespace MockUpCalculator {
         protected void ToPowerConverterPanel() {
 
             ToConverter("Power", ServiceLookup.GetPowerConverterPanel);
+        }
+
+        protected void ToDataConverterPanel() {
+
+            ToConverter("Data", ServiceLookup.GetDataConverterPanel);
         }
 
         protected void ToPressureConverterPanel() {
@@ -256,6 +261,12 @@ namespace MockUpCalculator {
                 case "Power" :
 
                     ToPowerConverterPanel();
+
+                    break;
+
+                case "Data" :
+
+                    ToDataConverterPanel();
 
                     break;
 

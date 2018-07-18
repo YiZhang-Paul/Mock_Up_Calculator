@@ -57,6 +57,7 @@
     <Compile Include="TimeConverterTest.cs" />
     <Compile Include="PressureConverterTest.cs" />
     <Compile Include="PowerConverterTest.cs" />
+    <Compile Include="DataConverterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">

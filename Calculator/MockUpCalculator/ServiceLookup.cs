@@ -151,6 +151,22 @@ namespace MockUpCalculator {
             return GetConverterPanel(new PowerConverter(), units);
         }
 
+        public ConverterPanel GetDataConverterPanel() {
+
+            string[] units = {
+
+                "bits", "bytes",
+                "kilobits", "kibibits", "kilobytes", "kibibytes",
+                "megabits", "mebibits", "megabytes", "mebibytes",
+                "gigabits", "gibibits", "gigabytes", "gibibytes",
+                "terabits", "tebibits", "terabytes", "tebibytes",
+                "petabits", "pebibits", "petabytes", "pebibytes",
+                "exabits", "exbibits", "exabytes", "exbibytes"
+            };
+
+            return GetConverterPanel(new DataConverter(), units);
+        }
+
         public ConverterPanel GetPressureConverterPanel() {
 
             string[] units = {

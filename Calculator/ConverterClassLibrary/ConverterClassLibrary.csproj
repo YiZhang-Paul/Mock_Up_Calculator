@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleConverter.cs" />
+    <Compile Include="DataConverter.cs" />
     <Compile Include="IOperatorConverter.cs" />
     <Compile Include="IUnitConverter.cs" />
     <Compile Include="OperatorConverter.cs" />
