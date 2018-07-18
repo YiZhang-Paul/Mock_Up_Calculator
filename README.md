@@ -7,7 +7,8 @@ The project currently supports:
   * Standard Calculator (supports nested expressions)
   * Scientific Calculator (advanced arithmetic operations)
   * Currency Converter (**_pulling live exchange rate_** from web APIs such as [fixer.io])
-  * Unit Converters (e.g. Angle, Time and Temperature converter, etc. More converters will be added in the future)
+  * Unit Converters (e.g. Angle, Time and Temperature converter, etc. Unit conversion is implemented using [UnitsNet
+])
   
 The source code is unit-tested using MSTest and [Moq]. Each integrated component is also integration-tested. 
 
@@ -41,4 +42,5 @@ The project is intended for personal use only and therefore a license is not pro
 [wiki page]: https://github.com/YiZhang-Paul/Mock_Up_Calculator/wiki "Wiki"
 [issue page]: https://github.com/YiZhang-Paul/Mock_Up_Calculator/issues "Open Issue"
 [fixer.io]: https://fixer.io/ "fixer"
+[UnitsNet]: https://github.com/angularsen/UnitsNet "UnitsNet"
 [Moq]: https://github.com/moq/moq4
