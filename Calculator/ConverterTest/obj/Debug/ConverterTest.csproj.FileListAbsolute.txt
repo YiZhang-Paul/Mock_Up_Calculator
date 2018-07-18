@@ -9,3 +9,5 @@ D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\ConverterTest\obj\Debug\ConverterTest.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\ConverterTest\obj\Debug\ConverterTest.dll
 D:\mock_up_calculator\Calculator\ConverterTest\obj\Debug\ConverterTest.pdb
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\UnitsNet.xml

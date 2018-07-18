@@ -4,19 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConverterClassLibrary;
+using UnitsNet;
 
 namespace ConverterClassLibrary {
     public class AngleConverter : UnitConverter {
 
-        private Dictionary<string, decimal> Rates { get; set; }
+        private string Type { get; set; }
+        private Dictionary<string, string> Units { get; set; }
 
         protected override void Initialize() {
 
-            Rates = new Dictionary<string, decimal>() {
+            Type = UnitsNet.QuantityType.Angle.ToString();
 
-                { "radians", 1 },
-                { "degrees", 1 / (decimal)Math.PI * 180 },
-                { "gradians", 1 / 0.0157075m }
+            Units = new Dictionary<string, string>() {
+
+                { "radians", UnitsNet.Units.AngleUnit.Radian.ToString() },
+                { "degrees", UnitsNet.Units.AngleUnit.Degree.ToString() },
+                { "gradians", UnitsNet.Units.AngleUnit.Gradian.ToString() }
             };
         }
 
@@ -27,7 +31,7 @@ namespace ConverterClassLibrary {
 
         protected override bool IsValidUnit(string unit) {
 
-            return Rates.ContainsKey(unit.ToLower()) || IsSpecialUnit(unit.ToLower());
+            return Units.ContainsKey(unit.ToLower()) || IsSpecialUnit(unit.ToLower());
         }
 
         private string GetDecimal(decimal decimals, int padding) {
@@ -78,7 +82,10 @@ namespace ConverterClassLibrary {
                 return current.ToLower() == "dms" ? DmsToDegree(value) : DegreeToDms(value);
             }
 
-            return value / Rates[current.ToLower()] * Rates[target.ToLower()];
+            current = Units[current.ToLower()];
+            target = Units[target.ToLower()];
+
+            return (decimal)UnitsNet.UnitConverter.ConvertByName(value, Type, current, target);
         }
     }
 }

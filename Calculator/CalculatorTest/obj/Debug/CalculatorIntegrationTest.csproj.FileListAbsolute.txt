@@ -15,3 +15,5 @@ D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorIntegrationTest.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.dll
 D:\mock_up_calculator\Calculator\CalculatorTest\obj\Debug\CalculatorTest.pdb
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\CalculatorTest\bin\Debug\UnitsNet.xml

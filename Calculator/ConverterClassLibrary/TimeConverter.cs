@@ -4,30 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConverterClassLibrary;
+using UnitsNet;
 
 namespace ConverterClassLibrary {
     public class TimeConverter : UnitConverter {
 
-        private Dictionary<string, decimal> Rates { get; set; }
+        private string Type { get; set; }
+        private Dictionary<string, string> Units { get; set; }
 
         protected override void Initialize() {
 
-            Rates = new Dictionary<string, decimal>() {
+            Type = UnitsNet.QuantityType.Duration.ToString();
 
-                { "hours", 1 },
-                { "microseconds", 3600000000 },
-                { "milliseconds", 3600000 },
-                { "seconds", 3600 },
-                { "minutes", 60 },
-                { "days", 1m / 24 },
-                { "weeks", 1m / 168 },
-                { "years", 1m / 8766 },
+            Units = new Dictionary<string, string>() {
+
+                { "microseconds", UnitsNet.Units.DurationUnit.Microsecond.ToString() },
+                { "milliseconds", UnitsNet.Units.DurationUnit.Millisecond.ToString() },
+                { "seconds", UnitsNet.Units.DurationUnit.Second.ToString() },
+                { "minutes", UnitsNet.Units.DurationUnit.Minute.ToString() },
+                { "hours", UnitsNet.Units.DurationUnit.Hour.ToString() },
+                { "days", UnitsNet.Units.DurationUnit.Day.ToString() },
+                { "weeks", UnitsNet.Units.DurationUnit.Week.ToString() },
+                { "years", UnitsNet.Units.DurationUnit.Year365.ToString() }
             };
         }
 
         protected override bool IsValidUnit(string unit) {
 
-            return Rates.ContainsKey(unit.ToLower());
+            return Units.ContainsKey(unit.ToLower());
         }
 
         public override decimal Convert(string current, decimal value, string target) {
@@ -37,7 +41,10 @@ namespace ConverterClassLibrary {
                 throw new InvalidOperationException("Invalid Unit.");
             }
 
-            return value / Rates[current.ToLower()] * Rates[target.ToLower()];
+            current = Units[current.ToLower()];
+            target = Units[target.ToLower()];
+
+            return (decimal)UnitsNet.UnitConverter.ConvertByName(value, Type, current, target);
         }
     }
 }

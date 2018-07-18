@@ -113,7 +113,7 @@ namespace MockUpCalculatorIntegrationTest {
             calculatorPanel.TestKeypadButtonMouseClick(button, null);
 
             Assert.AreEqual(service.Operators.SineDEG + "(5)", calculatorPanel.TestDisplay.Expression);
-            Assert.AreEqual("0.0871557427476581", calculatorPanel.TestDisplay.Input);
+            Assert.AreEqual("0.0871557427476582", calculatorPanel.TestDisplay.Input);
         }
 
         [TestMethod]
@@ -146,7 +146,7 @@ namespace MockUpCalculatorIntegrationTest {
             calculatorPanel.TestKeypadButtonMouseClick(button, null);
 
             Assert.AreEqual(service.Operators.SineGRAD + "(5)", calculatorPanel.TestDisplay.Expression);
-            Assert.AreEqual("0.078456786528392", calculatorPanel.TestDisplay.Input);
+            Assert.AreEqual("0.0784590957278449", calculatorPanel.TestDisplay.Input);
         }
     }
 }

@@ -30,3 +30,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\Moq.p
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\Moq.xml
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\System.ValueTuple.xml
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\UnitsNet.xml

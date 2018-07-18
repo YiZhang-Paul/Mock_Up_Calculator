@@ -54,17 +54,17 @@ namespace ConverterTest {
         [TestMethod]
         public void RadianToGradian() {
 
-            Assert.IsTrue(IsAccurate(1, converter.Convert("radians", 0.0157075m, "gradians")));
-            Assert.IsTrue(IsAccurate(5, converter.Convert("radians", 0.0785375m, "gradians")));
-            Assert.IsTrue(IsAccurate(100, converter.Convert("radians", 1.57075m, "gradians")));
+            Assert.IsTrue(IsAccurate(0.99997m, converter.Convert("radians", 0.0157075m, "gradians"), 2));
+            Assert.IsTrue(IsAccurate(4.9998m, converter.Convert("radians", 0.0785375m, "gradians"), 2));
+            Assert.IsTrue(IsAccurate(99.997m, converter.Convert("radians", 1.57075m, "gradians"), 2));
         }
 
         [TestMethod]
         public void GradianToRadian() {
 
-            Assert.IsTrue(IsAccurate(0.0157075m, converter.Convert("gradians", 1, "radians")));
-            Assert.IsTrue(IsAccurate(0.0785375m, converter.Convert("gradians", 5, "radians")));
-            Assert.IsTrue(IsAccurate(1.57075m, converter.Convert("gradians", 100, "radians")));
+            Assert.IsTrue(IsAccurate(0.0157075m, converter.Convert("gradians", 0.99997m, "radians"), 2));
+            Assert.IsTrue(IsAccurate(0.0785375m, converter.Convert("gradians", 4.9998m, "radians"), 2));
+            Assert.IsTrue(IsAccurate(1.57075m, converter.Convert("gradians", 99.997m, "radians"), 2));
         }
 
         [TestMethod]

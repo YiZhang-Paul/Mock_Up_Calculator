@@ -3,73 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnitsNet;
 
 namespace ConverterClassLibrary {
     public class TemperatureConverter : UnitConverter {
 
-        private Dictionary<string, Dictionary<string, Func<decimal, decimal>>> Formulas { get; set; }
+        private string Type { get; set; }
+        private Dictionary<string, string> Units { get; set; }
 
         protected override void Initialize() {
 
-            var fahrenheitTable = new Dictionary<string, Func<decimal, decimal>>() {
+            Type = UnitsNet.QuantityType.Temperature.ToString();
 
-                { "celsius", FahrenheitToCelsius },
-                { "kelvin", FahrenheitToKelvin }
-            };
+            Units = new Dictionary<string, string>() {
 
-            var celsiusTable = new Dictionary<string, Func<decimal, decimal>>() {
-
-                { "fahrenheit", CelsiusToFahrenheit },
-                { "kelvin", CelsiusToKelvin }
-            };
-
-            var kelvinTable = new Dictionary<string, Func<decimal, decimal>>() {
-
-                { "fahrenheit", KelvinToFahrenheit },
-                { "celsius", KelvinToCelsius }
-            };
-
-            Formulas = new Dictionary<string, Dictionary<string, Func<decimal, decimal>>>() {
-
-                { "fahrenheit", fahrenheitTable },
-                { "celsius", celsiusTable },
-                { "kelvin", kelvinTable }
+                { "celsius", UnitsNet.Units.TemperatureUnit.DegreeCelsius.ToString() },
+                { "fahrenheit", UnitsNet.Units.TemperatureUnit.DegreeFahrenheit.ToString() },
+                { "kelvin", UnitsNet.Units.TemperatureUnit.Kelvin.ToString() }
             };
         }
 
         protected override bool IsValidUnit(string unit) {
 
-            return Formulas.ContainsKey(unit.ToLower());
-        }
-
-        private decimal FahrenheitToCelsius(decimal fahrenheit) {
-
-            return (fahrenheit - 32) * 5 / 9;
-        }
-
-        private decimal FahrenheitToKelvin(decimal fahrenheit) {
-
-            return (fahrenheit - 32) * 5 / 9 + 273.15m;
-        }
-
-        private decimal CelsiusToFahrenheit(decimal celsius) {
-
-            return (celsius * 9 / 5) + 32;
-        }
-
-        private decimal CelsiusToKelvin(decimal celsius) {
-
-            return celsius + 273.15m;
-        }
-
-        private decimal KelvinToFahrenheit(decimal kelvin) {
-
-            return (kelvin - 273.15m) * 9 / 5 + 32;
-        }
-
-        private decimal KelvinToCelsius(decimal kelvin) {
-
-            return kelvin - 273.15m;
+            return Units.ContainsKey(unit.ToLower());
         }
 
         public override decimal Convert(string current, decimal value, string target) {
@@ -84,7 +40,10 @@ namespace ConverterClassLibrary {
                 return value;
             }
 
-            return Formulas[current.ToLower()][target.ToLower()](value);
+            current = Units[current.ToLower()];
+            target = Units[target.ToLower()];
+
+            return (decimal)UnitsNet.UnitConverter.ConvertByName(value, Type, current, target);
         }
     }
 }

@@ -9,3 +9,5 @@ D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\Deque.dll
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ExpressionsClassLibrary.pdb
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\ConverterClassLibrary.pdb
 D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\Deque.xml
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\FormatterClassLibrary\bin\Debug\UnitsNet.xml

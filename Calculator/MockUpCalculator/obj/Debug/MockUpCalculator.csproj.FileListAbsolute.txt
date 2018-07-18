@@ -27,3 +27,5 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.Sci
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.StandardCalculatorPanel.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.CalculatorPanel.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.ConverterPanel.resources
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UnitsNet.xml

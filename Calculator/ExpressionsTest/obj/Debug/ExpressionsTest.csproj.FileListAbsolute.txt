@@ -18,3 +18,5 @@ D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\ExpressionsTest\obj\Debug\ExpressionsTest.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\ExpressionsTest\obj\Debug\ExpressionsTest.dll
 D:\mock_up_calculator\Calculator\ExpressionsTest\obj\Debug\ExpressionsTest.pdb
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\UnitsNet.xml
