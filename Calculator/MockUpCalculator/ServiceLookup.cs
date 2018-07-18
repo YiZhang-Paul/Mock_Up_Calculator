@@ -140,6 +140,25 @@ namespace MockUpCalculator {
             );
         }
 
+        public ConverterPanel GetPressureConverterPanel() {
+
+            LoadConverterPanelAsset();
+
+            return new ConverterPanel(
+
+                InputBuffer,
+                KeyChecker,
+                NumberFormatter,
+                new PressureConverter(),
+                new string[] {
+
+                    "Atmospheres", "Bars", "Kilopascals",
+                    "Millimetres of mercury", "Pascals",
+                    "Pounds per square inch"
+                }
+            );
+        }
+
         public ConverterPanel GetAngleConverterPanel() {
 
             LoadConverterPanelAsset();
