@@ -108,7 +108,7 @@ namespace MockUpCalculator {
             );
         }
 
-        public ConverterPanel GetTemperatureConverterPanel() {
+        public ConverterPanel GetConverterPanel(IUnitConverter converter, string[] units) {
 
             LoadConverterPanelAsset();
 
@@ -117,78 +117,57 @@ namespace MockUpCalculator {
                 InputBuffer,
                 KeyChecker,
                 NumberFormatter,
-                new TemperatureConverter(),
-                new string[] { "Celsius", "Fahrenheit", "Kelvin" }
+                converter,
+                units
             );
+        }
+
+        public ConverterPanel GetTemperatureConverterPanel() {
+
+            string[] units = { "Celsius", "Fahrenheit", "Kelvin" };
+
+            return GetConverterPanel(new TemperatureConverter(), units);
         }
 
         public ConverterPanel GetTimeConverterPanel() {
 
-            LoadConverterPanelAsset();
+            string[] units = {
 
-            return new ConverterPanel(
+                "Microseconds", "Milliseconds", "Seconds",
+                "Minutes", "Hours", "Days", "Weeks", "Years"
+            };
 
-                InputBuffer,
-                KeyChecker,
-                NumberFormatter,
-                new TimeConverter(),
-                new string[] {
-
-                    "Microseconds", "Milliseconds", "Seconds",
-                    "Minutes", "Hours", "Days", "Weeks", "Years"
-                }
-            );
+            return GetConverterPanel(new TimeConverter(), units);
         }
 
         public ConverterPanel GetPowerConverterPanel() {
 
-            LoadConverterPanelAsset();
+            string[] units = {
 
-            return new ConverterPanel(
+                "Watts", "Kilowatts", "Horsepower (US)",
+                "Foot-pounds/minute", "BTUs/minute"
+            };
 
-                InputBuffer,
-                KeyChecker,
-                NumberFormatter,
-                new PowerConverter(),
-                new string[] {
-
-                    "Watts", "Kilowatts", "Horsepower (US)",
-                    "Foot-pounds/minute", "BTUs/minute"
-                }
-            );
+            return GetConverterPanel(new PowerConverter(), units);
         }
 
         public ConverterPanel GetPressureConverterPanel() {
 
-            LoadConverterPanelAsset();
+            string[] units = {
 
-            return new ConverterPanel(
+                "Atmospheres", "Bars", "Kilopascals",
+                "Millimetres of mercury", "Pascals",
+                "Pounds per square inch"
+            };
 
-                InputBuffer,
-                KeyChecker,
-                NumberFormatter,
-                new PressureConverter(),
-                new string[] {
-
-                    "Atmospheres", "Bars", "Kilopascals",
-                    "Millimetres of mercury", "Pascals",
-                    "Pounds per square inch"
-                }
-            );
+            return GetConverterPanel(new PressureConverter(), units);
         }
 
         public ConverterPanel GetAngleConverterPanel() {
 
-            LoadConverterPanelAsset();
+            string[] units = { "Degrees", "Radians", "Gradians" };
 
-            return new ConverterPanel(
-
-                InputBuffer,
-                KeyChecker,
-                NumberFormatter,
-                new AngleConverter(),
-                new string[] { "Degrees", "Radians", "Gradians" }
-            );
+            return GetConverterPanel(new AngleConverter(), units);
         }
     }
 }
