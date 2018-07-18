@@ -20,7 +20,7 @@ namespace ConverterClassLibrary {
 
         protected virtual bool IsValidUnit(string unit) {
 
-            return Units.ContainsKey(unit.ToLower());
+            return Units.ContainsKey(unit.ToLower()) || IsSpecialUnit(unit);
         }
 
         protected virtual bool IsSpecialUnit(string unit) {
@@ -28,8 +28,13 @@ namespace ConverterClassLibrary {
             return false;
         }
 
+        protected virtual bool NeedSpecialConversion(string current, string target) {
+
+            return false;
+        }
+
         //hook for template method
-        protected virtual decimal HandleSpecialUnit(string current, decimal value, string target) {
+        protected virtual decimal HandleSpecialConversion(string current, decimal value, string target) {
 
             return 0;
         }
@@ -47,9 +52,9 @@ namespace ConverterClassLibrary {
                 return value;
             }
 
-            if(IsSpecialUnit(current) && IsSpecialUnit(target)) {
+            if(NeedSpecialConversion(current, target)) {
 
-                return HandleSpecialUnit(current, value, target);
+                return HandleSpecialConversion(current, value, target);
             }
 
             return (decimal)UnitsNet.UnitConverter.ConvertByName(

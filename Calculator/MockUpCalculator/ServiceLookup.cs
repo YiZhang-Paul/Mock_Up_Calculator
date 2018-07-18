@@ -140,6 +140,24 @@ namespace MockUpCalculator {
             );
         }
 
+        public ConverterPanel GetPowerConverterPanel() {
+
+            LoadConverterPanelAsset();
+
+            return new ConverterPanel(
+
+                InputBuffer,
+                KeyChecker,
+                NumberFormatter,
+                new PowerConverter(),
+                new string[] {
+
+                    "Watts", "Kilowatts", "Horsepower (US)",
+                    "Foot-pounds/minute", "BTUs/minute"
+                }
+            );
+        }
+
         public ConverterPanel GetPressureConverterPanel() {
 
             LoadConverterPanelAsset();

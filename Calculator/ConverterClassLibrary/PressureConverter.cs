@@ -25,6 +25,5 @@ namespace ConverterClassLibrary {
                 { "pounds per square inch", UnitsNet.Units.PressureUnit.PoundForcePerSquareInch.ToString() }
             };
         }
-
     }
 }

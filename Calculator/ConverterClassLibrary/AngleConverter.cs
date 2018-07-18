@@ -24,14 +24,14 @@ namespace ConverterClassLibrary {
             };
         }
 
-        protected override bool IsValidUnit(string unit) {
-
-            return base.IsValidUnit(unit) || IsSpecialUnit(unit.ToLower());
-        }
-
         protected override bool IsSpecialUnit(string unit) {
 
             return unit.ToLower() == "dms" || unit.ToLower() == "degrees";
+        }
+
+        protected override bool NeedSpecialConversion(string current, string target) {
+
+            return IsSpecialUnit(current) && IsSpecialUnit(target);
         }
 
         private string GetDecimal(decimal decimals, int padding) {
@@ -70,7 +70,7 @@ namespace ConverterClassLibrary {
             }));
         }
 
-        protected override decimal HandleSpecialUnit(string current, decimal value, string target) {
+        protected override decimal HandleSpecialConversion(string current, decimal value, string target) {
 
             return current.ToLower() == "dms" ? DmsToDegree(value) : DegreeToDms(value);
         }
