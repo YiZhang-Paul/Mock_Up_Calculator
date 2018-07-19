@@ -61,7 +61,7 @@
             this.displayLayout.Size = new System.Drawing.Size(337, 148);
             this.displayLayout.TabIndex = 0;
             // 
-            // otherOutputTitleLabel
+            // extraOutputTitleLabel
             // 
             this.extraOutputTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.extraOutputTitleLabel.AutoSize = true;
@@ -69,7 +69,7 @@
             this.extraOutputTitleLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.extraOutputTitleLabel.Location = new System.Drawing.Point(9, 112);
             this.extraOutputTitleLabel.Margin = new System.Windows.Forms.Padding(9, 0, 3, 0);
-            this.extraOutputTitleLabel.Name = "otherOutputTitleLabel";
+            this.extraOutputTitleLabel.Name = "extraOutputTitleLabel";
             this.extraOutputTitleLabel.Size = new System.Drawing.Size(86, 15);
             this.extraOutputTitleLabel.TabIndex = 4;
             this.extraOutputTitleLabel.Text = "About equal to";
@@ -158,25 +158,25 @@
             this.otherOutputPanel.Size = new System.Drawing.Size(326, 15);
             this.otherOutputPanel.TabIndex = 5;
             // 
-            // otherOutputLabelTwo
+            // extraOutputLabelTwo
             // 
             this.extraOutputLabelTwo.AutoSize = true;
             this.extraOutputLabelTwo.Dock = System.Windows.Forms.DockStyle.Left;
             this.extraOutputLabelTwo.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.extraOutputLabelTwo.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.extraOutputLabelTwo.Location = new System.Drawing.Point(0, 0);
-            this.extraOutputLabelTwo.Name = "otherOutputLabelTwo";
+            this.extraOutputLabelTwo.Name = "extraOutputLabelTwo";
             this.extraOutputLabelTwo.Size = new System.Drawing.Size(0, 20);
             this.extraOutputLabelTwo.TabIndex = 1;
             // 
-            // otherOutputLabelOne
+            // extraOutputLabelOne
             // 
             this.extraOutputLabelOne.AutoSize = true;
             this.extraOutputLabelOne.Dock = System.Windows.Forms.DockStyle.Left;
             this.extraOutputLabelOne.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.extraOutputLabelOne.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.extraOutputLabelOne.Location = new System.Drawing.Point(0, 0);
-            this.extraOutputLabelOne.Name = "otherOutputLabelOne";
+            this.extraOutputLabelOne.Name = "extraOutputLabelOne";
             this.extraOutputLabelOne.Size = new System.Drawing.Size(0, 20);
             this.extraOutputLabelOne.TabIndex = 0;
             // 

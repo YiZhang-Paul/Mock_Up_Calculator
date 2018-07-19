@@ -35,6 +35,7 @@ namespace MockUpCalculator {
             IKeyChecker checker,
             IFormatter formatter,
             IUnitConverter converter,
+            IConverterDisplay display,
             string[] units
 
         ) {
@@ -46,13 +47,15 @@ namespace MockUpCalculator {
             UnitConverter = converter;
             Helper = new UIHelper();
             Units = units.ToArray();
-            SetupDisplay(units);
+            SetupDisplay(display, units);
             SetupKeypad();
         }
 
-        private void SetupDisplay(string[] units) {
+        private void SetupDisplay(IConverterDisplay display, string[] units) {
 
-            Display = converterDisplay;
+            ((Control)display).Parent = mainLayout;
+            ((Control)display).Dock = DockStyle.Fill;
+            Display = display;
             Display.OnUnitChange += ChangeSelectedUnit;
             Display.PopulateOptions(units);
             RefreshDisplay();

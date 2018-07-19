@@ -9,7 +9,8 @@ namespace ConverterClassLibrary {
     public class CurrencyConverter : IUnitConverter {
 
         private IExchangeRateLoader Loader { get; set; }
-        private Dictionary<string, decimal> Rates { get; set; }
+
+        public Dictionary<string, decimal> Rates { get; private set; }
 
         public CurrencyConverter(IExchangeRateLoader loader) {
 
@@ -23,13 +24,13 @@ namespace ConverterClassLibrary {
 
             foreach(var rate in Loader.Rates) {
 
-                Rates[rate.Item1.ToLower()] = rate.Item2;
+                Rates[rate.Item1] = rate.Item2;
             }
         }
 
         public decimal Convert(string current, decimal value, string target) {
 
-            return Rates[target.ToLower()] / Rates[current.ToLower()] * value;
+            return Rates[target] / Rates[current] * value;
         }
     }
 }

@@ -22,9 +22,10 @@ namespace MockUpCalculatorIntegrationTest {
                 IKeyChecker checker,
                 IFormatter formatter,
                 IUnitConverter converter,
+                IConverterDisplay display,
                 string[] units
 
-            ) : base(buffer, checker, formatter, converter, units) {}
+            ) : base(buffer, checker, formatter, converter, display, units) { }
 
             public void SetBuffer(string content) {
 
@@ -55,6 +56,7 @@ namespace MockUpCalculatorIntegrationTest {
                 service.KeyChecker,
                 service.NumberFormatter,
                 new AngleConverter(),
+                new ConverterDisplay(),
                 new string[] { "Degrees", "Radians", "Gradians" }
             );
         }

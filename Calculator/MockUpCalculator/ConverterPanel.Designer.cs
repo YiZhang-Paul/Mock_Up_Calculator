@@ -26,7 +26,6 @@
             this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.keypadPanel = new System.Windows.Forms.Panel();
             this.basicKeypad = new UserControlClassLibrary.BasicKeypad();
-            this.converterDisplay = new UserControlClassLibrary.ConverterDisplay();
             this.mainLayout.SuspendLayout();
             this.keypadPanel.SuspendLayout();
             this.SuspendLayout();
@@ -36,7 +35,6 @@
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Controls.Add(this.keypadPanel, 0, 1);
-            this.mainLayout.Controls.Add(this.converterDisplay, 0, 0);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -71,17 +69,6 @@
             this.basicKeypad.Size = new System.Drawing.Size(337, 277);
             this.basicKeypad.TabIndex = 0;
             // 
-            // converterDisplay
-            // 
-            this.converterDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.converterDisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.converterDisplay.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.converterDisplay.Location = new System.Drawing.Point(0, 0);
-            this.converterDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.converterDisplay.Name = "converterDisplay";
-            this.converterDisplay.Size = new System.Drawing.Size(337, 230);
-            this.converterDisplay.TabIndex = 2;
-            // 
             // ConverterPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -104,6 +91,5 @@
         private System.Windows.Forms.TableLayoutPanel mainLayout;
         private System.Windows.Forms.Panel keypadPanel;
         private UserControlClassLibrary.BasicKeypad basicKeypad;
-        private UserControlClassLibrary.ConverterDisplay converterDisplay;
     }
 }

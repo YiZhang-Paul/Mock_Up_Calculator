@@ -125,21 +125,23 @@ namespace MockUpCalculator {
                 KeyChecker,
                 NumberFormatter,
                 converter,
+                new ConverterDisplay(),
                 units
             );
         }
 
         public ConverterPanel GetCurrencyConverterPanel() {
-
+            //not thread safe
             if(ExchangeRateLoader == null) {
 
                 ExchangeRateLoader = new ExchangeRateLoader(_exchangeRateAPIURL);
                 ExchangeRateLoader.Load(_exchangeRateAPIKey, new string[0]);
             }
 
-            var units = ExchangeRateLoader.Rates.Select(rate => rate.Item1).ToArray();
+            var converter = new CurrencyConverter(ExchangeRateLoader);
+            var units = converter.Rates.Select(rate => rate.Key).ToArray();
 
-            return GetConverterPanel(new CurrencyConverter(ExchangeRateLoader), units);
+            return GetConverterPanel(converter, units);
         }
 
         public ConverterPanel GetTemperatureConverterPanel() {
