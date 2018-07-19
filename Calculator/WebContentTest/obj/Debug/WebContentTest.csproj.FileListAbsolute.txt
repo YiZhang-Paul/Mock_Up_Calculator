@@ -1,0 +1,9 @@
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\WebContentTest.dll
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\WebContentTest.pdb
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\WebContentTest\obj\Debug\WebContentTest.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\WebContentTest\obj\Debug\WebContentTest.dll
+D:\mock_up_calculator\Calculator\WebContentTest\obj\Debug\WebContentTest.pdb
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\WebContentTest\bin\Debug\Newtonsoft.Json.xml

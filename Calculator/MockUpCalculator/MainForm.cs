@@ -394,7 +394,7 @@ namespace MockUpCalculator {
                 Helper.ScaleTo(this, DefaultWidth, DefaultHeight);
                 openTimer.Tick -= ZoomUI;
                 openTimer.Tick += FinishLoadUI;
-                ToAngleConverterPanel();
+                ToScientificCalculatorPanel();
             }
         }
 

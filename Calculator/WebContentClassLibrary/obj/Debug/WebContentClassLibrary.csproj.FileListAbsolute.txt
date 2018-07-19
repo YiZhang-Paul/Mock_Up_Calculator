@@ -1,0 +1,7 @@
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\obj\Debug\WebContentClassLibrary.csprojResolveAssemblyReference.cache
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\obj\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\obj\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\WebContentClassLibrary\bin\Debug\Newtonsoft.Json.xml
