@@ -32,3 +32,7 @@ D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\Syste
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\System.ValueTuple.xml
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculatorIntegrationTest\bin\Debug\Newtonsoft.Json.xml

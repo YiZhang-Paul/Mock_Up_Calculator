@@ -11,3 +11,16 @@ D:\mock_up_calculator\Calculator\ConverterTest\obj\Debug\ConverterTest.dll
 D:\mock_up_calculator\Calculator\ConverterTest\obj\Debug\ConverterTest.pdb
 D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Castle.Core.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Moq.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\System.ValueTuple.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Castle.Core.xml
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Moq.pdb
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Moq.xml
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\System.ValueTuple.xml
+D:\mock_up_calculator\Calculator\ConverterTest\bin\Debug\Newtonsoft.Json.xml

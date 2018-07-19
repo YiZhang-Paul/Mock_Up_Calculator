@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebContentClassLibrary;
 
@@ -7,21 +8,22 @@ namespace WebContentTest {
     [TestClass]
     public class ExchangeRateLoaderTest {
 
+        private static string _url = ConfigurationManager.AppSettings["exchangeRateAPIURL"];
+        private static string _key = ConfigurationManager.AppSettings["exchangeRateAPIKey"];
         private static ExchangeRateLoader loader;
 
         [ClassInitialize]
         public static void Setup(TestContext context) {
 
-            loader = new ExchangeRateLoader();
-            string key = "9cc79a54b9fd6990022df1b32309c2cf";
+            loader = new ExchangeRateLoader(_url);
             string[] symbols = { "USD", "AUD", "CAD", "PLN", "MXN" };
-            loader.Load(key, symbols);
+            loader.Load(_key, symbols);
         }
 
         [TestMethod]
         public void GetBaseBeforeLoad() {
 
-            Assert.IsNull(new ExchangeRateLoader().Base);
+            Assert.IsNull(new ExchangeRateLoader(_url).Base);
         }
 
         [TestMethod]
@@ -33,7 +35,7 @@ namespace WebContentTest {
         [TestMethod]
         public void GetRatesBeforeLoad() {
 
-            Assert.IsNull(new ExchangeRateLoader().Rates);
+            Assert.IsNull(new ExchangeRateLoader(_url).Rates);
         }
 
         [TestMethod]

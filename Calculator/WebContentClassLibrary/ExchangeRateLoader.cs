@@ -9,20 +9,19 @@ using Newtonsoft.Json.Linq;
 namespace WebContentClassLibrary {
     public class ExchangeRateLoader : IExchangeRateLoader {
 
-        private const string _url = "http://data.fixer.io/api/latest?access_key=";
-
-        private JObject Response { get; set; }
+        private string URL { get; set; }
+        private JObject ExchangeRate { get; set; }
 
         public string Base {
 
             get {
 
-                if(Response == null) {
+                if(ExchangeRate == null) {
 
                     return null;
                 }
 
-                return Response["base"].ToString();
+                return ExchangeRate["base"].ToString();
             }
         }
 
@@ -30,30 +29,36 @@ namespace WebContentClassLibrary {
 
             get {
 
-                if(Response == null) {
+                if(ExchangeRate == null) {
 
                     return null;
                 }
 
                 var rates = new List<Tuple<string, decimal>>();
 
-                foreach(var pair in JObject.Parse(Response["rates"].ToString())) {
+                foreach(var pair in JObject.Parse(ExchangeRate["rates"].ToString())) {
 
-                    string currency = pair.Key.ToString();
+                    string type = pair.Key.ToString();
                     decimal rate = decimal.Parse(pair.Value.ToString());
-                    rates.Add(new Tuple<string, decimal>(currency, rate));
+                    rates.Add(new Tuple<string, decimal>(type, rate));
                 }
 
                 return rates;
             }
         }
 
+        public ExchangeRateLoader(string url) {
+
+            URL = url;
+        }
+
         public void Load(string key, string[] symbols) {
 
             var client = new WebClient();
+            string apiKey = "?access_key=" + key;
             string symbol = "&symbols=" + string.Join(",", symbols);
-            var responseBody = client.DownloadString(_url + key + symbol);
-            Response = JObject.Parse(responseBody);
+            var responseBody = client.DownloadString(URL + apiKey + symbol);
+            ExchangeRate = JObject.Parse(responseBody);
         }
     }
 }

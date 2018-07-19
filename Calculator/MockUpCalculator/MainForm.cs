@@ -150,6 +150,11 @@ namespace MockUpCalculator {
             ToCalculator("Scientific", ServiceLookup.GetScientificCalculatorPanel);
         }
 
+        protected void ToCurrencyConverterPanel() {
+
+            ToConverter("Currency", ServiceLookup.GetCurrencyConverterPanel);
+        }
+
         protected void ToTemperatureConverterPanel() {
 
             ToConverter("Temperature", ServiceLookup.GetTemperatureConverterPanel);
@@ -243,6 +248,12 @@ namespace MockUpCalculator {
                 case "Scientific" :
 
                     ToScientificCalculatorPanel();
+
+                    break;
+
+                case "Currency" :
+
+                    ToCurrencyConverterPanel();
 
                     break;
 

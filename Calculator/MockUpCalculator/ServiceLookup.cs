@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using UserControlClassLibrary;
 using CalculatorClassLibrary;
 using ConverterClassLibrary;
@@ -11,9 +12,13 @@ using ExpressionsClassLibrary;
 using FormatterClassLibrary;
 using StorageClassLibrary;
 using UtilityClassLibrary;
+using WebContentClassLibrary;
 
 namespace MockUpCalculator {
     public class ServiceLookup {
+
+        private string _exchangeRateAPIURL = ConfigurationManager.AppSettings["exchangeRateAPIURL"];
+        private string _exchangeRateAPIKey = ConfigurationManager.AppSettings["exchangeRateAPIKey"];
 
         public IInputBuffer InputBuffer { get; private set; }
         public IOperatorLookup Operators { get; private set; }
@@ -29,6 +34,8 @@ namespace MockUpCalculator {
         public IFormatter NumberFormatter { get; private set; }
         public IFormatter ExpressionFormatter { get; private set; }
         public IFormatter EngineeringFormatter { get; private set; }
+
+        public IExchangeRateLoader ExchangeRateLoader { get; private set; }
 
         public void LoadCalculatorAsset() {
 
@@ -120,6 +127,19 @@ namespace MockUpCalculator {
                 converter,
                 units
             );
+        }
+
+        public ConverterPanel GetCurrencyConverterPanel() {
+
+            if(ExchangeRateLoader == null) {
+
+                ExchangeRateLoader = new ExchangeRateLoader(_exchangeRateAPIURL);
+                ExchangeRateLoader.Load(_exchangeRateAPIKey, new string[0]);
+            }
+
+            var units = ExchangeRateLoader.Rates.Select(rate => rate.Item1).ToArray();
+
+            return GetConverterPanel(new CurrencyConverter(ExchangeRateLoader), units);
         }
 
         public ConverterPanel GetTemperatureConverterPanel() {

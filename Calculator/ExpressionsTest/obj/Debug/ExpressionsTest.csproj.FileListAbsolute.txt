@@ -20,3 +20,7 @@ D:\mock_up_calculator\Calculator\ExpressionsTest\obj\Debug\ExpressionsTest.dll
 D:\mock_up_calculator\Calculator\ExpressionsTest\obj\Debug\ExpressionsTest.pdb
 D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ExpressionsTest\bin\Debug\Newtonsoft.Json.xml

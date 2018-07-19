@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -148,6 +149,10 @@
     <ProjectReference Include="..\UtilityClassLibrary\UtilityClassLibrary.csproj">
       <Project>{8f7fda84-d0b5-4cdf-b67b-d3e02299c390}</Project>
       <Name>UtilityClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebContentClassLibrary\WebContentClassLibrary.csproj">
+      <Project>{b74d12dd-0755-458e-8dfb-9b3f1517f92c}</Project>
+      <Name>WebContentClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

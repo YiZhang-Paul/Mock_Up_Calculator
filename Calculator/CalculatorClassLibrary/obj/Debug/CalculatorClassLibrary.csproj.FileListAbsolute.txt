@@ -19,3 +19,7 @@ D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\StorageClassLi
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\StorageClassLibrary.pdb
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\CalculatorClassLibrary\bin\Debug\Newtonsoft.Json.xml

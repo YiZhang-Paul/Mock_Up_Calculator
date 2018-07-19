@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleConverter.cs" />
+    <Compile Include="CurrencyConverter.cs" />
     <Compile Include="DataConverter.cs" />
     <Compile Include="IOperatorConverter.cs" />
     <Compile Include="IUnitConverter.cs" />
@@ -57,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebContentClassLibrary\WebContentClassLibrary.csproj">
+      <Project>{b74d12dd-0755-458e-8dfb-9b3f1517f92c}</Project>
+      <Name>WebContentClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

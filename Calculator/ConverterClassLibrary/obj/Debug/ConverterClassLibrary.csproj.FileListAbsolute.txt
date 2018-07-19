@@ -5,3 +5,7 @@ D:\mock_up_calculator\Calculator\ConverterClassLibrary\obj\Debug\ConverterClassL
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\obj\Debug\ConverterClassLibrary.csprojResolveAssemblyReference.cache
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ConverterClassLibrary\bin\Debug\Newtonsoft.Json.xml

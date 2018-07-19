@@ -9,3 +9,7 @@ D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\obj\Debug\ExpressionsCl
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\obj\Debug\ExpressionsClassLibrary.pdb
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ExpressionsClassLibrary\bin\Debug\Newtonsoft.Json.xml

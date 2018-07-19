@@ -13,3 +13,7 @@ D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\ConverterClassLibrary.p
 D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\Deque.xml
 D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\FormatterTest\bin\Debug\Newtonsoft.Json.xml

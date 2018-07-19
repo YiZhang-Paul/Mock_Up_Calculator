@@ -29,3 +29,7 @@ D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.Cal
 D:\mock_up_calculator\Calculator\MockUpCalculator\obj\Debug\MockUpCalculator.ConverterPanel.resources
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UnitsNet.dll
 D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\MockUpCalculator\bin\Debug\Newtonsoft.Json.xml
