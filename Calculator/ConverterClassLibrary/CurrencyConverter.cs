@@ -24,7 +24,7 @@ namespace ConverterClassLibrary {
 
             foreach(var rate in Loader.Rates) {
 
-                Rates[rate.Item1] = rate.Item2;
+                Rates[rate.Item1.Substring(0, 2)] = rate.Item2;
             }
         }
 
