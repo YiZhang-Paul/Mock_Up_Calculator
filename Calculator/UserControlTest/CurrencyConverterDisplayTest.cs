@@ -71,7 +71,7 @@ namespace UserControlTest {
             display.PopulateOptions(new string[] { "USD", "CNY" });
             display.DisplayInput("5512", formatter.Object);
 
-            Assert.AreEqual(GetSymbol("CN") + " 5,512", display.InputValue);
+            Assert.AreEqual("5,512", display.InputValue);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace UserControlTest {
             display.PopulateOptions(new string[] { "USD", "CNY" });
             display.DisplayMainOutput("5512", formatter.Object);
 
-            Assert.AreEqual(GetSymbol("US") + " 5,512", display.MainOutputValue);
+            Assert.AreEqual("5,512", display.MainOutputValue);
         }
 
         [TestMethod]

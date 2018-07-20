@@ -26,6 +26,7 @@
             this.displayLayout = new System.Windows.Forms.TableLayoutPanel();
             this.extraOutputTitleLabel = new System.Windows.Forms.Label();
             this.inputPanel = new System.Windows.Forms.Panel();
+            this.inputSymbolLabel = new System.Windows.Forms.Label();
             this.inputUnitBox = new System.Windows.Forms.ComboBox();
             this.inputLabel = new System.Windows.Forms.Label();
             this.outputPanel = new System.Windows.Forms.Panel();
@@ -34,6 +35,7 @@
             this.otherOutputPanel = new System.Windows.Forms.Panel();
             this.extraOutputLabelTwo = new System.Windows.Forms.Label();
             this.extraOutputLabelOne = new System.Windows.Forms.Label();
+            this.outputSymbolLabel = new System.Windows.Forms.Label();
             this.displayLayout.SuspendLayout();
             this.inputPanel.SuspendLayout();
             this.outputPanel.SuspendLayout();
@@ -77,6 +79,7 @@
             // 
             // inputPanel
             // 
+            this.inputPanel.Controls.Add(this.inputSymbolLabel);
             this.inputPanel.Controls.Add(this.inputUnitBox);
             this.inputPanel.Controls.Add(this.inputLabel);
             this.inputPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,6 +87,16 @@
             this.inputPanel.Name = "inputPanel";
             this.inputPanel.Size = new System.Drawing.Size(331, 48);
             this.inputPanel.TabIndex = 2;
+            // 
+            // inputSymbolLabel
+            // 
+            this.inputSymbolLabel.AutoSize = true;
+            this.inputSymbolLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
+            this.inputSymbolLabel.Location = new System.Drawing.Point(3, 0);
+            this.inputSymbolLabel.Name = "inputSymbolLabel";
+            this.inputSymbolLabel.Size = new System.Drawing.Size(0, 47);
+            this.inputSymbolLabel.TabIndex = 5;
+            this.inputSymbolLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // inputUnitBox
             // 
@@ -104,7 +117,7 @@
             // 
             this.inputLabel.AutoSize = true;
             this.inputLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.inputLabel.Location = new System.Drawing.Point(3, -2);
+            this.inputLabel.Location = new System.Drawing.Point(3, 0);
             this.inputLabel.Name = "inputLabel";
             this.inputLabel.Size = new System.Drawing.Size(39, 47);
             this.inputLabel.TabIndex = 1;
@@ -113,6 +126,7 @@
             // 
             // outputPanel
             // 
+            this.outputPanel.Controls.Add(this.outputSymbolLabel);
             this.outputPanel.Controls.Add(this.outputUnitBox);
             this.outputPanel.Controls.Add(this.outputLabel);
             this.outputPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -140,7 +154,7 @@
             // 
             this.outputLabel.AutoSize = true;
             this.outputLabel.Font = new System.Drawing.Font("Segoe UI Light", 26F);
-            this.outputLabel.Location = new System.Drawing.Point(3, -2);
+            this.outputLabel.Location = new System.Drawing.Point(3, 0);
             this.outputLabel.Name = "outputLabel";
             this.outputLabel.Size = new System.Drawing.Size(38, 47);
             this.outputLabel.TabIndex = 2;
@@ -180,6 +194,16 @@
             this.extraOutputLabelOne.Size = new System.Drawing.Size(0, 20);
             this.extraOutputLabelOne.TabIndex = 0;
             // 
+            // outputSymbolLabel
+            // 
+            this.outputSymbolLabel.AutoSize = true;
+            this.outputSymbolLabel.Font = new System.Drawing.Font("Segoe UI Light", 26F);
+            this.outputSymbolLabel.Location = new System.Drawing.Point(3, 0);
+            this.outputSymbolLabel.Name = "outputSymbolLabel";
+            this.outputSymbolLabel.Size = new System.Drawing.Size(0, 47);
+            this.outputSymbolLabel.TabIndex = 4;
+            this.outputSymbolLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ConverterDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -216,5 +240,7 @@
         private System.Windows.Forms.Panel otherOutputPanel;
         private System.Windows.Forms.Label extraOutputLabelTwo;
         private System.Windows.Forms.Label extraOutputLabelOne;
+        private System.Windows.Forms.Label inputSymbolLabel;
+        private System.Windows.Forms.Label outputSymbolLabel;
     }
 }

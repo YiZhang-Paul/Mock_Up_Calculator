@@ -20,6 +20,8 @@ namespace UserControlClassLibrary {
         public virtual string MainOutputValue { get { return outputLabel.Text; } }
         public Label[] ExtraOutputLabels { get; private set; }
 
+        protected Label InputSymbolLabel { get { return inputSymbolLabel; } }
+        protected Label OutputSymbolLabel { get { return outputSymbolLabel; } }
         protected Label InputLabel { get { return inputLabel; } }
         protected Label OutputLabel { get { return outputLabel; } }
         protected Label ExtraOutputTitleLabel { get { return extraOutputTitleLabel; } }
@@ -54,7 +56,9 @@ namespace UserControlClassLibrary {
 
         public void Clear() {
 
+            inputSymbolLabel.Text = string.Empty;
             inputLabel.Text = string.Empty;
+            outputSymbolLabel.Text = string.Empty;
             outputLabel.Text = string.Empty;
             extraOutputTitleLabel.Visible = false;
             extraOutputLabelOne.Text = string.Empty;

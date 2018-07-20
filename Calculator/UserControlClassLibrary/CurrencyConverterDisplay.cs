@@ -102,12 +102,16 @@ namespace UserControlClassLibrary {
 
         public override void DisplayInput(string input, IFormatter formatter) {
 
-            InputLabel.Text = GetSymbol(InputUnitBox.SelectedItem) + " " + formatter.Format(input);
+            InputSymbolLabel.Text = GetSymbol(InputUnitBox.SelectedItem);
+            InputLabel.Text = formatter.Format(input);
+            InputLabel.Left = InputSymbolLabel.Right;
         }
 
         public override void DisplayMainOutput(string output, IFormatter formatter) {
 
-            OutputLabel.Text = GetSymbol(OutputUnitBox.SelectedItem) + " " + formatter.Format(output);
+            OutputSymbolLabel.Text = GetSymbol(OutputUnitBox.SelectedItem);
+            OutputLabel.Text = formatter.Format(output);
+            OutputLabel.Left = OutputSymbolLabel.Right;
         }
 
         public override void DisplayExtraOutputs(Tuple<string, string>[] outputs, IFormatter formatter) {
