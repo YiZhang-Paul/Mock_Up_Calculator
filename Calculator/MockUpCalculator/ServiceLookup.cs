@@ -115,7 +115,7 @@ namespace MockUpCalculator {
             );
         }
 
-        public ConverterPanel GetConverterPanel(IUnitConverter converter, string[] units) {
+        public ConverterPanel GetConverterPanel(IUnitConverter converter, IConverterDisplay display, string[] units) {
 
             LoadConverterPanelAsset();
 
@@ -125,7 +125,7 @@ namespace MockUpCalculator {
                 KeyChecker,
                 NumberFormatter,
                 converter,
-                new ConverterDisplay(),
+                display,
                 units
             );
         }
@@ -141,14 +141,14 @@ namespace MockUpCalculator {
             var converter = new CurrencyConverter(ExchangeRateLoader);
             var units = converter.Rates.Select(rate => rate.Key).ToArray();
 
-            return GetConverterPanel(converter, units);
+            return GetConverterPanel(converter, new CurrencyConverterDisplay(), units);
         }
 
         public ConverterPanel GetTemperatureConverterPanel() {
 
             string[] units = { "Celsius", "Fahrenheit", "Kelvin" };
 
-            return GetConverterPanel(new TemperatureConverter(), units);
+            return GetConverterPanel(new TemperatureConverter(), new ConverterDisplay(), units);
         }
 
         public ConverterPanel GetTimeConverterPanel() {
@@ -159,7 +159,7 @@ namespace MockUpCalculator {
                 "Minutes", "Hours", "Days", "Weeks", "Years"
             };
 
-            return GetConverterPanel(new TimeConverter(), units);
+            return GetConverterPanel(new TimeConverter(), new ConverterDisplay(), units);
         }
 
         public ConverterPanel GetPowerConverterPanel() {
@@ -170,7 +170,7 @@ namespace MockUpCalculator {
                 "Foot-pounds/minute", "BTUs/minute"
             };
 
-            return GetConverterPanel(new PowerConverter(), units);
+            return GetConverterPanel(new PowerConverter(), new ConverterDisplay(), units);
         }
 
         public ConverterPanel GetDataConverterPanel() {
@@ -186,7 +186,7 @@ namespace MockUpCalculator {
                 "exabits", "exbibits", "exabytes", "exbibytes"
             };
 
-            return GetConverterPanel(new DataConverter(), units);
+            return GetConverterPanel(new DataConverter(), new ConverterDisplay(), units);
         }
 
         public ConverterPanel GetPressureConverterPanel() {
@@ -198,14 +198,14 @@ namespace MockUpCalculator {
                 "Pounds per square inch"
             };
 
-            return GetConverterPanel(new PressureConverter(), units);
+            return GetConverterPanel(new PressureConverter(), new ConverterDisplay(), units);
         }
 
         public ConverterPanel GetAngleConverterPanel() {
 
             string[] units = { "Degrees", "Radians", "Gradians" };
 
-            return GetConverterPanel(new AngleConverter(), units);
+            return GetConverterPanel(new AngleConverter(), new ConverterDisplay(), units);
         }
     }
 }

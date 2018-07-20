@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngleConverter.cs" />
+    <Compile Include="CurrencyCodeConverter.cs" />
     <Compile Include="CurrencyConverter.cs" />
     <Compile Include="DataConverter.cs" />
+    <Compile Include="ICurrencyCodeConverter.cs" />
     <Compile Include="IOperatorConverter.cs" />
     <Compile Include="IUnitConverter.cs" />
     <Compile Include="OperatorConverter.cs" />

@@ -14,11 +14,17 @@ namespace UserControlClassLibrary {
 
         public event EventHandler OnUnitChange;
 
-        public string InputUnit { get { return inputUnitBox.SelectedValue.ToString(); } }
-        public string InputValue { get { return inputLabel.Text; } }
-        public string MainOutputUnit { get { return outputUnitBox.SelectedValue.ToString(); } }
-        public string MainOutputValue { get { return outputLabel.Text; } }
+        public virtual string InputUnit { get { return inputUnitBox.SelectedValue.ToString(); } }
+        public virtual string InputValue { get { return inputLabel.Text; } }
+        public virtual string MainOutputUnit { get { return outputUnitBox.SelectedValue.ToString(); } }
+        public virtual string MainOutputValue { get { return outputLabel.Text; } }
         public Label[] ExtraOutputLabels { get; private set; }
+
+        protected Label InputLabel { get { return inputLabel; } }
+        protected Label OutputLabel { get { return outputLabel; } }
+        protected Label ExtraOutputTitleLabel { get { return extraOutputTitleLabel; } }
+        protected ComboBox InputUnitBox { get { return inputUnitBox; } }
+        protected ComboBox OutputUnitBox { get { return outputUnitBox; } }
 
         public ConverterDisplay() {
 
@@ -31,7 +37,7 @@ namespace UserControlClassLibrary {
             inputLabel.Focus();
         }
 
-        public void PopulateOptions(string[] units) {
+        public virtual void PopulateOptions(string[] units) {
 
             inputUnitBox.DataSource = units.ToArray();
             outputUnitBox.DataSource = units.ToArray();
@@ -47,17 +53,17 @@ namespace UserControlClassLibrary {
             extraOutputLabelTwo.Text = string.Empty;
         }
 
-        public void DisplayInput(string input, IFormatter formatter) {
+        public virtual void DisplayInput(string input, IFormatter formatter) {
 
             inputLabel.Text = formatter.Format(input);
         }
 
-        public void DisplayMainOutput(string output, IFormatter formatter) {
+        public virtual void DisplayMainOutput(string output, IFormatter formatter) {
 
             outputLabel.Text = formatter.Format(output);
         }
 
-        public void DisplayExtraOutputs(Tuple<string, string>[] outputs, IFormatter formatter) {
+        public virtual void DisplayExtraOutputs(Tuple<string, string>[] outputs, IFormatter formatter) {
 
             extraOutputTitleLabel.Visible = true;
 

@@ -64,8 +64,8 @@ namespace UserControlTest {
 
             display.DisplayExtraOutputs(outputs, formatter.Object);
 
-            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
-            Assert.AreEqual(display.ExtraOutputLabels[1].Text, "5,512 radians");
+            Assert.AreEqual("5,512 gradians", display.ExtraOutputLabels[0].Text);
+            Assert.AreEqual("5,512 radians", display.ExtraOutputLabels[1].Text);
         }
 
         [TestMethod]
@@ -79,8 +79,8 @@ namespace UserControlTest {
 
             display.DisplayExtraOutputs(outputs, formatter.Object);
 
-            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
-            Assert.AreEqual(display.ExtraOutputLabels[1].Text, string.Empty);
+            Assert.AreEqual("5,512 gradians", display.ExtraOutputLabels[0].Text);
+            Assert.AreEqual(string.Empty, display.ExtraOutputLabels[1].Text);
         }
 
         [TestMethod]
@@ -95,8 +95,8 @@ namespace UserControlTest {
 
             display.DisplayExtraOutputs(outputs, formatter.Object);
 
-            Assert.AreEqual(display.ExtraOutputLabels[0].Text, "5,512 gradians");
-            Assert.AreEqual(display.ExtraOutputLabels[1].Text, "5,512 radians");
+            Assert.AreEqual("5,512 gradians", display.ExtraOutputLabels[0].Text);
+            Assert.AreEqual("5,512 radians", display.ExtraOutputLabels[1].Text);
         }
 
         [TestMethod]

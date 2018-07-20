@@ -53,6 +53,12 @@
     <Compile Include="ConverterDisplay.Designer.cs">
       <DependentUpon>ConverterDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrencyConverterDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrencyConverterDisplay.Designer.cs">
+      <DependentUpon>CurrencyConverterDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExpandablePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

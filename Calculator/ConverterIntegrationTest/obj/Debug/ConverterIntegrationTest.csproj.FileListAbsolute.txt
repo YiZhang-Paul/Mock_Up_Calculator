@@ -1,0 +1,13 @@
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\ConverterIntegrationTest.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\ConverterIntegrationTest.pdb
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\obj\Debug\ConverterIntegrationTest.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\obj\Debug\ConverterIntegrationTest.pdb
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\bin\Debug\Newtonsoft.Json.xml
+D:\mock_up_calculator\Calculator\ConverterIntegrationTest\obj\Debug\ConverterIntegrationTest.csprojResolveAssemblyReference.cache

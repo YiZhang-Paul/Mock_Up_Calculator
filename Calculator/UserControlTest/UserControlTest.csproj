@@ -86,6 +86,7 @@
     <Compile Include="KeypadTest.cs" />
     <Compile Include="BasicKeypadTest.cs" />
     <Compile Include="ConverterDisplayTest.cs" />
+    <Compile Include="CurrencyConverterDisplayTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">
