@@ -30,11 +30,19 @@ namespace UserControlClassLibrary {
 
             InitializeComponent();
             ExtraOutputLabels = new Label[] { extraOutputLabelOne, extraOutputLabelTwo };
+            AdjustComboBoxWidth();
         }
 
         private void RemoveFocus(object sender, EventArgs e) {
 
             inputLabel.Focus();
+        }
+
+        protected virtual void AdjustComboBoxWidth() {
+
+            int width = (int)(displayLayout.Width * 0.9);
+            inputUnitBox.Width = width;
+            outputUnitBox.Width = width;
         }
 
         public virtual void PopulateOptions(string[] units) {
