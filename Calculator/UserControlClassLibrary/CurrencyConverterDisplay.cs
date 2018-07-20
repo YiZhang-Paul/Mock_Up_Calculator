@@ -56,7 +56,7 @@ namespace UserControlClassLibrary {
         private void AddCountry(SortedDictionary<string, Tuple<string, string>> countries, string country, string currency) {
 
             string displayName = GetDisplayName(country);
-
+            //ignore unsupported countries
             if(displayName != null) {
 
                 countries[displayName] = new Tuple<string, string>(country, currency);
@@ -70,7 +70,7 @@ namespace UserControlClassLibrary {
             foreach(string currencyCode in currencyCodes) {
 
                 try {
-
+                    //check for unsupported countries
                     foreach(string countryCode in Converter.ToCountryCode(currencyCode)) {
 
                         AddCountry(countries, countryCode, currencyCode);

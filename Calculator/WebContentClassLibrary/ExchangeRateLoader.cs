@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ using Newtonsoft.Json.Linq;
 
 namespace WebContentClassLibrary {
     public class ExchangeRateLoader : IExchangeRateLoader {
+
+        private const string _saveFile = "ExchangeRate.json";
 
         private string URL { get; set; }
         private JObject ExchangeRate { get; set; }
@@ -20,7 +23,7 @@ namespace WebContentClassLibrary {
 
                     return null;
                 }
-
+                //base currency
                 return ExchangeRate["base"].ToString();
             }
         }
@@ -35,7 +38,7 @@ namespace WebContentClassLibrary {
                 }
 
                 var rates = new List<Tuple<string, decimal>>();
-
+                //stores rates as { currencyCode : exchangeRate } key/value pair
                 foreach(var pair in JObject.Parse(ExchangeRate["rates"].ToString())) {
 
                     string type = pair.Key.ToString();
@@ -57,8 +60,26 @@ namespace WebContentClassLibrary {
             var client = new WebClient();
             string apiKey = "?access_key=" + key;
             string symbol = "&symbols=" + string.Join(",", symbols);
-            var responseBody = client.DownloadString(URL + apiKey + symbol);
-            ExchangeRate = JObject.Parse(responseBody);
+            string response;
+
+            try {
+                //pulling exchange rate through API call
+                response = client.DownloadString(URL + apiKey + symbol);
+                ExchangeRate = JObject.Parse(response);
+                File.WriteAllText(_saveFile, response);
+            }
+            catch(WebException) {
+
+                try {
+                    //attempting to restore from local save as fallback
+                    response = File.ReadAllText(_saveFile);
+                    ExchangeRate = JObject.Parse(response);
+                }
+                catch(Exception) {
+
+                    throw new InvalidDataException("Invalid Data.");
+                }
+            }
         }
     }
 }
