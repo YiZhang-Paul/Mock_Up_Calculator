@@ -15,21 +15,8 @@ using ConverterClassLibrary;
 namespace UserControlClassLibrary {
     public partial class CurrencyConverterDisplay : ConverterDisplay {
 
-        public override string InputUnit {
-
-            get {
-
-                return ((KeyValuePair<string, Tuple<string, string>>)InputUnitBox.SelectedItem).Value.Item2;
-            }
-        }
-
-        public override string MainOutputUnit {
-
-            get {
-
-                return ((KeyValuePair<string, Tuple<string, string>>)OutputUnitBox.SelectedItem).Value.Item2;
-            }
-        }
+        public override string InputUnit { get { return GetCurrencyCode(InputUnitBox.SelectedItem); } }
+        public override string MainOutputUnit { get { return GetCurrencyCode(OutputUnitBox.SelectedItem); } }
 
         private ICurrencyCodeConverter Converter { get; set; }
 
@@ -46,18 +33,34 @@ namespace UserControlClassLibrary {
 
                 return region.EnglishName + " - " + region.CurrencyEnglishName;
             }
-            catch(Exception exception) {
+            catch(Exception) {
 
-                throw exception;
+                return null;
             }
         }
 
-        private string GetSymbol(object selectedItem) {
+        private string GetSymbol(object selected) {
 
-            var item = (KeyValuePair<string, Tuple<string, string>>)selectedItem;
-            string countryCode = item.Value.Item1;
+            var item = (KeyValuePair<string, Tuple<string, string>>)selected;
 
-            return new RegionInfo(countryCode).CurrencySymbol;
+            return new RegionInfo(item.Value.Item1).CurrencySymbol;
+        }
+
+        private string GetCurrencyCode(object selected) {
+
+            var item = (KeyValuePair<string, Tuple<string, string>>)selected;
+
+            return item.Value.Item2;
+        }
+
+        private void AddCountry(SortedDictionary<string, Tuple<string, string>> countries, string country, string currency) {
+
+            string displayName = GetDisplayName(country);
+
+            if(displayName != null) {
+
+                countries[displayName] = new Tuple<string, string>(country, currency);
+            }
         }
 
         private SortedDictionary<string, Tuple<string, string>> GetCountries(string[] currencyCodes) {
@@ -70,15 +73,7 @@ namespace UserControlClassLibrary {
 
                     foreach(string countryCode in Converter.ToCountryCode(currencyCode)) {
 
-                        try {
-
-                            string displayName = GetDisplayName(countryCode);
-                            countries[displayName] = new Tuple<string, string>(countryCode, currencyCode);
-                        }
-                        catch(Exception) {
-
-                            continue;
-                        }
+                        AddCountry(countries, countryCode, currencyCode);
                     }
                 }
                 catch(Exception) {
@@ -90,16 +85,18 @@ namespace UserControlClassLibrary {
             return countries;
         }
 
+        private void BindData(SortedDictionary<string, Tuple<string, string>> data, ComboBox comboBox) {
+
+            comboBox.DataSource = new BindingSource(data, null);
+            comboBox.DisplayMember = "Key";
+            comboBox.ValueMember = "Value";
+        }
+
         public override void PopulateOptions(string[] currencyCodes) {
 
             var countries = GetCountries(currencyCodes);
-            InputUnitBox.DataSource = new BindingSource(countries, null);
-            InputUnitBox.DisplayMember = "Key";
-            InputUnitBox.ValueMember = "Value";
-            OutputUnitBox.DataSource = new BindingSource(countries, null);
-            OutputUnitBox.DisplayMember = "Key";
-            OutputUnitBox.ValueMember = "Value";
-            OutputUnitBox.SelectedIndex = 1;
+            BindData(countries, InputUnitBox);
+            BindData(countries, OutputUnitBox);
             OutputUnitBox.SelectedIndex = 1;
         }
 
