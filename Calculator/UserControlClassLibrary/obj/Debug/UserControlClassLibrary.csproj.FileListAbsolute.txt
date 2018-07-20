@@ -19,3 +19,11 @@ D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlCl
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ExpandablePanel.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.BasicKeypad.resources
 D:\mock_up_calculator\Calculator\UserControlClassLibrary\obj\Debug\UserControlClassLibrary.ConverterDisplay.resources
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\UserControlClassLibrary\bin\Debug\Newtonsoft.Json.xml

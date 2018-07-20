@@ -19,6 +19,7 @@ namespace MockUpCalculator {
 
         private string _exchangeRateAPIURL = ConfigurationManager.AppSettings["exchangeRateAPIURL"];
         private string _exchangeRateAPIKey = ConfigurationManager.AppSettings["exchangeRateAPIKey"];
+        private string _countryInformation = "countryInformation.txt";
 
         public IInputBuffer InputBuffer { get; private set; }
         public IOperatorLookup Operators { get; private set; }
@@ -138,10 +139,12 @@ namespace MockUpCalculator {
                 ExchangeRateLoader.Load(_exchangeRateAPIKey, new string[0]);
             }
 
-            var converter = new CurrencyConverter(ExchangeRateLoader);
-            var units = converter.Rates.Select(rate => rate.Key).ToArray();
+            var currencyConverter = new CurrencyConverter(ExchangeRateLoader);
+            var currencyCodeConverter = new CurrencyCodeConverter(_countryInformation);
+            var display = new CurrencyConverterDisplay(currencyCodeConverter);
+            var units = currencyConverter.Rates.Select(rate => rate.Key).ToArray();
 
-            return GetConverterPanel(converter, new CurrencyConverterDisplay(), units);
+            return GetConverterPanel(currencyConverter, display, units);
         }
 
         public ConverterPanel GetTemperatureConverterPanel() {

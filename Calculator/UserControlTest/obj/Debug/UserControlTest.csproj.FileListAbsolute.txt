@@ -18,3 +18,11 @@ D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\Moq.pdb
 D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\Moq.xml
 D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\System.ValueTuple.xml
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\ConverterClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\WebContentClassLibrary.dll
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\UnitsNet.dll
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\Newtonsoft.Json.dll
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\ConverterClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\WebContentClassLibrary.pdb
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\UnitsNet.xml
+D:\mock_up_calculator\Calculator\UserControlTest\bin\Debug\Newtonsoft.Json.xml

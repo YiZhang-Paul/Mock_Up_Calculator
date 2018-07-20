@@ -187,6 +187,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConverterClassLibrary\ConverterClassLibrary.csproj">
+      <Project>{0956361e-6fb8-4b37-a86d-c648e3822ec4}</Project>
+      <Name>ConverterClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormatterClassLibrary\FormatterClassLibrary.csproj">
       <Project>{080ef227-2736-4b89-b517-7c34b000f155}</Project>
       <Name>FormatterClassLibrary</Name>
